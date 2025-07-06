@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import { Fade, Flex, Line, ToggleButton } from "@once-ui-system/core";
 
-import { routes, display, person, about, blog, work, gallery } from "@/resources";
+import { routes, display, person, about, blog, work, gallery, services } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
 
@@ -56,13 +56,11 @@ export const Header = () => {
         as="header"
         zIndex={9}
         fillWidth
-        padding="8"
+        paddingTop="8"
+        paddingBottom="8"
         horizontal="center"
         data-border="rounded"
       >
-        <Flex paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
-          {display.location && <Flex hide="s">{person.location}</Flex>}
-        </Flex>
         <Flex fillWidth horizontal="center">
           <Flex
             background="page"
@@ -78,6 +76,24 @@ export const Header = () => {
                 <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
               )}
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
+              {routes["/services"] && (
+                <>
+                  <ToggleButton
+                    className="s-flex-hide"
+                    prefixIcon="person"
+                    href="/services"
+                    label={services.label}
+                    selected={pathname === "/services"}
+                  />
+                  <ToggleButton
+                    className="s-flex-show"
+                    prefixIcon="person"
+                    href="/about"
+                    selected={pathname === "/services"}
+                  />
+                </>
+              )}
+
               {routes["/about"] && (
                 <>
                   <ToggleButton
@@ -153,17 +169,6 @@ export const Header = () => {
                 </>
               )}
             </Flex>
-          </Flex>
-        </Flex>
-        <Flex fillWidth horizontal="end" vertical="center">
-          <Flex
-            paddingRight="12"
-            horizontal="end"
-            vertical="center"
-            textVariant="body-default-s"
-            gap="20"
-          >
-            <Flex hide="s">{display.time && <TimeDisplay timeZone={person.location} />}</Flex>
           </Flex>
         </Flex>
       </Flex>

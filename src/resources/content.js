@@ -55,16 +55,15 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Your idea. Our logistics. New Reality.</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
+    title: <>Our recent projects <strong className="ml-4"></strong></>,
     href: "/work/building-once-ui-a-customizable-design-system",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      We use state of art technology stacks coupled with decades of industry experience to help make your products successful.
     </>
   ),
 };
@@ -72,7 +71,7 @@ const home = {
 const about = {
   path: "/about",
   label: "About",
-  title: `About – ${person.name}`,
+  title: `About – AlgoCrew`,
   description: `Meet ${person.name}, ${person.role} from ${person.location}`,
   tableOfContent: {
     display: true,
@@ -214,6 +213,17 @@ const work = {
   // All projects will be listed on the /home and /work routes
 };
 
+const services = {
+  path: "/services",
+  label: "Services",
+  title: `What we Do`,
+  description: `All services under one roof. And help our customers from ideas in mind to real world solutions`,
+  headline: <>We provide cutting-edge digital solutions!</>,
+  subline: <>We’re not just here to deliver projects — we’re here to partner for the long impact. By understanding your business challenges, we craft solutions designed to make a meaningful, long-term impact.</>,
+  // Create new project pages by adding a new .mdx file to app/blog/posts
+  // All projects will be listed on the /home and /work routes
+};
+
 const gallery = {
   path: "/gallery",
   label: "Gallery",
@@ -265,4 +275,4 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, blog, work, gallery, services };
