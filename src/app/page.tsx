@@ -5,6 +5,8 @@ import { home, about, person, newsletter, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
+import { Technologies } from "@/components/services/Technologies";
+import SliderItems from "@/components/services/SliderItems";
 
 export default function Home() {
   return (
@@ -17,11 +19,12 @@ export default function Home() {
         description={home.description}
         image={`/api/og/generate?title=${encodeURIComponent(home.title)}`}
         author={{
-          name: person.name,
+          name: 'Arqam',
           url: `${baseURL}${about.path}`,
           image: `${baseURL}${person.avatar}`,
         }}
       />
+
       <Column fillWidth paddingY="24" gap="m">
         <Column maxWidth="s">
           {home.featured.display && (
@@ -67,9 +70,15 @@ export default function Home() {
           </RevealFx>
         </Column>
       </Column>
+
       <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
+        <Projects range={[0]} />
       </RevealFx>
+
+      <Technologies />
+
+      <SliderItems />
+
       {routes["/blog"] && (
         <Flex fillWidth gap="24" mobileDirection="column">
           <Flex flex={1} paddingLeft="l" paddingTop="24">
@@ -77,12 +86,13 @@ export default function Home() {
               Latest from the blog
             </Heading>
           </Flex>
+
           <Flex flex={3} paddingX="20">
             <Posts range={[1, 2]} columns="2" />
           </Flex>
         </Flex>
       )}
-      <Projects range={[2]} />
+
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>
   );

@@ -7,7 +7,7 @@ const person = {
     return `${this.firstName} ${this.lastName}`;
   },
   role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
+  avatar: "/images/LogoDark.png",
   email: "example@gmail.com",
   location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
@@ -53,8 +53,8 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
+  title: `AlgoCrew - delivering top-tier IT solutions and services`,
+  description: `we are committed to driving innovation and excellence in the world of IT`,
   headline: <>Your idea. Our logistics. New Reality.</>,
   featured: {
     display: true,
@@ -72,7 +72,7 @@ const about = {
   path: "/about",
   label: "About",
   title: `About – AlgoCrew`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `we are committed to driving innovation and excellence in the world of IT`,
   tableOfContent: {
     display: true,
     subItems: false,

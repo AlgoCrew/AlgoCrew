@@ -80,15 +80,15 @@ export const Header = () => {
                 <>
                   <ToggleButton
                     className="s-flex-hide"
-                    prefixIcon="person"
+                    prefixIcon="rocket"
                     href="/services"
                     label={services.label}
                     selected={pathname === "/services"}
                   />
                   <ToggleButton
                     className="s-flex-show"
-                    prefixIcon="person"
-                    href="/about"
+                    prefixIcon="rocket"
+                    href="/services"
                     selected={pathname === "/services"}
                   />
                 </>

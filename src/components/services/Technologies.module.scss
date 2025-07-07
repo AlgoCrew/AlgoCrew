@@ -1,0 +1,73 @@
+/* Technologies.module.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px; /* p-4 equivalent */
+  font-family: 'Inter', sans-serif;
+}
+
+.mainHeading {
+  font-size: 2.25rem; /* text-4xl equivalent */
+  font-weight: 700; /* font-bold equivalent */
+  color: #1f2937; /* text-gray-800 equivalent */
+  margin-bottom: 32px; /* mb-8 equivalent */
+}
+
+.scrollContainer {
+  width: 100%; /* w-full equivalent */
+  max-width: 960px; /* max-w-6xl equivalent */
+  overflow-x: scroll; /* overflow-x-scroll equivalent */
+  white-space: nowrap; /* whitespace-nowrap equivalent */
+  padding: 16px 8px; /* py-4 px-2 equivalent */
+  // box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 12px; /* rounded-xl equivalent */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.scrollContainer::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Webkit browsers */
+}
+
+.itemsWrapper {
+  display: inline-flex; /* inline-flex equivalent */
+  gap: 24px; /* space-x-6 equivalent */
+  padding: 8px; /* p-2 equivalent */
+}
+
+.techItem {
+  flex-shrink: 0; /* flex-none equivalent */
+  min-width: 208px; /* w-52 equivalent */
+  height: 160px; /* h-40 equivalent */
+  background: none; /* bg-gradient-to-br from-blue-500 to-indigo-600 equivalent */
+  color: #ffffff; /* text-white equivalent */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px; /* rounded-xl equivalent */
+  // box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  padding: 16px; /* p-4 equivalent */
+  transform: scale(1); /* initial transform */
+  transition: transform 0.3s ease-in-out; /* transition-transform duration-300 equivalent */
+}
+
+.techItem:hover {
+  transform: scale(1.05); /* hover:scale-105 equivalent */
+}
+
+.techIcon {
+  margin-bottom: 12px; /* mb-3 equivalent */
+}
+
+.techName {
+  font-size: 1.125rem; /* text-lg equivalent */
+  font-weight: 600; /* font-semibold equivalent */
+  text-align: center;
+  line-height: 1.25; /* leading-tight equivalent */
+}

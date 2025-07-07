@@ -8,14 +8,13 @@ import styles from './Cards.module.scss'; // Keeping original styles import
 // For a comprehensive list, refer to the react-icons documentation:
 // https://react-icons.github.io/react-icons/
 import {
-FaHandshake,
-FaShieldAlt,
-FaUserTie,
-FaFire,
-FaPeopleCarry,
-FaLightbulb,
-FaStar,
-
+    FaHandshake,
+    FaShieldAlt,
+    FaUserTie,
+    FaFire,
+    FaPeopleCarry,
+    FaLightbulb,
+    FaStar,
 } from 'react-icons/fa'; // Using Font Awesome icons as an example
 
 // A mapping object to get the React component from its string name

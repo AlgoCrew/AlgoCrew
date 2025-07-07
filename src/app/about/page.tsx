@@ -169,13 +169,11 @@ export default function About() {
 
               <RevealFx translateY="16" delay={0.3}>
                 <Row fillWidth gap="l" marginTop="m" marginBottom="m" className={styles.alignCenter}>
-                  {/* Description: 50% width */}
                   <Column maxWidth={50} textVariant="body-default-l" gap="m">
                     {aboutUs.ourMission.description}
                   </Column>
 
-                  {/* Image: 50% width */}
-                  <Column maxWidth={50}>
+                  <Column maxWidth={50} className="s-flex-hide">
                     <img
                       src={aboutUs.ourMission.img} // Ensure this path exists in your data
                       alt={aboutUs.ourMission.title}
@@ -197,7 +195,7 @@ export default function About() {
 
               <RevealFx translateY="16" delay={0.3}>
                 <Row fillWidth gap="l" marginTop="m" marginBottom="m" className={styles.alignCenter}>
-                  <Column maxWidth={50}>
+                  <Column maxWidth={50} className="s-flex-hide">
                     <img
                       src={aboutUs.ourVision.img} // Ensure this path exists in your data
                       alt={aboutUs.ourVision.title}
@@ -215,7 +213,7 @@ export default function About() {
 
           {aboutUs.ourValues.display && (
             <>
-              <Heading as="h2" id={aboutUs.ourValues.title} variant="display-strong-s" marginBottom="m">
+              <Heading as="h2" id={aboutUs.ourValues.title} variant="display-strong-s" marginBottom="m" marginTop="l">
                 {aboutUs.ourValues.title}
               </Heading>
 

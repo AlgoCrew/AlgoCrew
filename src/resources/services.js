@@ -14,6 +14,31 @@ const allServices = [
     "iconName": "FaCode",
     "short_description": "Creating bespoke software solutions specifically designed to address unique operational challenges and enhance business efficiency."
   },
+    {
+    "name": "Cloud Application",
+    "iconName": "FaCloudMeatball",
+    "short_description": "Designing, developing, and deploying robust cloud-native applications optimized for performance, scalability, and cost-effectiveness."
+  },
+  {
+    "name": "Cloud Ops & Migration",
+    "iconName": "FaExchangeAlt",
+    "short_description": "Managing cloud operations and seamlessly migrating existing infrastructure and applications to secure and efficient cloud environments."
+  },
+  {
+    "name": "Cloud Maintenance & Integration",
+    "iconName": "FaSyncAlt",
+    "short_description": "Ensuring continuous optimal performance and seamless integration of all your cloud services and applications."
+  },
+  {
+    "name": "DevOps",
+    "iconName": "FaCloudUploadAlt",
+    "short_description": "Implementing efficient DevOps practices to accelerate software delivery, improve collaboration, and ensure continuous integration."
+  },
+  {
+    "name": "Cybersecurity",
+    "iconName": "FaShieldAlt",
+    "short_description": "Protecting your digital assets and infrastructure from evolving cyber threats with robust security strategies and solutions."
+  },
   {
     "name": "UX/UI Design",
     "iconName": "FaPaintBrush",
@@ -80,16 +105,6 @@ const allServices = [
     "short_description": "Ensuring the highest standards of software quality and reliability through rigorous testing and robust quality assurance processes."
   },
   {
-    "name": "DevOps",
-    "iconName": "FaCloudUploadAlt",
-    "short_description": "Implementing efficient DevOps practices to accelerate software delivery, improve collaboration, and ensure continuous integration."
-  },
-  {
-    "name": "Cybersecurity",
-    "iconName": "FaShieldAlt",
-    "short_description": "Protecting your digital assets and infrastructure from evolving cyber threats with robust security strategies and solutions."
-  },
-  {
     "name": "SaaS",
     "iconName": "FaCloud",
     "short_description": "Developing, deploying, and managing scalable Software-as-a-Service solutions tailored to your business model and customer needs."
@@ -124,21 +139,6 @@ const allServices = [
     "iconName": "FaVrCardboard",
     "short_description": "Developing groundbreaking augmented, virtual, and extended reality games that offer truly immersive and interactive experiences."
   },
-  {
-    "name": "Cloud Application",
-    "iconName": "FaCloudMeatball",
-    "short_description": "Designing, developing, and deploying robust cloud-native applications optimized for performance, scalability, and cost-effectiveness."
-  },
-  {
-    "name": "Cloud Ops & Migration",
-    "iconName": "FaExchangeAlt",
-    "short_description": "Managing cloud operations and seamlessly migrating existing infrastructure and applications to secure and efficient cloud environments."
-  },
-  {
-    "name": "Cloud Maintenance & Integration",
-    "iconName": "FaSyncAlt",
-    "short_description": "Ensuring continuous optimal performance and seamless integration of all your cloud services and applications."
-  }
 ]
 
 export { allServices };
