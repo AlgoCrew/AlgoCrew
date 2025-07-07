@@ -195,6 +195,103 @@ const about = {
   },
 };
 
+const aboutUs = {
+  path: "/about",
+  label: "About",
+  title: `How we are`,
+  description: `At AlgoCrew, we are committed to driving innovation and excellence in the world of IT. As a dynamic and forward-thinking software company, we specialize in delivering top-tier IT solutions and services tailored to meet the evolving needs of businesses across diverse sectors.`,
+  tableOfContent: {
+    display: true,
+    subItems: false,
+  },
+  avatar: {
+    display: true,
+  },
+  calendar: {
+    display: true,
+    link: "https://cal.com",
+  },
+  intro: {
+    display: true,
+    title: "Introduction",
+    description: (
+      <>
+        At AlgoCrew, we are committed to driving innovation and excellence in the world of IT. As a dynamic and forward-thinking software company, we specialize in delivering top-tier IT solutions and services tailored to meet the evolving needs of businesses across diverse sectors.
+      </>
+    ),
+  },
+  ourMission: {
+    display: true, // set to false to hide this section
+    title: "Our Mission",
+    img: "/images/about/mission.png",
+    description: (
+      <>
+        Our mission is to empower businesses by delivering cutting-edge technology solutions that drive innovation, efficiency, and sustainable growth.
+        We strive to unlock our clients' full potential by connecting them with a network of passionate,
+        highly skilled engineers dedicated to solving complex challenges and creating meaningful digital transformation.
+      </>
+    ),
+  },
+
+  ourVision: {
+    display: true, // set to false to hide this section
+    title: "Our Vision",
+    img: "/images/about/vision2.webp",
+    description: (
+      <>
+        At AlgoCrew, we envision a future where IT systems evolve into intelligent,
+        agile, and AI-powered digital assets. Backed by over a decade of expertise,
+        we empower global clients with innovative and adaptive solutions, shaping a world where technology seamlessly meets the ever-changing demands of a connected, digital era.
+      </>
+    ),
+  },
+
+  ourValues: {
+    display: true, // set to false to hide this section
+    title: "What make us more valuable",
+    img: "/images/about/vision1.png",
+  },
+
+  technical: {
+    display: false, // set to false to hide this section
+    title: "Technical skills",
+    skills: [
+      {
+        title: "Figma",
+        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
+        // optional: leave the array empty if you don't want to display images
+        images: [
+          {
+            src: "/images/projects/project-01/cover-02.jpg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/project-01/cover-03.jpg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
+        title: "Next.js",
+        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
+        // optional: leave the array empty if you don't want to display images
+        images: [
+          {
+            src: "/images/projects/project-01/cover-04.jpg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+    ],
+  },
+};
+
 const blog = {
   path: "/blog",
   label: "Blog",
@@ -275,4 +372,4 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery, services };
+export { person, social, newsletter, home, about, aboutUs, blog, work, gallery, services };

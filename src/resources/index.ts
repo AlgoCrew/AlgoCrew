@@ -5,6 +5,7 @@ export {
   newsletter,
   home,
   about,
+  aboutUs,
   blog,
   work,
   gallery,
@@ -14,5 +15,9 @@ export {
 export {
   allServices,
 } from "./services";
+
+export {
+  ourValues,
+} from "./ourValues";
 
 export { display, mailchimp, routes, protectedRoutes, baseURL, fonts, style, schema, sameAs, effects, dataStyle } from "./once-ui.config";

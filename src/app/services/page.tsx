@@ -5,6 +5,7 @@ import { home, about, person, newsletter, baseURL, routes, services, social } fr
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Cards } from "@/components/services/Cards";
+import { Technologies } from "@/components/services/technologies";
 import styles from "@/components/about/about.module.scss";
 
 export default function Home() {
@@ -82,23 +83,9 @@ export default function Home() {
         </Flex>
       </RevealFx>
 
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
-      </RevealFx>
-      {routes["/blog"] && (
-        <Flex fillWidth gap="24" mobileDirection="column">
-          <Flex flex={1} paddingLeft="l" paddingTop="24">
-            <Heading as="h2" variant="display-strong-xs" wrap="balance">
-              Latest from the blog
-            </Heading>
-          </Flex>
-          <Flex flex={3} paddingX="20">
-            <Cards columns="2" />
-          </Flex>
-        </Flex>
-      )}
-      <Projects range={[2]} />
+
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
+      <Technologies />
     </Column>
   );
 }
