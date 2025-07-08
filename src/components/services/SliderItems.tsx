@@ -38,7 +38,7 @@ interface Service {
 const allServicesWithIcons: Service[] = initialAllServices as Service[];
 
 
-export default function SliderItems() {
+export function SliderItems() { 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const animationFrameId = useRef<number | null>(null);
   const [scrollSpeed, setScrollSpeed] = useState(1.5); // Default scroll speed
