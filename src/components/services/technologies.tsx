@@ -151,7 +151,7 @@ export function Technologies() {
               >
                 {IconComponent && (
                   // Render the SVG component directly
-                  <IconComponent size={48} className={styles.techIcon} />
+                  <IconComponent size={48} className={styles.techIcon} onBackground="neutral-weak"/>
                 )}
                 <Text onBackground="neutral-weak" variant="body-default-m" className={styles.statDescription}>
                   {tech.name}

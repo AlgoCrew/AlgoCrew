@@ -109,7 +109,7 @@ export default function SliderItems() {
                 {IconComponent && (
                   <IconComponent size={48} className={styles.techIcon} />
                 )}
-                <h3 className={styles.techName}>{tech.name}</h3>
+
                 <Text onBackground="neutral-weak" variant="body-default-m" className={styles.statDescription}>
                   {tech.name}
                 </Text>

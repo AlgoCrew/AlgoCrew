@@ -37,7 +37,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         fill
         x={50}
         y={50}
-        radius={95}>
+        radius={95}
+      >
         <Carousel
           sizes="(max-width: 960px) 100vw, 960px"
           items={images.map((image) => ({
@@ -46,6 +47,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           }))}
         />
       </Mask>
+
       <Flex
         mobileDirection="column"
         fillWidth
@@ -69,26 +71,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 {description}
               </Text>
             )}
-            <Flex gap="24" wrap>
-              {content?.trim() && (
-                <SmartLink
-                  suffixIcon="arrowRight"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={href}
-                >
-                  <Text variant="body-default-s">Read case study</Text>
-                </SmartLink>
-              )}
-              {link && (
-                <SmartLink
-                  suffixIcon="arrowUpRightFromSquare"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={link}
-                >
-                  <Text variant="body-default-s">View project</Text>
-                </SmartLink>
-              )}
-            </Flex>
           </Column>
         )}
       </Flex>
