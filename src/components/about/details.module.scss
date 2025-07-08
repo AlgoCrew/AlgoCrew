@@ -1,0 +1,143 @@
+/* AboutUs.module.scss */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+.aboutUsContainer {
+//   min-height: 100vh;
+//   background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.contentWrapper {
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  transition: opacity 1s ease-out;
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+  .contentWrapper {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.fadeInVisible {
+  opacity: 1;
+}
+
+.fadeInHidden {
+  opacity: 0;
+}
+
+.textSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+  .textSection {
+    text-align: left;
+  }
+}
+
+.aboutUsSubtitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.aboutUsTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.5rem;
+  line-height: 1.25;
+}
+
+@media (min-width: 640px) { /* sm breakpoint */
+  .aboutUsTitle {
+    font-size: 3rem;
+  }
+}
+
+.aboutUsDescription {
+  font-size: 1rem;
+  color: #374151;
+  line-height: 1.625;
+}
+
+@media (min-width: 640px) { /* sm breakpoint */
+  .aboutUsDescription {
+    font-size: 1.125rem;
+  }
+}
+
+.statsSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem; /* Replaces space-y-8 */
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+  text-align: center;
+}
+
+@media (min-width: 640px) { /* sm breakpoint */
+  .statItem {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+.statNumberContainer {
+  flex-shrink: 0;
+  flex-basis: 120px;
+}
+
+.statNumber {
+  font-size: 3.125rem;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.statNumberPlus {
+  font-size: 1.875rem;
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+}
+
+.statDescription {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  color: #374151;
+}
+
+@media (min-width: 640px) { /* sm breakpoint */
+  .statDescription {
+    margin-top: 0;
+    margin-left: 2rem;
+  }
+}

@@ -1,7 +1,7 @@
 // Card.tsx (renamed to ServiceCard conceptually, but file remains Card.tsx)
 "use client";
 
-import { Column, Flex, Heading, Text } from '@once-ui-system/core';
+import { Heading, Row, Text } from '@once-ui-system/core';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styles from './Technologies.module.scss'; // Import the CSS module
 import { allServices as initialAllServices } from "@/resources"; // Assuming allServices is imported from your resources file
@@ -48,47 +48,49 @@ export default function SliderItems() {
   const animateScroll = useCallback(() => {
     const container = scrollContainerRef.current;
     if (container) {
-      container.scrollLeft += scrollSpeed;
+      container.scrollLeft -= scrollSpeed;
 
-      const itemWidth = 208 + 24; // Item min-width (208px) + margin-right (24px for space-x-6)
+      const itemWidth = 208 + 24;
       const singleSetWidth = allServicesWithIcons.length * itemWidth;
 
-      if (container.scrollLeft >= singleSetWidth) {
-        container.scrollLeft = 0;
+      if (container.scrollLeft <= 0) {
+        container.style.scrollBehavior = 'auto';
+        container.scrollLeft = singleSetWidth;
+
+        requestAnimationFrame(() => {
+          container.style.scrollBehavior = 'smooth';
+        });
       }
     }
-    // Request the next animation frame
-    animationFrameId.current = requestAnimationFrame(animateScroll);
-  }, [scrollSpeed]); // Re-create animateScroll if scrollSpeed changes
 
-  // Effect to start and stop the animation loop
+    animationFrameId.current = requestAnimationFrame(animateScroll);
+  }, [scrollSpeed]);
+
   useEffect(() => {
-    // Start the animation when the component mounts
     animationFrameId.current = requestAnimationFrame(animateScroll);
 
-    // Cleanup function: cancel the animation frame when the component unmounts
     return () => {
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }
     };
-  }, [animateScroll]); // Dependency on animateScroll ensures it restarts if speed changes
+  }, [animateScroll])
 
-  // Event handler for mouse entering the scroll area
   const handleMouseEnter = () => {
     setScrollSpeed(slowSpeed); // Slow down the scroll speed
   };
 
-  // Event handler for mouse leaving the scroll area
   const handleMouseLeave = () => {
     setScrollSpeed(defaultSpeed); // Resume normal scroll speed
   };
 
   return (
     <div className={styles.appContainer}>
-      <Heading wrap="balance" variant="display-strong-m">
-        Our Technologies
-      </Heading>
+      <Row fillWidth horizontal="start" paddingBottom="16">
+        <Heading wrap="balance" variant="display-strong-m">
+          Our Services
+        </Heading>
+      </Row>
 
       <div
         ref={scrollContainerRef}
@@ -97,23 +99,20 @@ export default function SliderItems() {
         onMouseLeave={handleMouseLeave}
       >
         <div className={styles.itemsWrapper}>
-          {/* Map over the duplicated technologies to create the continuous loop */}
-          {allServicesWithIcons.map((tech, index) => {
-            // Get the SVG component from the mapping
-            const IconComponent = IconComponents['FaShoppingCart'];
-
+          {[...allServicesWithIcons, ...allServicesWithIcons].map((tech, index) => {
+            const IconComponent = IconComponents[tech.iconName || ''];
             return (
               <div
-                key={`${tech.name}-${index}`} // Unique key for each duplicated item
+                key={`${tech.name}-${index}`}
                 className={styles.techItem}
               >
                 {IconComponent && (
-                  // Render the SVG component directly
                   <IconComponent size={48} className={styles.techIcon} />
                 )}
-                <h3 className={styles.techName}>
+                <h3 className={styles.techName}>{tech.name}</h3>
+                <Text onBackground="neutral-weak" variant="body-default-m" className={styles.statDescription}>
                   {tech.name}
-                </h3>
+                </Text>
               </div>
             );
           })}

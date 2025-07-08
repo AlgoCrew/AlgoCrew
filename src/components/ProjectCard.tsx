@@ -8,6 +8,7 @@ import {
   Heading,
   SmartLink,
   Text,
+  Mask,
 } from "@once-ui-system/core";
 
 interface ProjectCardProps {
@@ -32,13 +33,19 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <Column fillWidth gap="m">
-      <Carousel
-        sizes="(max-width: 960px) 100vw, 960px"
-        items={images.map((image) => ({
-          slide: image,
-          alt: title,
-        }))}
-      />
+      <Mask
+        fill
+        x={50}
+        y={50}
+        radius={95}>
+        <Carousel
+          sizes="(max-width: 960px) 100vw, 960px"
+          items={images.map((image) => ({
+            slide: image,
+            alt: title,
+          }))}
+        />
+      </Mask>
       <Flex
         mobileDirection="column"
         fillWidth

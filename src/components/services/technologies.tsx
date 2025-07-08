@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styles from './Technologies.module.scss'; // Import the CSS module
-import { Heading } from '@once-ui-system/core';
+import { Heading, Row, Text } from '@once-ui-system/core';
 
 import {
   FaJsSquare,
@@ -89,47 +89,49 @@ export function Technologies() {
   const animateScroll = useCallback(() => {
     const container = scrollContainerRef.current;
     if (container) {
-      container.scrollLeft += scrollSpeed;
+      container.scrollLeft += scrollSpeed; // Left-to-right scroll
 
-      const itemWidth = 208 + 24; // Item min-width (208px) + margin-right (24px for space-x-6)
+      const itemWidth = 208 + 24; // width + margin
       const singleSetWidth = technologies.length * itemWidth;
 
       if (container.scrollLeft >= singleSetWidth) {
+        container.style.scrollBehavior = 'auto'; // Disable smooth for instant jump
         container.scrollLeft = 0;
+
+        requestAnimationFrame(() => {
+          container.style.scrollBehavior = 'smooth'; // Re-enable smooth scroll
+        });
       }
     }
-    // Request the next animation frame
-    animationFrameId.current = requestAnimationFrame(animateScroll);
-  }, [scrollSpeed]); // Re-create animateScroll if scrollSpeed changes
 
-  // Effect to start and stop the animation loop
+    animationFrameId.current = requestAnimationFrame(animateScroll);
+  }, [scrollSpeed]);
+
   useEffect(() => {
-    // Start the animation when the component mounts
     animationFrameId.current = requestAnimationFrame(animateScroll);
 
-    // Cleanup function: cancel the animation frame when the component unmounts
     return () => {
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }
     };
-  }, [animateScroll]); // Dependency on animateScroll ensures it restarts if speed changes
+  }, [animateScroll])
 
-  // Event handler for mouse entering the scroll area
   const handleMouseEnter = () => {
     setScrollSpeed(slowSpeed); // Slow down the scroll speed
   };
 
-  // Event handler for mouse leaving the scroll area
   const handleMouseLeave = () => {
     setScrollSpeed(defaultSpeed); // Resume normal scroll speed
   };
 
   return (
     <div className={styles.appContainer}>
-      <Heading wrap="balance" variant="display-strong-m">
-        Our Technologies
-      </Heading>
+      <Row fillWidth horizontal="start" paddingBottom="16">
+        <Heading wrap="balance" variant="display-strong-m">
+          Our Technologies
+        </Heading>
+      </Row>
 
       <div
         ref={scrollContainerRef}
@@ -151,9 +153,9 @@ export function Technologies() {
                   // Render the SVG component directly
                   <IconComponent size={48} className={styles.techIcon} />
                 )}
-                <h3 className={styles.techName}>
+                <Text onBackground="neutral-weak" variant="body-default-m" className={styles.statDescription}>
                   {tech.name}
-                </h3>
+                </Text>
               </div>
             );
           })}

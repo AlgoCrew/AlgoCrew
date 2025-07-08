@@ -7,6 +7,7 @@ import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import { Technologies } from "@/components/services/Technologies";
 import SliderItems from "@/components/services/SliderItems";
+import Details from "@/components/about/Details";
 
 export default function Home() {
   return (
@@ -41,9 +42,9 @@ export default function Home() {
             </Heading>
           </RevealFx>
           <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-              {home.subline}
-            </Text>
+          <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
+            {home.subline}
+          </Text>
           </RevealFx>
           <RevealFx paddingTop="12" delay={0.4} horizontal="start" paddingLeft="12">
             <Button
@@ -75,9 +76,17 @@ export default function Home() {
         <Projects range={[0]} />
       </RevealFx>
 
-      <Technologies />
+      <RevealFx translateY="16" delay={1}>
+        <SliderItems />
+      </RevealFx>
 
-      <SliderItems />
+      <RevealFx translateY="16" delay={1.3}>
+        <Technologies />
+      </RevealFx>
+
+      <RevealFx translateY="16" delay={1.6}>
+        <Details />
+      </RevealFx>
 
       {routes["/blog"] && (
         <Flex fillWidth gap="24" mobileDirection="column">
