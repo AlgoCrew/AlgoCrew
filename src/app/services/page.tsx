@@ -5,7 +5,7 @@ import { home, about, person, newsletter, baseURL, routes, services, social } fr
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Cards } from "@/components/services/Cards";
-import { Technologies } from "@/components/services/Technologies";
+import { AllTechnologies } from "@/components/services/Technologies";
 import styles from "@/components/about/about.module.scss";
 
 export default function Home() {
@@ -83,7 +83,7 @@ export default function Home() {
         </Flex>
       </RevealFx>
 
-      <Technologies />
+      <AllTechnologies />
 
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>
