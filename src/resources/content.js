@@ -15,7 +15,7 @@ const person = {
 
 const newsletter = {
   display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  title: <>Subscribe to AlgoCrew Newsletter</>,
   description: (
     <>
       I occasionally write about design, technology, and share thoughts on the intersection of
@@ -227,7 +227,7 @@ const aboutUs = {
     description: (
       <>
         Our mission is to empower businesses by delivering cutting-edge technology solutions that drive innovation, efficiency, and sustainable growth.
-        We strive to unlock our clients' full potential by connecting them with a network of passionate,
+        We strive to unlock our clients full potential by connecting them with a network of passionate,
         highly skilled engineers dedicated to solving complex challenges and creating meaningful digital transformation.
       </>
     ),
