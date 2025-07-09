@@ -1,0 +1,205 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+.processSectionContainer {
+    // background-color: #f8f9fa;
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center; /* Vertically center content */
+    justify-content: center; /* Horizontally center content */
+    padding: 1rem; /* Default padding for mobile */
+    font-family: 'Inter', sans-serif; /* Consistent font */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+/* Responsive padding for small screens */
+@media (min-width: 640px) {
+    .processSectionContainer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    }
+}
+
+/* Responsive padding for large screens */
+@media (min-width: 1024px) {
+    .processSectionContainer {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    }
+}
+
+/* Inner content wrapper */
+.processContentWrapper {
+    max-width: 72rem; /* Equivalent to max-w-6xl */
+    width: 100%; /* Equivalent to w-full */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; /* Equivalent to space-y-12 */
+}
+
+/* Section header styling */
+.sectionHeader {
+    text-align: center;
+}
+
+.sectionTitle {
+    font-size: 2.25rem; /* Equivalent to text-4xl */
+    line-height: 2.5rem; /* Equivalent to text-4xl */
+    font-weight: 700; /* Equivalent to font-bold */
+    color: #2d3748; /* Equivalent to text-gray-800 */
+    margin-bottom: 1rem; /* Equivalent to mb-4 */
+    letter-spacing: -0.025em; /* Equivalent to tracking-tight */
+}
+
+/* Underline beneath the header */
+.processHeaderUnderline {
+    width: 6rem; /* Equivalent to w-24 */
+    height: 0.25rem; /* Equivalent to h-1 */
+    background-color: #0093B9; /* Teal color */
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 9999px; /* Fully rounded */
+    margin-bottom: 1.5rem; /* Equivalent to mb-6 */
+}
+
+.sectionDescription {
+    display: flex;
+    margin-top: 0.5rem; /* Equivalent to mt-2 */
+    font-size: 1.125rem; /* Equivalent to text-lg */
+    line-height: 1.75rem; /* Equivalent to text-lg */
+    color: #718096; /* Equivalent to text-gray-600 */
+    max-width: 36rem; /* Equivalent to max-w-2xl */
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.625; /* Equivalent to leading-relaxed */
+}
+
+/* Container for process steps */
+.processStepsContainer {
+    display: flex;
+    flex-direction: column; /* Vertical stacking on mobile */
+    justify-content: center;
+    align-items: stretch;
+    gap: 2.5rem; /* Equivalent to space-y-10 */
+}
+
+/* Responsive layout for process steps on large screens */
+@media (min-width: 1024px) {
+    .processStepsContainer {
+    flex-direction: row; /* Horizontal layout on large screens */
+    gap: 2rem; /* Equivalent to lg:space-x-8 */
+    }
+}
+
+/* Separator line between steps on large screens */
+.stepSeparator {
+    display: none; /* Hidden on mobile */
+    width: 6rem; /* Equivalent to w-24 */
+    height: 0.25rem; /* Equivalent to h-1 */
+    background-color: #cbd5e0; /* Gray color */
+    border-radius: 9999px; /* Fully rounded */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Display separator on large screens */
+@media (min-width: 1024px) {
+    .stepSeparator {
+    display: flex; /* Display as flex on large screens */
+    }
+}
+
+/* Process Step component styling */
+.processStep {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1 1 0%; /* Equivalent to flex-1 */
+    padding: 1.5rem; /* Equivalent to p-6 */
+    border-radius: 0.5rem; /* Equivalent to rounded-lg */
+}
+
+.processStepIconWrapper {
+    position: relative;
+    margin-bottom: 1.5rem; /* Equivalent to mb-6 */
+}
+
+/* Base styles for the circular icon background */
+.stepCircleBase {
+    width: 8rem; 
+    height: 8rem;
+    // background-color: #ffffff;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Medium shadow */
+    border: 1px solid #e2e8f0; /* Light gray border */
+}
+
+/* Base styles for the number overlay circle */
+.numberOverlayBase {
+    position: absolute;
+    top: -0.5rem; /* Equivalent to -top-2 */
+    right: -0.5rem; /* Equivalent to -right-2 */
+    width: 2.5rem; /* Equivalent to w-10 */
+    height: 2.5rem; /* Equivalent to h-10 */
+    border-radius: 9999px; /* Fully rounded */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff; /* White text */
+    font-size: 1.125rem; /* Equivalent to text-lg */
+    font-weight: 600; /* Semi-bold font */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Larger shadow */
+}
+
+/* Default background color for number overlay */
+.numberOverlayDefault {
+    background-color: #0093B9;
+    width: fit-content;
+    padding-block: 8px;
+    padding-inline: 12px;
+    color: white;
+    border-radius: 50rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* Teal background color for the third step's number overlay */
+.numberOverlayTeal {
+    background-color: #0093B9; /* Teal color */
+}
+
+/* Styles for the large, faded step number */
+.stepNumberLarge {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #d1d5db; 
+    margin-bottom: 1rem;
+    opacity: 0.75;
+}
+
+/* Step title styling */
+.stepTitle {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* Step description styling */
+.stepDescription {
+    color: #718096; /* Equivalent to text-gray-600 */
+    line-height: 1.625; /* Equivalent to leading-relaxed */
+    max-width: 20rem; /* Equivalent to max-w-xs */
+}
+
+/* Font Awesome icon styling */
+.faIcon {
+    font-size: 4rem; /* Adjust icon size */
+}
+

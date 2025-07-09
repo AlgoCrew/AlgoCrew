@@ -6,6 +6,7 @@ import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import { SliderItems } from "@/components/services/SliderItems";
+import { ProcessSteps } from "@/components/home/ProcessStep";
 // import { AllTechnologies } from "@/components/services/Technologies";
 import Details from "@/components/about/Details";
 
@@ -78,6 +79,10 @@ export default function Home() {
 
       <RevealFx translateY="16" delay={1}>
         <SliderItems />
+      </RevealFx>
+
+      <RevealFx translateY="16" delay={1}>
+        <ProcessSteps />
       </RevealFx>
 
       {/* <RevealFx translateY="16" delay={1.3}>
