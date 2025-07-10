@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ProcessStep.module.scss'; // Keeping original styles import
-import { Column, Flex, Heading, Text } from '@once-ui-system/core';
+import { Column, Flex, Heading, Text, RevealFx } from '@once-ui-system/core';
 import {
     FaRegLightbulb, FaCogs, FaSyncAlt
 } from 'react-icons/fa'; // Using Font Awesome icons as an example
@@ -16,11 +16,18 @@ export function ProcessSteps() {
         <div className={styles.processContentWrapper}>
           {/* Section Header */}
           <div className={styles.sectionHeader}>
-            <Heading
+            {/* <Heading
               as="h2"
               variant="heading-strong-l"
               wrap="balance"
               className='mb-3'
+            >
+              Our Process
+            </Heading> */}
+
+            <Heading
+              wrap="balance"
+              className={`mb-3 ${styles.stepTitle}`}
             >
               Our Process
             </Heading>

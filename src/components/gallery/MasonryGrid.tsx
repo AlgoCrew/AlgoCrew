@@ -1,7 +1,7 @@
 "use client";
 
 import Masonry from "react-masonry-css";
-import { Media } from "@once-ui-system/core";
+import { Media, OgCard } from "@once-ui-system/core";
 import styles from "./Gallery.module.scss";
 import { gallery } from "@/resources";
 
@@ -29,6 +29,73 @@ export default function MasonryGrid() {
           className={styles.gridItem}
         />
       ))}
+
+      <OgCard 
+        ogData={{
+          title: "Design Engineers Club",
+          description: "The Design Engineers Club is a community of vibe coders.",
+          image: "/images/projects/project-01/otre.png",
+          faviconUrl: "/images/avatar.jpg",
+          url: "https://designengineers.club"
+        }}
+      />
+
+      <OgCard 
+        ogData={{
+          title: "Design Engineers Club",
+          description: "The Design Engineers Club is a community of vibe coders.",
+          image: "/images/projects/project-01/otre.png",
+          faviconUrl: "/images/avatar.jpg",
+          url: "https://designengineers.club"
+        }}
+      />
+
+      <OgCard 
+        ogData={{
+          title: "Design Engineers Club",
+          description: "The Design Engineers Club is a community of vibe coders.",
+          image: "/images/projects/project-01/otre.png",
+          faviconUrl: "/images/avatar.jpg",
+          url: "https://designengineers.club"
+        }}
+        direction="row"
+      />
+
+      <OgCard 
+        ogData={{
+          title: "Design Engineers Club",
+          description: "The Design Engineers Club is a community of vibe coders.",
+          image: "/images/projects/project-01/otre.png",
+          faviconUrl: "/images/avatar.jpg",
+          url: "https://designengineers.club"
+        }}
+        direction="row"
+      />
+
+      <OgCard 
+        ogData={{
+          title: "Design Engineers Club",
+          description: "The Design Engineers Club is a community of vibe coders.",
+          image: "/images/projects/project-01/otre.png",
+          faviconUrl: "/images/avatar.jpg",
+          url: "https://designengineers.club"
+        }}
+        direction="row-reverse"
+      />
+
+      <OgCard 
+        ogData={{
+          title: "Design Engineers Club",
+          description: "The Design Engineers Club is a community of vibe coders.",
+          image: "/images/projects/project-01/otre.png",
+          faviconUrl: "/images/avatar.jpg",
+          url: "https://designengineers.club"
+        }}
+        direction="row-reverse"
+        background="brand-alpha-weak"
+        border="brand-alpha-medium"
+        shadow="l"
+      />
     </Masonry>
   );
 }

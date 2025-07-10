@@ -9,6 +9,7 @@ import { SliderItems } from "@/components/services/SliderItems";
 import { ProcessSteps } from "@/components/home/ProcessStep";
 import { OfferingTechnologies } from "@/components/services/OfferingTechnologies";
 import Details from "@/components/about/Details";
+import { Calendar } from "@/components/services/Calendar";
 
 export default function Home() {
   return (
@@ -47,7 +48,17 @@ export default function Home() {
             {home.subline}
           </Text>
           </RevealFx>
-          <RevealFx paddingTop="12" delay={0.4} horizontal="start" paddingLeft="12">
+
+          <Column
+            id={about.intro.title}
+            fillWidth
+            minHeight="80"
+            vertical="center"
+          >
+            <Calendar />
+          </Column>
+
+          {/* <RevealFx paddingTop="12" delay={0.4} horizontal="start" paddingLeft="12">
             <Button
               id="about"
               data-border="rounded"
@@ -69,25 +80,26 @@ export default function Home() {
                 {about.title}
               </Flex>
             </Button>
-          </RevealFx>
+          </RevealFx> */}
         </Column>
       </Column>
+
+      <RevealFx translateY="16" delay={1}>
+        <SliderItems />
+      </RevealFx>
+
+      <RevealFx translateY="16" delay={1.3}>
+        <OfferingTechnologies />
+      </RevealFx>
 
       <RevealFx translateY="16" delay={0.6}>
         <Projects range={[0]} />
       </RevealFx>
 
       <RevealFx translateY="16" delay={1}>
-        <SliderItems />
-      </RevealFx>
-
-      <RevealFx translateY="16" delay={1}>
         <ProcessSteps />
       </RevealFx>
 
-      <RevealFx translateY="16" delay={1.3}>
-        <OfferingTechnologies />
-      </RevealFx>
 
       <RevealFx translateY="16" delay={1.6}>
         <Details />
