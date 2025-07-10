@@ -7,7 +7,7 @@ import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import { SliderItems } from "@/components/services/SliderItems";
 import { ProcessSteps } from "@/components/home/ProcessStep";
-// import { AllTechnologies } from "@/components/services/Technologies";
+import { OfferingTechnologies } from "@/components/services/OfferingTechnologies";
 import Details from "@/components/about/Details";
 
 export default function Home() {
@@ -85,15 +85,15 @@ export default function Home() {
         <ProcessSteps />
       </RevealFx>
 
-      {/* <RevealFx translateY="16" delay={1.3}>
-        <AllTechnologies />
-      </RevealFx> */}
+      <RevealFx translateY="16" delay={1.3}>
+        <OfferingTechnologies />
+      </RevealFx>
 
       <RevealFx translateY="16" delay={1.6}>
         <Details />
       </RevealFx>
 
-      {routes["/blog"] && (
+      {/* {routes["/blog"] && (
         <Flex fillWidth gap="24" mobileDirection="column">
           <Flex flex={1} paddingLeft="l" paddingTop="24">
             <Heading as="h2" variant="display-strong-xs" wrap="balance">
@@ -105,7 +105,7 @@ export default function Home() {
             <Posts range={[1, 2]} columns="2" />
           </Flex>
         </Flex>
-      )}
+      )} */}
 
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>

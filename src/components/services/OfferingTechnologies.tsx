@@ -77,7 +77,7 @@ const technologies: TechnologyItem[] = [
     { name: "Other JS Technologies", iconName: "FaCode" } // Catch-all for other JS tech
 ];
 
-export function AllTechnologies() {
+export function OfferingTechnologies() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const animationFrameId = useRef<number | null>(null);
   const [scrollSpeed, setScrollSpeed] = useState(1.5); // Default scroll speed
