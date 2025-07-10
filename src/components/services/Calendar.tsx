@@ -31,7 +31,7 @@ export function Calendar() {
                 <Flex
                     fitWidth
                     border="brand-alpha-medium"
-                    className={styles.blockAlign}
+                    className={` ${styles.blockAlign} ${styles.cursorPointer}`}
                     style={{
                         backdropFilter: "blur(var(--static-space-1))",
                     }}
@@ -46,15 +46,7 @@ export function Calendar() {
                     vertical="center"
                 >
                     <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                    <Flex paddingX="8">Schedule a call</Flex>
-                    <IconButton
-                        data-border="rounded"
-                        variant="secondary"
-                        icon="chevronRight"
-                        data-cal-namespace="30min"
-                        data-cal-link="muhammad-arqam-rs9quj/30min"
-                        data-cal-config='{"layout":"month_view"}'
-                    />
+                    <Flex padding="8" paddingRight="12" sy>Schedule a call</Flex>
                 </Flex>
             )}
         </Column>

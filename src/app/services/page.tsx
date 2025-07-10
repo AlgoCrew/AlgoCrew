@@ -61,7 +61,9 @@ export default function Home() {
         </Flex>
       </RevealFx>
 
-      <OfferingTechnologies />
+      <RevealFx translateY="16" delay={1.3}>
+        <OfferingTechnologies />
+      </RevealFx>
 
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>

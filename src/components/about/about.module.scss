@@ -18,6 +18,10 @@
     align-items: center;
 }
 
+.cursorPointer {
+    cursor: pointer;
+}
+
 @media (max-width: breakpoints.$s) {
     .avatar {
         top: auto;

@@ -41,7 +41,6 @@ export function ProcessSteps() {
               title="Think"
               description="We try to understand the user requirements to ensure that the blueprint of system architecture meet user needs."
               icon={'FaRegLightbulb'}
-              // icon={<i className={`fa-regular fa-lightbulb  ${styles.faIcon}`}></i>}
             />
 
             <ProcessStep
