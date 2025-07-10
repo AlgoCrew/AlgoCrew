@@ -46,7 +46,7 @@ export function Calendar() {
                     vertical="center"
                 >
                     <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                    <Flex padding="8" paddingRight="12" sy>Schedule a call</Flex>
+                    <Flex padding="8" paddingRight="12" >Schedule a call</Flex>
                 </Flex>
             )}
         </Column>
