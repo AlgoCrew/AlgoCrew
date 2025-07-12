@@ -8,9 +8,9 @@ const person = {
   },
   role: "Design Engineer",
   avatar: "/images/LogoDark.png",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  email: "muhammadarqam920@gmail.com",
+  location: "Canada", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English", "Urdu", "Panjabi"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -30,17 +30,17 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/AlgoCrew/AlgoCrew",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/algo-crew",
   },
   {
     name: "Threads",
     icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://www.threads.com/algo-crew",
   },
   {
     name: "Email",
@@ -198,7 +198,7 @@ const about = {
 const aboutUs = {
   path: "/about",
   label: "About",
-  title: `How we are`,
+  title: `Who we are`,
   description: `At AlgoCrew, we are committed to driving innovation and excellence in the world of IT. As a dynamic and forward-thinking software company, we specialize in delivering top-tier IT solutions and services tailored to meet the evolving needs of businesses across diverse sectors.`,
   tableOfContent: {
     display: true,
@@ -321,10 +321,10 @@ const services = {
   // All projects will be listed on the /home and /work routes
 };
 
-const gallery = {
-  path: "/gallery",
-  label: "Gallery",
-  title: `Projects gallery `,
+const projects = {
+  path: "/projects",
+  label: "Projects",
+  title: `Projects `,
   description: `A photo collection of our projects`,
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
@@ -372,4 +372,4 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, aboutUs, blog, work, gallery, services };
+export { person, social, newsletter, home, about, aboutUs, blog, work, projects, services };

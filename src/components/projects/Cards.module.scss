@@ -1,0 +1,110 @@
+.container {
+  position: relative;
+  margin-bottom: var(--static-space-16);
+  border-radius: 20px;
+  overflow: hidden;
+  height: 300px;
+}
+
+.masonryGridColumn {
+  row-gap: 4;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #03afda;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  transition: .4s ease;
+  border-radius: 20px 20px 50rem 20px;
+}
+
+.container:hover .overlay {
+  width: 100%;
+  height: 100%;
+//   border-radius: 20px;
+  border-radius: 20px 20px 50rem 20px;
+
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.smartLink {
+  display: flex;
+  flex-direction: column;
+}
+
+.TextHeading {
+  color: white !important;
+  text-overflow: clip;
+  white-space: wrap;
+  transition: all .3s;
+}
+
+.TextHeading:hover {
+  color: rgba(255, 255, 255, 0.778) !important;
+  transform: scale(1.02);
+}
+
+.TextLink {
+  color: white !important;
+  font-size: 1rem;
+  text-overflow: clip;
+  white-space: wrap;
+  transition: all .3s;
+}
+
+.TextLink:hover {
+  color: rgba(255, 255, 255, 0.778) !important;
+  transform: scale(1.02);
+}
+
+.masonryGrid {
+    display: flex;
+    // margin-left: calc(-1 * var(--static-space-16));
+    width: 100%;
+}
+
+.masonryGridColumn {
+    // padding-left: var(--static-space-16);
+    background-clip: padding-box;
+}
+
+@media (min-width: 720px) {
+    .masonryGrid {
+        display: flex;
+        margin-left: calc(-1 * var(--static-space-16));
+        width: 100%;
+    }
+    
+    .masonryGridColumn {
+        padding-left: var(--static-space-16);
+        background-clip: padding-box;
+    }
+
+    .container {
+      height: 400px;
+    //   width: 50%;
+    }
+}

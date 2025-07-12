@@ -23,36 +23,14 @@ export const Footer = () => {
           paddingX="16"
           gap="64"
           horizontal="start"
-          vertical="center"
+          vertical="start"
         >
-          <Flex gap="8" vertical="center" direction="column" maxWidth={20}>
-            <Flex gap="16" vertical="center" horizontal="start">
-              <Heading variant="body-default-xl">
-                Pakistan
-              </Heading>
-              <Text variant="body-default-xs">(Global Delivery Center)</Text>
-              <Avatar
-                marginRight="8"
-                style={{ marginLeft: "-0.75rem" }}
-                src={"/images/countries/pk1.webp"}
-                size="m"
-              />
-            </Flex>
-
-            <Flex gap="16" vertical="center">
-              <Text variant="body-default-s">Plot B, 281 Ghazi Rd,
-                Khuda Buksh Colony KB Society,
-                Lahore, Punjab
-              </Text>
-            </Flex>
-          </Flex>
-
           <Flex gap="8" vertical="center" direction="column" maxWidth={20}>
             <Flex gap="16" vertical="center" horizontal="start">
               <Heading variant="body-default-xl">
                 Canada
               </Heading>
-              <Text variant="body-default-xs">(Regional office)</Text>
+              <Text variant="body-default-xs">(Global Delivery Center)</Text>
               <Avatar
                 marginRight="8"
                 style={{ marginLeft: "-0.75rem" }}
@@ -62,9 +40,41 @@ export const Footer = () => {
             </Flex>
 
             <Flex gap="16" vertical="center">
-              <Text variant="body-default-s">Plot B, 281 Ghazi Rd,
-                Khuda Buksh Colony KB Society,
-                Lahore, Punjab
+              <Text variant="body-default-s">
+                35 herkley dr Brampton Ontario  L6v 2e7 Canada
+              </Text>
+            </Flex>
+
+            <Flex gap="16" vertical="center">
+              <Text variant="body-default-s">
+                +1 (437) 383‑6794
+              </Text>
+            </Flex>
+          </Flex>
+
+          <Flex gap="8" vertical="center" direction="column" maxWidth={20}>
+            <Flex gap="16" vertical="center" horizontal="start">
+              <Heading variant="body-default-xl">
+                Pakistan
+              </Heading>
+              <Text variant="body-default-xs">(Regional office)</Text>
+              <Avatar
+                marginRight="8"
+                style={{ marginLeft: "-0.75rem" }}
+                src={"/images/countries/pk1.webp"}
+                size="m"
+              />
+            </Flex>
+
+            <Flex gap="16" vertical="center">
+              <Text variant="body-default-s">
+                135 h1, WAPDA Town, Lahore, 54000
+              </Text>
+            </Flex>
+
+            <Flex gap="16" vertical="center">
+              <Text variant="body-default-s">
+                +92 300 6161806
               </Text>
             </Flex>
           </Flex>

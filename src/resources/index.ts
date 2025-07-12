@@ -8,7 +8,7 @@ export {
   aboutUs,
   blog,
   work,
-  gallery,
+  projects,
   services,
 } from "./content";
 
@@ -19,5 +19,9 @@ export {
 export {
   ourValues,
 } from "./ourValues";
+
+export {
+  ourProjects,
+} from "./ourProjects";
 
 export { display, mailchimp, routes, protectedRoutes, baseURL, fonts, style, schema, sameAs, effects, dataStyle } from "./once-ui.config";

@@ -42,7 +42,7 @@ export function SliderItems() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const animationFrameId = useRef<number | null>(null);
   const [scrollSpeed, setScrollSpeed] = useState(1.5); // Default scroll speed
-  const defaultSpeed = 1200; // Pixels per frame
+  const defaultSpeed = 1; // Pixels per frame
   const slowSpeed = 0.2; // Slower speed on hover
 
   const animateScroll = useCallback(() => {

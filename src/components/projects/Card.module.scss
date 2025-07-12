@@ -1,0 +1,87 @@
+.projectSection {
+    max-width: 1200px; /* Equivalent to your 'm' maxWidth for the overall section */
+    margin: 0 auto; /* Center the section */
+    padding: 2rem 1rem; /* Responsive padding */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Gap between major sections */
+}
+
+/* Responsive layout for desktop */
+@media (min-width: 1024px) { /* Adjust breakpoint as needed, e.g., for 'lg' */
+    .projectSection {
+        flex-direction: row; /* Two columns on desktop */
+        gap: 4rem; /* Gap between left and right columns */
+    }
+}
+
+/* Left Column: Image */
+.projectImageColumn {
+    flex: 1; /* Takes available space */
+    min-width: 0; /* Allows content to shrink */
+}
+
+.projectImageColumn img:hover {
+  
+  transform: scale(1.02);
+}
+
+.projectImageColumn img {
+  transition: all .5s;
+}
+
+.projectDetailsColumn {
+    flex: 1; /* Takes available space */
+    min-width: 0; /* Allows content to shrink */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Gap between elements in this column */
+}
+
+.projectMetaInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Gap between meta items */
+}
+
+.metaItem {
+    display: flex;
+    flex-direction: column; /* Stack label and value on mobile */
+    gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .metaItem {
+        flex-direction: row; /* Side-by-side on larger screens */
+        align-items: baseline;
+        gap: 1rem;
+    }
+}
+
+.metaLabel {
+    text-transform: uppercase;
+    white-space: nowrap; /* Prevent wrapping */
+    width: 120px !important; /* Ensure labels align */
+    min-width: 120px !important; /* Ensure labels align */
+}
+
+.metaValue {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.metaValueTechStack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.techTag {
+    background-color: #e6fffa; /* Light teal background */
+    color: #319795; /* Dark teal text */
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+}
