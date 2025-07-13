@@ -5,6 +5,7 @@ import {
   RevealFx,
   Meta,
   Row,
+  Media,
   Schema
 } from "@once-ui-system/core";
 import { baseURL, about, aboutUs, person, social } from "@/resources";
@@ -168,7 +169,7 @@ export default function About() {
                   </Column>
 
                   <Column maxWidth={50} className="s-flex-hide">
-                    <img
+                    <Media
                       src={aboutUs.ourMission.img} // Ensure this path exists in your data
                       alt={aboutUs.ourMission.title}
                       style={{ width: '90%', height: '320px', borderRadius: '8px' }}
@@ -190,7 +191,7 @@ export default function About() {
               <RevealFx translateY="16" delay={0.3}>
                 <Row fillWidth gap="l" marginTop="m" marginBottom="m" className={styles.alignCenter}>
                   <Column maxWidth={50} className="s-flex-hide">
-                    <img
+                    <Media
                       src={aboutUs.ourVision.img} // Ensure this path exists in your data
                       alt={aboutUs.ourVision.title}
                       style={{ width: '90%', height: '320px', borderRadius: '8px' }}

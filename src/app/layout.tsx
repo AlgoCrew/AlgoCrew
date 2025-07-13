@@ -94,6 +94,19 @@ export default async function RootLayout({
             `,
           }}
         />
+
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-WPN816FH63"
+        />
+        <script id="ga">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WPN816FH63');
+          `}
+        </script>
       </head>
       <Providers>
         <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center">
