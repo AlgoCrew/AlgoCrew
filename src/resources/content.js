@@ -35,17 +35,17 @@ const social = [
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/in/algo-crew",
+    link: "https://www.linkedin.com/company/algocrew/",
   },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/algo-crew",
-  },
+  // {
+  //   name: "Threads",
+  //   icon: "threads",
+  //   link: "https://www.threads.com/algo-crew",
+  // },
   {
     name: "Email",
     icon: "email",
-    link: `mailto:${person.email}`,
+    link: `mailto:muhammadarqam92@gmail.com`,
   },
 ];
 
