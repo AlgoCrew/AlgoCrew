@@ -39,19 +39,6 @@ const ourProjects = [
     "year": '2024'
   },
   {
-    "name": "Get Cash Cloud",
-    "title": "Banking System for Vendor Transactions",
-    "origin": "USA",
-    "techStack": ["AWS", "Sprinto", "SonarCloud", "Grafana", "Loki", "Promtail", "Cloudflare", "Bitbucket", "Vue.js", "React", "Next.js", "Node.js"],
-    "path": "/projects/cashcloud",
-    "slug": "cashcloud",
-    "description": "Built and maintained a system to manage company transactions with vendors, aiming to optimize billing and reduce costs. Leveraged monitoring tools like Grafana, Loki, and Promtail for observability, while ensuring code quality and compliance with SonarCloud and Sprinto. Implemented secure, scalable infrastructure using AWS and Cloudflare.",
-    "link": "https://www.getcashcloud.com/",
-    "img": "/images/projects/project-01/c-c.png",
-    "category": "Web application",
-    "year": '2023'
-  },
-  {
     "name": "Stay with lumina",
     "title": "Stay with lumina",
     "origin": "UK",
@@ -63,6 +50,19 @@ const ourProjects = [
     "img": "/images/projects/project-01/swl-1.png",
     "category": "Web application",
     "year": '2025'
+  },
+  {
+    "name": "Get Cash Cloud",
+    "title": "Banking System for Vendor Transactions",
+    "origin": "USA",
+    "techStack": ["AWS", "Sprinto", "SonarCloud", "Grafana", "Loki", "Promtail", "Cloudflare", "Bitbucket", "Vue.js", "React", "Next.js", "Node.js"],
+    "path": "/projects/cashcloud",
+    "slug": "cashcloud",
+    "description": "Built and maintained a system to manage company transactions with vendors, aiming to optimize billing and reduce costs. Leveraged monitoring tools like Grafana, Loki, and Promtail for observability, while ensuring code quality and compliance with SonarCloud and Sprinto. Implemented secure, scalable infrastructure using AWS and Cloudflare.",
+    "link": "https://www.getcashcloud.com/",
+    "img": "/images/projects/project-01/c-c.png",
+    "category": "Web application",
+    "year": '2023'
   },
   {
     "name": "Outreside",
@@ -78,19 +78,6 @@ const ourProjects = [
     "year": '2025'
   },
   {
-    "name": "Hotel Weekend",
-    "title": "Hotel Weekend",
-    "origin": "Netherlands",
-    "techStack": ["Squarespace" ,"Squarespace Commerce" ,"HSTS" ,"Open Graph" ,"YUI" ,"GitHub", "Modernizr"],
-    "path": "/projects/hotel-weekend",
-    "slug": "hotel-weekend",
-    "description": "Worked on Hotel Weekend, a curated travel platform built with Squarespace and Squarespace Commerce, focusing on design-driven property listings and editorial content. The site leverages Open Graph, Modernizr, and YUI for enhanced UX and compatibility, with SEO and security powered by HSTS. Version control was managed via GitHub.",
-    "link": "https://www.hotel-weekend.com/",
-    "img": "/images/projects/project-01/hw.png",
-    "category": "Web application",
-    "year": '2022'
-  },
-  {
     "name": "Psych Plus",
     "title": "Health Care System (Multi-Branch Hospital Management)",
     "origin": "USA",
@@ -104,6 +91,19 @@ const ourProjects = [
     "year": '2024'
   },
   {
+    "name": "Hotel Weekend",
+    "title": "Hotel Weekend",
+    "origin": "Netherlands",
+    "techStack": ["Squarespace" ,"Squarespace Commerce" ,"HSTS" ,"Open Graph" ,"YUI" ,"GitHub", "Modernizr"],
+    "path": "/projects/hotel-weekend",
+    "slug": "hotel-weekend",
+    "description": "Worked on Hotel Weekend, a curated travel platform built with Squarespace and Squarespace Commerce, focusing on design-driven property listings and editorial content. The site leverages Open Graph, Modernizr, and YUI for enhanced UX and compatibility, with SEO and security powered by HSTS. Version control was managed via GitHub.",
+    "link": "https://www.hotel-weekend.com/",
+    "img": "/images/projects/project-01/hw.png",
+    "category": "Web application",
+    "year": '2022'
+  },
+  {
     "name": "Alert Management System",
     "title": "Alert Management System",
     "origin": "Czech Republic",
@@ -112,7 +112,7 @@ const ourProjects = [
     "slug": "alert-management",
     "description": "Handled site reliability monitoring and alert management for critical infrastructure. Monitored server clusters, managed incident responses, and ensured minimal downtime by proactively resolving system outages using observability tools like Dynatrace, Splunk, and Moogsoft. Maintained automated workflows via Jenkins and Rundeck for operational efficiency.",
     "link": "",
-    "img": "/images/projects/project-01/placeholder.png",
+    "img": "/images/projects/project-01/sap.png",
     "category": "Cloud application",
     "year": '2024'
   },
@@ -125,7 +125,7 @@ const ourProjects = [
     "slug": "erp-platform",
     "description": "Managed enterprise infrastructure focusing on automated provisioning using Terraform integrated with Jenkins pipelines. Resolved server vulnerabilities through Ansible playbooks and handled application deployments via Ansible Tower. Ensured secure system operations using jump hosts, secret management, VPN, and antivirus solutions, and monitored system health and performance with Dynatrace.",
     "link": "",
-    "img": "/images/projects/project-01/placeholder.png",
+    "img": "/images/projects/project-01/cloud-1.png",
     "category": "Cloud application",
     "year": '2024'
   },
@@ -138,7 +138,7 @@ const ourProjects = [
     "slug": "building-supplies-it",
     "description": "Led DevOps initiatives across both business units—construction material supply and IT innovation. Managed cloud infrastructure on AWS, focusing on cost optimization, billing analysis, and system security through Vanta. Implemented CI/CD workflows using Bitbucket Pipelines and GitHub Actions. Ensured application reliability and performance monitoring with Grafana, Prometheus, and Sentry. Supported scalable application deployments with Laravel Vapor and maintained secure, high-performance databases using Aurora MySQL, DynamoDB, and Redis.",
     "link": "",
-    "img": "/images/projects/project-01/placeholder.png",
+    "img": "/images/projects/project-01/aws.png",
     "category": "Cloud application",
     "year": '2024'
   },

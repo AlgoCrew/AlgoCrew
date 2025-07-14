@@ -3,7 +3,8 @@
   margin-bottom: var(--static-space-16);
   border-radius: 20px;
   overflow: hidden;
-  height: 300px;
+  // aspect-ratio: 1/1;
+  height: 250px;
 }
 
 .masonryGridColumn {
@@ -107,4 +108,26 @@
       height: 400px;
     //   width: 50%;
     }
+
+    .parentDiv > div > div:nth-child(1) .container:nth-child(odd) {
+        height: 300px;
+      }
+      .parentDiv > div > div:nth-child(1) .container:nth-child(even) {
+        height: 400px;
+      }
+
+      .parentDiv > div > div:nth-child(2) .container:nth-child(odd) {
+        height: 400px;
+      }
+      .parentDiv > div > div:nth-child(2) .container:nth-child(even) {
+        height: 300px;
+      }
+
+      .parentDiv > div > div:nth-child(3) .container:nth-child(odd) {
+        height: 300px;
+      }
+      .parentDiv > div > div:nth-child(3) .container:nth-child(even) {
+        height: 400px;
+      }
+
 }

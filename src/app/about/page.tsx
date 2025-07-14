@@ -14,6 +14,8 @@ import styles from "@/components/about/about.module.scss";
 import React from "react";
 import { Cards } from "@/components/about/Cards";
 import OurTeam from "@/components/about/OurTeam";
+import { Calendar } from "@/components/services/Calendar";
+import { OurMission } from "@/components/about/OurMission";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -50,7 +52,7 @@ export default function About() {
   ];
 
   return (
-    <Column maxWidth="m">
+    <Column maxWidth="m" gap="xl" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -64,7 +66,7 @@ export default function About() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      {aboutUs.tableOfContent.display && (
+      {/* {aboutUs.tableOfContent.display && (
         <Column
           left="0"
           style={{ top: "50%", transform: "translateY(-50%)" }}
@@ -75,9 +77,9 @@ export default function About() {
         >
           <TableOfContents structure={structure} about={about} />
         </Column>
-      )}
+      )} */}
       <Flex fillWidth mobileDirection="column" horizontal="center">
-        <Column className={styles.blockAlign} flex={12} maxWidth={50}>
+        <Column className={styles.blockAlign} flex={12} fillWidth>
           <Column
             id={aboutUs.intro.title}
             fillWidth
@@ -151,28 +153,33 @@ export default function About() {
                 {aboutUs.description}
               </Column>
             </RevealFx>
+
+            <Calendar />
           </Column>
 
 
           {aboutUs.ourMission.display && (
             <>
               <RevealFx translateY="16" delay={0.1}>
+                {/* <OurMission commingData={aboutUs.ourMission}/> */}
                 <Heading as="h2" id={aboutUs.ourMission.title} variant="display-strong-s">
                   {aboutUs.ourMission.title}
                 </Heading>
               </RevealFx>
 
               <RevealFx translateY="16" delay={0.3}>
-                <Row fillWidth gap="l" marginTop="m" marginBottom="m" className={styles.alignCenter}>
-                  <Column maxWidth={50} textVariant="body-default-l" gap="m">
+                <Row fillWidth gap="l" marginTop="m" marginBottom="m" mobileDirection="column" className={styles.alignCenter}>
+                  <Column fillWidth textVariant="body-default-l" gap="m">
                     {aboutUs.ourMission.description}
                   </Column>
 
-                  <Column maxWidth={50} className="s-flex-hide">
+                  <Column maxWidth={50}>
                     <Media
                       src={aboutUs.ourMission.img} // Ensure this path exists in your data
                       alt={aboutUs.ourMission.title}
-                      style={{ width: '90%', height: '320px', borderRadius: '8px' }}
+                      aspectRatio="16/9"
+                      style={{ height: '320px', borderRadius: '8px' }}
+                      objectFit='scale-down'
                     />
                   </Column>
                 </Row>
@@ -189,16 +196,19 @@ export default function About() {
               </RevealFx>
 
               <RevealFx translateY="16" delay={0.3}>
-                <Row fillWidth gap="l" marginTop="m" marginBottom="m" className={styles.alignCenter}>
-                  <Column maxWidth={50} className="s-flex-hide">
+                <Row fillWidth gap="l" marginTop="m" marginBottom="m" mobileDirection="column-reverse" className={styles.alignCenter}>
+                  <Column maxWidth={50}>
                     <Media
                       src={aboutUs.ourVision.img} // Ensure this path exists in your data
                       alt={aboutUs.ourVision.title}
-                      style={{ width: '90%', height: '320px', borderRadius: '8px' }}
+                      // aspectRatio="16/9"
+                      style={{ height: '320px', borderRadius: '8px' }}
+                      // objectFit='fill'
                     />
                   </Column>
+                  
 
-                  <Column maxWidth={50} textVariant="body-default-l" gap="m">
+                  <Column fillWidth textVariant="body-default-l" gap="m">
                     {aboutUs.ourVision.description}
                   </Column>
                 </Row>

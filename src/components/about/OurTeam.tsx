@@ -15,13 +15,13 @@ export default function OurTeam() {
 						</Heading>
 					</Flex>
 
-					<Scroller fadeColor="transparent">
-						<Row gap="16">
+					<Scroller fadeColor="transparent" marginTop='12'>
+						<Row gap="16" className={styles.teamCard}>
 							{ourTeam?.map((member, index) => (
-								<Card minWidth={22} radius="l-4" direction="column" border="neutral-alpha-medium" key={member?.social?.linkedin} >
+								<Card radius="l-4" direction="column" border="neutral-alpha-medium" key={member?.social?.linkedin} >
 									<Media
 										border="neutral-alpha-weak"
-										sizes="300px"
+										sizes="(max-width: 420px) 280px, 300px"
 										fillWidth
 										aspectRatio="1/1"
 										radius="l"

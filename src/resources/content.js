@@ -223,7 +223,7 @@ const aboutUs = {
   ourMission: {
     display: true, // set to false to hide this section
     title: "Our Mission",
-    img: "/images/about/mission.png",
+    img: "/images/about/mission2.png",
     description: (
       <>
         Our mission is to empower businesses by delivering cutting-edge technology solutions that drive innovation, efficiency, and sustainable growth.
@@ -236,7 +236,7 @@ const aboutUs = {
   ourVision: {
     display: true, // set to false to hide this section
     title: "Our Vision",
-    img: "/images/about/vision2.webp",
+    img: "/images/about/vision2.png",
     description: (
       <>
         At AlgoCrew, we envision a future where IT systems evolve into intelligent,
