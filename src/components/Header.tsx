@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Fade, Flex, Line, ToggleButton } from "@once-ui-system/core";
+import { Fade, Flex, Line, ToggleButton, MegaMenu, MobileMegaMenu } from "@once-ui-system/core";
 
 import { routes, display, person, about, blog, work, projects, services } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
@@ -45,13 +45,96 @@ export const Header = () => {
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
               {routes["/services"] && (
                 <>
-                  <ToggleButton
+                  {/* <ToggleButton
                     className="s-flex-hide"
                     prefixIcon="rocket"
-                    href="/services"
-                    label={services.label}
+                    // href="/services"
+                    // label={services.label}
                     selected={pathname === "/services"}
+                  /> */}
+                  <MegaMenu
+                    className="s-flex-hide"
+                    menuGroups={[
+                      {
+                        id: "services",
+                        label: "Services",
+                        suffixIcon: "chevronDown",
+                        sections: [
+                          {
+                            // title: "Offering",
+                            links: [
+                              {
+                                label: "Web & App Development",
+                                href: "services/web-app",
+                                icon: "code",
+                                description: "Custom digital product solutions",
+                              },
+                              {
+                                label: "Cloud & DevOps",
+                                href: "services/cloud",
+                                icon: "clouds",
+                                description: "Scalable cloud infrastructure services",
+                              },
+                              {
+                                label: "Security & Quality",
+                                href: "services/quality",
+                                icon: "shield",
+                                description: "Protection and performance assurance",
+                              },
+                              {
+                                label: "Data, AI & Automation",
+                                href: "services/automation",
+                                icon: "bulb",
+                                description: "Intelligent insights and automation",
+                              },
+                              {
+                                label: "Microsoft Solutions",
+                                href: "services/microsoft",
+                                icon: "server",
+                                description: "Enterprise-ready Microsoft platforms",
+                              },
+                              {
+                                label: "Team & Support Services",
+                                href: "services/team",
+                                icon: "users",
+                                description: "On-demand tech talent support",
+                              },
+                              {
+                                label: "Emerging Tech",
+                                href: "services/emerging",
+                                icon: "sparkle",
+                                description: "Next-gen immersive technologies",
+                              },
+                              {
+                                label: "Gaming",
+                                href: "services/gaming",
+                                icon: "game",
+                                description: "Creative and immersive gaming",
+                              },
+                            ],
+                          },
+                          {
+                            // title: "All services",
+                            links: [
+                              {
+                                label: "Services",
+                                href: "/services",
+                                icon: "rocket",
+                                description: "see all our services",
+                              },
+                              {
+                                label: "Hire a Developer",
+                                href: "/hire",
+                                icon: "email",
+                                description: "Hire our dedicated team",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ]}
                   />
+                  
                   <ToggleButton
                     className="s-flex-show"
                     prefixIcon="rocket"
