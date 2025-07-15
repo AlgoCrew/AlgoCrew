@@ -113,7 +113,7 @@ export default async function Service({
       {service.includes && service.includes.length > 0 && (
         <Column maxWidth="m" horizontal="center" gap="xl" padding="xl">
           <Heading as="h2" align="center" size="xl">
-            What's Included
+            What is Included
           </Heading>
 
           <Flex horizontal="center" gap="l" style={{flexWrap: 'wrap'}}>
