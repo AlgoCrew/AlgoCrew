@@ -53,7 +53,7 @@ export const Header = () => {
                     selected={pathname === "/services"}
                   /> */}
                   <MegaMenu
-                    className="s-flex-hide"
+                    className={`${styles.servicesButton} s-flex-hide`}
                     menuGroups={[
                       {
                         id: "services",

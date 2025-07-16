@@ -4,15 +4,12 @@ import { Media, Text, Row, Card, Column, RevealFx, SmartLink, Heading, ToggleBut
 import styles from "./Cards.module.scss";
 import { ourProjects } from "@/resources";
 import Masonry from "react-masonry-css";
-import { usePathname } from "next/navigation";
 
 export default function ProjectCards() {
   const breakpointColumnsObj = {
-    default: 3,
+    default: 2,
     720: 1,
-  };
-  const pathname = usePathname() ?? "";
-  
+  };  
 
   return (
     <>
@@ -33,7 +30,6 @@ export default function ProjectCards() {
                     </Heading>
 
                     <ToggleButton className={styles.TextLink} href={project.path} label="View project" />
-                    {/* <Text className={styles.TextLink}>View project</Text> */}
                   </div>
                 </div>
               </div>

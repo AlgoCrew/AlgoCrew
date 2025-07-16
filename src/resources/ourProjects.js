@@ -112,7 +112,7 @@ const ourProjects = [
     "slug": "alert-management",
     "description": "Handled site reliability monitoring and alert management for critical infrastructure. Monitored server clusters, managed incident responses, and ensured minimal downtime by proactively resolving system outages using observability tools like Dynatrace, Splunk, and Moogsoft. Maintained automated workflows via Jenkins and Rundeck for operational efficiency.",
     "link": "",
-    "img": "/images/projects/project-01/sap.png",
+    "img": "/images/projects/project-01/cloud.png",
     "category": "Cloud application",
     "year": '2024'
   },
@@ -125,7 +125,7 @@ const ourProjects = [
     "slug": "erp-platform",
     "description": "Managed enterprise infrastructure focusing on automated provisioning using Terraform integrated with Jenkins pipelines. Resolved server vulnerabilities through Ansible playbooks and handled application deployments via Ansible Tower. Ensured secure system operations using jump hosts, secret management, VPN, and antivirus solutions, and monitored system health and performance with Dynatrace.",
     "link": "",
-    "img": "/images/projects/project-01/cloud-1.png",
+    "img": "/images/projects/project-01/cloud.png",
     "category": "Cloud application",
     "year": '2024'
   },
@@ -138,7 +138,7 @@ const ourProjects = [
     "slug": "building-supplies-it",
     "description": "Led DevOps initiatives across both business units—construction material supply and IT innovation. Managed cloud infrastructure on AWS, focusing on cost optimization, billing analysis, and system security through Vanta. Implemented CI/CD workflows using Bitbucket Pipelines and GitHub Actions. Ensured application reliability and performance monitoring with Grafana, Prometheus, and Sentry. Supported scalable application deployments with Laravel Vapor and maintained secure, high-performance databases using Aurora MySQL, DynamoDB, and Redis.",
     "link": "",
-    "img": "/images/projects/project-01/aws.png",
+    "img": "/images/projects/project-01/cloud.png",
     "category": "Cloud application",
     "year": '2024'
   },

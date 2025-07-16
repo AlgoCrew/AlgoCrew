@@ -26,3 +26,12 @@
         bottom: 0;
     }
 }
+
+.servicesButton > div ~ div > div {
+ opacity: 100;
+ background-color: #102439d0;
+}
+
+.servicesButton > div ~ div * {
+ color: white !important;
+}
