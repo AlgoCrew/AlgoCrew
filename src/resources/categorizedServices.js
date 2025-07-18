@@ -38,6 +38,12 @@ const categorizedServices = [
         "slug": "paas-development"
       },
       {
+        "name": "Cloud Native Application",
+        "description": "Building and deploying applications specifically designed for cloud environments, leveraging microservices and containers.",
+        "image": "/images/cloud-native-application.jpg",
+        "slug": "cloud-native-application"
+      },
+      {
         "name": "UX/UI Design",
         "description": "Crafting intuitive and engaging user experiences and interfaces for your digital products.",
         "image": "/images/ux-ui-design.jpg",
@@ -318,6 +324,18 @@ const categorizedServices = [
         "slug": "data-analytics"
       },
       {
+        "name": "Business Intelligence (BI)",
+        "description": "Implementing BI tools and dashboards to provide comprehensive insights for strategic decision-making.",
+        "image": "/images/business-intelligence.jpg",
+        "slug": "business-intelligence"
+      },
+      {
+        "name": "Robotic Process Automation (RPA)",
+        "description": "Automating repetitive tasks with RPA to increase efficiency and reduce operational costs.",
+        "image": "/images/rpa.jpg",
+        "slug": "rpa"
+      },
+      {
         "name": "Power Apps",
         "description": "Creating custom business applications with Microsoft Power Apps for rapid automation and efficiency.",
         "image": "/images/power-apps.jpg",
@@ -410,6 +428,18 @@ const categorizedServices = [
         "description": "Providing skilled professionals to seamlessly integrate with and extend your in-house teams.",
         "image": "/images/staff-augmentation.jpg",
         "slug": "staff-augmentation"
+      },
+      {
+        "name": "Dedicated Teams",
+        "description": "Building and managing full-fledged dedicated development teams tailored to your project needs.",
+        "image": "/images/dedicated-teams.jpg",
+        "slug": "dedicated-teams"
+      },
+      {
+        "name": "IT Consulting",
+        "description": "Offering expert advice and strategic guidance to optimize your IT infrastructure and processes.",
+        "image": "/images/it-consulting.jpg",
+        "slug": "it-consulting"
       }
     ],
     "steps": [
@@ -504,6 +534,30 @@ const categorizedServices = [
         "description": "Crafting stunning visuals and engaging gameplay mechanics for immersive gaming experiences.",
         "image": "/images/gaming-art-design.jpg",
         "slug": "gaming-art-design"
+      },
+      {
+        "name": "Unity Development",
+        "description": "Building cross-platform games and interactive experiences using the Unity engine.",
+        "image": "/images/unity-development.jpg",
+        "slug": "unity-development"
+      },
+      {
+        "name": "Unreal Engine Development",
+        "description": "Developing high-fidelity games and simulations with the powerful Unreal Engine.",
+        "image": "/images/unreal-engine-development.jpg",
+        "slug": "unreal-engine-development"
+      },
+      {
+        "name": "Metaverse Development",
+        "description": "Creating immersive virtual worlds and experiences for the evolving metaverse.",
+        "image": "/images/metaverse-development.jpg",
+        "slug": "metaverse-development"
+      },
+      {
+        "name": "Game Animation",
+        "description": "Bringing characters and environments to life with dynamic and expressive game animations.",
+        "image": "/images/game-animation.jpg",
+        "slug": "game-animation"
       },
       {
         "name": "Gaming Web3",

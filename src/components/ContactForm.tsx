@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { mailchimp } from "@/resources";
-import { Flex, Heading, Input, Text, Background, Column, Icon, Textarea, Button, Media } from "@once-ui-system/core";
+import { Flex, Heading, Input, Text, Background, Column, Icon, Textarea, Button, Media, RadioButton } from "@once-ui-system/core";
 import { opacity, SpacingToken } from "@once-ui-system/core";
 
 export default function ContactForm() {
@@ -12,11 +12,14 @@ export default function ContactForm() {
     email: '',
     subject: '',
     message: '',
-    phone: ''
+    phone: '',
+    bidPrice: '' // Added bidPrice to form data
   });
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [selectedPlan, setSelectedPlan] = useState(''); // State for radio buttons
+  const [bidPriceError, setBidPriceError] = useState<string | null>(null); // State for bid price validation error
 
   const SERVICE_ID = 'service_v75amug'; // Your provided EmailJS Service ID
   const TEMPLATE_ID_ADMIN = 'template_unqc4m7'; // e.g., 'template_admin_contact'
@@ -24,8 +27,6 @@ export default function ContactForm() {
   const PUBLIC_KEY = 'AcRk-xtMNtqCEbSNj'; // e.g., 'user_xxxxxxxxx' - Get this from EmailJS dashboard
 
   const ADMIN_EMAIL = 'muhammadarqam920@gmail.com';
-
-  const [value, setValue] = useState("");
 
   const validateEmail = (email: any) => {
     if (!email || email.trim() === '') {
@@ -53,20 +54,50 @@ export default function ContactForm() {
     return null;
   };
 
+  // New validation for bid price
+  const validateBidPrice = (price: any) => {
+    if (selectedPlan === "Fixed Gig") { // Only validate if Fixed Gig is selected
+      if (!price || price.trim() === '') {
+        return "Bid Price cannot be empty for Fixed Gig.";
+      }
+      // Regex to allow only numbers, optional decimal point, and up to two decimal places
+      const priceRegex = /^\d+(\.\d{1,2})?$/;
+      if (!priceRegex.test(price)) {
+        return "Please enter a valid price (e.g., 100 or 100.00).";
+      }
+    }
+    return null;
+  };
+
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
-    }))
-  }
+    }));
+
+    // Clear specific errors when input changes
+    if (name === 'bidPrice') {
+      setBidPriceError(null);
+    }
+  };
+
+  // Handler for radio button toggle
+  const handlePlanToggle = (plan: string) => {
+    setSelectedPlan(plan);
+    // Clear bid price and its error if switching from Fixed Gig
+    if (plan !== "Fixed Gig") {
+      setFormData(prevData => ({ ...prevData, bidPrice: '' }));
+      setBidPriceError(null);
+    }
+  };
 
   const sendEmailWithEmailJS = async (templateId: any, templateParams: any) => {
     try {
       const response = await emailjs.send(SERVICE_ID, templateId, templateParams, PUBLIC_KEY);
       console.log('EmailJS Success:', response.status, response.text);
       return true;
-    } catch (error) {
+    } catch (error: any) { // Type 'any' for error for broader compatibility
       console.error('EmailJS Failed:', error);
       return false;
     }
@@ -77,27 +108,57 @@ export default function ContactForm() {
     setLoading(true);
     setSuccessMessage('');
     setErrorMessage('');
+    setBidPriceError(null); // Clear previous bid price error
 
-    const { name, email, subject, message, phone } = formData;
+    const { name, email, subject, message, phone, bidPrice } = formData;
+
+    // Basic validation check for radio button selection
+    if (!selectedPlan) {
+      setErrorMessage("Please select a service type.");
+      setLoading(false);
+      return;
+    }
+
+    // Validate bid price if Fixed Gig is selected
+    const bidPriceValidationError = validateBidPrice(bidPrice);
+    if (bidPriceValidationError) {
+      setBidPriceError(bidPriceValidationError);
+      setLoading(false);
+      return;
+    }
+
+    let adminMessage = `
+      You have received a new contact form submission:
+
+      Name: ${name}
+      Email: ${email}
+      Phone: ${phone}
+      Service Type: ${selectedPlan}
+      Subject: ${subject}
+      Message: ${message}
+    `;
+
+    if (selectedPlan === "Fixed Gig") {
+      adminMessage += `\nBid Price: $${bidPrice}`;
+    }
 
     const adminTemplateParams = {
       from_name: name,
       from_email: email,
-      time: new Date(),
-      to_email: ADMIN_EMAIL, // This is the recipient for the admin notification
-      subject: `by "${name}" for "${subject}"`,
-      message: `
-        You have received a new contact form submission:
-
-        Subject: ${subject}
-        Message: ${message}
-      `,
-      from_phone: phone
+      time: new Date().toLocaleString(), // Format date for readability
+      to_email: ADMIN_EMAIL,
+      subject: `New Query by "${name}" for "${subject}" (${selectedPlan})`, // Updated subject
+      message: adminMessage,
+      from_phone: phone,
+      service_type: selectedPlan, // Include the selected service type
+      bid_price: selectedPlan === "Fixed Gig" ? bidPrice : 'N/A' // Include bid price conditionally
     };
 
     const userConfirmationTemplateParams = {
       name: name,
-      email: email, // This is the recipient for the user confirmation
+      email: email,
+      // Ensure your user confirmation template on EmailJS is set up to receive these variables
+      // For example, if your template has {{name}} and {{email}}
     };
 
     try {
@@ -107,7 +168,8 @@ export default function ContactForm() {
 
       if (adminEmailSent && userEmailSent) {
         setSuccessMessage('Your message has been sent successfully! A confirmation has been sent to your email.');
-        setFormData({ name: '', email: '', subject: '', message: '', phone: '' }); // Clear form
+        setFormData({ name: '', email: '', subject: '', message: '', phone: '', bidPrice: '' }); // Clear form including bidPrice
+        setSelectedPlan(''); // Clear selected radio button
       } else {
         setErrorMessage('Failed to send your message. Please try again.');
       }
@@ -208,6 +270,42 @@ export default function ContactForm() {
             />
           
             <form onSubmit={handleSubmit} style={{zIndex: '9'}} className='flex flex-col gap-y-4 p-20'>
+              {/* Radio Button Group for Service Type */}
+              <Column gap="s" marginBottom="m">
+                <RadioButton
+                  name="serviceType"
+                  value="Staff Augmentation"
+                  label="Staff Augmentation"
+                  isChecked={selectedPlan === "Staff Augmentation"}
+                  onToggle={() => handlePlanToggle("Staff Augmentation")}
+                />
+                <RadioButton
+                  name="serviceType"
+                  value="Fixed Gig"
+                  label="Fixed Gig"
+                  isChecked={selectedPlan === "Fixed Gig"}
+                  onToggle={() => handlePlanToggle("Fixed Gig")}
+                />
+              </Column>
+
+              {/* Conditional Bid Price Input */}
+              {selectedPlan === "Fixed Gig" && (
+                <Input
+                  id="bidPrice"
+                  type="text" // Use text type for price input to handle decimal points
+                  name="bidPrice"
+                  label="Bid Price (USD)"
+                  value={formData.bidPrice}
+                  onChange={(e) => handleChange(e)}
+                  required
+                  validate={validateBidPrice}
+                  hasPrefix={
+                    <Icon marginLeft="4" onBackground="neutral-weak" name="currencyDollar" size="xs" />
+                  }
+                  error={bidPriceError} // Display bid price specific error
+                />
+              )}
+
               <Input
                 id="name"
                 type="text"
@@ -238,7 +336,7 @@ export default function ContactForm() {
               <Input
                 id="phone"
                 label="Phone"
-                type="phone"
+                type="text" // Changed to text as type="phone" is not standard HTML and once-ui might not support it directly
                 name="phone"
                 value={formData.phone}
                 onChange={(e) => handleChange(e)}
@@ -297,7 +395,7 @@ export default function ContactForm() {
                 <Button fillWidth type="submit" loading disabled={loading}>
                   Sending...
                 </Button> :
-                <Button fillWidth data-border="rounded" size="s">Submit</Button>
+                <Button fillWidth data-border="rounded" size="s" type="submit">Submit</Button>
               }
             </form>
           </Column>
@@ -306,4 +404,3 @@ export default function ContactForm() {
     </>
   )
 }
-
