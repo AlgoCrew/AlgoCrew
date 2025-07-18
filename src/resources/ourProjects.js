@@ -68,7 +68,7 @@ const ourProjects = [
     "name": "Outreside",
     "title": "Outreside",
     "origin": "Switzerland",
-    "techStack": ["Nodejs" ,"reactjs" ,"typescript" ,"material UI" ,"digital Ocean" ,"GitHub"],
+    "techStack": ["Nodejs" ,"Reactjs" ,"Typescript" ,"Material UI" ,"Digital Ocean" ,"GitHub"],
     "path": "/projects/outreside",
     "slug": "outreside",
     "description": "Outreside is a Swiss-based premium outdoor living brand specializing in high-quality products for gardens and terraces. Their curated selection includes outdoor kitchens, grills, pizza ovens, furniture, and garden décor, all designed to enhance outdoor experiences. With a commitment to craftsmanship and a passion for nature, Outreside aims to inspire individuals to embrace the outdoors and create memorable moments in their own spaces.",
@@ -102,6 +102,32 @@ const ourProjects = [
     "img": "/images/projects/project-01/hw.png",
     "category": "Web application",
     "year": '2022'
+  },
+  {
+    "name": "Nice2stay",
+    "title": "Nice2stay",
+    "origin": "Netherlands",
+    "techStack": ["Nuxt" ,"Vue" ,"Ruby on Rails" ,"Cloudflare" ,"Aws" ,"GitHub", "REST API", "Mapbox", "Nginx", "Mollie"],
+    "path": "/projects/nice2stay",
+    "slug": "nice2stay",
+    "description": "Developed and optimized nice2stay.com using Nuxt.js (Vue 3). Improved SEO score to 100, enhanced LCP and performance with lazy loading, CDN (AWS + Cloudflare), and dynamic routing. Boosted organic traffic through structured data, meta optimization, and responsive UI.",
+    "link": "https://www.nice2stay.com/en",
+    "img": "/images/projects/project-01/nice2stay.png",
+    "category": "Web application",
+    "year": '2019'
+  },
+  {
+    "name": "Codly",
+    "title": "Codly",
+    "origin": "UAE(Dubai)",
+    "techStack": ["React" ,"Node" ,"Aws" ,"Php" ,"GitHub", "Cloudflare"],
+    "path": "/projects/codly",
+    "slug": "codly",
+    "description": "Codly — QR code generator you can create and customize and track QR codes for the website, business card, social media, and many more.",
+    "link": "https://www.codly.com/",
+    "img": "/images/projects/project-01/codly.png",
+    "category": "Web application",
+    "year": '2025'
   },
   {
     "name": "Alert Management System",

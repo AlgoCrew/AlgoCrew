@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { mailchimp } from "@/resources";
-import { Flex, Heading, Input, Text, Background, Column, Icon, Textarea, Button, Media, RadioButton } from "@once-ui-system/core";
+import { Flex, Heading, Input, Text, Background, Column, Icon, Textarea, Button, Media, Select } from "@once-ui-system/core"; // Added Select
 import { opacity, SpacingToken } from "@once-ui-system/core";
 
 export default function ContactForm() {
@@ -18,8 +18,8 @@ export default function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [selectedPlan, setSelectedPlan] = useState(''); // State for radio buttons
-  const [bidPriceError, setBidPriceError] = useState<string | null | boolean>(null); // State for bid price validation error
+  const [selectedPlan, setSelectedPlan] = useState(''); // State for selected service type
+  const [bidPriceError, setBidPriceError] = useState<string | null>(null); // State for bid price validation error
 
   const SERVICE_ID = 'service_v75amug'; // Your provided EmailJS Service ID
   const TEMPLATE_ID_ADMIN = 'template_unqc4m7'; // e.g., 'template_admin_contact'
@@ -56,14 +56,14 @@ export default function ContactForm() {
 
   // New validation for bid price
   const validateBidPrice = (price: any) => {
-    if (selectedPlan === "Fixed Gig") { // Only validate if Fixed Gig is selected
+    if (selectedPlan === "Fixed-Price Project") { // Only validate if Fixed-Price Project is selected
       if (!price || price.trim() === '') {
-        return "Bid Price cannot be empty for Fixed Gig.";
+        return "Bid Price cannot be empty for Fixed-Price Project.";
       }
       // Regex to allow only numbers, optional decimal point, and up to two decimal places
       const priceRegex = /^\d+(\.\d{1,2})?$/;
       if (!priceRegex.test(price)) {
-        return "Please enter a valid price (e.g., 100 or 100.00).";
+        return "Please enter a valid price (e.g., 100 or 1000.00).";
       }
     }
     return null;
@@ -78,7 +78,7 @@ export default function ContactForm() {
 
     // Clear specific errors when input changes
     if (name === 'bidPrice') {
-      setBidPriceError(false);
+      setBidPriceError(null);
     }
   };
 
@@ -88,7 +88,7 @@ export default function ContactForm() {
     // Clear bid price and its error if switching from Fixed Gig
     if (plan !== "Fixed Gig") {
       setFormData(prevData => ({ ...prevData, bidPrice: '' }));
-      setBidPriceError(false);
+      setBidPriceError(null);
     }
   };
 
@@ -108,18 +108,18 @@ export default function ContactForm() {
     setLoading(true);
     setSuccessMessage('');
     setErrorMessage('');
-    setBidPriceError(false); // Clear previous bid price error
+    setBidPriceError(null); // Clear previous bid price error
 
     const { name, email, subject, message, phone, bidPrice } = formData;
 
-    // Basic validation check for radio button selection
+    // Basic validation check for service type selection
     if (!selectedPlan) {
       setErrorMessage("Please select a service type.");
       setLoading(false);
       return;
     }
 
-    // Validate bid price if Fixed Gig is selected
+    // Validate bid price if Fixed-Price Project is selected
     const bidPriceValidationError = validateBidPrice(bidPrice);
     if (bidPriceValidationError) {
       setBidPriceError(bidPriceValidationError);
@@ -138,7 +138,7 @@ export default function ContactForm() {
       Message: ${message}
     `;
 
-    if (selectedPlan === "Fixed Gig") {
+    if (selectedPlan === "Fixed-Price Project") {
       adminMessage += `\nBid Price: $${bidPrice}`;
     }
 
@@ -151,7 +151,7 @@ export default function ContactForm() {
       message: adminMessage,
       from_phone: phone,
       service_type: selectedPlan, // Include the selected service type
-      bid_price: selectedPlan === "Fixed Gig" ? bidPrice : 'N/A' // Include bid price conditionally
+      bid_price: selectedPlan === "Fixed-Price Project" ? bidPrice : 'N/A' // Include bid price conditionally
     };
 
     const userConfirmationTemplateParams = {
@@ -169,7 +169,7 @@ export default function ContactForm() {
       if (adminEmailSent && userEmailSent) {
         setSuccessMessage('Your message has been sent successfully! A confirmation has been sent to your email.');
         setFormData({ name: '', email: '', subject: '', message: '', phone: '', bidPrice: '' }); // Clear form including bidPrice
-        setSelectedPlan(''); // Clear selected radio button
+        setSelectedPlan(''); // Clear selected service type
       } else {
         setErrorMessage('Failed to send your message. Please try again.');
       }
@@ -197,7 +197,7 @@ export default function ContactForm() {
         gap='l'
         mobileDirection='column'
       >
-        <Column align="start" className='w-100 basis-full'>
+        <Column align="start" className='md:w-100 basis-full'>
           <Heading style={{ position: "relative" }} marginBottom="0" variant="display-strong-xs">
             Got Your Back
           </Heading>
@@ -217,14 +217,13 @@ export default function ContactForm() {
           <Media
             src='/images/contact.png' // Ensure this path exists in your data
             alt='Contact Us'
-            // aspectRatio="16/9"
             style={{ height: '400px', borderRadius: '8px' }}
             objectFit='scale-down'
           />
         </Column>
 
-        <Column className='h-fit'>
-          <Column className='w-100 basis-full' radius="l">
+        <Column className='h-fit md:w-100 basis-full'>
+          <Column className='' radius="l">
             <Background
               top="0"
               radius="l"
@@ -270,26 +269,34 @@ export default function ContactForm() {
             />
           
             <form onSubmit={handleSubmit} style={{zIndex: '9'}} className='flex flex-col gap-y-4 p-20'>
-              {/* Radio Button Group for Service Type */}
-              <Column gap="s" marginBottom="m">
-                <RadioButton
-                  name="serviceType"
-                  value="Staff Augmentation"
-                  label="Staff Augmentation"
-                  isChecked={selectedPlan === "Staff Augmentation"}
-                  onToggle={() => handlePlanToggle("Staff Augmentation")}
-                />
-                <RadioButton
-                  name="serviceType"
-                  value="Fixed Gig"
-                  label="Fixed Gig"
-                  isChecked={selectedPlan === "Fixed Gig"}
-                  onToggle={() => handlePlanToggle("Fixed Gig")}
-                />
-              </Column>
+              {/* Select Component for Service Type */}
+              <Select
+                id="service-type-select"
+                label="Choose a service"
+                value={selectedPlan}
+                searchable
+                emptyState={
+                  <Text onBackground="neutral-weak">
+                    No matching services found
+                  </Text>
+                }
+                hasPrefix={
+                  <Icon marginLeft="4" onBackground="neutral-weak" name="rocket" size="xs" />
+                }
+                options={[
+                  { label: "Staff Augmentation", value: "Staff Augmentation" },
+                  { label: "Dedicated Team", value: "Dedicated Team" },
+                  { label: "Fixed-Price Project", value: "Fixed-Price Project" },
+                  { label: "Time & Material Project", value: "Time & Material Project" },
+                  { label: "IT Consulting/Advisory", value: "IT Consulting/Advisory" },
+                  { label: "Managed Services/Support", value: "Managed Services/Support" },
+                  { label: "General Inquiry", value: "General Inquiry" },
+                ]}
+                onSelect={handlePlanToggle} // once-ui's onSelect typically passes the selected option object
+              />
 
               {/* Conditional Bid Price Input */}
-              {selectedPlan === "Fixed Gig" && (
+              {selectedPlan === "Fixed-Price Project" && (
                 <Input
                   id="bidPrice"
                   type="text" // Use text type for price input to handle decimal points
@@ -300,7 +307,7 @@ export default function ContactForm() {
                   required
                   validate={validateBidPrice}
                   hasPrefix={
-                    <Icon marginLeft="4" onBackground="neutral-weak" name="currencyDollar" size="xs" />
+                    <Icon marginLeft="4" onBackground="neutral-weak" name="dollar" size="xs" />
                   }
                 />
               )}

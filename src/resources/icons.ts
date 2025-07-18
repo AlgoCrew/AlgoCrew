@@ -22,7 +22,8 @@ import {
   HiOutlineCloud,
   HiCodeBracket,
   HiOutlineShoppingCart,
-  HiMiniPhone
+  HiMiniPhone,
+  HiOutlineCurrencyDollar
 } from "react-icons/hi2";
 
 import {
@@ -69,7 +70,8 @@ export const iconLibrary: Record<string, IconType> = {
   code: HiCodeBracket,
   cart: HiOutlineShoppingCart,
   mailBox: PiMailboxThin,
-  phone: HiMiniPhone
+  phone: HiMiniPhone,
+  dollar: HiOutlineCurrencyDollar
 };
 
 export type IconLibrary = typeof iconLibrary;
