@@ -19,7 +19,7 @@ export default function ContactForm() {
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [selectedPlan, setSelectedPlan] = useState(''); // State for radio buttons
-  const [bidPriceError, setBidPriceError] = useState<string | null>(null); // State for bid price validation error
+  const [bidPriceError, setBidPriceError] = useState<string | null | boolean>(null); // State for bid price validation error
 
   const SERVICE_ID = 'service_v75amug'; // Your provided EmailJS Service ID
   const TEMPLATE_ID_ADMIN = 'template_unqc4m7'; // e.g., 'template_admin_contact'
@@ -78,7 +78,7 @@ export default function ContactForm() {
 
     // Clear specific errors when input changes
     if (name === 'bidPrice') {
-      setBidPriceError(null);
+      setBidPriceError(false);
     }
   };
 
@@ -88,7 +88,7 @@ export default function ContactForm() {
     // Clear bid price and its error if switching from Fixed Gig
     if (plan !== "Fixed Gig") {
       setFormData(prevData => ({ ...prevData, bidPrice: '' }));
-      setBidPriceError(null);
+      setBidPriceError(false);
     }
   };
 
@@ -108,7 +108,7 @@ export default function ContactForm() {
     setLoading(true);
     setSuccessMessage('');
     setErrorMessage('');
-    setBidPriceError(null); // Clear previous bid price error
+    setBidPriceError(false); // Clear previous bid price error
 
     const { name, email, subject, message, phone, bidPrice } = formData;
 
@@ -302,7 +302,6 @@ export default function ContactForm() {
                   hasPrefix={
                     <Icon marginLeft="4" onBackground="neutral-weak" name="currencyDollar" size="xs" />
                   }
-                  error={bidPriceError} // Display bid price specific error
                 />
               )}
 
