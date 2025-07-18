@@ -41,7 +41,7 @@ export default function Contact() {
       />
       <Flex fillWidth mobileDirection="column" horizontal="center">
         <Column className={styles.blockAlign} flex={12} fillWidth>
-          <Column
+          {/* <Column
             id={aboutUs.intro.title}
             fillWidth
             minHeight="160"
@@ -62,7 +62,7 @@ export default function Contact() {
             </RevealFx>
 
             <Calendar />
-          </Column>
+          </Column> */}
 
           <ContactForm />
         </Column>
