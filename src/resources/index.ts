@@ -10,6 +10,7 @@ export {
   work,
   projects,
   services,
+  contact,
 } from "./content";
 
 export {

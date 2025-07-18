@@ -69,7 +69,7 @@ export default async function Steps({
               }}
             />
 
-            <Column as="ol" style={{ width: '100%', position: 'relative' }} gap="16" padding="0">
+            <Column as="ol" style={{ width: '100%', position: 'relative' }} gap="16" className="pl-2 md:p-0 md:pl-0">
               {service.steps.map((step: any, index: number) => {
                 const isRight = index % 2 === 0;
                 
@@ -77,21 +77,18 @@ export default async function Steps({
                   <Flex 
                     as="li" 
                     key={index} 
-                    style={{ 
-                      textAlign: isRight ? 'right' : 'left',
-                      flexDirection: isRight ? 'row' : 'row-reverse',
-                      position: 'relative'
-                    }}
-                    horizontal={isRight ? 'end' : 'start'}
                     gap="m"
                     padding="0"
+                    className={`sm:ps-2 flex-row-reverse relative ${isRight ? 'md:justify-content-end md:flex-row! md:text-right' : 'md:justify-content-start md:flex-row-reverse md:text-left'}`}
                   >
                     <div style={{ flex: '1 1 0' }}>
                       <Text onBackground="neutral-weak" variant="body-default-s">
                         step {index + 1}
                       </Text>
 
-                      <Column gap="s" style={{ alignItems: isRight ? 'end' : 'start' }} paddingTop="8">
+                      <Column gap="s" paddingTop="8"
+                        className={`${isRight ? 'md:items-end' : 'md:items-start'}`}
+                      >
                         <Heading as="h3" size="l" >
                           {step.title}
                         </Heading>
@@ -102,7 +99,7 @@ export default async function Steps({
                     </div>
 
                     <Flex
-                      className="s-flex-hide"
+                      // className="s-flex-hide"
                       horizontal="center"
                       vertical="center"
                       style={{

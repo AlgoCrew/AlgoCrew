@@ -16,6 +16,7 @@ import { Cards } from "@/components/about/Cards";
 import OurTeam from "@/components/about/OurTeam";
 import { Calendar } from "@/components/services/Calendar";
 import { OurMission } from "@/components/about/OurMission";
+import ContactForm from "@/components/ContactForm";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -217,6 +218,7 @@ export default function About() {
           )}
 
           <OurTeam />
+          <ContactForm />
 
           {aboutUs.ourValues.display && (
             <>

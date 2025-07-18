@@ -22,6 +22,7 @@ import {
   HiOutlineCloud,
   HiCodeBracket,
   HiOutlineShoppingCart,
+  HiMiniPhone
 } from "react-icons/hi2";
 
 import {
@@ -30,6 +31,7 @@ import {
   PiGridFourDuotone,
   PiBookBookmarkDuotone,
   PiImageDuotone,
+  PiMailboxThin,
 } from "react-icons/pi";
 
 import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads } from "react-icons/fa6";
@@ -66,6 +68,8 @@ export const iconLibrary: Record<string, IconType> = {
   clouds: HiOutlineCloud,
   code: HiCodeBracket,
   cart: HiOutlineShoppingCart,
+  mailBox: PiMailboxThin,
+  phone: HiMiniPhone
 };
 
 export type IconLibrary = typeof iconLibrary;

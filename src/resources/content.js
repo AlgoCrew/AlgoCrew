@@ -300,6 +300,15 @@ const blog = {
   // All posts will be listed on the /blog route
 };
 
+const contact = {
+  path: "/contact",
+  label: "Contact",
+  title: "Contact us - Algocrew",
+  description: `we are committed to driving innovation and excellence in the world of IT`,
+  // Create new blog posts by adding a new .mdx file to app/blog/posts
+  // All posts will be listed on the /blog route
+};
+
 const work = {
   path: "/work",
   label: "Work",
@@ -371,4 +380,4 @@ const projects = {
   ],
 };
 
-export { person, social, newsletter, home, about, aboutUs, blog, work, projects, services };
+export { person, social, newsletter, home, about, aboutUs, blog, work, projects, services, contact };

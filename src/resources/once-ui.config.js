@@ -10,6 +10,7 @@ const routes = {
   "/work": true,
   "/blog": true,
   "/projects": true,
+  "/contact": true,
 };
 
 const display = {
