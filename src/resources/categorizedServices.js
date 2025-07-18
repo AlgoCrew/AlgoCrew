@@ -32,28 +32,16 @@ const categorizedServices = [
         "slug": "saas-development"
       },
       {
+        "name": "PaaS (Platform as a Service)",
+        "description": "Providing scalable and flexible platforms for building, deploying, and managing applications.",
+        "image": "/images/paas.jpg",
+        "slug": "paas-development"
+      },
+      {
         "name": "UX/UI Design",
         "description": "Crafting intuitive and engaging user experiences and interfaces for your digital products.",
         "image": "/images/ux-ui-design.jpg",
         "slug": "ux-ui-design"
-      },
-      {
-        "name": "E-commerce Design & Development",
-        "description": "Creating robust and visually appealing online stores to maximize your sales.",
-        "image": "/images/ecommerce-design-development.jpg",
-        "slug": "ecommerce-design-development"
-      },
-      {
-        "name": "E-commerce Maintenance & Support",
-        "description": "Ensuring your e-commerce platform runs smoothly with continuous support and updates.",
-        "image": "/images/ecommerce-maintenance.jpg",
-        "slug": "ecommerce-maintenance-support"
-      },
-      {
-        "name": "E-commerce Automation & Apps",
-        "description": "Automating e-commerce processes and integrating custom apps for efficiency.",
-        "image": "/images/ecommerce-automation.jpg",
-        "slug": "ecommerce-automation-apps"
       },
       {
         "name": "Business Applications",
@@ -98,7 +86,7 @@ const categorizedServices = [
     "image": "/images/services/cloud.jpg",
     "includes": [
       {
-        "name": "Cloud Application",
+        "name": "Cloud Application Development",
         "description": "Designing and developing cloud-native applications for maximum scalability and efficiency.",
         "image": "/images/cloud-application.jpg",
         "slug": "cloud-application"
@@ -120,6 +108,30 @@ const categorizedServices = [
         "description": "Implementing DevOps practices to automate development workflows and accelerate deployment cycles.",
         "image": "/images/devops.jpg",
         "slug": "devops"
+      },
+      {
+        "name": "CI/CD Pipeline",
+        "description": "Automating continuous integration and continuous delivery to speed up software release cycles.",
+        "image": "/images/ci-cd.jpg",
+        "slug": "ci-cd-pipeline"
+      },
+      {
+        "name": "Containerization (Docker & Kubernetes)",
+        "description": "Using Docker and Kubernetes to package and manage applications in a scalable, portable way.",
+        "image": "/images/containerization.jpg",
+        "slug": "containerization"
+      },
+      {
+        "name": "Infrastructure as Code (IaC)",
+        "description": "Managing and provisioning infrastructure through code, ensuring consistency and efficiency.",
+        "image": "/images/iac.jpg",
+        "slug": "infrastructure-as-code"
+      },
+      {
+        "name": "Monitoring & Logging",
+        "description": "Setting up robust systems to monitor application performance and collect logs for insights.",
+        "image": "/images/monitoring-logging.jpg",
+        "slug": "monitoring-logging"
       }
     ],
     "steps": [
@@ -146,6 +158,72 @@ const categorizedServices = [
     ]
   },
   {
+    "name": "E-commerce",
+    "description": "Building and maintaining powerful e-commerce platforms to drive online sales and business growth.",
+    "slug": "e-commerce",
+    "path": "services/e-commerce",
+    "title": "E-commerce Solutions | Design, Develop & Optimize Online Stores",
+    "image": "/images/services/ecommerce.jpg",
+    "includes": [
+      {
+        "name": "E-commerce Design & Development",
+        "description": "Creating robust and visually appealing online stores to maximize your sales.",
+        "image": "/images/ecommerce-design-development.jpg",
+        "slug": "ecommerce-design-development"
+      },
+      {
+        "name": "E-commerce Maintenance & Support",
+        "description": "Ensuring your e-commerce platform runs smoothly with continuous support and updates.",
+        "image": "/images/ecommerce-maintenance.jpg",
+        "slug": "ecommerce-maintenance-support"
+      },
+      {
+        "name": "E-commerce Automation & Apps",
+        "description": "Automating e-commerce processes and integrating custom apps for efficiency.",
+        "image": "/images/ecommerce-automation.jpg",
+        "slug": "ecommerce-automation-apps"
+      },
+      {
+        "name": "Shopify Development",
+        "description": "Specialized development services for building and customizing Shopify stores.",
+        "image": "/images/shopify-development.jpg",
+        "slug": "shopify-development"
+      },
+      {
+        "name": "WooCommerce Development",
+        "description": "Custom solutions for e-commerce platforms built on WooCommerce and WordPress.",
+        "image": "/images/woocommerce-development.jpg",
+        "slug": "woocommerce-development"
+      }
+    ],
+    "steps": [
+      {
+        "title": "Strategy & Discovery",
+        "description": "Analyze your business model and target audience to define a successful e-commerce strategy."
+      },
+      {
+        "title": "Design & UX",
+        "description": "Create intuitive and conversion-focused designs for your online store."
+      },
+      {
+        "title": "Platform Development",
+        "description": "Build your e-commerce site on a robust platform like Shopify, WooCommerce, or a custom solution."
+      },
+      {
+        "title": "Integration & Customization",
+        "description": "Integrate third-party apps, payment gateways, and customize features to fit your needs."
+      },
+      {
+        "title": "Launch & Optimization",
+        "description": "Go live with your store and continuously optimize performance based on data."
+      },
+      {
+        "title": "Ongoing Support",
+        "description": "Provide continuous maintenance, security updates, and technical support."
+      }
+    ]
+  },
+  {
     "name": "Security & Quality",
     "description": "Ensuring the robustness, reliability, and security of your digital assets.",
     "slug": "security-quality",
@@ -154,10 +232,34 @@ const categorizedServices = [
     "image": "/images/services/quality.jpg",
     "includes": [
       {
-        "name": "Cybersecurity",
-        "description": "Protecting your digital infrastructure from threats with comprehensive security solutions.",
-        "image": "/images/cybersecurity.jpg",
-        "slug": "cybersecurity"
+        "name": "Manual Testing",
+        "description": "Thoroughly testing software manually to identify usability issues and complex bugs.",
+        "image": "/images/manual-testing.jpg",
+        "slug": "manual-testing"
+      },
+      {
+        "name": "Automation Testing",
+        "description": "Implementing automated test scripts to ensure fast and repeatable quality checks.",
+        "image": "/images/automation-testing.jpg",
+        "slug": "automation-testing"
+      },
+      {
+        "name": "Penetration Testing",
+        "description": "Simulating cyberattacks to find and fix vulnerabilities before they can be exploited.",
+        "image": "/images/penetration-testing.jpg",
+        "slug": "penetration-testing"
+      },
+      {
+        "name": "Security Audits",
+        "description": "Conducting comprehensive reviews of your systems to identify security weaknesses and compliance issues.",
+        "image": "/images/security-audits.jpg",
+        "slug": "security-audits"
+      },
+      {
+        "name": "Cybersecurity Consulting",
+        "description": "Providing expert guidance to develop and implement a robust cybersecurity strategy.",
+        "image": "/images/cybersecurity-consulting.jpg",
+        "slug": "cybersecurity-consulting"
       },
       {
         "name": "Quality Assurance",
@@ -365,18 +467,6 @@ const categorizedServices = [
         "image": "/images/generative-ai-emerging.jpg",
         "slug": "generative-ai-emerging"
       },
-      {
-        "name": "Gaming Web3",
-        "description": "Developing decentralized gaming experiences leveraging blockchain and NFTs.",
-        "image": "/images/gaming-web3.jpg",
-        "slug": "gaming-web3-emerging"
-      },
-      {
-        "name": "Gaming AR/VR/XR",
-        "description": "Creating immersive gaming experiences using Augmented, Virtual, and Extended Reality technologies.",
-        "image": "/images/gaming-ar-vr-xr.jpg",
-        "slug": "gaming-ar-vr-xr-emerging"
-      }
     ],
     "steps": [
       {

@@ -21,6 +21,7 @@ import {
   HiUserGroup,
   HiOutlineCloud,
   HiCodeBracket,
+  HiOutlineShoppingCart,
 } from "react-icons/hi2";
 
 import {
@@ -64,6 +65,7 @@ export const iconLibrary: Record<string, IconType> = {
   users: HiUserGroup,
   clouds: HiOutlineCloud,
   code: HiCodeBracket,
+  cart: HiOutlineShoppingCart,
 };
 
 export type IconLibrary = typeof iconLibrary;

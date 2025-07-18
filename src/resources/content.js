@@ -18,8 +18,7 @@ const newsletter = {
   title: <>Subscribe to AlgoCrew Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      We occasionally offer short perid discounts to enlarge our digital family.
     </>
   ),
 };

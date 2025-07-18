@@ -6,8 +6,9 @@ import { allServices as initialAllServices } from "@/resources"; // Assuming all
 // Define the type for a Service, now using 'iconName'
 interface Service {
     name: string;
+    path: string;
     short_description: string;
-    iconName?: string; // Changed to iconName
+    iconName?: string; // Changed to iconNameservice
 }
 
 // Now, we directly use the initialAllServices, assuming it already contains the 'iconName' field.
@@ -31,7 +32,7 @@ export function Cards({
             {servicesToDisplay.length > 0 && (
                 <Grid
                     columns={columns} mobileColumns="1"
-                    fillWidth marginBottom="40" gap="12">
+                    fillWidth marginBottom="40" gap="16">
                     {/* Map over the servicesToDisplay array */}
                     {servicesToDisplay.map((service) => (
                         <ServiceCard // Using ServiceCard here

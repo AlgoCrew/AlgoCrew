@@ -82,6 +82,12 @@ export const Header = () => {
                                 description: "Protection and performance assurance",
                               },
                               {
+                                label: "E-commerce",
+                                href: "/services/e-commerce",
+                                icon: "cart",
+                                description: "E-commerce platforms for business growth.",
+                              },
+                              {
                                 label: "Data, AI & Automation",
                                 href: "/services/data-automation",
                                 icon: "bulb",
