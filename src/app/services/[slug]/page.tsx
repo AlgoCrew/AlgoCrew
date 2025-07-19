@@ -9,6 +9,7 @@ import { Row, ToggleButton, useTheme } from '@once-ui-system/core';
 import HeroSection from "@/components/services/HeroSection";
 import IncludedServices from "@/components/services/IncludedServices";
 import Steps from "@/components/services/Steps";
+import Parallax from "@/components/Parallax";
 
 // Generate static paths for all services based on their slugs
 export async function generateStaticParams() {
@@ -72,7 +73,9 @@ export default async function Service({
         }}
       />
 
-      <HeroSection service={service} />
+      <Parallax service={service}/>
+
+      {/* <HeroSection service={service} /> */}
 
       <IncludedServices service={service} />
 

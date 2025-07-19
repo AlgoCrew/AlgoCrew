@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+[data-theme=light] { 
+  --neutral-on-background-strong : #1f2937 !important
+}
+
+[data-theme=dark] { 
+  --neutral-on-background-strong : #fff !important
+}

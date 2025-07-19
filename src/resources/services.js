@@ -193,7 +193,7 @@ const allServices = [
   },
   {
     "name": "WooCommerce Development",
-    "iconName": "FaShoppingBasket",
+    "iconName": "HiOutlineShoppingCart",
     "path": "services/e-commerce",
     "short_description": "Custom solutions for e-commerce platforms built on WooCommerce and WordPress.",
   },

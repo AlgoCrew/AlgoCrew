@@ -47,11 +47,11 @@ export default function ServiceCard({ service, direction }: ServiceCardProps) {
             transition="micro-medium"
             direction={direction}
             // radius="l"
-            className={styles.hover}
+            className={`${styles.hover} h-fit`}
             mobileDirection="column"
             fillWidth
             radius="l-4"
-            style={{ cursor: 'default', flexDirection: direction === 'row' ? 'row' : 'column' }}
+            style={{ cursor: 'default', flexDirection: direction === 'row' ? 'row' : 'column', height: '100%' }}
         >
             <Card radius="l-4" fillWidth fillHeight>
                 <SmartLink href={service.path}>

@@ -1,7 +1,7 @@
 // Card.tsx (renamed to ServiceCard conceptually, but file remains Card.tsx)
 "use client";
 
-import { Heading, Row, Text } from '@once-ui-system/core';
+import { Heading, Row, Text, Column } from '@once-ui-system/core';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styles from './Technologies.module.scss'; // Import the CSS module
 import { allServices as initialAllServices } from "@/resources"; // Assuming allServices is imported from your resources file
@@ -11,8 +11,13 @@ import {
     FaPowerOff, FaGlobe, FaCube, FaLink, FaBrain, FaMagic, FaChartBar,
     FaHandshake, FaCheckCircle, FaCloudUploadAlt, FaShieldAlt, FaCloud,
     FaShoppingCart, FaTools, FaRobot, FaPalette, FaEthereum, FaVrCardboard,
-    FaCloudMeatball, FaExchangeAlt, FaSyncAlt
+    FaCloudMeatball, FaExchangeAlt, FaSyncAlt, FaShopify, FaUserShield, FaRegCheckCircle, FaAutoprefixer,
+    FaSellsy
 } from 'react-icons/fa'; // Using Font Awesome icons as an example
+
+import {
+    HiOutlineShoppingCart
+} from 'react-icons/hi2'; // Using Font Awesome icons as an example
 
 // A mapping object to get the React component from its string name
 const IconComponents: { [key: string]: React.ElementType } = {
@@ -20,7 +25,8 @@ const IconComponents: { [key: string]: React.ElementType } = {
     FaPowerOff, FaGlobe, FaCube, FaLink, FaBrain, FaMagic, FaChartBar,
     FaHandshake, FaCheckCircle, FaCloudUploadAlt, FaShieldAlt, FaCloud,
     FaShoppingCart, FaTools, FaRobot, FaPalette, FaEthereum, FaVrCardboard,
-    FaCloudMeatball, FaExchangeAlt, FaSyncAlt
+    FaCloudMeatball, FaExchangeAlt, FaSyncAlt, HiOutlineShoppingCart, FaShopify, FaUserShield, FaRegCheckCircle, FaAutoprefixer,
+    FaSellsy
 };
 
 interface ServiceCardProps {
@@ -102,18 +108,18 @@ export function SliderItems() {
           {[...allServicesWithIcons, ...allServicesWithIcons].map((tech, index) => {
             const IconComponent = IconComponents[tech.iconName || ''];
             return (
-              <div
+              <Column
                 key={`${tech.name}-${index}`}
                 className={styles.techItem}
               >
                 {IconComponent && (
-                  <IconComponent size={48} className={styles.techIcon} />
+                  <IconComponent size={48} className={styles.techIcon}  color="accent-background-strong"/>
                 )}
 
                 <Text onBackground="neutral-weak" variant="body-default-m" className={styles.statDescription}>
                   {tech.name}
                 </Text>
-              </div>
+              </Column>
             );
           })}
         </div>
