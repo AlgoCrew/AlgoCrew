@@ -52,7 +52,7 @@ export const Footer = () => {
             </Flex>
           </Flex>
 
-          <Flex gap="8" vertical="center" direction="column" maxWidth={20}>
+          {/* <Flex gap="8" vertical="center" direction="column" maxWidth={20}>
             <Flex gap="16" vertical="center" horizontal="start">
               <Heading variant="body-default-xl">
                 Pakistan
@@ -77,7 +77,7 @@ export const Footer = () => {
                 +92 300 6161806
               </Text>
             </Flex>
-          </Flex>
+          </Flex> */}
         </Flex>
 
         <Flex height="80" show="s"></Flex>

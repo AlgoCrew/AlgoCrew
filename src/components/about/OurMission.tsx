@@ -1,84 +1,49 @@
-"use client";
-
-import { mailchimp } from "@/resources";
-import { Button, Flex, Heading, Input, Text, Background, Column } from "@once-ui-system/core";
-import { opacity, SpacingToken } from "@once-ui-system/core";
+import { Button, Flex, Heading, Row, Media, Background, Column, RevealFx, Particle } from "@once-ui-system/core";
 
 type OurMissionProps = {
-  title: string | JSX.Element;
-  description: string | JSX.Element;
+  title: string;
+  description: any;
+  img: any;
 };
 
 export const OurMission = ({ commingData }: { commingData: OurMissionProps }) => {
   return (
-    <Column
-      overflow="hidden"
-      fillWidth
-      padding="xl"
-      radius="l"
-      marginBottom="m"
-      horizontal="center"
-      align="center"
-      background="surface"
-      border="neutral-alpha-weak"
-    >
-      <Background
-        top="0"
-        position="absolute"
-        mask={{
-          x: mailchimp.effects.mask.x,
-          y: mailchimp.effects.mask.y,
-          radius: mailchimp.effects.mask.radius,
-          cursor: mailchimp.effects.mask.cursor
-        }}
-        gradient={{
-          display: mailchimp.effects.gradient.display,
-          opacity: mailchimp.effects.gradient.opacity as opacity,
-          x: mailchimp.effects.gradient.x,
-          y: mailchimp.effects.gradient.y,
-          width: mailchimp.effects.gradient.width,
-          height: mailchimp.effects.gradient.height,
-          tilt: mailchimp.effects.gradient.tilt,
-          colorStart: mailchimp.effects.gradient.colorStart,
-          colorEnd: mailchimp.effects.gradient.colorEnd,
-        }}
-        dots={{
-          display: mailchimp.effects.dots.display,
-          opacity: mailchimp.effects.dots.opacity as opacity,
-          size: mailchimp.effects.dots.size as SpacingToken,
-          color: mailchimp.effects.dots.color,
-        }}
-        grid={{
-          display: mailchimp.effects.grid.display,
-          opacity: mailchimp.effects.grid.opacity as opacity,
-          color: mailchimp.effects.grid.color,
-          width: mailchimp.effects.grid.width,
-          height: mailchimp.effects.grid.height,
-        }}
-        lines={{
-          display: mailchimp.effects.lines.display,
-          opacity: mailchimp.effects.lines.opacity as opacity,
-          size: mailchimp.effects.lines.size as SpacingToken,
-          thickness: mailchimp.effects.lines.thickness,
-          angle: mailchimp.effects.lines.angle,
-          color: mailchimp.effects.lines.color,
-        }}
-      />
-      <Heading marginBottom="s" variant="display-strong-xs">
-        {commingData.title}
-      </Heading>
+    <section className="mission-section">
+      <RevealFx translateY="16" delay={0.1}>
+        <Heading as="h2" id={commingData.title} variant="display-strong-s">
+          {commingData.title}
+        </Heading>
+      </RevealFx>
 
-      <Text
-        style={{
-          position: "relative",
-          maxWidth: "var(--responsive-width-xs)",
-        }}
-        wrap="balance"
-        marginBottom="l"
-        onBackground="neutral-medium"
-      >
-        {commingData.description}
-      </Text>
-    </Column>
+      {/* The Row container will be what GSAP pins and holds in place */}
+      <Particle
+        fill
+        interactive
+        speed={3}
+        interactionRadius={30}
+        density={200}
+        // height={24}
+      >{
+        <RevealFx translateY="16" delay={0.3} className="z-1">
+          <Row fillWidth gap="l" marginTop="m" marginBottom="m" mobileDirection="column" className={`items-center`} align="start">
+            <Column fillWidth textVariant="body-default-l" gap="m" className="mission-text">
+              {commingData.description}
+            </Column>
+
+            <Column maxWidth={50}>
+              <Media
+                src={commingData.img}
+                alt={commingData.title}
+                className="mission-img"
+                aspectRatio="16/9"
+                style={{ height: '320px', borderRadius: '8px' }}
+                objectFit="scale-down"
+              />
+            </Column>
+          </Row>
+        </RevealFx>
+        }
+      </Particle>
+    </section>
   );
 };

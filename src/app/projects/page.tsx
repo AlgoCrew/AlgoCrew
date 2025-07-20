@@ -52,9 +52,9 @@ export default function gallery() {
         </Column>
       </Column>
 
-      <Column>
-        <ProjectCards />
-      </Column>
+      {/* <Column>
+      </Column> */}
+      <ProjectCards />
     </Column>
   );
 }

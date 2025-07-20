@@ -50,7 +50,7 @@ export default function Card({ ourValue, direction }: ValueCardProps) {
             className={styles.hover}
             mobileDirection="column"
             fillWidth
-            style={{ borderRadius: 'var(--radius-l)', cursor: 'default', flexDirection: direction === 'row' ? 'row' : 'column' }}
+            style={{ borderRadius: 'var(--radius-l)', cursor: 'default', flexDirection: direction === 'row' ? 'row' : 'column', height: '100%' }}
         >
             <Column
                 position="relative"
