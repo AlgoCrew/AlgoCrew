@@ -94,9 +94,9 @@ const ProcessStep = ({
           )}
         </div>
 
-        <div className={`${styles.numberOverlayDefault}`}>
+        <Text className={`${styles.numberOverlayDefault}`}>
           {number}
-        </div>
+        </Text>
       </div>
 
       <Flex>

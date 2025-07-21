@@ -2,79 +2,58 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styles from './Technologies.module.scss'; // Import the CSS module
-import { Heading, Row, Text } from '@once-ui-system/core';
+import { Heading, Row, Text, Media } from '@once-ui-system/core'; // Import Media component
 
-import {
-  FaJsSquare,
-  FaCode,
-  FaLaptopCode,
-  FaAngular,
-  FaReact,
-  FaLaptop,
-  FaVuejs,
-  FaNodeJs,
-  FaPaintBrush,
-  FaHtml5,
-  FaCss3Alt,
-  FaGitAlt,
-  FaDocker,
-  FaJira,
-  FaTasks,
-  FaCogs,
-} from 'react-icons/fa'; // Using Font Awesome icons as an example
-
-const IconComponents: { [key: string]: React.ElementType } = {
-  FaJsSquare,
-  FaCode,
-  FaLaptopCode,
-  FaAngular,
-  FaReact,
-  FaLaptop,
-  FaVuejs,
-  FaNodeJs,
-  FaPaintBrush,
-  FaHtml5,
-  FaCss3Alt,
-  FaGitAlt,
-  FaDocker,
-  FaJira,
-  FaTasks,
-  FaCogs,
-};
+// Removed Font Awesome imports and inline SVG definitions
+// The icons will now be loaded via the Media component using their paths.
 
 interface TechnologyItem {
     name: string;
-    iconName: string;
+    iconName: string; // This will now be the path to the SVG/PNG image
 }
 
 // Dummy data for technologies about the services offered
+// Updated to use image paths
 const technologies: TechnologyItem[] = [
-    { name: "JavaScript", iconName: "FaJsSquare" },
-    { name: "TypeScript", iconName: "FaCode" }, // Reusing FaCode for TypeScript
-    { name: "MEAN / MERN", iconName: "FaLaptopCode" },
-    { name: "Angular", iconName: "FaAngular" },
-    { name: "React", iconName: "FaReact" },
-    { name: "Redux", iconName: "FaCode" }, // Reusing FaCode for Redux
-    { name: "Next.JS", iconName: "FaLaptop" }, // Using a laptop icon for Next.js
-    { name: "Vue.JS", iconName: "FaVuejs" },
-    { name: "Nuxt.JS", iconName: "FaVuejs" }, // Reusing Vue.js icon for Nuxt.js
-    { name: "Node.JS", iconName: "FaNodeJs" },
-    { name: "Nest.JS", iconName: "FaCode" }, // Reusing FaCode for Nest.js
-    { name: "Material UI", iconName: "FaPaintBrush" }, // Using paint brush for UI library
-    { name: "Express.js", iconName: "FaCode" }, // Reusing FaCode for Express.js
-    { name: "HTML", iconName: "FaHtml5" },
-    { name: "CSS", iconName: "FaCss3Alt" },
-    { name: "JQuery", iconName: "FaCode" }, // Reusing FaCode for JQuery
-    { name: "Bootstrap", iconName: "FaCode" }, // Reusing FaCode for Bootstrap
-    { name: "Tailwind CSS", iconName: "FaCss3Alt" }, // Reusing CSS icon for Tailwind CSS
-    { name: "Git/GitHub", iconName: "FaGitAlt" },
-    { name: "Docker", iconName: "FaDocker" },
-    { name: "AntDesign", iconName: "FaPaintBrush" }, // Reusing paint brush for UI library
-    { name: "JIRA", iconName: "FaJira" },
-    { name: "ClickUP", iconName: "FaTasks" }, // Using tasks for project management tool
-    { name: "Microservices", iconName: "FaCogs" }, // Reusing Cogs for microservices
-    { name: "Mantine UI", iconName: "FaPaintBrush" }, // Reusing paint brush for UI library
-    { name: "Other JS Technologies", iconName: "FaCode" } // Catch-all for other JS tech
+    { name: "JavaScript", iconName: "/images/technologies/js.svg" },
+    { name: "TypeScript", iconName: "/images/technologies/ts.svg" },
+    { name: "MEAN / MERN", iconName: "/images/technologies/react.svg" }, // Assuming a generic React icon for MEAN/MERN
+    { name: "Angular", iconName: "/images/technologies/angular.svg" },
+    { name: "Redux", iconName: "/images/technologies/redux.svg" },
+    { name: "Oracle", iconName: "/images/technologies/oracle.svg" },
+    { name: "React", iconName: "/images/technologies/react.svg" },
+    { name: "Next.JS", iconName: "/images/technologies/next.svg" },
+    { name: "Vue.JS", iconName: "/images/technologies/vue.svg" },
+    { name: "Nuxt.JS", iconName: "/images/technologies/nuxt.svg" },
+    { name: "Node.JS", iconName: "/images/technologies/node.svg" }, // Assuming a Node.js specific icon
+    { name: "Scss", iconName: "/images/technologies/scss.svg" },
+    { name: "Nest.JS", iconName: "/images/technologies/nest.svg" },
+    { name: "Express.JS", iconName: "/images/technologies/express.svg" },
+    { name: "HTML", iconName: "/images/technologies/html.svg" },
+    { name: "CSS", iconName: "/images/technologies/css.svg" },
+    { name: "JQuery", iconName: "/images/technologies/jquery.svg" },
+    { name: "Bootstrap", iconName: "/images/technologies/bootstrap.png" }, // Example of a PNG
+    { name: "Tailwind CSS", iconName: "/images/technologies/tailwind.svg" }, // Assuming a generic React icon for Tailwind CSS
+    { name: "Git/GitHub", iconName: "/images/technologies/github.svg" },
+    { name: "Docker", iconName: "/images/technologies/docker.svg" },
+    { name: "Mysql", iconName: "/images/technologies/mysql.svg" },
+    { name: "JIRA", iconName: "/images/technologies/jira.svg" },
+    { name: "ClickUP", iconName: "/images/technologies/clickup.svg" },
+    { name: "Microservices", iconName: "/images/technologies/react.svg" }, // Assuming a generic React icon for Microservices
+    { name: "Flutter", iconName: "/images/technologies/flutter.svg" },
+    { name: "PHP", iconName: "/images/technologies/php.svg" },
+    { name: "Python", iconName: "/images/technologies/python.svg" },
+    { name: "Ruby", iconName: "/images/technologies/ruby.svg" },
+    { name: "Mongo DB", iconName: "/images/technologies/mongo.svg" },
+    { name: "Rails", iconName: "/images/technologies/rails.svg" },
+    { name: "Kubernetes", iconName: "/images/technologies/kubernetes.svg" },
+    { name: "Unity", iconName: "/images/technologies/unity.svg" },
+    { name: "Unreal Engine", iconName: "/images/technologies/unreal.svg" },
+    { name: "Postgresql", iconName: "/images/technologies/postgresql.svg" },
+    { name: "Swift", iconName: "/images/technologies/swift.svg" },
+    { name: "NativeScript", iconName: "/images/technologies/ns.svg" },
+    { name: "Kotlin", iconName: "/images/technologies/kotlin.svg" },
+    { name: "java", iconName: "/images/technologies/java.svg" },
 ];
 
 export function OfferingTechnologies() {
@@ -91,21 +70,26 @@ export function OfferingTechnologies() {
     if (container) {
       container.scrollLeft += scrollSpeed; // Left-to-right scroll
 
-      const itemWidth = 208 + 24; // width + margin
+      // Calculate the width of a single set of technologies for looping
+      // This assumes each techItem has a fixed width and margin-right
+      // You might need to adjust '208 + 24' based on your actual CSS for .techItem
+      const itemWidth = 208 + 24; // width + margin-right from Technologies.module.scss
       const singleSetWidth = technologies.length * itemWidth;
 
       if (container.scrollLeft >= singleSetWidth) {
+        // Reset scroll position to create a seamless loop
         container.style.scrollBehavior = 'auto'; // Disable smooth for instant jump
         container.scrollLeft = 0;
 
+        // Re-enable smooth scroll after the jump for subsequent scrolling
         requestAnimationFrame(() => {
-          container.style.scrollBehavior = 'smooth'; // Re-enable smooth scroll
+          container.style.scrollBehavior = 'smooth';
         });
       }
     }
 
     animationFrameId.current = requestAnimationFrame(animateScroll);
-  }, [scrollSpeed]);
+  }, [scrollSpeed, technologies.length]); // Add technologies.length to dependencies if it can change
 
   useEffect(() => {
     animationFrameId.current = requestAnimationFrame(animateScroll);
@@ -115,7 +99,7 @@ export function OfferingTechnologies() {
         cancelAnimationFrame(animationFrameId.current);
       }
     };
-  }, [animateScroll])
+  }, [animateScroll]);
 
   const handleMouseEnter = () => {
     setScrollSpeed(slowSpeed); // Slow down the scroll speed
@@ -142,17 +126,18 @@ export function OfferingTechnologies() {
         <div className={styles.itemsWrapper}>
           {/* Map over the duplicated technologies to create the continuous loop */}
           {loopedTechnologies.map((tech, index) => {
-            // Get the SVG component from the mapping
-            const IconComponent = IconComponents[tech.iconName];
             return (
               <div
                 key={`${tech.name}-${index}`} // Unique key for each duplicated item
                 className={styles.techItem}
               >
-                {IconComponent && (
-                  // Render the SVG component directly
-                  <IconComponent size={48} className={styles.techIcon} onBackground="neutral-weak"/>
-                )}
+                {/* Use the Media component to display the SVG/PNG from the path */}
+                <Media
+                  src={tech.iconName}
+                  alt={tech.name}
+                  className={`${styles.techIcon} w-[240px] h-[240px]`} // Apply existing icon styles if any
+                  objectFit="contain" // Ensure the entire icon is visible
+                />
                 <Text onBackground="neutral-weak" variant="body-default-m" className={styles.statDescription}>
                   {tech.name}
                 </Text>

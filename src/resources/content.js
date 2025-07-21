@@ -58,7 +58,7 @@ const home = {
   featured: {
     display: true,
     title: <>Our recent projects <strong className="ml-4"></strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/projects",
   },
   subline: (
     <>
@@ -198,6 +198,7 @@ const aboutUs = {
   path: "/about",
   label: "About",
   title: `Who we are`,
+  image: "/images/LogoDark.png",
   description: `At AlgoCrew, we are committed to driving innovation and excellence in the world of IT. As a dynamic and forward-thinking software company, we specialize in delivering top-tier IT solutions and services tailored to meet the evolving needs of businesses across diverse sectors.`,
   tableOfContent: {
     display: true,
@@ -331,7 +332,7 @@ const services = {
 
 const projects = {
   path: "/projects",
-  label: "Projects",
+  label: "Showcase",
   title: `Projects `,
   description: `A photo collection of our projects`,
   // Images by https://lorant.one

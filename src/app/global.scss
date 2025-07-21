@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
 [data-theme=light] { 
-  --neutral-on-background-strong : #1f2937 !important
+  --neutral-on-background-strong : #1f2937 !important;
+  // --brand-on-background-medium: #0093B9;
 }
 
 [data-theme=dark] { 
-  --neutral-on-background-strong : #fff !important
+  --neutral-on-background-strong : #fff !important;
+  // --brand-on-background-medium: #0093B9 !important;
 }

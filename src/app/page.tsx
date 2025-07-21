@@ -10,6 +10,7 @@ import { ProcessSteps } from "@/components/home/ProcessStep";
 import { OfferingTechnologies } from "@/components/services/OfferingTechnologies";
 import Details from "@/components/about/Details";
 import { Calendar } from "@/components/services/Calendar";
+import { SliderItems1 } from "@/components/services/SliderItems1";
 
 export default function Home() {
   return (
@@ -20,7 +21,7 @@ export default function Home() {
         path={home.path}
         title={home.title}
         description={home.description}
-        image={`/api/og/generate?title=${encodeURIComponent(home.title)}`}
+        image={encodeURIComponent(home.image)}
         author={{
           name: 'Arqam',
           url: `${baseURL}${about.path}`,
@@ -87,6 +88,10 @@ export default function Home() {
       <RevealFx translateY="16" delay={1}>
         <SliderItems />
       </RevealFx>
+
+      {/* <RevealFx translateY="16" delay={1}>
+        <SliderItems1 />
+      </RevealFx> */}
 
       <RevealFx translateY="16" delay={1.3}>
         <OfferingTechnologies />

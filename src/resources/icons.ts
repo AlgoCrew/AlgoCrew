@@ -27,6 +27,10 @@ import {
 } from "react-icons/hi2";
 
 import {
+  HiOutlineCollection
+} from "react-icons/hi";
+
+import {
   PiHouseDuotone,
   PiUserCircleDuotone,
   PiGridFourDuotone,
@@ -71,7 +75,8 @@ export const iconLibrary: Record<string, IconType> = {
   cart: HiOutlineShoppingCart,
   mailBox: PiMailboxThin,
   phone: HiMiniPhone,
-  dollar: HiOutlineCurrencyDollar
+  dollar: HiOutlineCurrencyDollar,
+  collections: HiOutlineCollection,
 };
 
 export type IconLibrary = typeof iconLibrary;

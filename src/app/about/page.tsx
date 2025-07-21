@@ -61,7 +61,7 @@ export default function About() {
         title={aboutUs.title}
         description={aboutUs.description}
         path={aboutUs.path}
-        image={`/api/og/generate?title=${encodeURIComponent(aboutUs.title)}`}
+        image={encodeURIComponent(aboutUs.image)}
         author={{
           name: person.name,
           url: `${baseURL}${aboutUs.path}`,
@@ -103,7 +103,7 @@ export default function About() {
             <OurVision commingData={aboutUs.ourVision}/>
           )}
 
-          <OurTeam />
+          {/* <OurTeam /> */}
 
           {aboutUs.ourValues.display && (
             <>
