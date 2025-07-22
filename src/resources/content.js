@@ -71,6 +71,7 @@ const about = {
   path: "/about",
   label: "About",
   title: `About – AlgoCrew`,
+  image: "/images/og/about.jpg",
   description: `we are committed to driving innovation and excellence in the world of IT`,
   tableOfContent: {
     display: true,

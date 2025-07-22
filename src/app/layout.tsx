@@ -108,6 +108,11 @@ export default async function RootLayout({
             gtag('config', 'G-WPN816FH63');
           `}
         </script>
+
+          <link rel="icon" href="/path/to/your/favicon.ico" sizes="any" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/path/to/your/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/path/to/your/favicon-16x16.png" />
+          <link rel="icon" type="image/svg+xml" href="/path/to/your/favicon.svg" />
       </head>
       <Providers>
         <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center">

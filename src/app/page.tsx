@@ -12,7 +12,17 @@ import Details from "@/components/about/Details";
 import { Calendar } from "@/components/services/Calendar";
 import { SliderItems1 } from "@/components/services/SliderItems1";
 
-export default function Home() {
+export async function generateMetadata() {
+  return Meta.generate({
+    title: home.title,
+    description: home.description,
+    baseURL: baseURL,
+    path: home.path,
+    image: home.image,
+  });
+}
+
+export default function Home() {  
   return (
     <Column maxWidth="m" gap="xl" horizontal="center">
       <Schema

@@ -31,8 +31,8 @@ export async function generateMetadata({
     title: project.title,       // Use project.title
     description: project.description, // Use project.description
     baseURL: baseURL,
-    image: project.img || `/api/og/generate?title=${encodeURIComponent(project.title)}`, // Use project.img
-    path: `${project.path}`,
+    image: project.img || 'images/og/about.jpg', // Use project.img
+    path: project.path,
   });
 }
 
