@@ -311,6 +311,15 @@ const contact = {
   // All posts will be listed on the /blog route
 };
 
+const hire = {
+  path: "/hire",
+  label: "Hire developer",
+  title: "Hire a developer - Algocrew",
+  description: `Hire the best dedicated team`,
+  // Create new blog posts by adding a new .mdx file to app/blog/posts
+  // All posts will be listed on the /blog route
+};
+
 const work = {
   path: "/work",
   label: "Work",
@@ -323,7 +332,7 @@ const work = {
 const services = {
   path: "/services",
   label: "Services",
-  title: `What we Do`,
+  title: `What we Do – AlgoCrew`,
   description: `All services under one roof. And help our customers from ideas in mind to real world solutions`,
   headline: <>We provide cutting-edge digital solutions!</>,
   subline: <>We’re not just here to deliver projects — we’re here to partner for the long impact. By understanding your business challenges, we craft solutions designed to make a meaningful, long-term impact.</>,
@@ -334,7 +343,7 @@ const services = {
 const projects = {
   path: "/projects",
   label: "Showcase",
-  title: `Projects `,
+  title: `Projects – AlgoCrew`,
   description: `A photo collection of our projects`,
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
@@ -382,4 +391,4 @@ const projects = {
   ],
 };
 
-export { person, social, newsletter, home, about, aboutUs, blog, work, projects, services, contact };
+export { person, social, newsletter, home, about, aboutUs, blog, work, projects, services, contact, hire };

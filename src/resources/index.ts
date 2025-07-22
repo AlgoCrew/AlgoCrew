@@ -11,6 +11,7 @@ export {
   projects,
   services,
   contact,
+  hire,
 } from "./content";
 
 export {
