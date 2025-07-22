@@ -123,6 +123,7 @@ export function SliderItems() {
               return (
                   <Column
                     className={styles.techItem}
+                    key={`${tech.name}-${index}`}
                   >
                     {IconComponent && (
                       <IconComponent size={48} className={styles.techIcon} onBackground="neutral-weak" color="neutral-weak"/>
