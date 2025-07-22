@@ -195,7 +195,7 @@ export default function HireDeveloperForm() {
             marginBottom="l"
             onBackground="neutral-medium"
           >
-            Tell us about your project needs, and we'll help you find the perfect developers.
+            Tell us about your project needs, and we will help you find the perfect developers.
           </Text>
 
           <Media
