@@ -10,7 +10,6 @@ import { ProcessSteps } from "@/components/home/ProcessStep";
 import { OfferingTechnologies } from "@/components/services/OfferingTechnologies";
 import Details from "@/components/about/Details";
 import { Calendar } from "@/components/services/Calendar";
-import { SliderItems1 } from "@/components/services/SliderItems1";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -68,40 +67,12 @@ export default function Home() {
           >
             <Calendar />
           </Column>
-
-          {/* <RevealFx paddingTop="12" delay={0.4} horizontal="start" paddingLeft="12">
-            <Button
-              id="about"
-              data-border="rounded"
-              href={about.path}
-              variant="secondary"
-              size="m"
-              weight="default"
-              arrowIcon
-            >
-              <Flex gap="8" vertical="center" paddingRight="4">
-                {about.avatar.display && (
-                  <Avatar
-                    marginRight="8"
-                    style={{ marginLeft: "-0.75rem" }}
-                    src={person.avatar}
-                    size="m"
-                  />
-                )}
-                {about.title}
-              </Flex>
-            </Button>
-          </RevealFx> */}
         </Column>
       </Column>
 
       <RevealFx translateY="16" delay={1}>
         <SliderItems />
       </RevealFx>
-
-      {/* <RevealFx translateY="16" delay={1}>
-        <SliderItems1 />
-      </RevealFx> */}
 
       <RevealFx translateY="16" delay={1.3}>
         <OfferingTechnologies />

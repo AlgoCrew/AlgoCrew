@@ -130,7 +130,7 @@ export const Header = () => {
                               },
                               {
                                 label: "Hire a Developer",
-                                href: "/hire",
+                                href: "/contact",
                                 icon: "email",
                                 description: "Hire our dedicated team",
                               },

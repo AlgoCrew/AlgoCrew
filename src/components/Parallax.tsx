@@ -1,7 +1,7 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
-import { Flex, Heading, Text, Row, Column } from "@once-ui-system/core"; // Added Select
+import React, { useState, useEffect, useRef } from 'react';
+import { Flex, Heading, Text, Row, Column, Media, Particle } from "@once-ui-system/core"; // Added Select
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -25,12 +25,13 @@ export default function Parallax({
       },
     });
 
-    
   }, []);
+
+  const headingRef = useRef(null); // Create a ref for the heading
 
   return (
     <>
-      <Flex
+      {/* <Flex
         overflow="hidden"
         fillWidth
         // padding="l"
@@ -85,7 +86,55 @@ export default function Parallax({
             </Column>
           </Flex>
         </section>
-      </Flex>
+      </Flex> */}
+
+      {/* <Particle
+        fill
+        interactive
+        speed={3}
+        interactionRadius={30}
+        density={300}
+        // height={24}
+      >
+        { */}
+
+          <Flex
+            overflow="visible"
+            fillWidth
+            // padding="l"
+            // paddingY="xl"
+            radius="l"
+            marginY="l"
+            horizontal="center"
+            align="center"
+            // background="surface"
+            // border="neutral-alpha-weak"
+            gap='l'
+            mobileDirection='column'
+            className='z-1'
+          >
+            <Column maxWidth="s" gap="s" align="center" style={{justifyContent: 'center', color: 'white !important'}}>
+              <div ref={headingRef} >
+                <Heading align="center" variant="display-strong-xl">
+                  {service.name}
+                </Heading>
+              </div>
+
+              <Text align="center" size="xl" wrap="balance" onBackground="accent-strong" variant="heading-default-xl" className='px-5'>
+                {service.description}
+              </Text>
+            </Column>
+
+            <Column overflow="visible" maxWidth="s" gap="s" align="center" style={{justifyContent: 'center', color: 'tranparent !important'}} >
+              <Media
+                src={service.side_image}
+                className='h-[70vh]! object-cover fit-cover'
+              >
+              </Media>
+            </Column>
+          </Flex>
+        {/* }
+      </Particle> */}
     </>
   )
 }

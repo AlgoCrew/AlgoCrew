@@ -16,7 +16,6 @@ import { Cards } from "@/components/about/Cards";
 import OurTeam from "@/components/about/OurTeam";
 import { Calendar } from "@/components/services/Calendar";
 import { OurMission } from "@/components/about/OurMission";
-import ContactForm from "@/components/ContactForm";
 import { OurVision } from "@/components/about/OurVision";
 
 export async function generateMetadata() {

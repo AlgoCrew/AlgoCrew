@@ -9,8 +9,7 @@ import {
 import { baseURL, contact, aboutUs, person } from "@/resources";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
-import { Calendar } from "@/components/services/Calendar";
-import ContactForm from "@/components/ContactForm";
+import FormTogger from "@/components/contact/FormToggler";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -41,30 +40,7 @@ export default function Contact() {
       />
       <Flex fillWidth mobileDirection="column" horizontal="center">
         <Column className={styles.blockAlign} flex={12} fillWidth>
-          {/* <Column
-            id={aboutUs.intro.title}
-            fillWidth
-            minHeight="160"
-            vertical="center"
-            marginBottom="32"
-            marginTop="32"
-          >
-            <RevealFx translateY="16" delay={0.1}>
-              <Heading className={styles.textAlign}  variant="display-strong-xl">
-                {aboutUs.title}
-              </Heading>
-            </RevealFx>
-
-            <RevealFx translateY="16" delay={0.3}>
-              <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="l" marginTop="l">
-                {aboutUs.description}
-              </Column>
-            </RevealFx>
-
-            <Calendar />
-          </Column> */}
-
-          <ContactForm />
+          <FormTogger />
         </Column>
       </Flex>
     </Column>

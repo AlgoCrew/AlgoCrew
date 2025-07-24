@@ -7,7 +7,7 @@ import {
 import { baseURL, hire, aboutUs, person } from "@/resources";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
-import HireDeveloperForm from "@/components/HireDeveloperForm";
+import FormTogger from "@/components/contact/FormToggler";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -39,7 +39,7 @@ export default function Contact() {
  
       <Flex fillWidth mobileDirection="column" horizontal="center">
         <Column className={styles.blockAlign} flex={12} fillWidth>
-          <HireDeveloperForm />
+          <FormTogger />
         </Column>
       </Flex>
     </Column>

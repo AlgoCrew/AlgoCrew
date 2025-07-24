@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Select, Icon, Text, Column, Badge } from "@once-ui-system/core";
+import { Select, Icon, Text, Column, Chip, useToast } from "@once-ui-system/core";
 
 // Define props for the new component
 interface DeveloperRoleSelectorProps {
@@ -31,6 +31,7 @@ export const DeveloperRoleSelector: React.FC<DeveloperRoleSelectorProps> = ({
 }) => {
   const [selectedRoleFromSelect, setSelectedRoleFromSelect] = useState('');
   const [userSelectedRoles, setUserSelectedRoles] = useState([]);
+  const { addToast } = useToast();
 
   // Handler for when a role is selected from the dropdown
   const handleRoleSelect = (selectedOption: string ) => {
@@ -41,13 +42,23 @@ export const DeveloperRoleSelector: React.FC<DeveloperRoleSelectorProps> = ({
     if (!selectedRoles.includes(roleValue)) {
       onRolesChange([...selectedRoles, roleValue]); // Use the callback to update parent state
     }
-  };
+    addToast({
+      variant: "success",
+      message: selectedOption + " is added"
+    })
+  }
 
 
   // Handler to remove a role from the selected list
   const handleRemoveRole = (roleToRemove: string) => {
     onRolesChange(selectedRoles.filter((role) => role !== roleToRemove)); // Use the callback to update parent state
-  };
+
+    addToast({
+      variant: "danger",
+      message: roleToRemove + " is removed"
+    })
+  }
+
 
   return (
     <Column gap="s">
@@ -73,7 +84,7 @@ export const DeveloperRoleSelector: React.FC<DeveloperRoleSelectorProps> = ({
       {selectedRoles.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-2">
           {selectedRoles.map((role) => (
-            <Badge className='cursor-pointer' key={role} icon="x" title={role} onClick={() => handleRemoveRole(role)}/>
+            <Chip onBackground="brand-strong" selected className='cursor-pointer neutral-background-weak' key={role} label={role} onRemove={() => handleRemoveRole(role)} />
           ))}
         </div>
       )}

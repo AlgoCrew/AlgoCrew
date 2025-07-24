@@ -72,10 +72,10 @@ export default function HireDeveloperForm() {
       return "Please enter a valid positive number for the budget.";
     }
 
-    const requiredMinBudget = numberOfDevelopers * MIN_BUDGET_PER_DEV;
-    if (numberOfDevelopers > 0 && parsedBudget < requiredMinBudget) {
-      return `Minimum budget required is $${requiredMinBudget} for ${numberOfDevelopers} developer(s).`;
-    }
+    // const requiredMinBudget = numberOfDevelopers * MIN_BUDGET_PER_DEV;
+    // if (numberOfDevelopers > 0 && parsedBudget < requiredMinBudget) {
+    //   return `Minimum budget required is $${requiredMinBudget} for ${numberOfDevelopers} developer(s).`;
+    // }
     return null;
   };
 

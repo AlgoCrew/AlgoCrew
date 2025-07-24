@@ -6,6 +6,7 @@ const categorizedServices = [
     "path": "services/web-app-development",
     "title": "Web & App Development Services | Build Your Digital Future",
     "image": "/images/services/webapp.jpg",
+    "side_image": "/images/services/developer1.png",
     "includes": [
       {
         "name": "Web Development",
@@ -90,6 +91,7 @@ const categorizedServices = [
     "path": "services/cloud-devops",
     "title": "Cloud & DevOps Solutions | Scalable Infrastructure & Automation",
     "image": "/images/services/cloud.jpg",
+    "side_image": "/images/services/devops.png",
     "includes": [
       {
         "name": "Cloud Application Development",
@@ -170,6 +172,7 @@ const categorizedServices = [
     "path": "services/e-commerce",
     "title": "E-commerce Solutions | Design, Develop & Optimize Online Stores",
     "image": "/images/services/ecommerce.jpg",
+    "side_image": "/images/services/commerce.png",
     "includes": [
       {
         "name": "E-commerce Design & Development",
@@ -236,6 +239,7 @@ const categorizedServices = [
     "path": "services/security-quality",
     "title": "Cybersecurity & Quality Assurance | Protect & Perfect Your Systems",
     "image": "/images/services/quality.jpg",
+    "side_image": "/images/services/quality.png",
     "includes": [
       {
         "name": "Manual Testing",
@@ -304,6 +308,7 @@ const categorizedServices = [
     "path": "services/data-automation",
     "title": "Data, AI & Automation Services | Smart Solutions for Business Growth",
     "image": "/images/services/automation.jpg",
+    "side_image": "/images/services/automation.png",
     "includes": [
       {
         "name": "Data & AI",
@@ -372,6 +377,8 @@ const categorizedServices = [
     "path": "services/microsoft-solutions",
     "title": "Microsoft Solutions | D365 ERP, CRM & Power Apps Expertise",
     "image": "/images/services/microsoft.jpg",
+    "side_image": "/images/services/microsoft.png",
+
     "includes": [
       {
         "name": "D365 ERP",
@@ -422,6 +429,7 @@ const categorizedServices = [
     "path": "services/team-services",
     "title": "Staff Augmentation & Support | Extend Your Team with Experts",
     "image": "/images/services/team.jpg",
+    "side_image": "/images/services/team.png",
     "includes": [
       {
         "name": "Staff Augmentation",
@@ -472,6 +480,7 @@ const categorizedServices = [
     "path": "services/emerging-tech",
     "title": "Emerging Tech Solutions | Metaverse, AR, Blockchain & AI Innovation",
     "image": "/images/services/emerging.jpg",
+    "side_image": "/images/services/emerging.png",
     "includes": [
       {
         "name": "Metaverse",
@@ -528,6 +537,7 @@ const categorizedServices = [
     "path": "services/gaming",
     "title": "Gaming Development Services | Art, Web3 & XR Gaming",
     "image": "/images/services/gaming.jpg",
+    "side_image": "/images/services/gaming.png",
     "includes": [
       {
         "name": "Gaming Art & Design",
