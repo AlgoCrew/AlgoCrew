@@ -14,7 +14,7 @@ import {
     FaHandshake, FaCheckCircle, FaCloudUploadAlt, FaShieldAlt, FaCloud,
     FaShoppingCart, FaTools, FaRobot, FaPalette, FaEthereum, FaVrCardboard,
     FaCloudMeatball, FaExchangeAlt, FaSyncAlt, FaSellsy, FaUserShield, FaAutoprefixer, FaRegCheckCircle,
-    FaShopify, FaShoppingBasket
+    FaShopify, FaShoppingBasket, FaWordpressSimple, FaRocket
 } from 'react-icons/fa'; // Using Font Awesome icons as an example
 
 // A mapping object to get the React component from its string name
@@ -24,7 +24,7 @@ const IconComponents: { [key: string]: React.ElementType } = {
     FaHandshake, FaCheckCircle, FaCloudUploadAlt, FaShieldAlt, FaCloud,
     FaShoppingCart, FaTools, FaRobot, FaPalette, FaEthereum, FaVrCardboard,
     FaCloudMeatball, FaExchangeAlt, FaSyncAlt, FaSellsy, FaUserShield, FaAutoprefixer, FaRegCheckCircle,
-    FaShopify, FaShoppingBasket
+    FaShopify, FaShoppingBasket, FaWordpressSimple, FaRocket
 };
 
 interface ServiceCardProps {
@@ -47,13 +47,13 @@ export default function ServiceCard({ service, direction }: ServiceCardProps) {
             transition="micro-medium"
             direction={direction}
             // radius="l"
-            className={`${styles.hover} h-fit`}
+            className={`${styles.hover} h-fit ${styles.card}`}
             mobileDirection="column"
             fillWidth
             radius="l-4"
             style={{ cursor: 'default', flexDirection: direction === 'row' ? 'row' : 'column', height: '100%' }}
         >
-            <Card radius="l-4" fillWidth fillHeight>
+            <Column radius="l-4" fillWidth fillHeight className={`${styles.mediaObject} display-flex surface-background neutral-border-alpha-medium border-solid border-1 radius-l-4 flex-column transition-macro-medium min-width-0 fill-width position-relative cursor-interactive neutral-on-background-strong`}>
                 <SmartLink href={service.path}>
                     <Column
                         position="relative"
@@ -81,7 +81,7 @@ export default function ServiceCard({ service, direction }: ServiceCardProps) {
                         </Text>
                     </Column>
                 </SmartLink>
-            </Card>
+            </Column>
         </Flex>
     );
 }

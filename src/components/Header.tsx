@@ -100,6 +100,12 @@ export const Header = () => {
                                 description: "Enterprise-ready Microsoft platforms",
                               },
                               {
+                                label: "Digital Marketing",
+                                href: "/services/digital-marketing",
+                                icon: "globe",
+                                description: "Boost Your Online Presence",
+                              },
+                              {
                                 label: "Team & Support Services",
                                 href: "/services/team-services",
                                 icon: "users",

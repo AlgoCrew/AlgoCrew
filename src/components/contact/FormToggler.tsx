@@ -32,18 +32,18 @@ export default function FormTogger() {
         }}
       />
 
-      <Flex gap="0" horizontal="center" align="center" padding="s" radius="l">
+      <Flex gap="s" horizontal="center" align="center" padding="s" radius="l">
         <Button
           onClick={() => setActiveForm('hireDeveloper')}
           variant={activeForm === 'hireDeveloper' ? 'primary' : 'secondary'}
-          size="s"
+          size="m"
         >
           Hire a Developer
         </Button>
         <Button
           onClick={() => setActiveForm('generalInquiry')}
           variant={activeForm === 'generalInquiry' ? 'primary' : 'secondary'}
-          size="s"
+          size="m"
         >
           General Inquiry
         </Button>

@@ -24,29 +24,29 @@ export default function Details() {
         <div className={styles.textSection}>
           <p className={styles.aboutUsSubtitle}>About Us</p>
           <Heading wrap="balance" variant="display-strong-s" paddingBottom="16">
-            Our Services
+            Driving Innovation
           </Heading>
 
           <Text wrap="balance" onBackground="neutral-weak" variant="body-default-m">
-            At AlgoCrew, we are committed to driving innovation and excellence in the world of IT. As a dynamic and forward-thinking software company, we specialize in providing top-tier IT solutions and services designed to meet the evolving needs of businesses across various sectors.
+            At AlgoCrew, we are dedicated to driving innovation and excellence in the IT industry. As a dynamic and forward-thinking technology partner, we specialize in delivering top-tier IT solutions and services tailored to address the ever-changing needs of businesses across diverse sectors.
           </Text>
         </div>
 
         <div className={styles.statsSection}>
           <div className={styles.statItem}>
             <div className={styles.statNumberContainer}>
-              <span className={styles.statNumber}>65<span className={styles.statNumberPlus}>+</span></span>
+              <span className={styles.statNumber}>20<span className={styles.statNumberPlus}>+</span></span>
               <p className={styles.statLabel}>Projects</p>
             </div>
 
             <Text onBackground="neutral-weak" variant="body-default-m" className={styles.statDescription}>
-              Successfully delivered 65+ project to our clients
+              Successfully delivered 20+ project to our clients
             </Text>
           </div>
 
           <div className={styles.statItem}>
             <div className={styles.statNumberContainer}>
-              <span className={styles.statNumber}>48<span className={styles.statNumberPlus}>+</span></span>
+              <span className={styles.statNumber}>8<span className={styles.statNumberPlus}>+</span></span>
               <p className={styles.statLabel}>Happy Clients</p>
             </div>
 
@@ -57,12 +57,12 @@ export default function Details() {
 
           <div className={styles.statItem}>
             <div className={styles.statNumberContainer}>
-              <span className={styles.statNumber}>7<span className={styles.statNumberPlus}>+</span></span>
+              <span className={styles.statNumber}>5<span className={styles.statNumberPlus}>+</span></span>
               <p className={styles.statLabel}>Years of Experience</p>
             </div>
 
             <Text onBackground="neutral-weak" variant="body-default-m" className={styles.statDescription}>
-              A journey of more than 7 years
+              A journey of more than 5 years
             </Text>
           </div>
         </div>

@@ -30,6 +30,8 @@ import {
   HiOutlineCollection
 } from "react-icons/hi";
 
+import { IoChevronBackCircleOutline, IoChevronForwardCircleOutline } from "react-icons/io5";
+
 import {
   PiHouseDuotone,
   PiUserCircleDuotone,
@@ -39,7 +41,7 @@ import {
   PiMailboxThin,
 } from "react-icons/pi";
 
-import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads } from "react-icons/fa6";
+import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaWordpressSimple } from "react-icons/fa6";
 
 export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
@@ -77,6 +79,9 @@ export const iconLibrary: Record<string, IconType> = {
   phone: HiMiniPhone,
   dollar: HiOutlineCurrencyDollar,
   collections: HiOutlineCollection,
+  wordPress: FaWordpressSimple,
+  chevronLeft: IoChevronBackCircleOutline,
+  chevronRight: IoChevronForwardCircleOutline,
 };
 
 export type IconLibrary = typeof iconLibrary;

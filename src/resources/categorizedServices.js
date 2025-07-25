@@ -423,6 +423,91 @@ const categorizedServices = [
     ]
   },
   {
+    "name": "Digital Marketing",
+    "description": "Boosting your online presence and driving measurable results with comprehensive digital marketing strategies.",
+    "slug": "digital-marketing",
+    "path": "services/digital-marketing",
+    "title": "Digital Marketing Services | Boost Your Online Presence",
+    "image": "/images/services/digital.png",
+    "side_image": "/images/services/digital.png",
+    "includes": [
+      {
+        "name": "Search Engine Optimization (SEO)",
+        "description": "Improving your website's visibility on search engines to attract organic traffic.",
+        "image": "/images/dm/seo.jpg",
+        "slug": "seo"
+      },
+      {
+        "name": "Social Media Marketing (SMM)",
+        "description": "Building brand awareness and engagement across social media platforms.",
+        "image": "/images/dm/smm.jpg",
+        "slug": "smm"
+      },
+      {
+        "name": "Content Marketing",
+        "description": "Creating valuable, relevant, and consistent content to attract and retain a clearly defined audience.",
+        "image": "/images/dm/content-marketing.jpg",
+        "slug": "content-marketing"
+      },
+      {
+        "name": "Pay-Per-Click (PPC) Advertising",
+        "description": "Managing targeted ad campaigns on platforms like Google Ads and social media for immediate results.",
+        "image": "/images/dm/ppc.jpg",
+        "slug": "ppc-advertising"
+      },
+      {
+        "name": "Email Marketing",
+        "description": "Designing and executing email campaigns to nurture leads and build customer loyalty.",
+        "image": "/images/dm/email-marketing.jpg",
+        "slug": "email-marketing"
+      },
+      {
+        "name": "Influencer Marketing",
+        "description": "Connecting your brand with influential personalities to reach wider audiences.",
+        "image": "/images/dm/influencer-marketing.jpg",
+        "slug": "influencer-marketing"
+      },
+      {
+        "name": "Marketing Analytics & Reporting",
+        "description": "Tracking, analyzing, and reporting on marketing performance to optimize strategies.",
+        "image": "/images/dm/analytics.jpg",
+        "slug": "marketing-analytics"
+      },
+      {
+        "name": "Conversion Rate Optimization (CRO)",
+        "description": "Optimizing your website and marketing funnels to increase the percentage of visitors who convert.",
+        "image": "/images/dm/cro.jpg",
+        "slug": "cro"
+      }
+    ],
+    "steps": [
+      {
+        "title": "Strategy & Goal Setting",
+        "description": "Define your target audience, set clear objectives, and develop a comprehensive digital marketing strategy."
+      },
+      {
+        "title": "Audience & Market Research",
+        "description": "Analyze consumer behavior, market trends, and competitor strategies to refine targeting."
+      },
+      {
+        "title": "Content & Campaign Creation",
+        "description": "Develop compelling content, creatives, and optimize campaigns for various channels."
+      },
+      {
+        "title": "Execution & Launch",
+        "description": "Implement campaigns across chosen digital platforms and monitor initial performance."
+      },
+      {
+        "title": "Monitoring & Optimization",
+        "description": "Continuously track KPIs, perform A/B testing, and adjust strategies for maximum ROI."
+      },
+      {
+        "title": "Reporting & Analysis",
+        "description": "Provide regular performance reports with actionable insights and future recommendations."
+      }
+    ]
+  },
+  {
     "name": "Team & Support Services",
     "description": "Augmenting your team with expert talent and providing dedicated support for seamless operations.",
     "slug": "team-services",

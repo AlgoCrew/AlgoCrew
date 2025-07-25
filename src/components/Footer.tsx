@@ -39,8 +39,8 @@ export const Footer = () => {
               />
             </Flex>
 
-            <Flex gap="16" vertical="center">
-              <Text variant="body-default-s">
+            <Flex gap="16" vertical="start" horizontal="start">
+              <Text variant="body-default-s" className="text-left">
                 35 herkley dr Brampton Ontario  L6v 2e7 Canada
               </Text>
             </Flex>

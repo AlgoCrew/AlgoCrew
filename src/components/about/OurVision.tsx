@@ -8,7 +8,7 @@ type OurVisionProps = {
 
 export const OurVision = ({ commingData }: { commingData: OurVisionProps }) => {
   return (
-    <section className="vision-section">
+    <section className="vision-section mt-l">
       <RevealFx translateY="16" delay={0.1}>
         <Heading as="h2" id={commingData.title} variant="display-strong-s">
           {commingData.title}

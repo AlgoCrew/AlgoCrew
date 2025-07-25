@@ -27,6 +27,7 @@ export function ProcessSteps() {
 
             <Heading
               wrap="balance"
+              variant="display-strong-s"
               className={`mb-3 ${styles.stepTitle}`}
             >
               Our Process
@@ -35,8 +36,7 @@ export function ProcessSteps() {
             <div className={styles.processHeaderUnderline}></div>
 
             <Text className={styles.sectionDescription} onBackground="neutral-weak" variant="heading-default-s">
-              Before creation, there is thinking. Our process is sharp and let
-              us craft the best quality.
+              Great creations begin with thoughtful planning. Our process is precise, ensuring we deliver only the highest quality.
             </Text>
           </div>
 
@@ -46,21 +46,21 @@ export function ProcessSteps() {
             <ProcessStep
               number="1"
               title="Think"
-              description="We try to understand the user requirements to ensure that the blueprint of system architecture meet user needs."
+              description="We prioritize understanding user requirements to ensure that the system architecture blueprint perfectly aligns with their needs."
               icon={'FaRegLightbulb'}
             />
 
             <ProcessStep
               number="2"
               title="Create"
-              description="We carefully translate the user requirements to a solution in a step-by-step fashion while maintaining the visibility of our progress."
+              description="We meticulously translate user requirements into solutions, executing each step with precision while keeping progress transparent and visible."
               icon={'FaCogs'}
             />
 
             <ProcessStep
               number="3"
               title="Iterate"
-              description="We Try to evolve the desing in quick iterations to complete rapid-feedback-loop, while focusing on better testing and performance."
+              description="We continuously evolve the design through rapid iterations, fostering a quick feedback loop while prioritizing thorough testing and optimal performance."
               icon={'FaSyncAlt'}
             />
           </div>

@@ -4,7 +4,7 @@
 import { Heading, Row, Text, Column, Particle, SmartLink } from '@once-ui-system/core';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styles from './Technologies.module.scss'; // Import the CSS module
-import { allServices as initialAllServices } from "@/resources"; // Assuming allServices is imported from your resources file
+import { allSliderServices as initialAllServices } from "@/resources"; // Assuming allServices is imported from your resources file
 
 import {
     FaLaptopCode, FaMobileAlt, FaCode, FaPaintBrush, FaBuilding, FaCogs, FaUsers,
@@ -12,7 +12,7 @@ import {
     FaHandshake, FaCheckCircle, FaCloudUploadAlt, FaShieldAlt, FaCloud,
     FaShoppingCart, FaTools, FaRobot, FaPalette, FaEthereum, FaVrCardboard,
     FaCloudMeatball, FaExchangeAlt, FaSyncAlt, FaShopify, FaUserShield, FaRegCheckCircle, FaAutoprefixer,
-    FaSellsy
+    FaSellsy, FaWordpressSimple, FaProjectDiagram, FaRocket
 } from 'react-icons/fa'; // Using Font Awesome icons as an example
 
 import {
@@ -26,7 +26,7 @@ const IconComponents: { [key: string]: React.ElementType } = {
     FaHandshake, FaCheckCircle, FaCloudUploadAlt, FaShieldAlt, FaCloud,
     FaShoppingCart, FaTools, FaRobot, FaPalette, FaEthereum, FaVrCardboard,
     FaCloudMeatball, FaExchangeAlt, FaSyncAlt, HiOutlineShoppingCart, FaShopify, FaUserShield, FaRegCheckCircle, FaAutoprefixer,
-    FaSellsy
+    FaSellsy, FaWordpressSimple, FaProjectDiagram, FaRocket
 };
 
 interface ServiceCardProps {

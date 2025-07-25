@@ -3,9 +3,12 @@
 [data-theme=light] { 
   --neutral-on-background-strong : #1f2937 !important;
   // --brand-on-background-medium: #0093B9;
+  //  --page-background: var(--neutral-background-weak);
+   --page-background: #f1f1f1 !important;
 }
 
 [data-theme=dark] { 
   --neutral-on-background-strong : #fff !important;
   // --brand-on-background-medium: #0093B9 !important;
+
 }

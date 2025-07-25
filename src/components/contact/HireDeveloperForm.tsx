@@ -254,9 +254,9 @@ export default function HireDeveloperForm() {
 
             <form onSubmit={handleSubmit} style={{ zIndex: '9' }} className='flex flex-col gap-y-4 p-20'>
               {/* Using the new component */}
-              <Heading variant="heading-strong-xs" marginBottom="s">
+              {/* <Heading variant="heading-strong-xs" marginBottom="s">
                 Select Developer Roles
-              </Heading>
+              </Heading> */}
               <DeveloperRoleSelector
                 selectedRoles={selectedRoles}
                 onRolesChange={setSelectedRoles} // Pass the state setter directly

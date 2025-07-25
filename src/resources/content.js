@@ -4,11 +4,14 @@ const person = {
   firstName: "Selene",
   lastName: "Yu",
   get name() {
+    // Escaped the backticks within the template literal for clarity if it were raw string
+    // This is already a template literal, so standard string escaping for single quotes isn't strictly needed here,
+    // but the original error implies it was being treated as a JSX string directly.
     return `${this.firstName} ${this.lastName}`;
   },
   role: "Design Engineer",
   avatar: "/images/LogoDark.png",
-  email: "muhammadarqam920@gmail.com",
+  email: "hr@algocrew.io",
   location: "Canada", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Urdu", "Panjabi"], // optional: Leave the array empty if you don't want to display languages
 };
@@ -18,7 +21,7 @@ const newsletter = {
   title: <>Subscribe to AlgoCrew Newsletter</>,
   description: (
     <>
-      We occasionally offer short perid discounts to enlarge our digital family.
+      Stay updated with our latest insights, innovations, and exclusive offers. Be part of our growing digital family and enjoy special discounts and updates.
     </>
   ),
 };
@@ -44,7 +47,7 @@ const social = [
   {
     name: "Email",
     icon: "email",
-    link: `mailto:muhammadarqam92@gmail.com`,
+    link: "mailto:info@algocrew.io", // Added quotes around mailto link
   },
 ];
 
@@ -52,17 +55,45 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `AlgoCrew - delivering top-tier IT solutions and services`,
-  description: `we are committed to driving innovation and excellence in the world of IT`,
-  headline: <>Your idea. Our logistics. New Reality.</>,
+  // Escaped apostrophes
+  title: "AlgoCrew - Delivering Top-Tier IT Solutions and Services",
+  description: "We&apos;re committed to transforming your ideas into innovative digital solutions. From vision to execution, we help your business thrive in a rapidly evolving technological landscape.",
+  headline: <>Your Idea. Our Logistics. A New Reality.</>,
   featured: {
     display: true,
-    title: <>Our recent projects <strong className="ml-4"></strong></>,
+    title: <>Our Recent Projects <strong className="ml-4"></strong></>,
     href: "/projects",
   },
   subline: (
     <>
-      We use state of art technology stacks coupled with decades of industry experience to help make your products successful.
+      At AlgoCrew, we harness the power of cutting-edge technology and expert industry knowledge to craft digital solutions that make a tangible impact. Whether you&apos;re launching something new or enhancing existing systems, we provide tailor-made solutions that drive growth and elevate your success.
+    </>
+  ),
+  valueProposition: (
+    <>
+      <h3>Why Choose Us?</h3>
+      <ul>
+        <li><strong>Innovative Solutions:</strong> We leverage the latest technologies to build scalable and efficient solutions.</li>
+        <li><strong>End-to-End Expertise:</strong> From ideation and design to deployment and support, we cover all aspects of your project.</li>
+        <li><strong>Client-Centric Approach:</strong> Your business goals are our top priority. We work alongside you to achieve success.</li>
+        <li><strong>Proven Track Record:</strong> A portfolio of successful projects and satisfied clients speaks for itself.</li>
+      </ul>
+    </>
+  ),
+  testimonials: {
+    display: true,
+    title: <>What Our Clients Say</>,
+    content: (
+      <>
+        &quot;Working with AlgoCrew was a game changer for our business. Their expertise, creativity, and professionalism turned our ideas into a reality, driving both growth and innovation.&quot;
+        <br />
+        <strong>- Happy Client</strong>
+      </>
+    ),
+  },
+  sublineExpanded: (
+    <>
+      Our team uses state-of-the-art technology stacks and agile methodologies to ensure seamless delivery. With our collaborative approach, we help you navigate the complexities of the digital world and achieve long-term business success.
     </>
   ),
 };
@@ -70,9 +101,10 @@ const home = {
 const about = {
   path: "/about",
   label: "About",
-  title: `About – AlgoCrew`,
+  // Escaped apostrophes
+  title: "About – AlgoCrew",
   image: "/images/og/about.jpg",
-  description: `we are committed to driving innovation and excellence in the world of IT`,
+  description: "We are committed to driving innovation and excellence in the world of IT.",
   tableOfContent: {
     display: true,
     subItems: false,
@@ -89,118 +121,22 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        At AlgoCrew, we believe in leveraging state-of-the-art technology stacks and industry expertise to solve complex problems and bring impactful solutions to life. We transform your challenges into successful digital products.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
-    experiences: [
-      {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
-        achievements: [
-          <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
-          </>,
-          <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
-        ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
-        achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
-        ],
-        images: [],
-      },
-    ],
-  },
-  studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
-    institutions: [
-      {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
-      },
-    ],
-  },
-  technical: {
-    display: true, // set to false to hide this section
-    title: "Technical skills",
-    skills: [
-      {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-    ],
   },
 };
 
 const aboutUs = {
   path: "/about",
   label: "About",
-  title: `Who we are`,
+  title: "Who We Are",
   image: "/images/LogoDark.png",
-  description: `At AlgoCrew, we are committed to driving innovation and excellence in the world of IT. As a dynamic and forward-thinking software company, we specialize in delivering top-tier IT solutions and services tailored to meet the evolving needs of businesses across diverse sectors.`,
+  description: "At AlgoCrew, we are dedicated to driving innovation and excellence in the IT industry. As a dynamic, forward-thinking software company, we specialize in delivering top-tier IT solutions that are meticulously tailored to meet the ever-evolving needs of businesses across various sectors and industries.",
   tableOfContent: {
     display: true,
     subItems: false,
@@ -217,19 +153,18 @@ const aboutUs = {
     title: "Introduction",
     description: (
       <>
-        At AlgoCrew, we are committed to driving innovation and excellence in the world of IT. As a dynamic and forward-thinking software company, we specialize in delivering top-tier IT solutions and services tailored to meet the evolving needs of businesses across diverse sectors.
+        We are committed to delivering exceptional software solutions that truly stand out. Whether you&apos;re a startup looking for innovative solutions or an enterprise seeking scalable technology, we provide agile, high-performance technology to help you meet your business goals and accelerate growth in a competitive landscape.
       </>
     ),
   },
+
   ourMission: {
     display: true, // set to false to hide this section
     title: "Our Mission",
     img: "/images/about/mission2.png",
     description: (
       <>
-        Our mission is to empower businesses by delivering cutting-edge technology solutions that drive innovation, efficiency, and sustainable growth.
-        We strive to unlock our clients full potential by connecting them with a network of passionate,
-        highly skilled engineers dedicated to solving complex challenges and creating meaningful digital transformation.
+        Our mission is to provide innovative, reliable, and scalable technology solutions for everyone&mdash;from ambitious startups to established enterprises. We truly believe that each business, no matter its size, deserves the opportunity to thrive, and we&apos;re here to help make that happen. Our approach is simple: no pressure, just results. We offer a 7-day probation test to ensure that you feel confident in our solutions before committing. At AlgoCrew, we&apos;re focused on transforming your ideas into powerful solutions that foster business growth and digital transformation, with no strings attached. We empower businesses with cutting-edge technologies and a dedicated team that solves complex challenges and inspires success.
       </>
     ),
   },
@@ -240,56 +175,26 @@ const aboutUs = {
     img: "/images/about/vision2.png",
     description: (
       <>
-        At AlgoCrew, we envision a future where IT systems evolve into intelligent,
-        agile, and AI-powered digital assets. Backed by over a decade of expertise,
-        we empower global clients with innovative and adaptive solutions, shaping a world where technology seamlessly meets the ever-changing demands of a connected, digital era.
+        Our vision is to shape the future of technology by building intelligent, scalable, and innovative digital systems that adapt seamlessly to the evolving needs of businesses. Whether you&apos;re a startup or a large enterprise, we&apos;re passionate about helping you succeed, and we work with you at your pace&mdash;no pressure, just collaboration. We offer a 7-day probation test to ensure you feel comfortable and confident in our partnership. Through creativity, collaboration, and cutting-edge technology, we strive to redefine industries globally, driving innovation and setting new benchmarks for success in this digital era.
       </>
     ),
   },
 
   ourValues: {
     display: true, // set to false to hide this section
-    title: "What make us more valuable",
+    title: "What Makes Us Valuable",
     img: "/images/about/vision1.png",
-  },
-
-  technical: {
-    display: false, // set to false to hide this section
-    title: "Technical skills",
-    skills: [
-      {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-    ],
+    description: (
+      <>
+        At AlgoCrew, we strongly believe in the core values that define our work and culture. These values guide us in everything we do:
+        <ul>
+          <li><strong>Collaboration:</strong> We thrive on teamwork, working together internally and with clients to deliver exceptional outcomes and ensure success.</li>
+          <li><strong>Innovation:</strong> We are constantly pushing the boundaries of technology, always striving to deliver fresh, forward-thinking solutions that lead the way.</li>
+          <li><strong>Integrity:</strong> We conduct all our business dealings with transparency, honesty, and strong ethical principles, ensuring trust with our clients and partners.</li>
+          <li><strong>Excellence:</strong> We are driven by excellence, striving to surpass expectations and set new industry standards through our dedication to quality and professionalism.</li>
+        </ul>
+      </>
+    ),
   },
 };
 
@@ -297,56 +202,46 @@ const blog = {
   path: "/blog",
   label: "Blog",
   title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  // Escaped apostrophes
+  description: `Read what ${person.name} has been up to recently`, // Used template literal for dynamic content
 };
 
 const contact = {
   path: "/contact",
   label: "Contact",
-  title: "Contact us - Algocrew",
-  description: `we are committed to driving innovation and excellence in the world of IT`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  title: "Contact us - AlgoCrew",
+  description: "We are committed to driving innovation and excellence in the world of IT.",
 };
 
 const hire = {
   path: "/hire",
-  label: "Hire developer",
-  title: "Hire a developer - Algocrew",
-  description: `Hire the best dedicated team`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  label: "Hire Developer",
+  title: "Hire a Developer - AlgoCrew",
+  description: "Hire the best dedicated team to take your ideas to the next level.",
 };
 
 const work = {
   path: "/work",
   label: "Work",
-  title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  // Escaped apostrophes
+  title: `Projects – ${person.name}`, // Used template literal for dynamic content
+  description: `Design and dev projects by ${person.name}`, // Used template literal for dynamic content
 };
 
 const services = {
   path: "/services",
   label: "Services",
-  title: `What we Do – AlgoCrew`,
-  description: `All services under one roof. And help our customers from ideas in mind to real world solutions`,
+  title: "What We Do – AlgoCrew",
+  description: "All services under one roof. We help our customers bring ideas to life and turn them into real-world solutions.",
   headline: <>We provide cutting-edge digital solutions!</>,
-  subline: <>We’re not just here to deliver projects — we’re here to partner for the long impact. By understanding your business challenges, we craft solutions designed to make a meaningful, long-term impact.</>,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  subline: <>We&apos;re not just here to deliver projects&mdash;we&apos;re here to partner for the long term. By understanding your business challenges, we craft solutions designed to create a meaningful, long-term impact.</>,
 };
 
 const projects = {
   path: "/projects",
   label: "Showcase",
-  title: `Projects – AlgoCrew`,
-  description: `A photo collection of our projects`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
+  title: "Projects – AlgoCrew",
+  description: "A photo collection of our projects",
   images: [
     {
       src: "/images/gallery/horizontal-1.png",
@@ -368,26 +263,6 @@ const projects = {
       alt: "image",
       orientation: "horizontal",
     },
-    // {
-    //   src: "/images/gallery/vertical-1.png",
-    //   alt: "image",
-    //   orientation: "vertical",
-    // },
-    // {
-    //   src: "/images/gallery/vertical-2.png",
-    //   alt: "image",
-    //   orientation: "vertical",
-    // },
-    // {
-    //   src: "/images/gallery/vertical-3.jpg",
-    //   alt: "image",
-    //   orientation: "vertical",
-    // },
-    // {
-    //   src: "/images/gallery/vertical-4.jpg",
-    //   alt: "image",
-    //   orientation: "vertical",
-    // },
   ],
 };
 

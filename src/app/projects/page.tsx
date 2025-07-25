@@ -33,13 +33,13 @@ export default function gallery() {
         <Column maxWidth="s">
           <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
             <Heading wrap="balance" variant="display-strong-l">
-              Some of our Projects
+              Showcase of Excellence
             </Heading>
           </RevealFx>
           <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
-          <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-            We create new quality valued digital products everyday. Check it out!
-          </Text>
+            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
+              Every day, we craft high-quality, value-driven digital products that make an impact. Explore our work and see how we turn innovative ideas into real-world solutions!
+            </Text>
           </RevealFx>
 
           <Column

@@ -4,7 +4,7 @@
     display: flex;
     align-items: center; /* Vertically center content */
     justify-content: center; /* Horizontally center content */
-    padding: 1rem; /* Default padding for mobile */
+    // padding: 1rem;
     font-family: 'Inter', sans-serif; /* Consistent font */
     box-sizing: border-box; /* Include padding in element's total width and height */
 }
@@ -20,10 +20,10 @@
 
 /* Responsive padding for large screens */
 @media (min-width: 1024px) {
-    .processSectionContainer {
-    padding-left: 2rem;
-    padding-right: 2rem;
-    }
+    // .processSectionContainer {
+    // padding-left: 2rem;
+    // padding-right: 2rem;
+    // }
 }
 
 /* Inner content wrapper */

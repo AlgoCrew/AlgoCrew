@@ -19,6 +19,10 @@ export {
 } from "./services";
 
 export {
+  allSliderServices,
+} from "./allSliderServices";
+
+export {
   ourValues,
 } from "./ourValues";
 

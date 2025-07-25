@@ -4,6 +4,7 @@ import { Column, Flex, Heading, Text, Grid, Card } from "@once-ui-system/core";
 import { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import styles from './Cards.module.scss'; // Keeping original styles import
 
 export default function IncludedServices({
   service,
@@ -58,9 +59,10 @@ export default function IncludedServices({
             <Grid
               columns={3} mobileColumns="1"
               fillWidth marginBottom="40" gap="20"
+              className={`${styles.card}`}
             >
               {service.includes.map((childService: any, index: number) => (
-                <Column key={childService.slug} className={`card-${index} display-flex surface-background neutral-border-alpha-medium border-solid border-1 radius-l-4 flex-column transition-macro-medium min-width-0 fill-width position-relative cursor-interactive neutral-on-background-strong`} fillWidth radius="l-4" direction="column" border="neutral-alpha-medium">
+                <Column key={childService.slug} className={`card-${index} ${styles.mediaObject} display-flex surface-background neutral-border-alpha-medium border-solid border-1 radius-l-4 flex-column transition-macro-medium min-width-0 fill-width position-relative cursor-interactive neutral-on-background-strong`} fillWidth radius="l-4" direction="column" border="neutral-alpha-medium">
                   <Column className={`card-${index}`} gap="s" align="center" paddingY="32" paddingX="8">
                     <Heading as="h3" size="m">
                       {childService.name}

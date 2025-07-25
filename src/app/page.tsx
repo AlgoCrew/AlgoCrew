@@ -10,6 +10,7 @@ import { ProcessSteps } from "@/components/home/ProcessStep";
 import { OfferingTechnologies } from "@/components/services/OfferingTechnologies";
 import Details from "@/components/about/Details";
 import { Calendar } from "@/components/services/Calendar";
+import AnimatedTestimonials from "@/components/home/Testimonals";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -23,7 +24,7 @@ export async function generateMetadata() {
 
 export default function Home() {  
   return (
-    <Column maxWidth="m" gap="xl" horizontal="center">
+    <Column maxWidth="m" gap="l" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -86,10 +87,14 @@ export default function Home() {
         <ProcessSteps />
       </RevealFx>
 
-
       <RevealFx translateY="16" delay={1.6}>
         <Details />
       </RevealFx>
+
+      <RevealFx translateY="16" delay={1}>
+        <AnimatedTestimonials />
+      </RevealFx>
+
 
       {/* {routes["/blog"] && (
         <Flex fillWidth gap="24" mobileDirection="column">

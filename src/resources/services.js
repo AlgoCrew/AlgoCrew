@@ -24,6 +24,24 @@ const allServices = [
     "short_description": "Designing, developing, and deploying robust cloud-native applications optimized for performance, scalability, and cost-effectiveness."
   },
   {
+    "name": "MVP Development",
+    "iconName": "FaRocket",
+    "path": "services/web-app-development",
+    "short_description": "Building Minimum Viable Products (MVP) to quickly test ideas, gain user feedback, and deliver core features for early market entry."
+  },
+  {
+    "name": "Cloud Native Applications",
+    "iconName": "FaCloudMeatball",
+    "path": "services/web-app-development",
+    "short_description": "Designing and developing applications optimized for cloud environments to maximize scalability, flexibility, and resilience."
+  },
+  {
+    "name": "WordPress Development",
+    "iconName": "FaWordpressSimple",
+    "path": "services/web-app-development",
+    "short_description": "Building and customizing feature-rich WordPress websites that are easy to manage, scalable, and fully optimized for SEO."
+  },
+  {
     "name": "Cloud Ops & Migration",
     "iconName": "FaExchangeAlt",
     "path": "services/cloud-devops",
