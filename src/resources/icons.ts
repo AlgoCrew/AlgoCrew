@@ -40,8 +40,9 @@ import {
   PiImageDuotone,
   PiMailboxThin,
 } from "react-icons/pi";
+import { IoShareSocial } from "react-icons/io5";
 
-import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaWordpressSimple } from "react-icons/fa6";
+import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaWordpressSimple, FaLocationDot } from "react-icons/fa6";
 
 export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
@@ -82,6 +83,8 @@ export const iconLibrary: Record<string, IconType> = {
   wordPress: FaWordpressSimple,
   chevronLeft: IoChevronBackCircleOutline,
   chevronRight: IoChevronForwardCircleOutline,
+  location: FaLocationDot,
+  social: IoShareSocial,
 };
 
 export type IconLibrary = typeof iconLibrary;

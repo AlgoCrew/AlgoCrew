@@ -1,15 +1,15 @@
 import { Logo } from "@once-ui-system/core";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Arqam",
+  lastName: "Tahir",
   get name() {
     // Escaped the backticks within the template literal for clarity if it were raw string
     // This is already a template literal, so standard string escaping for single quotes isn't strictly needed here,
     // but the original error implies it was being treated as a JSX string directly.
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
+  role: "Software Engineer",
   avatar: "/images/LogoDark.png",
   email: "hr@algocrew.io",
   location: "Canada", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'

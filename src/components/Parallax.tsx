@@ -113,14 +113,14 @@ export default function Parallax({
             mobileDirection='column'
             className='z-1'
           >
-            <Column maxWidth="s" gap="s" align="center" style={{justifyContent: 'center', color: 'white !important'}}>
+            <Column maxWidth="s" gap="s" align="start" style={{justifyContent: 'center', color: 'white !important'}}>
               <div ref={headingRef} >
-                <Heading align="center" variant="display-strong-xl">
+                <Heading align="start" variant="display-strong-xl">
                   {service.name}
                 </Heading>
               </div>
 
-              <Text align="center" size="xl" wrap="balance" onBackground="accent-strong" variant="heading-default-xl" className='px-5'>
+              <Text align="start" size="xl" wrap="balance" onBackground="accent-strong" variant="heading-default-xl" className='px-2'>
                 {service.description}
               </Text>
             </Column>

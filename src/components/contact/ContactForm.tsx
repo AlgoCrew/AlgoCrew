@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { mailchimp } from "@/resources";
-import { Flex, Heading, Input, Text, Background, Column, Icon, Textarea, Button, Media, Select } from "@once-ui-system/core"; // Added Select
+import { mailchimp, social } from "@/resources";
+import { Flex, Heading, Input, Text, Background, Column, Icon, Textarea, Button, IconButton, Select, SmartLink } from "@once-ui-system/core"; // Added Select
 import { opacity, SpacingToken } from "@once-ui-system/core";
 
 export default function ContactForm() {
@@ -214,12 +214,96 @@ export default function ContactForm() {
             Building, Launching, and Growing Together
           </Text>
 
-          <Media
+          <Heading style={{ position: "relative" }} marginBottom="0" variant="body-strong-xl">
+            <Icon name="location" size='xs' className='pe-1'></Icon>
+            Location
+          </Heading>
+
+          <Text
+            style={{
+              position: "relative",
+              maxWidth: "var(--responsive-width-xs)",
+            }}
+            wrap="balance"
+            marginBottom="m"
+            marginLeft="20"
+            onBackground="neutral-medium"
+            variant="body-default-s"
+          >
+            <SmartLink href={'https://www.google.com/maps/search/?api=1&query=35+Herkley+Dr,+Brampton,+Ontario+L6V+2E7,+Canada'}>
+              35 herkley dr Brampton Ontario L6v 2e7 Canada
+            </SmartLink>
+          </Text>
+
+          <Heading style={{ position: "relative" }} marginBottom="0" variant="body-strong-xl">
+            <Icon name="phone" size='xs' className='pe-1'></Icon>
+            Phone
+          </Heading>
+
+          <Text
+            style={{
+              position: "relative",
+              maxWidth: "var(--responsive-width-xs)",
+            }}
+            wrap="balance"
+            marginBottom="m"
+            marginLeft="20"
+            onBackground="neutral-medium"
+            variant="body-default-s"
+          >
+            {/* +1 (437) 383‑6794 */}
+            <SmartLink href={'tel:+1 (437) 383‑6794'}>
+              +1 (437) 383‑6794
+            </SmartLink>
+          </Text>
+
+          <Heading style={{ position: "relative" }} marginBottom="0" variant="body-strong-xl">
+            <Icon name="email" size='xs' className='pe-1'></Icon>
+            Email
+          </Heading>
+
+          <Text
+            style={{
+              position: "relative",
+              maxWidth: "var(--responsive-width-xs)",
+            }}
+            wrap="balance"
+            marginLeft="20"
+            onBackground="neutral-medium"
+            variant="body-default-s"
+          >
+            <SmartLink href={'mailto:info@algocrew.io'}>
+              info@algocrew.io
+            </SmartLink>
+          </Text>
+
+          <Heading style={{ position: "relative" }} marginTop="m" variant="body-strong-xl">
+            <Icon name="social" size='xs' className='pe-1'></Icon>
+            Follow Us
+          </Heading>
+
+          <Flex gap="16" marginLeft="20" marginTop="4">
+            {social.slice(0, 2).map(
+              (item) =>
+                item.link && (
+                  <IconButton
+                    key={item.name}
+                    href={item.link}
+                    icon={item.icon}
+                    tooltip={item.name}
+                    size="s"
+                    variant="ghost"
+                  ></IconButton>
+                ),
+            )}
+          </Flex>
+
+          {/* <Media
             src='/images/contact.png' // Ensure this path exists in your data
             alt='Contact Us'
             style={{ height: '400px', borderRadius: '8px' }}
             objectFit='scale-down'
-          />
+          /> */}
         </Column>
 
         <Column className='h-fit md:w-100 basis-full'>
