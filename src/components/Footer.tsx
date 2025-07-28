@@ -41,7 +41,7 @@ export const Footer = () => {
 
             <Flex gap="16" vertical="start" horizontal="start">
               <Text variant="body-default-s" className="text-left">
-                35 herkley dr Brampton Ontario  L6v 2e7 Canada
+                35 Herkley Dr, Brampton, Ontario L6V 2E7, Canada
               </Text>
             </Flex>
 
@@ -101,7 +101,12 @@ export const Footer = () => {
         >
           <Text variant="body-default-s" onBackground="neutral-strong">
             <Text onBackground="neutral-weak">© {currentYear} /</Text>
-            <Text paddingX="4">AlgoCrew</Text>
+            <Text paddingX="4">AlgoCrew Inc.</Text>
+            <a className="neutral-on-background-strong" href="https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?lang=eng&corpId=17177011" target="blank">
+              <Text paddingX="4" onBackground="neutral-strong">
+                / Corporation Number: 1717701-1
+              </Text>
+            </a>
           </Text>
 
           <Flex gap="16">

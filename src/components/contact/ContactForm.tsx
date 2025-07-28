@@ -197,7 +197,7 @@ export default function ContactForm() {
         gap='l'
         mobileDirection='column'
       >
-        <Column align="start" className='md:w-100 basis-full'>
+        <Column align="start" className='md:w-100 basis-full' marginBottom="l">
           <Heading style={{ position: "relative" }} marginBottom="0" variant="display-strong-xs">
             Got Your Back
           </Heading>
@@ -231,7 +231,9 @@ export default function ContactForm() {
             variant="body-default-s"
           >
             <SmartLink href={'https://www.google.com/maps/search/?api=1&query=35+Herkley+Dr,+Brampton,+Ontario+L6V+2E7,+Canada'}>
-              35 herkley dr Brampton Ontario L6v 2e7 Canada
+              <Text onBackground="neutral-medium">
+                35 Herkley Dr, Brampton, Ontario L6V 2E7, Canada
+              </Text>
             </SmartLink>
           </Text>
 
@@ -253,7 +255,9 @@ export default function ContactForm() {
           >
             {/* +1 (437) 383‑6794 */}
             <SmartLink href={'tel:+1 (437) 383‑6794'}>
-              +1 (437) 383‑6794
+              <Text onBackground="neutral-medium">
+                +1 (437) 383‑6794
+              </Text>
             </SmartLink>
           </Text>
 
@@ -273,7 +277,9 @@ export default function ContactForm() {
             variant="body-default-s"
           >
             <SmartLink href={'mailto:info@algocrew.io'}>
-              info@algocrew.io
+              <Text onBackground="neutral-medium">
+                info@algocrew.io
+              </Text>
             </SmartLink>
           </Text>
 

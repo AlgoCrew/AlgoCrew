@@ -181,7 +181,7 @@ export default function HireDeveloperForm() {
         gap='l'
         mobileDirection='column'
       >
-        <Column align="start" className='md:w-100 basis-full'>
+        <Column align="start" className='md:w-100 basis-full' marginBottom="l">
           <Heading style={{ position: "relative" }} marginBottom="0" variant="display-strong-xs">
             Hire Your Dream Team
           </Heading>
@@ -198,7 +198,7 @@ export default function HireDeveloperForm() {
             Tell us about your project needs, and we will help you find the perfect developers.
           </Text>
 
-                    <Heading style={{ position: "relative" }} marginBottom="0" variant="body-strong-xl">
+          <Heading style={{ position: "relative" }} marginBottom="0" variant="body-strong-xl">
             <Icon name="location" size='xs' className='pe-1'></Icon>
             Location
           </Heading>
@@ -215,7 +215,9 @@ export default function HireDeveloperForm() {
             variant="body-default-s"
           >
             <SmartLink href={'https://www.google.com/maps/search/?api=1&query=35+Herkley+Dr,+Brampton,+Ontario+L6V+2E7,+Canada'}>
-              35 herkley dr Brampton Ontario L6v 2e7 Canada
+              <Text onBackground="neutral-medium">
+                35 Herkley Dr, Brampton, Ontario L6V 2E7, Canada
+              </Text>
             </SmartLink>
           </Text>
 
@@ -235,9 +237,10 @@ export default function HireDeveloperForm() {
             onBackground="neutral-medium"
             variant="body-default-s"
           >
-            {/* +1 (437) 383‑6794 */}
             <SmartLink href={'tel:+1 (437) 383‑6794'}>
-              +1 (437) 383‑6794
+              <Text onBackground="neutral-medium">
+                +1 (437) 383‑6794
+              </Text>
             </SmartLink>
           </Text>
 
@@ -257,7 +260,9 @@ export default function HireDeveloperForm() {
             variant="body-default-s"
           >
             <SmartLink href={'mailto:info@algocrew.io'}>
-              info@algocrew.io
+              <Text onBackground="neutral-medium">
+                info@algocrew.io
+              </Text>
             </SmartLink>
           </Text>
 
@@ -283,8 +288,8 @@ export default function HireDeveloperForm() {
           </Flex>
 
           {/* <Media
-            src='/images/hire.png'
-            alt='Hire Developers'
+            src='/images/contact.png' // Ensure this path exists in your data
+            alt='Contact Us'
             style={{ height: '400px', borderRadius: '8px' }}
             objectFit='scale-down'
           /> */}

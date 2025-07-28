@@ -138,9 +138,47 @@ const ourProjects = [
     "slug": "alert-management",
     "description": "Handled site reliability monitoring and alert management for critical infrastructure. Monitored server clusters, managed incident responses, and ensured minimal downtime by proactively resolving system outages using observability tools like Dynatrace, Splunk, and Moogsoft. Maintained automated workflows via Jenkins and Rundeck for operational efficiency.",
     "link": "",
-    "img": "/images/projects/project-01/cloud.png",
+    "img": "/images/projects/project-01/alert.png",
     "category": "Cloud application",
     "year": '2024'
+  },
+  {
+    "name": "Deeplawn",
+    "title": "Deeplawn Web Platform",
+    "origin": "United States",
+    "techStack": [
+      "Google Analytics",
+      "Mixpanel",
+      "Hotjar",
+      "Facebook Pixel",
+      "Open Graph",
+      "HSTS"
+    ],
+    "path": "/projects/deeplawn",
+    "slug": "deeplawn",
+    "description": "Deeplawn is a lawn care automation platform utilizing advanced analytics and user behavior tools to deliver optimized digital experiences. The platform integrates Mixpanel and Hotjar for in-depth interaction tracking, while Google Analytics and Facebook Pixel support data-driven marketing strategies. Open Graph enhances link preview optimization, and HSTS ensures secure HTTPS delivery.",
+    "link": "https://deeplawn.com",
+    "img": "/images/projects/project-01/deeplawn.png",
+    "category": "SaaS Platform",
+    "year": "2024"
+  },
+  {
+    "name": "polarpro",
+    "title": "polarpro Web Platform",
+    "origin": "United States",
+    "techStack": [
+      "Cloudflare",
+      "HSTS",
+      "HTTP/3",
+      "Shopify"
+    ],
+    "path": "/projects/polarpro",
+    "slug": "polarpro",
+    "description": "polarpro is built with a focus on speed, security, and performance. The platform employs HTTP/3 for modern protocol efficiency and leverages HSTS to ensure secure communications. Cloudflare acts as the CDN backbone, delivering optimized content distribution and DDoS mitigation. This tech stack supports high availability and secure user experiences tailored for e-commerce scalability.",
+    "link": "https://www.polarpro.com",
+    "img": "/images/projects/project-01/polarpro.png",
+    "category": "Web application",
+    "year": "2024"
   },
   {
     "name": "Enterprise System",
@@ -151,7 +189,7 @@ const ourProjects = [
     "slug": "erp-platform",
     "description": "Managed enterprise infrastructure focusing on automated provisioning using Terraform integrated with Jenkins pipelines. Resolved server vulnerabilities through Ansible playbooks and handled application deployments via Ansible Tower. Ensured secure system operations using jump hosts, secret management, VPN, and antivirus solutions, and monitored system health and performance with Dynatrace.",
     "link": "",
-    "img": "/images/projects/project-01/cloud.png",
+    "img": "/images/projects/project-01/enterprise.png",
     "category": "Cloud application",
     "year": '2024'
   },
@@ -164,9 +202,38 @@ const ourProjects = [
     "slug": "building-supplies-it",
     "description": "Led DevOps initiatives across both business units—construction material supply and IT innovation. Managed cloud infrastructure on AWS, focusing on cost optimization, billing analysis, and system security through Vanta. Implemented CI/CD workflows using Bitbucket Pipelines and GitHub Actions. Ensured application reliability and performance monitoring with Grafana, Prometheus, and Sentry. Supported scalable application deployments with Laravel Vapor and maintained secure, high-performance databases using Aurora MySQL, DynamoDB, and Redis.",
     "link": "",
-    "img": "/images/projects/project-01/cloud.png",
+    "img": "/images/projects/project-01/building.png",
     "category": "Cloud application",
     "year": '2024'
+  },
+  {
+    "name": "Foodil",
+    "title": "foodil Web Platform",
+    "origin": "Combodia",
+    "techStack": [
+      "Cloudflare",
+      "Google Font API",
+      "HSTS",
+      "Lucide",
+      "Open Graph",
+      "PostgreSQL",
+      "Radix UI",
+      "React",
+      "React Router",
+      "Supabase",
+      "Tailwind CSS",
+      "Vercel",
+      "Vercel Analytics",
+      "cdnjs",
+      "jsDelivr"
+    ],
+    "path": "/projects/foodil",
+    "slug": "foodil",
+    "description": "Engineered as a modern web application, foodil.co leverages a serverless architecture deployed on Vercel with real-time backend services provided by Supabase and PostgreSQL. The frontend is built using React, Tailwind CSS, and Radix UI for fast, accessible, and responsive interfaces. Application routing is managed with React Router, while security and performance are enhanced via Cloudflare CDN, HSTS, and a global delivery network powered by jsDelivr and cdnjs. Design and typography are handled through Lucide icons and Google Fonts, with analytics integrated through Vercel Analytics for continuous monitoring and optimization.",
+    "link": "https://foodil.co",
+    "img": "/images/projects/project-01/foodil.png",
+    "category": "Web application",
+    "year": "2024"
   },
 ]
 
