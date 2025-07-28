@@ -57,7 +57,7 @@ const home = {
   label: "Home",
   // Escaped apostrophes
   title: "AlgoCrew - Delivering Top-Tier IT Solutions and Services",
-  description: "We&apos;re committed to transforming your ideas into innovative digital solutions. From vision to execution, we help your business thrive in a rapidly evolving technological landscape.",
+  description: "We are committed to transforming your ideas into innovative digital solutions. From vision to execution, we help your business thrive in a rapidly evolving technological landscape.",
   headline: <>Your Idea. Our Logistics. A New Reality.</>,
   featured: {
     display: true,
