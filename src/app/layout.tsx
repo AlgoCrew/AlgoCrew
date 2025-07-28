@@ -9,15 +9,44 @@ import { Background, Column, Flex, Meta, opacity, SpacingToken } from "@once-ui-
 import { Footer, Header, RouteGuard, Providers } from '@/components';
 import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
 
+// export async function generateMetadata() {
+//   return Meta.generate({
+//     title: home.title,
+//     description: home.description,
+//     baseURL: baseURL,
+//     path: home.path,
+//     image: home.image,
+//   });
+// }
+
 export async function generateMetadata() {
-  return Meta.generate({
+  return {
     title: home.title,
     description: home.description,
-    baseURL: baseURL,
-    path: home.path,
-    image: home.image,
-  });
+    metadataBase: new URL(baseURL),
+    alternates: {
+      canonical: `${baseURL}${home.path}`,
+    },
+
+    openGraph: {
+      title: home.title,
+      description: home.description,
+      url: `${baseURL}${home.path}`,
+      images: [
+        {
+          url: `${baseURL}${home.image}`,
+          width: 1200,
+          height: 630,
+          alt: home.title,
+        },
+      ],
+    },
+    icons: {
+      icon: '/icon.png',
+    },
+  };
 }
+
 
 export default async function RootLayout({
   children,
@@ -109,11 +138,10 @@ export default async function RootLayout({
           `}
         </script>
 
-          <link rel="icon" href="/path/to/your/favicon.ico" sizes="any" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/path/to/your/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/path/to/your/favicon-16x16.png" />
-          <link rel="icon" type="image/svg+xml" href="/path/to/your/favicon.svg" />
+        <link rel="icon" href="/images/icon.png" sizes="any" />
+        <meta name="keywords" content="software company, software agency, custom software development, web development, custom software, cloud solution, mobile app development, Next.js, React, Node.js, AWS, software solutions, IT consulting, Algocrew" />
       </head>
+
       <Providers>
         <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center">
           <Background
