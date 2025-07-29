@@ -6,6 +6,7 @@ import ValueCard from './Card'; // Renamed import for clarity, but the file is s
 import { ourValues } from "@/resources"; // Assuming allourValues is imported from your resources file
 import gsap from 'gsap'; // Import GSAP
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import styles from './Cards.module.scss'; // Keeping original styles import
 
 interface ourValue {
     name: string;
@@ -51,21 +52,23 @@ export function Cards({
   }, [ourValues]);
 
     return (
-        <>
-            {ourValues.length > 0 && (
-                <Grid
-                    columns={columns} mobileColumns="1"
-                    fillWidth marginBottom="40" gap="12">
-                    {ourValues.map((ourValue, index) => (
-                        <Column key={ourValue.name} className={`value-card-${index} display-flex surface-background neutral-border-alpha-medium border-solid border-1 radius-l-4 flex-column transition-macro-medium min-width-0 fill-width position-relative cursor-interactive neutral-on-background-strong`} fillWidth radius="l-4" direction="column" border="neutral-alpha-medium">
-                            <ValueCard // Using ValueCard here
-                                ourValue={ourValue} // Passing the ourValue object as a prop
-                                direction={direction}
-                            />
-                        </Column>
-                    ))}
-                </Grid>
-            )}
-        </>
+      <>
+        {ourValues.length > 0 && (
+          <Grid
+            columns={columns} mobileColumns="1"
+            fillWidth marginBottom="40" gap="12"
+            className={`${styles.card}`}
+          >
+            {ourValues.map((ourValue, index) => (
+              <Column key={ourValue.name} className={`value-card-${index} ${styles.mediaObject} display-flex surface-background neutral-border-alpha-medium border-solid border-1 radius-l-4 flex-column transition-macro-medium min-width-0 fill-width position-relative cursor-interactive neutral-on-background-strong`} fillWidth radius="l-4" direction="column" border="neutral-alpha-medium">
+                <ValueCard // Using ValueCard here
+                  ourValue={ourValue} // Passing the ourValue object as a prop
+                  direction={direction}
+                />
+              </Column>
+            ))}
+          </Grid>
+        )}
+      </>
     );
 }

@@ -124,6 +124,12 @@ const categorizedServices = [
         "slug": "ci-cd-pipeline"
       },
       {
+        "name": "Compliance & Regulations",
+        "description": "Ensuring compliance with ISO 27001, GDPR, HIPAA, SOC 2, PCI DSS, and NIST.",
+        "image": "/images/compliance.jpg",
+        "slug": "compliance-regulations"
+      },
+      {
         "name": "Containerization (Docker & Kubernetes)",
         "description": "Using Docker and Kubernetes to package and manage applications in a scalable, portable way.",
         "image": "/images/containerization.jpg",

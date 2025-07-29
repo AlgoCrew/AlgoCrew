@@ -47,7 +47,7 @@ export default function Card({ ourValue, direction }: ValueCardProps) {
             transition="micro-medium"
             direction={direction}
             radius="l"
-            className={styles.hover}
+            // className={styles.hover}
             mobileDirection="column"
             fillWidth
             style={{ borderRadius: 'var(--radius-l)', cursor: 'default', flexDirection: direction === 'row' ? 'row' : 'column', height: '100%' }}

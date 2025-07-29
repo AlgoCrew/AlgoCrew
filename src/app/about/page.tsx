@@ -58,7 +58,7 @@ export default function About() {
         as="webPage"
         baseURL={baseURL}
         title={aboutUs.title}
-        description={aboutUs.description}
+        description={aboutUs.metaDescription}
         path={aboutUs.path}
         image={encodeURIComponent(aboutUs.image)}
         author={{
@@ -85,7 +85,7 @@ export default function About() {
             </RevealFx>
 
             <RevealFx translateY="16" delay={0.3}>
-              <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="l" marginTop="l">
+              <Column textVariant="body-default-l" fillWidth marginBottom="l" marginTop="l">
                 {aboutUs.description}
               </Column>
             </RevealFx>

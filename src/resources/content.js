@@ -57,7 +57,7 @@ const home = {
   label: "Home",
   // Escaped apostrophes
   title: "AlgoCrew - Delivering Top-Tier IT Solutions and Services",
-  description: "We are committed to transforming your ideas into innovative digital solutions. From vision to execution, we help your business thrive in a rapidly evolving technological landscape.",
+  description: "At AlgoCrew, we turn bold ideas into scalable software solutions. From MVP development to full-scale digital transformation, our expert teams combine cutting-edge technology with deep industry insight to deliver impactful, tailor-made products. Whether you are building something new or optimizing legacy systems, we are your partner in growth and innovation.",
   headline: <>Your Idea. Our Logistics. A New Reality.</>,
   featured: {
     display: true,
@@ -66,7 +66,7 @@ const home = {
   },
   subline: (
     <>
-      At AlgoCrew, we harness the power of cutting-edge technology and expert industry knowledge to craft digital solutions that make a tangible impact. Whether you&apos;re launching something new or enhancing existing systems, we provide tailor-made solutions that drive growth and elevate your success.
+      At AlgoCrew, we turn bold ideas into scalable software solutions. From MVP development to full-scale digital transformation, our expert teams combine cutting-edge technology with deep industry insight to deliver impactful, tailor-made products. Whether you are building something new or optimizing legacy systems, we are your partner in growth and innovation.
     </>
   ),
   valueProposition: (
@@ -136,7 +136,17 @@ const aboutUs = {
   label: "About",
   title: "Who We Are",
   image: "/images/LogoDark.png",
-  description: "At AlgoCrew, we are dedicated to driving innovation and excellence in the IT industry. As a dynamic, forward-thinking software company, we specialize in delivering top-tier IT solutions that are meticulously tailored to meet the ever-evolving needs of businesses across various sectors and industries.",
+  metaDescription: "At AlgoCrew, we are a team of technologists, strategists, and innovators dedicated to helping businesses succeed through purpose-built digital solutions. Whether you are a startup shaping your first MVP or an enterprise scaling complex systems, we bring the talent and technology needed to deliver fast, reliable, and scalable outcomes.",
+  description: (
+    <>
+      <>
+        At AlgoCrew, we are a team of technologists, strategists, and innovators dedicated to helping businesses succeed through purpose-built digital solutions. Whether you are a startup shaping your first MVP or an enterprise scaling complex systems, we bring the talent and technology needed to deliver fast, reliable, and scalable outcomes.
+      </>
+      <span>
+        We are not just another IT vendor—we are your remote product team, tech partner, and long-term growth ally.
+      </span>
+    </>
+  ),
   tableOfContent: {
     display: true,
     subItems: false,
@@ -164,7 +174,26 @@ const aboutUs = {
     img: "/images/about/mission2.png",
     description: (
       <>
-        Our mission is to provide innovative, reliable, and scalable technology solutions for everyone&mdash;from ambitious startups to established enterprises. We truly believe that each business, no matter its size, deserves the opportunity to thrive, and we&apos;re here to help make that happen. Our approach is simple: no pressure, just results. We offer a 7-day probation test to ensure that you feel confident in our solutions before committing. At AlgoCrew, we&apos;re focused on transforming your ideas into powerful solutions that foster business growth and digital transformation, with no strings attached. We empower businesses with cutting-edge technologies and a dedicated team that solves complex challenges and inspires success.
+        <>
+          To empower businesses of all sizes with innovative, reliable, and future-ready technology.
+          From launching your first MVP to solving enterprise-level challenges, we deliver measurable results—without the pressure. We offer a 7-day risk-free trial to prove our value before you commit.
+        </>
+        <strong className="mt-m mb-s">We specialize in:</strong>
+        <li>
+          MVP Development & Product Prototyping
+        </li>
+        <li>
+          Remote Engineering Teams
+        </li>
+        <li>
+          Ongoing Support & Maintenance
+        </li>
+        <li>
+          Strategic IT Consultancy
+        </li>
+        <span>
+          At AlgoCrew, your vision becomes our mission—and our mission is to turn it into reality.
+        </span>
       </>
     ),
   },
@@ -175,7 +204,28 @@ const aboutUs = {
     img: "/images/about/vision2.png",
     description: (
       <>
-        Our vision is to shape the future of technology by building intelligent, scalable, and innovative digital systems that adapt seamlessly to the evolving needs of businesses. Whether you&apos;re a startup or a large enterprise, we&apos;re passionate about helping you succeed, and we work with you at your pace&mdash;no pressure, just collaboration. We offer a 7-day probation test to ensure you feel comfortable and confident in our partnership. Through creativity, collaboration, and cutting-edge technology, we strive to redefine industries globally, driving innovation and setting new benchmarks for success in this digital era.
+        <>
+          To redefine what is possible in digital product development by building intelligent, adaptable systems that help businesses thrive in a fast-changing world.
+          We believe in collaboration without friction—offering flexible engagement models and a problem-solving mindset that moves at your pace.
+        </>
+        <span className="mt-m mb-s">
+          Whether you are launching, scaling, or modernizing, we are here to elevate your journey with:
+        </span>
+        <li>
+          Agile workflows
+        </li>
+        <li>
+          Cutting-edge technologies
+        </li>
+        <li>
+          Domain-aligned engineering talent
+        </li>
+        <li>
+          Transparent communication & delivery
+        </li>
+        <span>
+          Let’s shape the future together.
+        </span>
       </>
     ),
   },
@@ -241,7 +291,21 @@ const projects = {
   path: "/projects",
   label: "Showcase",
   title: "Projects – AlgoCrew",
-  description: "A photo collection of our projects",
+  metaDescription: "A photo collection of our projects",
+  description: (
+    <>
+      <strong className="mt-m mb-s">
+        Where Vision Meets Execution
+      </strong>
+      <>
+        At AlgoCrew, we do not just build software—we engineer results. Every project we take on is rooted in innovation, precision, and impact. From rapid MVPs to enterprise-grade platforms, our work reflects our commitment to delivering value and driving growth.
+      </>
+      <span>
+        Explore how we have helped startups and global companies turn bold ideas into powerful, real-world digital solutions.
+      </span>
+
+    </>
+  ),
   images: [
     {
       src: "/images/gallery/horizontal-1.png",

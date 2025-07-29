@@ -6,7 +6,7 @@ import { Calendar } from "@/components/services/Calendar";
 export async function generateMetadata() {
   return Meta.generate({
     title: projects.title,
-    description: projects.description,
+    description: projects.metaDescription,
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(projects.title)}`,
     path: projects.path,
@@ -20,7 +20,7 @@ export default function gallery() {
         as="webPage"
         baseURL={baseURL}
         title={projects.title}
-        description={projects.description}
+        description={projects.metaDescription}
         path={projects.path}
         image='images/og/home.jpg'
         author={{
@@ -36,10 +36,11 @@ export default function gallery() {
               Showcase of Excellence
             </Heading>
           </RevealFx>
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-              Every day, we craft high-quality, value-driven digital products that make an impact. Explore our work and see how we turn innovative ideas into real-world solutions!
-            </Text>
+
+          <RevealFx translateY="16" delay={0.3}>
+            <Column textVariant="body-default-l" fillWidth marginBottom="l">
+              {projects.description}
+            </Column>
           </RevealFx>
 
           <Column

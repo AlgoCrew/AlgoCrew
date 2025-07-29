@@ -27,7 +27,7 @@ export default function Contact() {
         as="webPage"
         baseURL={baseURL}
         title={aboutUs.title}
-        description={aboutUs.description}
+        description={aboutUs.metaDescription}
         path={aboutUs.path}
         image="/images/og/about.jpg"
         author={{

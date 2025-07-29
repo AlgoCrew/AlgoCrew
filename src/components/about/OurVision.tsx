@@ -37,7 +37,7 @@ export const OurVision = ({ commingData }: { commingData: OurVisionProps }) => {
                 />
               </Column>
 
-              <Column fillWidth textVariant="body-default-l" gap="m" className="vision-text">
+              <Column fillWidth textVariant="body-default-l" className="vision-text">
                 {commingData.description}
               </Column>
             </Row>

@@ -2,7 +2,6 @@
 import {
   Column,
   Flex,
-  Schema,
   Button,
 } from "@once-ui-system/core";
 import { baseURL, aboutUs, person } from "@/resources";
@@ -18,20 +17,6 @@ export default function FormTogger() {
 
   return (
     <Column maxWidth="m" gap="s" horizontal="center">
-      <Schema
-        as="webPage"
-        baseURL={baseURL}
-        title={aboutUs.title}
-        description={aboutUs.description}
-        path={aboutUs.path}
-        image="/images/og/about.jpg"
-        author={{
-          name: person.name,
-          url: `${baseURL}${aboutUs.path}`,
-          image: `${baseURL}${person.avatar}`,
-        }}
-      />
-
       <Flex gap="s" horizontal="center" align="center" padding="s" radius="l">
         <Button
           onClick={() => setActiveForm('hireDeveloper')}
