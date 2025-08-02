@@ -6,11 +6,10 @@ import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Meta
 import { home, about, person, newsletter, baseURL, routes, services, social } from "@/resources";
 import styles from "@/components/about/about.module.scss";
 
-  
 import { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
 
-export function Calendar() {
+export function HrCalendar() {
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({"namespace":"30min"});
@@ -41,7 +40,7 @@ export function Calendar() {
                     gap="8"
                     // marginBottom="m"
                     data-cal-namespace="30min"
-                    data-cal-link="muhammad-arqam-rs9quj/30min"
+                    data-cal-link="algocrew-hr/30min"
                     data-cal-config='{"layout":"month_view"}'
                     vertical="center"
                 >

@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, Row, Media, Background, Column, RevealFx, Particle } from "@once-ui-system/core";
+import { Button, Flex, Heading, Row, Media, Background, Text, Column, RevealFx, Particle } from "@once-ui-system/core";
 
 type OurMissionProps = {
   title: string;
@@ -26,8 +26,10 @@ export const OurMission = ({ commingData }: { commingData: OurMissionProps }) =>
       >{
         <RevealFx translateY="16" delay={0.3} className="z-1">
           <Row fillWidth gap="l" marginTop="m" marginBottom="m" mobileDirection="column" className={`items-center`} align="start">
-            <Column fillWidth textVariant="body-default-l" className="mission-text">
-              {commingData.description}
+            <Column fillWidth >
+              <Text variant="body-default-l" >
+                {commingData.description}
+              </Text>
             </Column>
 
             <Column maxWidth={50}>

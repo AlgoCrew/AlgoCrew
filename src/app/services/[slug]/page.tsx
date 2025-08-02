@@ -10,6 +10,8 @@ import HeroSection from "@/components/services/HeroSection";
 import IncludedServices from "@/components/services/IncludedServices";
 import Steps from "@/components/services/Steps";
 import Parallax from "@/components/Parallax";
+import { CtoCalendar } from "@/components/Calendars/CtoCalendar";
+import { SendUsEmail } from "@/components/services/SendUsEmail";
 
 // Generate static paths for all services based on their slugs
 export async function generateStaticParams() {
@@ -80,6 +82,16 @@ export default async function Service({
       <IncludedServices service={service} />
 
       <Steps service={service} />
+
+      <Column
+        id={about.intro.title}
+        maxWidth="m"
+        minHeight="80"
+        vertical="center"
+        // marginBottom="8"
+      >
+        <SendUsEmail />
+      </Column>
     </Column>
   );
 }

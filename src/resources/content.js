@@ -143,7 +143,7 @@ const aboutUs = {
         At AlgoCrew, we are a team of technologists, strategists, and innovators dedicated to helping businesses succeed through purpose-built digital solutions. Whether you are a startup shaping your first MVP or an enterprise scaling complex systems, we bring the talent and technology needed to deliver fast, reliable, and scalable outcomes.
       </>
       <span>
-        We are not just another IT vendor—we are your remote product team, tech partner, and long-term growth ally.
+        We are not just another IT vendor, we are your remote product team, tech partner, and long-term growth ally.
       </span>
     </>
   ),
@@ -176,7 +176,7 @@ const aboutUs = {
       <>
         <>
           To empower businesses of all sizes with innovative, reliable, and future-ready technology.
-          From launching your first MVP to solving enterprise-level challenges, we deliver measurable results—without the pressure. We offer a 7-day risk-free trial to prove our value before you commit.
+          From launching your first MVP to solving enterprise-level challenges, we deliver measurable results without the pressure. We offer a 7-day risk-free trial to prove our value before you commit.
         </>
         <strong className="mt-m mb-s">We specialize in:</strong>
         <li>
@@ -192,7 +192,7 @@ const aboutUs = {
           Strategic IT Consultancy
         </li>
         <span>
-          At AlgoCrew, your vision becomes our mission—and our mission is to turn it into reality.
+          At AlgoCrew, your vision becomes our mission, and our mission is to turn it into reality.
         </span>
       </>
     ),
@@ -206,7 +206,7 @@ const aboutUs = {
       <>
         <>
           To redefine what is possible in digital product development by building intelligent, adaptable systems that help businesses thrive in a fast-changing world.
-          We believe in collaboration without friction—offering flexible engagement models and a problem-solving mindset that moves at your pace.
+          We believe in collaboration without friction, offering flexible engagement models and a problem-solving mindset that moves at your pace.
         </>
         <span className="mt-m mb-s">
           Whether you are launching, scaling, or modernizing, we are here to elevate your journey with:
@@ -298,7 +298,7 @@ const projects = {
         Where Vision Meets Execution
       </strong>
       <>
-        At AlgoCrew, we do not just build software—we engineer results. Every project we take on is rooted in innovation, precision, and impact. From rapid MVPs to enterprise-grade platforms, our work reflects our commitment to delivering value and driving growth.
+        At AlgoCrew, we do not just build software, we engineer results. Every project we take on is rooted in innovation, precision, and impact. From rapid MVPs to enterprise-grade platforms, our work reflects our commitment to delivering value and driving growth.
       </>
       <span>
         Explore how we have helped startups and global companies turn bold ideas into powerful, real-world digital solutions.

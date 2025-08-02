@@ -1,7 +1,8 @@
 import { Flex, Meta, Schema, Column, RevealFx, Heading, Text } from "@once-ui-system/core";
 import { baseURL, projects, person } from "@/resources";
 import ProjectCards from "@/components/projects/ProjectCards";
-import { Calendar } from "@/components/services/Calendar";
+import { InfoCalendar } from "@/components/Calendars/InfoCalendar";
+import { SendUsEmail } from "@/components/projects/SendUsEmail";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -42,20 +43,19 @@ export default function gallery() {
               {projects.description}
             </Column>
           </RevealFx>
-
-          <Column
-            fillWidth
-            minHeight="80"
-            vertical="center"
-          >
-            <Calendar />
-          </Column>
         </Column>
       </Column>
 
-      {/* <Column>
-      </Column> */}
       <ProjectCards />
+
+      <Column
+        maxWidth="m"
+        minHeight="80"
+        vertical="center"
+        // marginBottom="8"
+      >
+        <SendUsEmail />
+      </Column>
     </Column>
   );
 }

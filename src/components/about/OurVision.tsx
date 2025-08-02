@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, Row, Media, Background, Column, RevealFx, Particle } from "@once-ui-system/core";
+import { Button, Flex, Heading, Row, Media, Text, Column, RevealFx, Particle } from "@once-ui-system/core";
 
 type OurVisionProps = {
   title: string;
@@ -37,8 +37,10 @@ export const OurVision = ({ commingData }: { commingData: OurVisionProps }) => {
                 />
               </Column>
 
-              <Column fillWidth textVariant="body-default-l" className="vision-text">
-                {commingData.description}
+              <Column fillWidth className="vision-text">
+                <Text variant="body-default-l">
+                  {commingData.description}
+                </Text>
               </Column>
             </Row>
           </RevealFx>

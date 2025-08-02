@@ -5,9 +5,10 @@ import { home, about, person, newsletter, baseURL, routes, services, social } fr
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Cards } from "@/components/services/Cards";
-import { Calendar } from "@/components/services/Calendar";
 import { OfferingTechnologies } from "@/components/services/OfferingTechnologies";
 import styles from "@/components/about/about.module.scss";
+import { CtoCalendar } from "@/components/Calendars/CtoCalendar";
+import { SendUsEmail } from "@/components/services/SendUsEmail";
 
 export default function Home() {
   return (
@@ -34,8 +35,8 @@ export default function Home() {
             </Heading>
           </RevealFx>
 
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
+          <RevealFx translateY="8" delay={0.2} fillWidth paddingBottom="32">
+            <Text onBackground="neutral-weak" variant="body-default-xl">
               {services.subline}
             </Text>
           </RevealFx>
@@ -47,7 +48,7 @@ export default function Home() {
             vertical="center"
             // marginBottom="8"
           >
-            <Calendar />
+            <CtoCalendar />
           </Column>
         </Column>
       </Column>
@@ -65,7 +66,14 @@ export default function Home() {
         <OfferingTechnologies />
       </RevealFx>
 
-      {newsletter.display && <Mailchimp newsletter={newsletter} />}
+      <Column
+        maxWidth="m"
+        minHeight="80"
+        vertical="center"
+        // marginBottom="8"
+      >
+        <SendUsEmail />
+      </Column>
     </Column>
   );
 }

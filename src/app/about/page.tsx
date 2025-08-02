@@ -6,7 +6,8 @@ import {
   Meta,
   Row,
   Media,
-  Schema
+  Schema,
+  Text
 } from "@once-ui-system/core";
 import { baseURL, about, aboutUs, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
@@ -14,9 +15,10 @@ import styles from "@/components/about/about.module.scss";
 import React from "react";
 import { Cards } from "@/components/about/Cards";
 import OurTeam from "@/components/about/OurTeam";
-import { Calendar } from "@/components/services/Calendar";
 import { OurMission } from "@/components/about/OurMission";
 import { OurVision } from "@/components/about/OurVision";
+import { CeoCalendar } from "@/components/Calendars/CeoCalendar";
+import { SendUsEmail } from "@/components/about/SendUsEmail";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -86,11 +88,20 @@ export default function About() {
 
             <RevealFx translateY="16" delay={0.3}>
               <Column textVariant="body-default-l" fillWidth marginBottom="l" marginTop="l">
-                {aboutUs.description}
+                <Text onBackground="neutral-weak" variant="body-default-l">
+
+                  {aboutUs.description}
+                </Text>
+
               </Column>
             </RevealFx>
 
-            <Calendar />
+            <RevealFx translateY="16" delay={0.4}>
+              <Column textVariant="body-default-l" fillWidth>
+                <CeoCalendar />
+              </Column>
+            </RevealFx>
+
           </Column>
 
 
@@ -119,6 +130,15 @@ export default function About() {
               </RevealFx>
             </>
           )}
+
+          <Column
+            maxWidth="m"
+            minHeight="80"
+            vertical="center"
+            // marginBottom="8"
+          >
+            <SendUsEmail />
+          </Column>
         </Column>
       </Flex>
     </Column>

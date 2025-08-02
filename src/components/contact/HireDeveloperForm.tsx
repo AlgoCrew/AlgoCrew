@@ -259,9 +259,9 @@ export default function HireDeveloperForm() {
             onBackground="neutral-medium"
             variant="body-default-s"
           >
-            <SmartLink href={'mailto:info@algocrew.io'}>
+            <SmartLink href={'mailto:query@algocrew.io'}>
               <Text onBackground="neutral-medium">
-                info@algocrew.io
+                query@algocrew.io
               </Text>
             </SmartLink>
           </Text>

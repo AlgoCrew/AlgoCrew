@@ -9,8 +9,9 @@ import { SliderItems } from "@/components/services/SliderItems";
 import { ProcessSteps } from "@/components/home/ProcessStep";
 import { OfferingTechnologies } from "@/components/services/OfferingTechnologies";
 import Details from "@/components/about/Details";
-import { Calendar } from "@/components/services/Calendar";
+import { InfoCalendar } from "@/components/Calendars/InfoCalendar";
 import AnimatedTestimonials from "@/components/home/Testimonals";
+import { SendUsEmail } from "@/components/home/SendUsEmail";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -55,19 +56,21 @@ export default function Home() {
             </Heading>
           </RevealFx>
           <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
-          <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-            {home.subline}
-          </Text>
+            <Text wrap="balance" onBackground="neutral-weak" variant="body-default-l">
+              {home.subline}
+            </Text>
           </RevealFx>
 
-          <Column
-            id={about.intro.title}
-            fillWidth
-            minHeight="80"
-            vertical="center"
-          >
-            <Calendar />
-          </Column>
+          <RevealFx translateY="8" delay={0.3} fillWidth horizontal="start">
+            <Column
+              id={about.intro.title}
+              fillWidth
+              minHeight="80"
+              vertical="center"
+            >
+              <InfoCalendar />
+            </Column>
+          </RevealFx>
         </Column>
       </Column>
 
@@ -109,8 +112,14 @@ export default function Home() {
           </Flex>
         </Flex>
       )} */}
-
-      {newsletter.display && <Mailchimp newsletter={newsletter} />}
+      <Column
+        maxWidth="m"
+        minHeight="80"
+        vertical="center"
+        // marginBottom="8"
+      >
+        <SendUsEmail />
+      </Column>
     </Column>
   );
 }
