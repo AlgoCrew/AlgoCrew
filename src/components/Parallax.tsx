@@ -127,6 +127,7 @@ export default function Parallax({
 
             <Column overflow="visible" maxWidth="s" gap="s" align="center" style={{justifyContent: 'center', color: 'tranparent !important'}} >
               <Media
+                alt={`AlgoCrew - ${service.name}`}
                 src={service.side_image}
                 className='h-[70vh]! object-cover fit-cover'
               >

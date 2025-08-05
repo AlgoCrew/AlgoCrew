@@ -26,7 +26,7 @@ export default function ProjectCard({
               priority
               aspectRatio="16 / 9"
               radius="m"
-              alt={project.title} // Use title for alt text
+              alt={`AlgoCrew - ${project.title}`} // Use title for alt text
               src={project.img} // Use project.img
             />
           )}
