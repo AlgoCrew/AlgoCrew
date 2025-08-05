@@ -1,46 +1,16 @@
 // Card.tsx (renamed to ServiceCard conceptually, but file remains Card.tsx)
 "use client";
 
-import { Heading, Row, Text, Column, Particle, SmartLink } from '@once-ui-system/core';
+import { Heading, Row, Text, Column, Particle, SmartLink, Media, Card } from '@once-ui-system/core';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styles from './Technologies.module.scss'; // Import the CSS module
 import { allSliderServices as initialAllServices } from "@/resources"; // Assuming allServices is imported from your resources file
-
-import {
-    FaLaptopCode, FaMobileAlt, FaCode, FaPaintBrush, FaBuilding, FaCogs, FaUsers,
-    FaPowerOff, FaGlobe, FaCube, FaLink, FaBrain, FaMagic, FaChartBar,
-    FaHandshake, FaCheckCircle, FaCloudUploadAlt, FaShieldAlt, FaCloud,
-    FaShoppingCart, FaTools, FaRobot, FaPalette, FaEthereum, FaVrCardboard,
-    FaCloudMeatball, FaExchangeAlt, FaSyncAlt, FaShopify, FaUserShield, FaRegCheckCircle, FaAutoprefixer,
-    FaSellsy, FaWordpressSimple, FaProjectDiagram, FaRocket
-} from 'react-icons/fa'; // Using Font Awesome icons as an example
-
-import {
-    HiOutlineShoppingCart
-} from 'react-icons/hi2'; // Using Font Awesome icons as an example
-
-// A mapping object to get the React component from its string name
-const IconComponents: { [key: string]: React.ElementType } = {
-    FaLaptopCode, FaMobileAlt, FaCode, FaPaintBrush, FaBuilding, FaCogs, FaUsers,
-    FaPowerOff, FaGlobe, FaCube, FaLink, FaBrain, FaMagic, FaChartBar,
-    FaHandshake, FaCheckCircle, FaCloudUploadAlt, FaShieldAlt, FaCloud,
-    FaShoppingCart, FaTools, FaRobot, FaPalette, FaEthereum, FaVrCardboard,
-    FaCloudMeatball, FaExchangeAlt, FaSyncAlt, HiOutlineShoppingCart, FaShopify, FaUserShield, FaRegCheckCircle, FaAutoprefixer,
-    FaSellsy, FaWordpressSimple, FaProjectDiagram, FaRocket
-};
-
-interface ServiceCardProps {
-    service: {
-        name: string;
-        iconName?: string; // Changed to iconName
-    };
-    direction?: "row" | "column";
-}
 
 interface Service {
     name: string;
     iconName?: string; // Changed to iconName
     path?: string; // Changed to iconName
+    img?: any; // Changed to iconName
 }
 const allServicesWithIcons: Service[] = initialAllServices as Service[];
 
@@ -101,16 +71,6 @@ export function SliderItems() {
         </SmartLink>
       </Row>
 
-      {/* <Particle
-        fill
-        fillWidth
-        interactive
-        speed={3}
-        interactionRadius={30}
-        density={200}
-        // height={24}
-      >
-      { */}
         <div
           ref={scrollContainerRef}
           className={`${styles.scrollContainer} z-1`}
@@ -119,29 +79,39 @@ export function SliderItems() {
         >
           <div className={styles.itemsWrapper}>
             {[...allServicesWithIcons, ...allServicesWithIcons].map((tech, index) => {
-              const IconComponent = IconComponents[tech.iconName || ''];
               return (
                   <Column
-                    className={styles.techItem}
                     key={`${tech.name}-${index}`}
                   >
-                    {IconComponent && (
-                      <IconComponent size={48} className={styles.techIcon} onBackground="neutral-weak" color="neutral-weak"/>
-                    )}
+                    <SmartLink href={tech.path} unstyled>
+                      <Row maxWidth={24} className={styles.glowingBorder}>
+                        <Card radius="l-4" direction="column" border="neutral-alpha-medium">
+                          <Media
+                            border="neutral-alpha-weak"
+                            sizes="s:300px"
+                            fillWidth
+                            width={21}
+                            height={15}
+                            // aspectRatio="4 / 3"
+                            radius="l"
+                            alt={tech.name}
+                            src={tech?.img}
+                            unoptimized
+                          />
 
-                    <Text onBackground="neutral-weak" variant="body-default-m" className={styles.statDescription}>
-                      {tech.name}
-                    </Text>
+                          <Column fillWidth paddingLeft="20" paddingY="24" gap="8" >
+                            <Text onBackground="neutral-strong" variant="heading-default-s" className={styles.statDescription}>
+                              {tech.name}
+                            </Text>
+                          </Column>
+                        </Card>
+                      </Row>
+                    </SmartLink>
                   </Column>
-                // <SmartLink href={tech.path} key={`${tech.name}-${index}`}>
-                // </SmartLink>
               );
             })}
           </div>
         </div>
-      {/* }
-      </Particle> */}
-
     </div>
   );
 }

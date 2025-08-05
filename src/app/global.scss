@@ -16,3 +16,13 @@
 html {
   scroll-behavior: smooth !important;
 }
+
+:root,
+:host {
+  --glow-deg: -90deg;
+  --clr-1: #ff000076;
+  --clr-2: #ffff0069;
+  --clr-3: #00800092;
+  --clr-4: #0000ff7f;
+  --clr-5: #80008063;
+}

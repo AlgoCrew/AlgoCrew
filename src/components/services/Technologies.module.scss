@@ -71,3 +71,55 @@
   text-align: center;
   line-height: 1.25; /* leading-tight equivalent */
 }
+
+
+
+.glowingBorder {
+  --gradient-glow: var(--clr-1), var(--clr-2), var(--clr-3), var(--clr-4),
+    var(--clr-5), var(--clr-1);
+
+  border-top: none !important;
+  position: relative;
+  isolation: isolate;
+
+  animation: glow 10s infinite linear;
+}
+
+@keyframes glow {
+  100% {
+    --glow-deg: 270deg;
+  }
+}
+
+.glowingBorder::before,
+.glowingBorder::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+}
+
+.glowingBorder::before {
+  z-index: -1;
+  // background: var(--surface, canvas);
+  inset: 1px;
+  // scale: 1.2 1;
+  // transform-origin: right;
+  filter: blur(var(--glow-size, 1rem));
+}
+
+.glowingBorder::after {
+  z-index: -2;
+  inset: -1px;
+  background: conic-gradient(from var(--glow-deg), var(--gradient-glow));
+  filter: blur(var(--glow-size, 1rem));
+  opacity: var(--glow-intensity, 0.125);
+}
+
+.glowingBorder {
+  margin-inline-start: auto;
+  border: var(--border-width, 1px) solid transparent;
+
+  &::before {
+    transform-origin: left;
+  }
+}

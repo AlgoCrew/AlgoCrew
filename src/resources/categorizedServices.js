@@ -33,6 +33,12 @@ const categorizedServices = [
         "slug": "saas-development"
       },
       {
+        "name": "MVP Development",
+        "description": "Building Minimum Viable Products (MVP) to quickly test ideas, gain user feedback, and deliver core features for early market entry.",
+        "image": "mvp-development",
+        "slug": "FaRocket",
+      },
+      {
         "name": "PaaS (Platform as a Service)",
         "description": "Providing scalable and flexible platforms for building, deploying, and managing applications.",
         "image": "/images/paas.jpg",
@@ -43,6 +49,12 @@ const categorizedServices = [
         "description": "Building and deploying applications specifically designed for cloud environments, leveraging microservices and containers.",
         "image": "/images/cloud-native-application.jpg",
         "slug": "cloud-native-application"
+      },
+      {
+        "name": "WordPress Development",
+        "description": "Building and customizing feature-rich WordPress websites that are easy to manage, scalable, and fully optimized for SEO.",
+        "image": "/images/cloud-native-application.jpg",
+        "slug": "web-app-development",
       },
       {
         "name": "UX/UI Design",
