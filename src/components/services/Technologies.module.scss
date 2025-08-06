@@ -2,6 +2,23 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
+
+.swiperContainer {
+  width: 100%;
+  overflow: hidden; /* Make sure no overflow is visible */
+  padding-bottom: 24px; /* Adjust padding if needed for pagination dots */
+  transition-timing-function: linear !important;
+}
+
+.swiperSlide {
+  width: 334px !important; /* Set a fixed width for your card */
+  flex-shrink: 0; /* Ensures slides don't shrink */
+}
+
+.swiper-pagination-bullet-active {
+  background: black !important;
+}
+
 .appContainer {
   display: flex;
   flex-direction: column;
@@ -42,9 +59,11 @@
 }
 
 .techItem {
-  flex-shrink: 0; /* flex-none equivalent */
-  min-width: 208px; /* w-52 equivalent */
-  height: 160px; /* h-40 equivalent */
+  text-align: center;
+  flex-shrink: 0 !important; /* flex-none equivalent */
+  min-width: 208px !important; /* w-52 equivalent */
+  width: 208px !important;
+  height: 160px !important; /* h-40 equivalent */
   background: none; /* bg-gradient-to-br from-blue-500 to-indigo-600 equivalent */
   display: flex;
   flex-direction: column;
@@ -62,7 +81,9 @@
 }
 
 .techIcon {
-  margin-bottom: 12px; /* mb-3 equivalent */
+  width: 170px !important;
+  height: 90px !important;
+  margin-bottom: 12px !important; /* mb-3 equivalent */
 }
 
 .techName {
@@ -71,8 +92,6 @@
   text-align: center;
   line-height: 1.25; /* leading-tight equivalent */
 }
-
-
 
 .glowingBorder {
   --gradient-glow: var(--clr-1), var(--clr-2), var(--clr-3), var(--clr-4),
