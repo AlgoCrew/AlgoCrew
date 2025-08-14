@@ -22,6 +22,7 @@ export default function FormTogger() {
           onClick={() => setActiveForm('hireDeveloper')}
           variant={activeForm === 'hireDeveloper' ? 'primary' : 'secondary'}
           size="m"
+          data-border="rounded"
         >
           Hire a Developer
         </Button>
@@ -29,6 +30,7 @@ export default function FormTogger() {
           onClick={() => setActiveForm('generalInquiry')}
           variant={activeForm === 'generalInquiry' ? 'primary' : 'secondary'}
           size="m"
+          data-border="rounded"
         >
           General Inquiry
         </Button>
