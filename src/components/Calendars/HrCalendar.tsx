@@ -24,13 +24,14 @@ export function HrCalendar() {
         Looking for the right tech partner? Let’s explore how we can help. Talk to our experts now!!
       </Text>
 
-      <Flex maxWidth="m" gap="s" horizontal="start" vertical="start">
+      <Flex maxWidth="m" gap="s" horizontal="start" vertical="start" mobileDirection="column">
           <Column
               id={about.intro.title}
               // fillWidth
               minHeight="80"
               vertical="center"
               // marginBottom="8"
+              className={styles.columnHeight}
           >
               {about.calendar.display && (
                   <Flex
@@ -63,6 +64,7 @@ export function HrCalendar() {
               minHeight="80"
               vertical="center"
               // marginBottom="8"
+              className={styles.columnHeight}
           >
               {about.calendar.display && (
                   <Flex

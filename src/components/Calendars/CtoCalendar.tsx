@@ -24,13 +24,14 @@ export function CtoCalendar() {
         Looking for the right tech partner? Let’s explore how we can help. Talk to our experts now!!
       </Text>
 
-      <Flex maxWidth="m" gap="s" horizontal="start" vertical="start">
+      <Flex maxWidth="m" gap="s" horizontal="start" vertical="start" mobileDirection="column">
           <Column
               id={about.intro.title}
               // fillWidth
-              minHeight="80"
+              // minHeight="80"
               vertical="center"
               // marginBottom="8"
+              className={styles.columnHeight}
           >
               {about.calendar.display && (
                   <Flex
@@ -44,7 +45,7 @@ export function CtoCalendar() {
                       radius="full"
                       // padding="4"
                       gap="8"
-                      marginBottom="m"
+                      // marginBottom="m"
                       data-cal-namespace="30min"
                       data-cal-link="cto-algocrew/30min"
                       data-cal-config='{"layout":"month_view"}'
@@ -60,9 +61,10 @@ export function CtoCalendar() {
           <Column
               id={about.intro.title}
               // fillWidth
-              minHeight="80"
+              // minHeight="80"
               vertical="center"
               // marginBottom="8"
+              className={styles.columnHeight}
           >
               {about.calendar.display && (
                   <Flex
@@ -78,7 +80,7 @@ export function CtoCalendar() {
                       radius="full"
                       // padding="4"
                       gap="8"
-                      marginBottom="m"
+                      // marginBottom="m"
                       vertical="center"
                   >
                     {/* <Button prefixIcon="email" data-border="rounded" href="mailto:info@algocrew.io" variant="primary">

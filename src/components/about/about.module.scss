@@ -90,3 +90,12 @@
     transform-origin: left;
   }
 }
+
+.columnHeight {
+    height: 3rem;
+}
+@media (min-width: 992px) {
+    .columnHeight {
+        height: 5rem;
+    }
+}

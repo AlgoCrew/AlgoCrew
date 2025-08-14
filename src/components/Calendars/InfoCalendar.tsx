@@ -25,13 +25,14 @@ export function InfoCalendar() {
 
       </Text>
 
-      <Flex maxWidth="m" gap="s" horizontal="start" vertical="start">
+      <Flex maxWidth="m" gap="s" horizontal="start" vertical="start" mobileDirection="column">
           <Column
               id={about.intro.title}
               // fillWidth
-              minHeight="80"
+              // minHeight="80"
               vertical="center"
               // marginBottom="8"
+              className={styles.columnHeight}
           >
               {about.calendar.display && (
                   <Flex
@@ -45,7 +46,6 @@ export function InfoCalendar() {
                       radius="full"
                       // padding="4"
                       gap="8"
-                      marginBottom="m"
                       data-cal-namespace="30min"
                       data-cal-link="info-algocrew/30min"
                       data-cal-config='{"layout":"month_view"}'
@@ -60,9 +60,10 @@ export function InfoCalendar() {
           <Column
               id={about.intro.title}
               // fillWidth
-              minHeight="80"
+              // minHeight="80"
               vertical="center"
               // marginBottom="8"
+              className={styles.columnHeight}
           >
               {about.calendar.display && (
                   <Flex
@@ -78,7 +79,6 @@ export function InfoCalendar() {
                       radius="full"
                       // padding="4"
                       gap="8"
-                      marginBottom="m"
                       vertical="center"
                   >
                     {/* <Button prefixIcon="email" data-border="rounded" href="mailto:info@algocrew.io" variant="primary">
