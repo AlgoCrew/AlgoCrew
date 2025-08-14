@@ -71,7 +71,7 @@ export default function About() {
       />
  
       <Flex fillWidth mobileDirection="column" horizontal="center">
-        <Column className={styles.blockAlign} flex={12} fillWidth>
+        <Column className={styles.blockAlign} flex={12} fillWidth gap="l">
           <Column
             id={aboutUs.intro.title}
             fillWidth

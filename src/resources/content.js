@@ -58,7 +58,7 @@ const home = {
   // Escaped apostrophes
   title: "AlgoCrew - Delivering Top-Tier IT Solutions and Services",
   description: "At AlgoCrew, we turn bold ideas into scalable software solutions. From MVP development to full-scale digital transformation, our expert teams combine cutting-edge technology with deep industry insight to deliver impactful, tailor-made products. Whether you are building something new or optimizing legacy systems, we are your partner in growth and innovation.",
-  headline: <>Your Idea. Our Logistics. A New Reality.</>,
+  headline: <>Your Idea. Our Expertise. A New Reality.</>,
   featured: {
     display: true,
     title: <>Our Recent Projects <strong className="ml-4"></strong></>,

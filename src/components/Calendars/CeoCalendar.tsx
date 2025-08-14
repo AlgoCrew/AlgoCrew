@@ -2,13 +2,13 @@
 
 import React from "react";
 
-import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Meta, Schema, Icon, IconButton } from "@once-ui-system/core";
-import { home, about, person, newsletter, baseURL, routes, services, social } from "@/resources";
+import { Flex, Text, Button, Column } from "@once-ui-system/core";
+import { about } from "@/resources";
 import styles from "@/components/about/about.module.scss";
 
+  
 import { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
-import BlurAnimatedText from "../ui/BlurAnimatedText";
 
 export function CeoCalendar() {
   useEffect(() => {
@@ -19,16 +19,15 @@ export function CeoCalendar() {
   }, [])
 
   return (
-    <>
+    <>     
       <Text onBackground="neutral-weak" variant="body-default-l" marginBottom="m">
-        Want to see if we’re the right fit? Let’s work together risk-free. Try us free for 7 days!! just send us an email at {' '} <BlurAnimatedText text="ceo@algocrew.io" />{' '}
-        or schedule your free consultation now!
+        Want to see if we’re the right fit? Let’s work together risk-free. Try us free for 7 days!!
       </Text>
 
-      <Column maxWidth="m" gap="xl" horizontal="center">
+      <Flex maxWidth="m" gap="s" horizontal="start" vertical="start">
           <Column
               id={about.intro.title}
-              fillWidth
+              // fillWidth
               minHeight="80"
               vertical="center"
               // marginBottom="8"
@@ -36,27 +35,61 @@ export function CeoCalendar() {
               {about.calendar.display && (
                   <Flex
                       fitWidth
-                      border="brand-alpha-medium"
+                      // border="brand-alpha-medium"
                       className={` ${styles.blockAlign} ${styles.cursorPointer}`}
                       style={{
                           backdropFilter: "blur(var(--static-space-1))",
                       }}
-                      background="brand-alpha-weak"
+                      background="brand-alpha-strong"
                       radius="full"
-                      padding="4"
+                      // padding="4"
                       gap="8"
-                      // marginBottom="m"
+                      marginBottom="m"
                       data-cal-namespace="30min"
                       data-cal-link="ceo-algocrew/30min"
                       data-cal-config='{"layout":"month_view"}'
                       vertical="center"
                   >
-                      <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                      <Flex padding="8" paddingRight="12" >Schedule a call</Flex>
+                      <Button prefixIcon="calendar" data-border="rounded" >
+                        <Flex padding="8">Book a Free Consultation</Flex>
+                      </Button>
                   </Flex>
               )}
           </Column>
-      </Column>
+          <Column
+              id={about.intro.title}
+              // fillWidth
+              minHeight="80"
+              vertical="center"
+              // marginBottom="8"
+          >
+              {about.calendar.display && (
+                  <Flex
+                      fitWidth
+                      // border="brand-alpha-medium"
+                      border="accent-alpha-weak"
+                      className={`animate-bounce ${styles.blockAlign} ${styles.cursorPointer} ${styles.glowingBorder}`}
+                      style={{
+                          backdropFilter: "blur(var(--static-space-1))",
+                      }}
+                      // background="brand-alpha-weak"
+                      background="accent-alpha-weak"
+                      radius="full"
+                      // padding="4"
+                      gap="8"
+                      marginBottom="m"
+                      vertical="center"
+                  >
+                    {/* <Button prefixIcon="email" data-border="rounded" href="mailto:info@algocrew.io" variant="primary">
+                      <Flex padding="8" paddingRight="12" >Email us directly</Flex>
+                    </Button> */}
+                    <Button prefixIcon="email" data-border="rounded" href="mailto:ceo@algocrew.io" variant="secondary">
+                      <Flex padding="8">Email us directly</Flex>
+                    </Button>
+                  </Flex>
+              )}
+          </Column>
+      </Flex>
     </>
   );
 }

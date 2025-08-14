@@ -25,7 +25,7 @@ export async function generateMetadata() {
 
 export default function Home() {  
   return (
-    <Column maxWidth="m" gap="l" horizontal="center">
+    <Column maxWidth="m" gap="xl" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -67,6 +67,7 @@ export default function Home() {
               fillWidth
               minHeight="80"
               vertical="center"
+              style={{isolation: "isolate"}}
             >
               <InfoCalendar />
             </Column>

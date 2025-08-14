@@ -35,3 +35,58 @@
         align-self: center;
     }
 }
+
+
+
+
+
+.glowingBorder {
+  --gradient-glow: #00ffe571, #ecec6897, #73db738d, #3d3df271,
+    #e23ee288, #00ffe571;
+
+  border-top: none !important;
+  position: relative;
+  isolation: isolate;
+
+  animation: glow 10s infinite linear;
+}
+
+@keyframes glow {
+  100% {
+    --glow-deg: 150deg;
+  }
+}
+
+.glowingBorder::before,
+.glowingBorder::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+}
+
+.glowingBorder::before {
+  z-index: -1;
+  // background: var(--surface, canvas);
+  inset: 2px;
+  scale: 1.2 1;
+  // transform-origin: right;
+  filter: blur(var(--glow-size, 2rem));
+}
+
+.glowingBorder::after {
+  z-index: -2;
+  inset: -2px;
+  background: conic-gradient(from var(--glow-deg), var(--gradient-glow));
+
+  filter: blur(var(--glow-size, 2rem));
+  opacity: var(--glow-intensity, 0.2);
+}
+
+.glowingBorder {
+  margin-inline-start: auto;
+  border: var(--border-width, 1px) solid transparent;
+
+  &::before {
+    transform-origin: left;
+  }
+}

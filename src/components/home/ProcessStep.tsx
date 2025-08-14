@@ -1,16 +1,62 @@
-import React from 'react';
+"use client"
+
+import React, {useEffect} from 'react';
 import styles from './ProcessStep.module.scss'; // Keeping original styles import
 import { Column, Flex, Heading, Text, RevealFx } from '@once-ui-system/core';
 import {
     FaRegLightbulb, FaCogs, FaSyncAlt
 } from 'react-icons/fa'; // Using Font Awesome icons as an example
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const IconComponents: { [key: string]: React.ElementType } = {
     FaRegLightbulb, FaCogs, FaSyncAlt
 };
 
 export function ProcessSteps() {
-  return (
+
+    useEffect(() => {
+        // Register GSAP plugins
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.matchMedia().add(
+            {
+                // Desktop and larger screens
+                isDesktop: '(min-width: 768px)',
+                // Small screens
+                isMobile: '(max-width: 767px)',
+            },
+            (context) => {
+                let { isDesktop, isMobile } = context.conditions || {};
+
+                for (let i = 1; i <= 3; i++) {
+                    gsap.fromTo(
+                        `.processStep-${i}`,
+                        {
+                            opacity: 0,
+                            // Set y based on screen size
+                            y: isDesktop ? 30 * i * 2 : 30,
+                        },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            duration: 4 * i,
+                            delay: i * 1,
+                            scrollTrigger: {
+                                trigger: `.processStep-${i}`,
+                                start: 'top 100%',
+                                end: 'top 40%',
+                                scrub: true,
+                                toggleActions: 'play none none none',
+                            },
+                        }
+                    );
+                }
+            }
+        );
+    }, []);
+
+      return (
     <>
       <div className={styles.processSectionContainer}>
         <div className={styles.processContentWrapper}>
@@ -86,9 +132,9 @@ const ProcessStep = ({
   const IconComponent = icon ? IconComponents[icon] : null;
 
   return (
-    <div className={styles.processStep}>
+    <div className={`${styles.processStep} processStep-${number}`}>
       <div className={styles.processStepIconWrapper}>
-        <div className={styles.stepCircleBase}>
+        <div className={`${styles.stepCircleBase} ${styles.glowingBorder}`}>
           {IconComponent && (
             <IconComponent size={48} className={styles.faIcon}/> // Render the icon
           )}

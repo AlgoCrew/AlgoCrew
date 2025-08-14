@@ -9,6 +9,9 @@
   padding-bottom: 24px; /* Adjust padding if needed for pagination dots */
   transition-timing-function: linear !important;
 }
+.swiperImage {
+  border-radius: 19px 19px 0 0;
+}
 
 .swiperSlide {
   width: 334px !important; /* Set a fixed width for your card */

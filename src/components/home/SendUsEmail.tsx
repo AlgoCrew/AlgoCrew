@@ -99,21 +99,23 @@ export const SendUsEmail = () => {
         className="align-items-center"
       >
         <Flex height="48" vertical="center" gap="m" mobileDirection="column">
-          <Flex height="48" vertical="center">
-            <Button
-              href="mailto:info@algocrew.io"
-            >
-              Send Us an email
-            </Button>
-          </Flex>
-
-          <Flex height="48" vertical="center">
+          <Flex vertical="center" radius="full">
             <Button
               data-cal-namespace="30min"
               data-cal-link="info-algocrew/30min"
               data-cal-config='{"layout":"month_view"}'
+              prefixIcon="calendar"
+              data-border="rounded" variant="primary"
             >
               Schedule a call
+            </Button>
+          </Flex>
+
+          <Flex vertical="center" background="accent-alpha-weak" radius="full">
+            <Button
+              prefixIcon="email" data-border="rounded" href="mailto:info@algocrew.io" variant="secondary"
+            >
+              Email us directly
             </Button>
           </Flex>
         </Flex>

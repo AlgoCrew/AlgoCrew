@@ -172,7 +172,7 @@ export function SliderItems() {
         {allServicesWithIcons.map((tech, index) => (
           <SwiperSlide key={`${tech.name}-${index}`} className={styles.swiperSlide}>
             <SmartLink href={tech.path} unstyled>
-              <Card radius="l-4" direction="column" border="neutral-alpha-medium">
+              <Card radius="l-4" direction="column" border="neutral-alpha-medium" background="brand-alpha-weak">
                 <Media
                   border="neutral-alpha-weak"
                   sizes="s:300px"
@@ -182,9 +182,10 @@ export function SliderItems() {
                   radius="l"
                   alt={tech.name}
                   src={tech.img}
+                  className={styles.swiperImage}
                   unoptimized // Use unoptimized for faster loading if images are pre-optimized
                 />
-                <Column fillWidth paddingLeft="20" paddingY="24" gap="8">
+                <Column fillWidth paddingLeft="20" paddingY="24" gap="8" >
                   <Text onBackground="neutral-strong" variant="heading-default-s" className={styles.statDescription}>
                     {tech.name}
                   </Text>

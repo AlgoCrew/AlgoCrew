@@ -36,7 +36,7 @@ export default function Home() {
           </RevealFx>
 
           <RevealFx translateY="8" delay={0.2} fillWidth paddingBottom="32">
-            <Text onBackground="neutral-weak" variant="body-default-xl">
+            <Text onBackground="neutral-weak" variant="body-default-l">
               {services.subline}
             </Text>
           </RevealFx>

@@ -19,12 +19,12 @@ html {
 
 :root,
 :host {
-  --glow-deg: -90deg;
-  --clr-1: #ff000076;
-  --clr-2: #ffff0069;
-  --clr-3: #00800092;
-  --clr-4: #0000ff7f;
-  --clr-5: #80008063;
+  --glow-deg: 45deg;
+  --clr-1: #ff0000;
+  --clr-2: #ffff00;
+  --clr-3: #008000;
+  --clr-4: #0000ff;
+  --clr-5: #e23ee2;
 }
 
 @theme inline {
