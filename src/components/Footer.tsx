@@ -47,7 +47,7 @@ export const Footer = () => {
 
             <Flex gap="16" vertical="center">
               <Text variant="body-default-s">
-                +1 (437) 383‑6794
+                +1 (437) 450‑9656
               </Text>
             </Flex>
           </Flex>
