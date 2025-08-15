@@ -130,6 +130,7 @@ export default function Parallax({
                 alt={`AlgoCrew - ${service.name}`}
                 src={service.side_image}
                 className='h-[70vh]! object-cover fit-cover'
+                style={{filter: 'drop-shadow(4px 2px 20px #0093B9)'}}
               >
               </Media>
             </Column>
