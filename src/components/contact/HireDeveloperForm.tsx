@@ -239,7 +239,7 @@ export default function HireDeveloperForm() {
           >
             <SmartLink href={'tel:+1 (437) 383‑6794'}>
               <Text onBackground="neutral-medium">
-                +1 (437) 383‑6794
+                +1 (437) 450‑9656
               </Text>
             </SmartLink>
           </Text>
