@@ -42,6 +42,12 @@ const allServices = [
     "short_description": "Building and customizing feature-rich WordPress websites that are easy to manage, scalable, and fully optimized for SEO."
   },
   {
+    "name": "Digital Marketing",
+    "iconName": "FaGlobe",
+    "path": "services/digital-marketing",
+    "short_description": "Boosting your online presence and driving measurable results with comprehensive digital marketing strategies.",
+  },
+  {
     "name": "Cloud Ops & Migration",
     "iconName": "FaExchangeAlt",
     "path": "services/cloud-devops",
