@@ -7,6 +7,7 @@ import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import { SliderItems } from "@/components/services/SliderItems";
 import { ProcessSteps } from "@/components/home/ProcessStep";
+import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 import { OfferingTechnologies } from "@/components/services/OfferingTechnologies";
 import Details from "@/components/about/Details";
 import { InfoCalendar } from "@/components/Calendars/InfoCalendar";
@@ -25,7 +26,7 @@ export async function generateMetadata() {
 
 export default function Home() {  
   return (
-    <Column maxWidth="m" gap="xl" horizontal="center">
+    <Column maxWidth="xl" gap="xl" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -40,7 +41,7 @@ export default function Home() {
         }}
       />
 
-      <Column fillWidth paddingY="24" gap="m">
+      {/* <Column fillWidth paddingY="24" gap="m">
         <Column maxWidth="s">
           {home.featured.display && (
           <RevealFx fillWidth horizontal="start" paddingTop="16" paddingBottom="32" paddingLeft="12">
@@ -73,50 +74,109 @@ export default function Home() {
             </Column>
           </RevealFx>
         </Column>
+      </Column> */}
+
+      <Column
+        fillWidth
+        paddingY="64"
+        gap="m"
+        style={{
+          backgroundImage: `url('/images/hero.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: 'rgba(0, 0, 0, .6)',
+          backgroundBlendMode: 'color',
+          minHeight: '700px',
+        }}
+        horizontal="end"
+      >
+        <Column maxWidth="s" paddingRight="48" className="px-5">
+          {home.featured.display && (
+            <RevealFx fillWidth horizontal="start" paddingTop="16" paddingBottom="32" paddingLeft="12">
+              <Badge
+                background="brand-alpha-weak"
+                paddingX="12"
+                paddingY="4"
+                onBackground="neutral-strong" // Keep the background interaction logic if needed
+                style={{ color: 'white' }} // Explicitly set text color to white
+                textVariant="label-default-s"
+                arrow={false}
+                href={home.featured.href}
+              >
+                <Row paddingY="2">{home.featured.title}</Row>
+              </Badge>
+            </RevealFx>
+          )}
+          <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
+            <Heading
+              wrap="balance"
+              variant="display-strong-l"
+              color="white"
+              style={{ color: 'white' }}
+            >
+              {home.headline}
+            </Heading>
+          </RevealFx>
+
+          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
+            <Text
+              wrap="balance"
+              onBackground="neutral-weak"
+              style={{ color: 'white' }}
+              variant="body-default-l"
+            >
+              {home.subline}
+            </Text>
+          </RevealFx>
+
+          <RevealFx translateY="8" delay={0.3} fillWidth horizontal="start">
+            <Column
+              id={about.intro.title}
+              fillWidth
+              minHeight="80"
+              vertical="center"
+              style={{isolation: "isolate"}}
+            >
+              <InfoCalendar />
+            </Column>
+          </RevealFx>
+        </Column>
       </Column>
 
-      <RevealFx translateY="16" delay={1}>
+      <RevealFx translateY="16" delay={1} fillWidth className="px-6 md:px-16">
         <SliderItems />
       </RevealFx>
 
-      <RevealFx translateY="16" delay={1.3}>
+      <RevealFx translateY="16" delay={1.3} paddingY="64">
         <OfferingTechnologies />
       </RevealFx>
 
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[0]} />
-      </RevealFx>
-
-      <RevealFx translateY="16" delay={1}>
+      <RevealFx translateY="16" delay={1} fillWidth horizontal="center">
         <ProcessSteps />
       </RevealFx>
 
-      <RevealFx translateY="16" delay={1.6}>
+      <RevealFx translateY="16" delay={0.6} fillWidth className="px-6 md:px-16">
+        <Projects range={[0]} />
+      </RevealFx>
+
+      <RevealFx translateY="16" delay={1} fillWidth horizontal="center">
+        <WhyChooseUs />
+      </RevealFx>
+
+      <RevealFx translateY="16" delay={1.6} horizontal="center">
         <Details />
       </RevealFx>
 
-      <RevealFx translateY="16" delay={1}>
+      <RevealFx translateY="16" delay={1} fillWidth>
         <AnimatedTestimonials />
       </RevealFx>
 
-
-      {/* {routes["/blog"] && (
-        <Flex fillWidth gap="24" mobileDirection="column">
-          <Flex flex={1} paddingLeft="l" paddingTop="24">
-            <Heading as="h2" variant="display-strong-xs" wrap="balance">
-              Latest from the blog
-            </Heading>
-          </Flex>
-
-          <Flex flex={3} paddingX="20">
-            <Posts range={[1, 2]} columns="2" />
-          </Flex>
-        </Flex>
-      )} */}
       <Column
-        maxWidth="m"
+        maxWidth="xl"
         minHeight="80"
         vertical="center"
+        className="px-3 md:px-16"
         // marginBottom="8"
       >
         <SendUsEmail />

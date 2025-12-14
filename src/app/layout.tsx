@@ -64,6 +64,7 @@ export default async function RootLayout({
         fonts.body.variable,
         fonts.label.variable,
         fonts.code.variable,
+        'body-overflow-overlay'
       )}
     >
       <head>
@@ -143,8 +144,14 @@ export default async function RootLayout({
       </head>
 
       <Providers>
-        <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center">
-          <Background
+        <Column as="body" background="page" style={{
+            minHeight: '100vh',
+            margin: '0',
+            padding: '0',
+          }}
+          className="body-overflow-overlay"
+          fillWidth margin="0" padding="0" horizontal="center">
+          {/* <Background
             position="fixed"
             mask={{
               x: effects.mask.x,
@@ -152,46 +159,47 @@ export default async function RootLayout({
               radius: effects.mask.radius,
               cursor: effects.mask.cursor,
             }}
-            gradient={{
-              display: effects.gradient.display,
-              opacity: effects.gradient.opacity as opacity,
-              x: effects.gradient.x,
-              y: effects.gradient.y,
-              width: effects.gradient.width,
-              height: effects.gradient.height,
-              tilt: effects.gradient.tilt,
-              colorStart: effects.gradient.colorStart,
-              colorEnd: effects.gradient.colorEnd,
-            }}
+            // gradient={{
+            //   display: effects.gradient.display,
+            //   opacity: effects.gradient.opacity as opacity,
+            //   x: effects.gradient.x,
+            //   y: effects.gradient.y,
+            //   width: effects.gradient.width,
+            //   height: effects.gradient.height,
+            //   tilt: effects.gradient.tilt,
+            //   colorStart: effects.gradient.colorStart,
+            //   colorEnd: effects.gradient.colorEnd,
+            // }}
             dots={{
               display: effects.dots.display,
               opacity: effects.dots.opacity as opacity,
               size: effects.dots.size as SpacingToken,
               color: effects.dots.color,
             }}
-            grid={{
-              display: effects.grid.display,
-              opacity: effects.grid.opacity as opacity,
-              color: effects.grid.color,
-              width: effects.grid.width,
-              height: effects.grid.height,
-            }}
-            lines={{
-              display: effects.lines.display,
-              opacity: effects.lines.opacity as opacity,
-              size: effects.lines.size as SpacingToken,
-              thickness: effects.lines.thickness,
-              angle: effects.lines.angle,
-              color: effects.lines.color,
-            }}
-          />
-          <Flex fillWidth minHeight="16" hide="s"/>
+            // grid={{
+            //   display: effects.grid.display,
+            //   opacity: effects.grid.opacity as opacity,
+            //   color: effects.grid.color,
+            //   width: effects.grid.width,
+            //   height: effects.grid.height,
+            // }}
+            // lines={{
+            //   display: effects.lines.display,
+            //   opacity: effects.lines.opacity as opacity,
+            //   size: effects.lines.size as SpacingToken,
+            //   thickness: effects.lines.thickness,
+            //   angle: effects.lines.angle,
+            //   color: effects.lines.color,
+            // }}
+          /> */}
+          {/* <Flex fillWidth minHeight="16" hide="s"/> */}
             <Header />
 
             <Flex
               zIndex={0}
               fillWidth
-              padding="l"
+              paddingTop="80"
+              paddingBottom="l"
               horizontal="center"
               flex={1}
             >

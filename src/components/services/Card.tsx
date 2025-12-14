@@ -53,7 +53,7 @@ export default function ServiceCard({ service, direction }: ServiceCardProps) {
             radius="l-4"
             style={{ cursor: 'default', flexDirection: direction === 'row' ? 'row' : 'column', height: '100%' }}
         >
-            <Column radius="l-4" fillWidth fillHeight className={`${styles.mediaObject} display-flex surface-background neutral-border-alpha-medium border-solid border-1 radius-l-4 flex-column transition-macro-medium min-width-0 fill-width position-relative cursor-interactive neutral-on-background-strong`}>
+            <Column radius="l-4" fillWidth fillHeight className={`${styles.mediaObject} display-flex surface-background neutral-border-alpha-medium border-solid border-1 radius-l-4 flex-column transition-macro-medium min-width-0 position-relative cursor-interactive neutral-on-background-strong`}>
                 <SmartLink href={service.path}>
                     <Column
                         position="relative"

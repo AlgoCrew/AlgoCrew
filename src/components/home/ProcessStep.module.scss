@@ -55,7 +55,7 @@
 .processHeaderUnderline {
     width: 6rem; /* Equivalent to w-24 */
     height: 0.25rem; /* Equivalent to h-1 */
-    background-color: #0093B9; /* Teal color */
+    background-color: #00cccc; /* Teal color */
     margin-left: auto;
     margin-right: auto;
     border-radius: 9999px; /* Fully rounded */
@@ -88,6 +88,13 @@
     .processStepsContainer {
     flex-direction: row; /* Horizontal layout on large screens */
     gap: 2rem; /* Equivalent to lg:space-x-8 */
+    }
+}
+
+@media (max-width: 992px) {
+    .sectionHeader {
+        text-align: center;
+        padding-inline: 16px;
     }
 }
 
@@ -155,9 +162,8 @@
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Larger shadow */
 }
 
-/* Default background color for number overlay */
 .numberOverlayDefault {
-    background-color: #0093B9;
+    background-color: #00cccc;
     width: fit-content;
     padding-block: 8px;
     padding-inline: 16px;
@@ -168,9 +174,8 @@
     right: 0;
 }
 
-/* Teal background color for the third step's number overlay */
 .numberOverlayTeal {
-    background-color: #0093B9; /* Teal color */
+    background-color: #00cccc; /* Teal color */
 }
 
 /* Styles for the large, faded step number */

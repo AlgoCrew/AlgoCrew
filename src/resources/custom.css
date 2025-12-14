@@ -1,9 +1,5 @@
-/* :root {
-  /*
-  /* Example setup for custom colors */
-  /* Generate at: https://once-ui.com/customize */
-  /*
-  --scheme-brand-100: #08002f;
+:root {
+  /* --scheme-brand-100: #08002f;
   --scheme-brand-200:  #04025c;
   --scheme-brand-300:  #1f398e;
   --scheme-brand-400:  #3856ae;
@@ -49,6 +45,20 @@
   --scheme-neutral-1200: #eeffff;
   --scheme-neutral-600-10: rgba(137,152,159,0.1);
   --scheme-neutral-600-30: rgba(137,152,159,0.3);
-  --scheme-neutral-600-50: rgba(137,152,159,0.5);
-  /*
-}*/
+  --scheme-neutral-600-50: rgba(137,152,159,0.5); */
+  --scheme-brand-100: #000b12;
+  --scheme-brand-200: #001b20;
+  --scheme-brand-300: #00474a;
+  --scheme-brand-400: #006466;
+  --scheme-brand-500: #008283;
+  --scheme-brand-600: #00ccccf0;
+  --scheme-brand-600-15: rgba(0,167,167,0.15);
+  --scheme-brand-600-30: rgba(0,167,167,0.3);
+  --scheme-brand-600-50: rgba(0,167,167,0.5);
+  --scheme-brand-700: #00ccccf0;
+  --scheme-brand-800: #00ccccf0;
+  --scheme-brand-900: #00ccccf0;
+  --scheme-brand-1000: #00ccccf0;
+  --scheme-brand-1100: #00ccccf0;
+  --scheme-brand-1200: #00ccccf0;
+}

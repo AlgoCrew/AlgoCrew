@@ -5,6 +5,22 @@
   // --brand-on-background-medium: #0093B9;
   //  --page-background: var(--neutral-background-weak);
    --page-background: #f1f1f1 !important;
+
+  .body-overflow-overlay {
+    overflow: overlay;
+  }
+
+  .body-overflow-overlay::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+  .body-overflow-overlay::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+  .body-overflow-overlay::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
 }
 
 [data-theme=dark] { 

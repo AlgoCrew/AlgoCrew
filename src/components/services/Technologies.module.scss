@@ -11,6 +11,11 @@
 }
 .swiperImage {
   border-radius: 19px 19px 0 0;
+  width: 100%;
+}
+
+.imageContainer:hover {
+  transform: translateY(20);
 }
 
 .swiperSlide {
@@ -30,6 +35,7 @@
   padding-block: 0; /* p-4 equivalent */
   font-family: 'Inter', sans-serif;
   overflow: hidden;
+  width: 100%;
 }
 
 .mainHeading {
@@ -143,5 +149,33 @@
 
   &::before {
     transform-origin: left;
+  }
+}
+
+.blockGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  width: 100%;
+}
+
+.blockItem {
+  width: 100%;
+}
+
+.blockItem:hover {
+  transition: all .5s;
+  transform: translateY(-10px);
+}
+
+.blockItem:hover img {
+  transition: all .9s;
+  transform: translateY(-20px);
+  filter: brightness(0.8);
+}
+
+@media (min-width: 1024px) {
+  .blockGrid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

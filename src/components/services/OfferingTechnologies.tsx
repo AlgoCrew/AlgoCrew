@@ -155,7 +155,7 @@
 
 import React from 'react';
 import styles from './Technologies.module.scss';
-import { Heading, Row, Text, Media } from '@once-ui-system/core';
+import { Heading, Row, Text, Media, Column } from '@once-ui-system/core';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode, A11y } from 'swiper/modules';
 
@@ -214,10 +214,15 @@ export function OfferingTechnologies() {
 
   return (
     <div className={styles.appContainer}>
-      <Row fillWidth horizontal="start" paddingBottom="16">
-        <Heading wrap="balance" variant="display-strong-m">
-          Our Technologies
-        </Heading>
+      <Row fillWidth horizontal="start" paddingBottom="48" className="px-6 md:px-16">
+        <Column gap="xs" horizontal="start">
+          <Text wrap="balance" variant="body-strong-l">
+            Our Technologies
+          </Text>
+          <Heading wrap="balance" variant="display-strong-m">
+            Tools Behind Our Solutions
+          </Heading>
+        </Column>
       </Row>
 
       <Swiper

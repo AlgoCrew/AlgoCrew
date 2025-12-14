@@ -20,31 +20,25 @@ export function InfoCalendar() {
 
   return (
     <>     
-      <Text onBackground="neutral-weak" variant="body-default-l" marginBottom="m">
+      <Text style={{ color: 'white' }} variant="body-default-l" marginBottom="m">
         Ready to move fast and scale smart? Let’s bring your MVP to life!
-
       </Text>
 
       <Flex maxWidth="m" gap="s" horizontal="start" vertical="start" mobileDirection="column">
           <Column
               id={about.intro.title}
-              // fillWidth
-              // minHeight="80"
               vertical="center"
-              // marginBottom="8"
               className={styles.columnHeight}
           >
               {about.calendar.display && (
                   <Flex
                       fitWidth
-                      // border="brand-alpha-medium"
                       className={` ${styles.blockAlign} ${styles.cursorPointer}`}
                       style={{
                           backdropFilter: "blur(var(--static-space-1))",
                       }}
                       background="brand-alpha-strong"
                       radius="full"
-                      // padding="4"
                       gap="8"
                       data-cal-namespace="30min"
                       data-cal-link="info-algocrew/30min"
@@ -59,32 +53,25 @@ export function InfoCalendar() {
           </Column>
           <Column
               id={about.intro.title}
-              // fillWidth
-              // minHeight="80"
               vertical="center"
-              // marginBottom="8"
               className={styles.columnHeight}
           >
               {about.calendar.display && (
                   <Flex
                       fitWidth
-                      // border="brand-alpha-medium"
                       border="accent-alpha-weak"
                       className={`animate-bounce ${styles.blockAlign} ${styles.cursorPointer} ${styles.glowingBorder}`}
                       style={{
-                          backdropFilter: "blur(var(--static-space-1))",
+                          // backdropFilter: "blur(var(--static-space-1))",
+                          color: 'white'
                       }}
-                      // background="brand-alpha-weak"
                       background="accent-alpha-weak"
                       radius="full"
                       // padding="4"
                       gap="8"
                       vertical="center"
                   >
-                    {/* <Button prefixIcon="email" data-border="rounded" href="mailto:info@algocrew.io" variant="primary">
-                      <Flex padding="8" paddingRight="12" >Email us directly</Flex>
-                    </Button> */}
-                    <Button prefixIcon="email" data-border="rounded" href="mailto:info@algocrew.io" variant="secondary">
+                    <Button prefixIcon="email" style={{ color: 'white' }}  data-border="rounded" href="mailto:info@algocrew.io" variant="secondary">
                       <Flex padding="8">Email us directly</Flex>
                     </Button>
                   </Flex>

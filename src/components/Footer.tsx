@@ -10,22 +10,23 @@ export const Footer = () => {
       <Flex
         as="footer"
         fillWidth
-        padding="8"
-        horizontal="center"
+        // padding="8"
+        horizontal="start"
         mobileDirection="column"
         paddingBottom="20"
         paddingTop="48"
+        className="px-3 md:px-16"
       >
         <Flex
           className={styles.mobile}
-          maxWidth="m"
+          maxWidth="xl"
           paddingY="8"
           paddingX="16"
           gap="64"
           horizontal="start"
           vertical="start"
         >
-          <Flex gap="8" vertical="center" direction="column" maxWidth={20}>
+          <Flex gap="8" vertical="center" direction="column" className="w-100 md-w-[20rem]">
             <Flex gap="16" vertical="center" horizontal="start">
               <Heading variant="body-default-xl">
                 Canada
@@ -86,13 +87,14 @@ export const Footer = () => {
       <Flex
         as="footer"
         fillWidth
-        padding="8"
+        // padding="8"
         horizontal="center"
         mobileDirection="column"
+        className="px-3 md:px-16"
       >
         <Flex
           className={styles.mobile}
-          maxWidth="m"
+          maxWidth="xl"
           paddingY="8"
           paddingX="16"
           gap="16"
@@ -125,7 +127,7 @@ export const Footer = () => {
             )}
           </Flex>
         </Flex>
-        <Flex height="80" show="s"></Flex>
+        {/* <Flex height="80" show="s"></Flex> */}
       </Flex>
     </>
   );

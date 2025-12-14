@@ -61,7 +61,7 @@ export function ProcessSteps() {
       <div className={styles.processSectionContainer}>
         <div className={styles.processContentWrapper}>
           {/* Section Header */}
-          <div className={styles.sectionHeader}>
+          <div className={`${styles.sectionHeader}`}>
             {/* <Heading
               as="h2"
               variant="heading-strong-l"
@@ -76,7 +76,7 @@ export function ProcessSteps() {
               variant="display-strong-s"
               className={`mb-3 ${styles.stepTitle}`}
             >
-              Our Process
+              Our Engineering Process
             </Heading>
 
             <div className={styles.processHeaderUnderline}></div>
