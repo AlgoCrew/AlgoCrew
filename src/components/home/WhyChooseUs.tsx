@@ -1,171 +1,143 @@
-
 "use client";
 
 import React, { useEffect } from 'react';
 import styles from './ProcessStep1.module.scss'; // Keeping original styles import
-import { Column, Heading, Text, RevealFx } from '@once-ui-system/core';
-import {
-    FaUserShield, FaChartLine, FaCloud
-} from 'react-icons/fa'; // Using new Font Awesome icons for features/values
+
+import { Column, Heading, Text, Flex, Background, SpacingToken, opacity, ToggleButton } from '@once-ui-system/core';
+import { FaUserShield, FaChartLine, FaCloud, FaRocket, FaHandshake, FaSyncAlt } from 'react-icons/fa';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Background, opacity, SpacingToken  } from "@once-ui-system/core";
-import { effects} from '@/resources';
+import { effects } from '@/resources';
+import { usePathname } from "next/navigation";
+import { ThemeLogo } from '../ThemeLogo';
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 }
 
-const IconComponents: { [key: string]: React.ElementType } = {
-    FaUserShield, // Security/Trust
-    FaChartLine,  // Growth/Performance
-    FaCloud       // Modern/Cloud Solutions
-};
+const features = [
+    {
+        title: "Global Reach, Local Expertise",
+        description: "Headquartered in Canada with delivery capabilities across North America and internationally.",
+        icon: <FaUserShield />,
+        image: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=800&auto=format&fit=crop",
+        size: "large" 
+    },
+    {
+        title: "Rapid Deployment",
+        description: "Access qualified IT professionals in days, not months.",
+        icon: <FaRocket />,
+        image: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop",
+        size: "small"
+    },
+    {
+        title: "Flexible Engagement",
+        description: "Staff augmentation, dedicated teams, or turnkey project delivery.",
+        icon: <FaHandshake />,
+        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
+        size: "small"
+    },
+    {
+        title: "Quality Guaranteed",
+        description: "Rigorous vetting processes ensure you get top-tier talent every time.",
+        icon: <FaChartLine />,
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+        size: "medium"
+    },
+    {
+        title: "Transparent Communication",
+        description: "Regular updates, clear milestones, and responsive support.",
+        icon: <FaCloud />,
+        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop",
+        size: "medium"
+    },
+    {
+        title: "Future-Ready Solutions",
+        description: "Leveraging AI and modern cloud architectures to keep your business ahead of the curve.",
+        icon: <FaSyncAlt />, // Consider importing FaBrain or FaLightbulb for this
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop",
+        size: "medium"
+    }
+];
 
 export function WhyChooseUs() {
+    const pathname = usePathname() ?? "";
+
     useEffect(() => {
-        // Register GSAP plugins
-        gsap.registerPlugin(ScrollTrigger);
-
-        gsap.matchMedia().add(
-            {
-                // Desktop and larger screens
-                isDesktop: '(min-width: 768px)',
-                // Small screens
-                isMobile: '(max-width: 767px)',
-            },
-            (context) => {
-                let { isDesktop, isMobile } = context.conditions || {};
-
-                for (let i = 1; i <= 3; i++) {
-                    gsap.fromTo(
-                        `.processStep-${i}`,
-                        {
-                            opacity: 0,
-                            // Set y based on screen size
-                            y: isDesktop ? 30 * i * 2 : 30,
-                        },
-                        {
-                            opacity: 1,
-                            y: 0,
-                            duration: 4 * i,
-                            delay: i * 1,
-                            scrollTrigger: {
-                                trigger: `.processStep-${i}`,
-                                start: 'top 100%',
-                                end: 'top 40%',
-                                scrub: true,
-                                toggleActions: 'play none none none',
-                            },
-                        }
-                    );
+        const cards = document.querySelectorAll(`.${styles.card}`);
+        
+        cards.forEach((card, i) => {
+            gsap.fromTo(card, 
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    delay: i * 0.1,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    }
                 }
-            }
-        );
+            );
+        });
     }, []);
 
     return (
         <>
-            <div className={`z-10 ${styles.processSectionContainer}`}>
-                <div className={styles.processContentWrapper}>
-                    <div className={`${styles.sectionHeader} pt-32 md:pt-0`}>
-                        <Heading
-                            wrap="balance"
-                            variant="display-strong-s"
-                            className={`mb-3 ${styles.stepTitle}`}
-                        >
-                            Why Choose AlgoCrew?
+            <section className={`${styles.section} z-2`}>
+                <div className={styles.container}>
+                    <div className={styles.header}>
+                        <Heading variant="display-strong-s" className={styles.title}>
+                            Why Top Companies Choose <span className={styles.gradientText}>AlgoCrew</span>
                         </Heading>
-
-                        <div className={styles.processHeaderUnderline}></div>
-
-                        <Text className={styles.sectionDescription} onBackground="neutral-weak" variant="heading-default-s">
+                        <Text variant="body-default-l" onBackground="neutral-weak" className={styles.subtitle}>
                             Our principles are built around your success. We guarantee performance, transparency, and future-proof technology.
                         </Text>
                     </div>
 
-                    <div className={styles.processStepsContainer}>
-                        <ContentItem
-                            index="1"
-                            title="Unwavering Reliability"
-                            description="We build robust, scalable, and secure applications designed for mission-critical operations, ensuring maximum uptime and data integrity."
-                            icon={'FaUserShield'}
-                        />
-
-                        <ContentItem
-                            index="2"
-                            title="Focus on Growth"
-                            description="Every solution is engineered for peak performance and optimized to reduce long-term operational costs, driving measurable business growth."
-                            icon={'FaChartLine'}
-                        />
-
-                        <ContentItem
-                            index="3"
-                            title="Future-Proof Technology"
-                            description="We specialize in modern cloud-native architectures, ensuring your software is adaptable, easily maintained, and ready for tomorrow's challenges."
-                            icon={'FaCloud'}
-                        />
+                    <div className={styles.grid}>
+                        {features.map((feature, index) => (
+                            <div 
+                                key={index} 
+                                className={`${styles.card} ${styles[feature.size]}`}
+                                style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url(${feature.image})` }}
+                            >
+                                <div className={styles.cardContent}>
+                                    <div className={styles.iconWrapper}>
+                                        {feature.icon}
+                                    </div>
+                                    <div>
+                                        <Heading variant="heading-strong-m" className={styles.cardTitle}>
+                                            {feature.title}
+                                        </Heading>
+                                        <Text variant="body-default-m" className={styles.cardDescription}>
+                                            {feature.description}
+                                        </Text>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
-            </div>
+            </section>
 
             <Background
-                position="fixed"
+                position="absolute"
                 mask={{
-                    x: 100,
-                    y: 0,
-                    radius: effects.mask.radius,
-                    cursor: effects.mask.cursor,
+                x: 100,
+                y: 50,
+                radius: 120,
+                cursor: effects.mask.cursor,
                 }}
-
                 dots={{
-                    display: effects.dots.display,
-                    opacity: 0 as opacity,
-                    size: effects.dots.size as SpacingToken,
-                    color: effects.dots.color,
+                display: effects.dots.display,
+                opacity: effects.dots.opacity as opacity,
+                size: effects.dots.size as SpacingToken,
+                color: effects.dots.color,
                 }}
             />
         </>
     );
 }
-
-const ContentItem = ({
-    index, // Changed 'number' to 'index' for semantic clarity
-    title,
-    description,
-    icon,
-}: {
-    index: string;
-    title: string;
-    description: string;
-    icon: string;
-}) => {
-
-    const IconComponent = icon ? IconComponents[icon] : null;
-
-    return (
-        // Use a new class name 'contentStep' and the index for animation targeting
-        <div className={`${styles.contentStep} contentStep-${index}`}>
-            <div className={styles.processStepIconWrapper}>
-                <div className={`${styles.stepCircleBase} ${styles.glowingBorder}`}>
-                    {IconComponent && (
-                        <IconComponent size={48} className={styles.faIcon} /> // Render the icon
-                    )}
-                </div>
-            </div>
-
-            <div className={styles.stepContent}>
-                <Heading
-                    wrap="balance"
-                    className={`mb-3 ${styles.stepTitle}`}
-                >
-                    {title}
-                </Heading>
-
-                <p className={styles.stepDescription}>
-                    {description}
-                </p>
-            </div>
-        </div>
-    );
-};

@@ -156,12 +156,12 @@ export default function Home() {
         <ProcessSteps />
       </RevealFx>
 
-      <RevealFx translateY="16" delay={0.6} fillWidth className="px-6 md:px-16">
-        <Projects range={[0]} />
-      </RevealFx>
-
       <RevealFx translateY="16" delay={1} fillWidth horizontal="center">
         <WhyChooseUs />
+      </RevealFx>
+
+      <RevealFx translateY="16" delay={0.6} fillWidth>
+        <Projects />
       </RevealFx>
 
       <RevealFx translateY="16" delay={1.6} horizontal="center">

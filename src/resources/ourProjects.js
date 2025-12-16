@@ -1,18 +1,5 @@
 const ourProjects = [
   {
-    "name": "Snoonu",
-    "title": "E-commerce Ecosystem (Marketplace, Restaurants & Cafes)",
-    "origin": "Qatar",
-    "techStack": ["AWS", "GCP", "Android – Kotlin", "iOS – Swift", "PostgreSQL", ".NET", "Vue.js", "Python", "GitLab", "GitHub", "Secureframe", "SOCRadar"],
-    "path": "/projects/snoonu",
-    "slug": "snoonu",
-    "description": "Contributed to the development of an e-commerce platform, including its market and services for restaurants and cafes. Managed cross-platform integration, implemented scalable cloud infrastructure, and automated deployments through CI/CD pipelines. Ensured system security, compliance, and reliability using tools like Secureframe, SOCRadar, and cloud-native solutions.",
-    "link": "https://snoonu.com/",
-    "img": "/images/projects/project-01/snoonu.png",
-    "category": "Web application",
-    "year": '2024'
-  },
-  {
     "name": "Localised",
     "title": "E-commerce Platform Offering Designer Clothing, Accessories, and Beauty Products",
     "origin": "USA",

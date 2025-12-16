@@ -16,6 +16,7 @@ interface Service {
     path?: string;
     img?: any;
 }
+
 const allServicesWithIcons: Service[] = initialAllServices as Service[];
 
 const INITIAL_VISIBLE_COUNT = 4;
@@ -63,10 +64,10 @@ export function SliderItems() {
     <Card 
       radius="l-4" 
       direction="column" 
-      border="neutral-alpha-medium" 
-      background="brand-alpha-weak" 
-      style={{ overflow: 'hidden', minWidth: '100%' }} 
-      className={`${styles.imageContainer}`}
+      // border="neutral-alpha-medium" 
+      // background="brand-alpha-medium"
+      style={{ overflow: 'hidden', minWidth: '100%', }} 
+      className={styles.imageContainer}
     >
       <Media
         border="neutral-alpha-weak"
@@ -92,18 +93,25 @@ export function SliderItems() {
 
   return (
     <div className={styles.appContainer}>
-      <Row fillWidth horizontal="start" paddingBottom="48">
+      <Row fillWidth horizontal="start" className='mx-0' paddingBottom="48">
         <SmartLink href="/services">
           <Column gap="xs" horizontal="start">
             <Text wrap="balance" variant="body-strong-l">
               Our Services
             </Text>
             <Heading wrap="balance" variant="display-strong-m">
-              Transform Your Business
+              Comprehensive IT Solutions for Modern Business
             </Heading>
           </Column>
         </SmartLink>
       </Row>
+
+      {/* <Row className='mx-0' fillWidth paddingBottom="48" horizontal="start">
+        <Text wrap="balance" variant="body-default-l">
+          Whether you need one specialist or an entire dedicated team, we deliver flexible, scalable solutions
+          tailored to your business needs
+        </Text>
+      </Row> */}
 
       {!showAll && (
         <>
@@ -118,7 +126,7 @@ export function SliderItems() {
           {allServices.length > INITIAL_VISIBLE_COUNT && (
             <Row fillWidth horizontal="center" paddingTop="32">
               <Button onClick={handleShowAll} variant="primary">
-                Show All Services ({allServices.length})
+                Show All Services
               </Button>
             </Row>
           )}

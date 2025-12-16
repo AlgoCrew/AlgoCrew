@@ -1,0 +1,28 @@
+.projectCard {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  
+  .imageWrapper {
+    position: relative;
+    border-radius: 32px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5; // Devsinc style taller images
+    background: #fff;
+
+    .parallaxImage {
+      width: 100%;
+      height: 125%; // Overflow for the scrub
+      object-fit: cover;
+      position: absolute;
+      top: -12.5%;
+    }
+  }
+
+  &:hover {
+    .imageWrapper img {
+      transform: scale(1.05); // Subtle zoom combined with parallax
+      transition: transform 0.8s ease;
+    }
+  }
+}

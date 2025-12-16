@@ -51,6 +51,7 @@ export function InfoCalendar() {
                   </Flex>
               )}
           </Column>
+
           <Column
               id={about.intro.title}
               vertical="center"

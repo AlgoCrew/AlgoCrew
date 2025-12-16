@@ -155,9 +155,10 @@
 
 import React from 'react';
 import styles from './Technologies.module.scss';
-import { Heading, Row, Text, Media, Column } from '@once-ui-system/core';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode, A11y } from 'swiper/modules';
+import { effects } from '@/resources';
+import { Column, Row, Media, Heading, Text, Background, SpacingToken, opacity } from "@once-ui-system/core";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -213,47 +214,65 @@ export function OfferingTechnologies() {
   const allTechnologies = technologies;
 
   return (
-    <div className={styles.appContainer}>
-      <Row fillWidth horizontal="start" paddingBottom="48" className="px-6 md:px-16">
-        <Column gap="xs" horizontal="start">
-          <Text wrap="balance" variant="body-strong-l">
-            Our Technologies
-          </Text>
-          <Heading wrap="balance" variant="display-strong-m">
-            Tools Behind Our Solutions
-          </Heading>
-        </Column>
-      </Row>
-
-      <Swiper
-        className={styles.swiperContainer}
-        modules={[Autoplay, FreeMode, A11y]}
-        spaceBetween={24} // A good space between logos
-        slidesPerView={'auto'} // Crucial for showing as many as fit
-        freeMode={true} // Allows for continuous, non-snapping scroll
-        loop={true} // Handles the infinite looping behavior
-        autoplay={{
-          delay: 0,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
-        speed={5000} // Speed of the auto-scroll animation
-      >
-        {allTechnologies.map((tech, index) => (
-          <SwiperSlide key={`${tech.name}-${index}`} className={styles.techItem}>
-            <Media
-              src={tech.iconName}
-              alt={tech.name}
-              className={`${styles.techIcon} w-[240px] h-[240px]`}
-              objectFit="contain"
-            />
-
-            <Text onBackground="neutral-weak" variant="body-default-m" className={styles.statDescription}>
-              {tech.name}
+    <>
+      <div className={`${styles.appContainer} z-2`}>
+        <Row fillWidth horizontal="start" paddingBottom="48" className="px-6 md:px-16">
+          <Column gap="xs" horizontal="start">
+            <Text wrap="balance" variant="body-strong-l">
+              Our Technologies
             </Text>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+            <Heading wrap="balance" variant="display-strong-m">
+              Tools Behind Our Solutions
+            </Heading>
+          </Column>
+        </Row>
+
+        <Swiper
+          className={styles.swiperContainer}
+          modules={[Autoplay, FreeMode, A11y]}
+          spaceBetween={24} // A good space between logos
+          slidesPerView={'auto'} // Crucial for showing as many as fit
+          freeMode={true} // Allows for continuous, non-snapping scroll
+          loop={true} // Handles the infinite looping behavior
+          autoplay={{
+            delay: 0,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          speed={5000} // Speed of the auto-scroll animation
+        >
+          {allTechnologies.map((tech, index) => (
+            <SwiperSlide key={`${tech.name}-${index}`} className={styles.techItem}>
+              <Media
+                src={tech.iconName}
+                alt={tech.name}
+                className={`${styles.techIcon} w-[240px] h-[240px]`}
+                objectFit="contain"
+              />
+
+              <Text onBackground="neutral-weak" variant="body-default-m" className={styles.statDescription}>
+                {tech.name}
+              </Text>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      <Background
+        position="absolute"
+        mask={{
+        x: 0,
+        y: 50,
+        radius: 28,
+        cursor: effects.mask.cursor,
+        }}
+        dots={{
+        display: effects.dots.display,
+        opacity: effects.dots.opacity as opacity,
+        size: effects.dots.size as SpacingToken,
+        color: effects.dots.color,
+        }}
+      />
+    </>
   );
 }

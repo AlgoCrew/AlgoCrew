@@ -1,71 +1,50 @@
 "use client";
 
-import {
-  AvatarGroup,
-  Carousel,
-  Column,
-  Flex,
-  Heading,
-  SmartLink,
-  Text,
-  Mask,
-} from "@once-ui-system/core";
+import { useEffect, useRef } from "react";
+import { Column, Heading, Text } from "@once-ui-system/core";
+import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import styles from "./ProjectCard.module.scss";
 
-interface ProjectCardProps {
-  href: string;
-  priority?: boolean;
-  images: string[];
-  title: string;
-  content: string;
-  description: string;
-  avatars: { src: string }[];
-  link: string;
-}
+export const ProjectCard = ({ href, image, title, description }: any) => {
+  const imageRef = useRef(null);
+  const containerRef = useRef(null);
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({
-  href,
-  images = [],
-  title,
-  content,
-  description,
-  avatars,
-  link,
-}) => {
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to(imageRef.current, {
+        y: "15%", // Inner image parallax
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.5,
+        },
+      });
+    });
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <Column fillWidth gap="m">
-      <Carousel
-        sizes="(max-width: 960px) 100vw, 960px"
-        items={images.map((image) => ({
-          slide: image,
-          alt: title,
-        }))}
-      />
-      {/* {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />} */}
-      <Flex
-        mobileDirection="column"
-        fillWidth
-        paddingX="s"
-        paddingTop="12"
-        paddingBottom="24"
-        gap="l"
-      >
-        {title && (
-          <Flex flex={5}>
-            <Heading as="h2" wrap="balance" variant="heading-strong-xl">
-              {title}
-            </Heading>
-          </Flex>
-        )}
-        {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
-          <Column flex={7} gap="16">
-            {description?.trim() && (
-              <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
-                {description}
-              </Text>
-            )}
-          </Column>
-        )}
-      </Flex>
-    </Column>
+    <Link href={href} className={styles.projectCard} ref={containerRef}>
+      <div className={styles.imageWrapper}>
+        <img 
+          ref={imageRef}
+          src={image} 
+          alt={title}
+          className={styles.parallaxImage} 
+        />
+      </div>
+      <Column gap="12" paddingTop="24">
+        <Heading as="h3" variant="heading-strong-m" style={{ lineHeight: '1.2' }}>
+          {title}
+        </Heading>
+        <Text variant="body-default-s" onBackground="neutral-weak">
+          {description}
+        </Text>
+      </Column>
+    </Link>
   );
 };

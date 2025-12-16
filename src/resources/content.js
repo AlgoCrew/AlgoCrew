@@ -57,7 +57,7 @@ const home = {
   label: "Home",
   // Escaped apostrophes
   title: "AlgoCrew - Delivering Top-Tier IT Solutions and Services",
-  description: "At AlgoCrew, we turn bold ideas into scalable software solutions. From MVP development to full-scale digital transformation, our expert teams combine cutting-edge technology with deep industry insight to deliver impactful, tailor-made products. Whether you are building something new or optimizing legacy systems, we are your partner in growth and innovation.",
+  description: "From staffing to full-scale project development, AlgoCrew provides the technical talent and team management expertise to bring your vision to life, across North America and beyond.",
   headline: <>Your Idea. Our Expertise. A New Reality.</>,
   featured: {
     display: true,
@@ -66,7 +66,7 @@ const home = {
   },
   subline: (
     <>
-      At AlgoCrew, we turn bold ideas into scalable software solutions. From MVP development to full-scale digital transformation, our expert teams combine cutting-edge technology with deep industry insight to deliver impactful, tailor-made products. Whether you are building something new or optimizing legacy systems, we are your partner in growth and innovation.
+      From staffing to full-scale project development, AlgoCrew provides the technical talent and team management expertise to bring your vision to life, across North America and beyond.
     </>
   ),
   valueProposition: (
@@ -134,17 +134,22 @@ const about = {
 const aboutUs = {
   path: "/about",
   label: "About",
-  title: "Who We Are",
+  title: "Building Tomorrows Technology, Today",
   image: "/images/LogoDark.png",
   metaDescription: "At AlgoCrew, we are a team of technologists, strategists, and innovators dedicated to helping businesses succeed through purpose-built digital solutions. Whether you are a startup shaping your first MVP or an enterprise scaling complex systems, we bring the talent and technology needed to deliver fast, reliable, and scalable outcomes.",
   description: (
     <>
       <>
-        At AlgoCrew, we are a team of technologists, strategists, and innovators dedicated to helping businesses succeed through purpose-built digital solutions. Whether you are a startup shaping your first MVP or an enterprise scaling complex systems, we bring the talent and technology needed to deliver fast, reliable, and scalable outcomes.
+        AlgoCrew Inc. is a premier IT solutions provider delivering exceptional staffing, team management,
+        and development services across North America and beyond. Based in Brampton, Ontario, we serve clients
+        throughout the USA, Canada, and international markets with a commitment to innovation, quality, and results.
+        Since our inception, we&apos;ve built our reputation on one simple principle: connecting the right talent with the right
+        projects. Whether you&apos;re a startup needing your first developer or an enterprise requiring a 50-person
+        development team, we have the expertise and network to make it happen.
       </>
-      <span>
+      {/* <span>
         We are not just another IT vendor, we are your remote product team, tech partner, and long-term growth ally.
-      </span>
+      </span> */}
     </>
   ),
   tableOfContent: {
