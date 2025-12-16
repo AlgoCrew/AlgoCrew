@@ -65,19 +65,6 @@ const ourProjects = [
     "year": '2025'
   },
   {
-    "name": "Psych Plus",
-    "title": "Health Care System (Multi-Branch Hospital Management)",
-    "origin": "USA",
-    "techStack": ["Azure", "GitHub Actions (CI/CD)", "Terraform", "Kubernetes", ".NET", "React", "SQL Server", "Helm", "Docker", "SonarQube", "Cloud Defender", "Cloudflare"],
-    "path": "/projects/psychplus",
-    "slug": "psychplus",
-    "description": "Managed infrastructure and deployment workflows for a healthcare system supporting multiple hospital branches. Implemented scalable infrastructure using Terraform and Azure, automated deployments with GitHub Actions, and orchestrated containers via Kubernetes and Helm. Ensured system security, reliability, and compliance with tools like Cloud Defender, Cloudflare, and SonarQube.",
-    "link": "https://psychplus.com/",
-    "img": "/images/projects/project-01/psych.png",
-    "category": "Web application",
-    "year": '2024'
-  },
-  {
     "name": "Hotel Weekend",
     "title": "Hotel Weekend",
     "origin": "Netherlands",

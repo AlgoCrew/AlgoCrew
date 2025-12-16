@@ -26,6 +26,7 @@ export default function FormTogger() {
         >
           Hire a Developer
         </Button>
+
         <Button
           onClick={() => setActiveForm('generalInquiry')}
           variant={activeForm === 'generalInquiry' ? 'primary' : 'secondary'}

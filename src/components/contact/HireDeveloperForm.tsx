@@ -18,6 +18,8 @@ export default function HireDeveloperForm() {
     message: '',
     phone: '',
     desiredBudget: '',
+    timezone: 'GMT (UTC +0:00)', // Default
+    currency: 'USD',            // Default
   });
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
@@ -133,10 +135,20 @@ export default function HireDeveloperForm() {
       time: new Date().toLocaleString(),
       to_email: ADMIN_EMAIL,
       subject: `New Developer Hire Inquiry by "${name}"`,
-      message: adminMessage,
+      message: `
+        Name: ${name}
+        Email: ${email}
+        Phone: ${phone}
+        Timezone: ${formData.timezone}
+        currency: ${formData.currency}
+        Desired Roles: ${selectedRoles.join(', ')}
+        Budget: ${formData.desiredBudget} ${formData.currency}
+        Message: ${message || 'N/A'}
+      `,
       from_phone: phone,
       selected_roles: selectedRoles.join(', '),
-      desired_budget: `$${desiredBudget}`,
+      desired_budget: `${formData.desiredBudget} ${formData.currency}`,
+      timezone: formData.timezone, // Added field
     };
 
     const userConfirmationTemplateParams = {
@@ -152,8 +164,10 @@ export default function HireDeveloperForm() {
 
       if (adminEmailSent && userEmailSent) {
         setSuccessMessage('Your request has been sent successfully! A confirmation has been sent to your email.');
-        setFormData({ name: '', email: '', subject: '', message: '', phone: '', desiredBudget: '' });
-        setSelectedRoles([]); // Clear selected roles
+        setFormData({ 
+          name: '', email: '', subject: '', message: '', phone: '', 
+          desiredBudget: '', timezone: 'GMT (UTC +0:00)', currency: 'USD' 
+        });        setSelectedRoles([]); // Clear selected roles
       } else {
         setErrorMessage('Failed to send your request. Please try again.');
       }
@@ -368,6 +382,46 @@ export default function HireDeveloperForm() {
               {budgetError && (
                 <Text color="red-500" marginTop="s">{budgetError}</Text>
               )}
+
+              <Flex gap="16" mobileDirection="column" fillWidth>
+                <div style={{ flex: 1 }}>
+                  <Select
+                    id="timezone"
+                    label="Your Timezone"
+                    value={formData.timezone}
+                    onSelect={(value) => setFormData({ ...formData, timezone: value })}
+                    options={[
+                      { label: "GMT (UTC +0:00)", value: "GMT" },
+                      { label: "EST (UTC -5:00)", value: "EST" },
+                      { label: "PST (UTC -8:00)", value: "PST" },
+                      { label: "CET (UTC +1:00)", value: "CET" },
+                      { label: "IST (UTC +5:30)", value: "IST" },
+                      { label: "PKT (UTC +5:00)", value: "PKT" },
+                      { label: "GST (UTC +4:00)", value: "GST" },
+                      { label: "AEST (UTC +10:00)", value: "AEST" },
+                    ]}
+                  />
+                </div>
+
+                <div style={{ flex: 1 }}>
+                  <Select
+                    id="currency"
+                    label="Currency"
+                    value={formData.currency}
+                    onSelect={(value) => setFormData({ ...formData, currency: value })}
+                    options={[
+                      { label: "USD - US Dollar", value: "USD" },
+                      { label: "EUR - Euro", value: "EUR" },
+                      { label: "GBP - British Pound", value: "GBP" },
+                      { label: "CAD - Canadian Dollar", value: "CAD" },
+                      { label: "AUD - Australian Dollar", value: "AUD" },
+                      { label: "AED - UAE Dirham", value: "AED" },
+                      { label: "CHF - Swiss Franc", value: "CHF" },
+                      { label: "JPY - Japanese Yen", value: "JPY" },
+                    ]}
+                  />
+                </div>
+              </Flex>
 
               <Input
                 id="name"
