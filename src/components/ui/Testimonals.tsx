@@ -1,9 +1,9 @@
 "use client";
 
-// import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
-import { motion, AnimatePresence } from "motion/react";
-import { IconButton, Heading, Text } from '@once-ui-system/core';
-import { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react';
+import { IconButton, Heading, Text, Flex } from '@once-ui-system/core';
+import gsap from 'gsap';
+import styles from './Testimonials.module.scss';
 
 type Testimonial = {
   quote: string;
@@ -11,161 +11,117 @@ type Testimonial = {
   designation: string;
   src: string;
 };
-export const Testimonials = ({
-  testimonials,
-  autoplay = false,
-}: {
-  testimonials: Testimonial[];
-  autoplay?: boolean;
-}) => {
+
+export const Testimonials = ({ testimonials }: { testimonials: Testimonial[] }) => {
   const [active, setActive] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const metaRef = useRef<HTMLDivElement>(null); // Added Ref for Meta Info
+  const isAnimating = useRef(false);
 
-  const handleNext = () => {
-    setActive((prev) => (prev + 1) % testimonials.length);
-  };
+  const changeStep = (nextIndex: number) => {
+    if (isAnimating.current || nextIndex === active) return;
+    isAnimating.current = true;
 
-  const handlePrev = () => {
-    setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
+    const tl = gsap.timeline({
+      onComplete: () => {
+        setActive(nextIndex);
+        isAnimating.current = false;
+      }
+    });
 
-  const isActive = (index: number) => {
-    return index === active;
+    // Fade out everything before switching state
+    tl.to([imageRef.current, textRef.current, metaRef.current], {
+      opacity: 0,
+      y: -10,
+      duration: 0.3,
+      ease: "power2.in",
+    });
   };
 
   useEffect(() => {
-    if (autoplay) {
-      const interval = setInterval(handleNext, 5000);
-      return () => clearInterval(interval);
-    }
-  }, [autoplay]);
+    // GSAP Context makes selectors relative to containerRef
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline();
 
-  const randomRotateY = () => {
-    return Math.floor(Math.random() * 21) - 10;
-  };
+      // Start by ensuring they are invisible but in position
+      tl.set([imageRef.current, textRef.current, metaRef.current], { opacity: 0 });
+
+      // 1. Image Entrance
+      tl.fromTo(imageRef.current, 
+        { opacity: 0, scale: 0.9, rotateY: -15 },
+        { opacity: 1, scale: 1, rotateY: 0, duration: 0.7, ease: "back.out(1.2)" }
+      );
+
+      // 2. Word Reveal (Targeting spans inside textRef)
+      const words = textRef.current?.querySelectorAll('.word-span');
+      if (words && words.length > 0) {
+        tl.fromTo(words, 
+          { opacity: 0, filter: 'blur(10px)', y: 5 },
+          { opacity: 1, filter: 'blur(0px)', y: 0, stagger: 0.01, duration: 0.4 },
+          "-=0.4"
+        );
+      } else {
+        // Fallback if split fails
+        tl.to(textRef.current, { opacity: 1, duration: 0.4 }, "-=0.4");
+      }
+
+      // 3. Meta Info (Name/Designation)
+      tl.fromTo(metaRef.current, 
+        { opacity: 0, x: -15 },
+        { opacity: 1, x: 0, duration: 0.4 },
+        "-=0.2"
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [active]);
+
+  const handleNext = () => changeStep((active + 1) % testimonials.length);
+  const handlePrev = () => changeStep((active - 1 + testimonials.length) % testimonials.length);
+
   return (
-    <div className="mx-auto max-w-sm px-4 py-32 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12">
-      <div className="relative grid grid-cols-1 gap-20 md:grid-cols-2">
-        <div>
-          <div className="relative h-80 w-full">
-            <AnimatePresence>
-              {testimonials.map((testimonial, index) => (
-                <motion.div
-                  key={testimonial.src}
-                  initial={{
-                    opacity: 0,
-                    scale: 0.9,
-                    z: -100,
-                    rotate: randomRotateY(),
-                  }}
-                  animate={{
-                    opacity: isActive(index) ? 1 : 0.7,
-                    scale: isActive(index) ? 1 : 0.95,
-                    z: isActive(index) ? 0 : -100,
-                    rotate: isActive(index) ? 0 : randomRotateY(),
-                    zIndex: isActive(index)
-                      ? 40
-                      : testimonials.length + 2 - index,
-                    y: isActive(index) ? [0, -80, 0] : 0,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    scale: 0.9,
-                    z: 100,
-                    rotate: randomRotateY(),
-                  }}
-                  transition={{
-                    duration: 0.4,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute inset-0 origin-bottom"
-                >
-                  <img
-                    src={testimonial.src}
-                    alt={testimonial.name}
-                    width={500}
-                    height={500}
-                    draggable={false}
-                    className="h-full w-full rounded-3xl object-cover object-center"
-                  />
-                </motion.div>
-              ))}
-            </AnimatePresence>
+    <div ref={containerRef} className={styles.wrapper}>
+      <div className={styles.grid}>
+        
+        <div className={styles.imageContainer}>
+          <div ref={imageRef} className={styles.imageCard}>
+            <img src={testimonials[active].src} alt={testimonials[active].name} />
+            <div className={styles.imageOverlay} />
           </div>
         </div>
-        <div className="flex flex-col justify-between py-4">
-          <motion.div
-            key={active}
-            initial={{
-              y: 20,
-              opacity: 0,
-            }}
-            animate={{
-              y: 0,
-              opacity: 1,
-            }}
-            exit={{
-              y: -20,
-              opacity: 0,
-            }}
-            transition={{
-              duration: 0.2,
-              ease: "easeInOut",
-            }}
-          >
-            <Heading
-              wrap="balance"
-              className={`mb-3`}
-              variant="heading-strong-l"
-            >
-              {testimonials[active].name}
-            </Heading>
 
-            <Text wrap="balance" onBackground="brand-strong" variant="body-default-s">
-              {testimonials[active].designation}
-            </Text>
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-s">
-              <motion.p className="mt-8 text-lg">
-                {testimonials[active].quote.split(" ").map((word, index) => (
-                  <motion.span
-                    key={index}
-                    initial={{
-                      filter: "blur(10px)",
-                      opacity: 0,
-                      y: 5,
-                    }}
-                    animate={{
-                      filter: "blur(0px)",
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    transition={{
-                      duration: 0.2,
-                      ease: "easeInOut",
-                      delay: 0.02 * index,
-                    }}
-                    className="inline-block"
-                  >
-                    {word}&nbsp;
-                  </motion.span>
-                ))}
-              </motion.p>
-            </Text>
-          </motion.div>
+        <div className={styles.contentSection}>
+          <div className={styles.quoteWrapper}>
+            <span className={styles.quoteIcon}>“</span>
+            
+            <div ref={textRef} className="mb-8">
+              <Text 
+                variant="heading-default-m" 
+                className="italic leading-relaxed neutral-on-background-weak dark:text-neutral-300"
+              >
+                {testimonials[active].quote}
+              </Text>
+            </div>
 
-          <div className="flex gap-4 pt-12 md:pt-0">
-            <button
-              onClick={handlePrev}
-              className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
-            >
-              <IconButton icon="chevronLeft" size="m" />
-            </button>
-            <button
-              onClick={handleNext}
-              className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
-            >
-              <IconButton icon="chevronRight" size="m" />
-            </button>
+            <div ref={metaRef} className="flex flex-col gap-1 border-l-4 border-cyan-500 pl-6">
+              <Heading variant="heading-strong-m">
+                {testimonials[active].name}
+              </Heading>
+              <Text variant="body-default-s" onBackground="brand-medium">
+                {testimonials[active].designation}
+              </Text>
+            </div>
           </div>
+
+          <Flex gap="12" className="mt-12 items-center">
+            <IconButton icon="chevronLeft" variant="secondary" onClick={handlePrev} />
+            <IconButton icon="chevronRight" variant="secondary" onClick={handleNext} />
+            <div className={styles.pagination}>
+              <span className="text-cyan-500">{active + 1}</span> / {testimonials.length}
+            </div>
+          </Flex>
         </div>
       </div>
     </div>

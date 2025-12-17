@@ -9,39 +9,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 export default function Details() {
   const containerRef = useRef(null);
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    
-    const ctx = gsap.context(() => {
-      // Reveal text section
-      gsap.from(".reveal-text", {
-        x: -50,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".reveal-text",
-          start: "top 80%",
-        }
-      });
-
-      // Staggered reveal for stat cards
-      gsap.from(".stat-card", {
-        x: 50,
-        opacity: 0,
-        stagger: 0.2,
-        duration: 0.8,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-          trigger: ".stat-card",
-          start: "top 85%",
-        }
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const stats = [
     { number: "20", label: "Projects", desc: "Successfully delivered precision-engineered digital products." },
     { number: "8", label: "Happy Clients", desc: "Partnering with global brands to solve complex problems." },
