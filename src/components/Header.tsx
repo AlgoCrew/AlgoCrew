@@ -28,7 +28,7 @@ export const Header = () => {
       horizontal="center"
       vertical="center"
       background="page"
-      borderBottom="neutral-alpha-weak"
+      // borderBottom="neutral-alpha-weak"
       paddingTop="4"
       paddingBottom="4"
       className="px-3 md:px-12"
