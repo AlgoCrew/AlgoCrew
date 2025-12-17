@@ -1,52 +1,47 @@
-import { Flex, Meta, Schema, Column, RevealFx, Heading, Text } from "@once-ui-system/core";
-import { baseURL, projects, person } from "@/resources";
+"use client";
+
+import { Flex, Column, RevealFx, Heading, Text } from "@once-ui-system/core";
+import { projects } from "@/resources";
 import ProjectCards from "@/components/projects/ProjectCards";
-import { InfoCalendar } from "@/components/Calendars/InfoCalendar";
 import { SendUsEmail } from "@/components/projects/SendUsEmail";
+import styles from "@/components/projects/Gallery.module.scss";
 
-export async function generateMetadata() {
-  return Meta.generate({
-    title: projects.title,
-    description: projects.metaDescription,
-    baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent(projects.title)}`,
-    path: projects.path,
-  });
-}
-
-export default function gallery() {
+export default function Gallery() {
   return (
-    <Column maxWidth="m" gap="xl" horizontal="center">
-      <Schema
-        as="webPage"
-        baseURL={baseURL}
-        title={projects.title}
-        description={projects.metaDescription}
-        path={projects.path}
-        image='images/og/home.jpg'
-        author={{
-          name: person.name,
-          url: `${baseURL}${projects.path}`,
-          image: `${baseURL}${person.avatar}`,
-        }}
-      />
-      <Column fillWidth paddingY="24" gap="m">
-        <Column maxWidth="s">
-          <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
-            <Heading wrap="balance" variant="display-strong-l">
-              Showcase of Excellence
-            </Heading>
-          </RevealFx>
+    <Column maxWidth="l" horizontal="center" fillWidth className="px-6 px-lg-0">
+      <Flex 
+        fillWidth 
+        className={styles.splitLayout} 
+        mobileDirection="column" 
+        gap="64"
+        paddingY="80"
+      >
+        <Column className={styles.stickyLeft} flex={5}>
+          <Text variant="label-strong-s" style={{ color: "#00ccccf0", letterSpacing: '0.2em' }}>
+            PORTFOLIO
+          </Text>
 
-          <RevealFx translateY="16" delay={0.3}>
-            <Column textVariant="body-default-l" fillWidth marginBottom="l">
+          <Heading wrap="balance" variant="display-strong-l" marginTop="16" align="start">
+            Showcase of <br />
+            <span className={styles.highlight}>Excellence</span>
+          </Heading>
+
+          <RevealFx translateY="16" delay={0.4}>
+            <Text 
+                variant="body-default-l" 
+                onBackground="neutral-weak" 
+                marginTop="32"
+                style={{ maxWidth: '400px' }}
+            >
               {projects.description}
-            </Column>
+            </Text>
           </RevealFx>
         </Column>
-      </Column>
 
-      <ProjectCards />
+        <Column flex={7} fillWidth>
+          <ProjectCards />
+        </Column>
+      </Flex>
 
       <Column
         maxWidth="m"
