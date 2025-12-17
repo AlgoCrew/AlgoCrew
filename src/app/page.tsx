@@ -13,6 +13,7 @@ import Details from "@/components/about/Details";
 import { InfoCalendar } from "@/components/Calendars/InfoCalendar";
 import AnimatedTestimonials from "@/components/home/Testimonals";
 import { SendUsEmail } from "@/components/home/SendUsEmail";
+import { Services } from "@/components/services/Services";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -144,8 +145,12 @@ export default function Home() {
         </Column>
       </Column>
 
-      <RevealFx translateY="16" delay={1} fillWidth className="px-6 md:px-16">
+      {/* <RevealFx translateY="16" delay={1} fillWidth className="px-6 md:px-16">
         <SliderItems />
+      </RevealFx> */}
+
+      <RevealFx translateY="16" delay={1} fillWidth >
+        <Services />
       </RevealFx>
 
       <RevealFx translateY="16" delay={1.3} paddingY="64">
