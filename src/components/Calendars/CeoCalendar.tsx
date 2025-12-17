@@ -20,9 +20,9 @@ export function CeoCalendar() {
 
   return (
     <>     
-      <Text onBackground="neutral-weak" variant="body-default-l" marginBottom="m">
+      {/* <Text onBackground="neutral-weak" variant="body-default-l" marginBottom="m">
         Want to see if we’re the right fit? Let’s work together risk-free. Try us free for 7 days!!
-      </Text>
+      </Text> */}
 
       <Flex maxWidth="m" gap="s" horizontal="start" vertical="start" mobileDirection="column">
           <Column

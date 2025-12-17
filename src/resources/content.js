@@ -174,64 +174,64 @@ const aboutUs = {
   },
 
   ourMission: {
-    display: true, // set to false to hide this section
-    title: "Our Mission",
+    display: true,
+    title: "The Engine of Your Ambition",
     img: "/images/about/mission2.png",
     description: (
-      <>
-        <>
-          To empower businesses of all sizes with innovative, reliable, and future-ready technology.
-          From launching your first MVP to solving enterprise-level challenges, we deliver measurable results without the pressure. We offer a 7-day risk-free trial to prove our value before you commit.
-        </>
-        <strong className="mt-m mb-s">We specialize in:</strong>
-        <li>
-          MVP Development & Product Prototyping
-        </li>
-        <li>
-          Remote Engineering Teams
-        </li>
-        <li>
-          Ongoing Support & Maintenance
-        </li>
-        <li>
-          Strategic IT Consultancy
-        </li>
-        <span>
-          At AlgoCrew, your vision becomes our mission, and our mission is to turn it into reality.
-        </span>
-      </>
+      <div>
+        <p>
+          We don't just write code; we architect success. Our mission is to bridge the gap between 
+          bold ideas and market-ready products with a focus on <strong>velocity, precision, and zero friction.</strong>
+        </p>
+        
+        <h4>Core Competencies</h4>
+        <ul className="pills-container">
+          <li>Rapid MVP Acceleration</li>
+          <li>Elastic Engineering Teams</li>
+          <li>Scalable Infrastructure</li>
+          <li>Fractional CTO Strategy</li>
+        </ul>
+
+        <p className="trial-text">
+          Build with total confidence. Experience our synergy firsthand with a 
+          <strong className="highlight"> 7-day risk-free trial</strong>—because 
+          your trust should be earned, not just requested.
+        </p>
+
+        <p className="footer-quote">
+          At AlgoCrew, your mission is the blueprint, our engineering is the foundation.
+        </p>
+      </div>
     ),
   },
 
   ourVision: {
-    display: true, // set to false to hide this section
-    title: "Our Vision",
-    img: "/images/about/vision2.png",
+    display: true,
+    title: "Architecting the Digital Future",
+    // Suggestion: An abstract image representing global connectivity or upward growth curves.
+    img: "/images/about/vision-abstract.png",
     description: (
-      <>
-        <>
-          To redefine what is possible in digital product development by building intelligent, adaptable systems that help businesses thrive in a fast-changing world.
-          We believe in collaboration without friction, offering flexible engagement models and a problem-solving mindset that moves at your pace.
-        </>
-        <span className="mt-m mb-s">
-          Whether you are launching, scaling, or modernizing, we are here to elevate your journey with:
-        </span>
-        <li>
-          Agile workflows
-        </li>
-        <li>
-          Cutting-edge technologies
-        </li>
-        <li>
-          Domain-aligned engineering talent
-        </li>
-        <li>
-          Transparent communication & delivery
-        </li>
-        <span>
-          Let’s shape the future together.
-        </span>
-      </>
+      <div>
+        <p>
+          We foresee a world where technology isn't just a tool, but an intelligent extension of human potential. Our vision is to be the <strong className="highlight">bedrock upon which that future is built.</strong>
+        </p>
+        
+        <h4>Future-Forward Focus</h4>
+        <ul className="pills-container">
+          <li>AI-Augmented Systems</li>
+          <li>Sustainable Ecosystems</li>
+          <li>Global Talent Networks</li>
+          <li>Future-Proof Architecture</li>
+        </ul>
+
+        <p className="trial-text">
+           We don't just solve today's problems. We anticipate tomorrow's challenges, ensuring your platform evolves faster than the market.
+        </p>
+
+        <p className="footer-quote">
+          Coding for today's launch. Engineering for the next decade's dominance.
+        </p>
+      </div>
     ),
   },
 

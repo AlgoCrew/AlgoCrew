@@ -19,6 +19,7 @@ import { OurMission } from "@/components/about/OurMission";
 import { OurVision } from "@/components/about/OurVision";
 import { CeoCalendar } from "@/components/Calendars/CeoCalendar";
 import { SendUsEmail } from "@/components/about/SendUsEmail";
+import AboutHero from "@/components/about/AboutHero";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -55,7 +56,7 @@ export default function About() {
   ];
 
   return (
-    <Column maxWidth="m" gap="xl" horizontal="center">
+    <Column maxWidth="xl" gap="xl" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -69,10 +70,14 @@ export default function About() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
+
+      <RevealFx paddingBottom="64" delay={1} fillWidth >
+        <AboutHero />
+      </RevealFx>
  
       <Flex fillWidth mobileDirection="column" horizontal="center">
         <Column className={styles.blockAlign} flex={12} fillWidth gap="l">
-          <Column
+          {/* <Column
             id={aboutUs.intro.title}
             fillWidth
             minHeight="160"
@@ -102,7 +107,7 @@ export default function About() {
               </Column>
             </RevealFx>
 
-          </Column>
+          </Column> */}
 
 
           {aboutUs.ourMission.display && (
