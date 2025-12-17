@@ -1,6 +1,6 @@
 .missionWrapper {
   position: relative;
-  padding: 140px 0;
+  padding: 80px 0;
   background-color: var(--page-background);
   overflow: hidden;
 }
@@ -8,7 +8,7 @@
 .container {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 0px;
 }
 
 .preTitle {
@@ -95,9 +95,20 @@
 }
 
 @media (max-width: 1024px) {
-  .techVisualContainer { margin-top: 80px; height: 400px; }
-  .card2 { left: 5%; }
-  .card3 { right: 5%; }
+  .techVisualContainer { margin-top: 0px; height: 400px; }
+  .visualColumn { width: 100%; }
+  .card2 { left: 5%; width: min-content !important;}
+  .card3 { right: 5%; width: min-content !important;}
+  .card1 { right: 0%; width: min-content !important; }
+  .missionWrapper {
+    position: relative;
+    padding: 0px 32px !important;
+  }
+
+  .glassCard {
+    position: absolute;
+    right: 0;
+  }
 }
 
 

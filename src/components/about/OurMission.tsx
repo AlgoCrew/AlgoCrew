@@ -93,7 +93,6 @@ export const OurMission = ({ commingData }: { commingData: any }) => {
               <div className={styles.glowOrb} />
             </div>
           </Column>
-
         </Row>
       </div>
     </section>

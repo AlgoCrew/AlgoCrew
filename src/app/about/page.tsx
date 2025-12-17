@@ -89,11 +89,11 @@ export default function About() {
           
           {aboutUs.ourValues.display && (
             <>
-              <Heading as="h2" id={aboutUs.ourValues.title} variant="display-strong-s" marginBottom="m" marginTop="m" className="px-5 md:px-16">
+              <Heading as="h2" id={aboutUs.ourValues.title} variant="display-strong-s" marginBottom="m" marginTop="m" className="px-5 md:px-20">
                 {aboutUs.ourValues.title}
               </Heading>
 
-              <RevealFx translateY="16" delay={0.6} className="px-5 md:px-15">
+              <RevealFx translateY="16" delay={0.6} className="px-5 md:px-16">
                 <Flex fillWidth gap="24" mobileDirection="column">
                   <Flex flex={3} paddingX="20">
                     <Cards columns="2" />
