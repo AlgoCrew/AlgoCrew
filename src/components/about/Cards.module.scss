@@ -1,84 +1,100 @@
-.hover {
-    border: 1px solid var(--static-transparent);
-
-    &:hover {
-        border: 1px solid var(--neutral-alpha-medium);
-    }
+.gridContainer {
+  --brand-accent: #00ccccf0;
+  --card-bg: rgba(var(--neutral-surface-rgb), 0.6);
+  --border-subtle: rgba(var(--neutral-border-rgb), 0.08);
 }
 
-.image {
-    transition: var(--transition-micro-medium);
-    transform: scale(1);
-}
-
-.iconColor {
-    color: #575656;
-    // filter: drop-shadow(4px 0px 10px #60e5fcaa);
-}
-.teamCard > div{
-    min-width: 350px !important;
-}
-
-@media (max-width: 430px) {
-    .teamCard > div{
-        min-width: 280 !important;
-    }
-}
-
-
-.card {
-  isolation: isolate;
-}
-
-.mediaObject {
-  --border-width: 1px;
-  --radius: 24px;
-
+.livingCard {
+  height: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-top: 3px solid transparent; // Hidden until hover or entry
+  border-radius: 8px;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   position: relative;
-  border-radius: var(--radius);
-  border: var(--border-width) solid transparent;
-}
+  display: flex;
+  flex-direction: column;
 
-.mediaObject::before {
-  content: " ";
-  position: absolute;
-  inset: calc(var(--border-width) * -1);
-  z-index: -1;
-  border: inherit;
-  border-radius: inherit;
-  background-image: conic-gradient(from var(--angle), #1f2937 80%, #E0D1FF 88%, #E0D1FF 92%, #1f2937 100%);
-  background-origin: border-box;
-  -webkit-mask:
-    linear-gradient(black, black) content-box,
-    linear-gradient(black, black);  
-  mask: linear-gradient(black, black),
-        linear-gradient(black, black);
-  -webkit-mask-clip: content-box, border-box;  
-  mask-clip: content-box, border-box;
-  -webkit-mask-composite: xor;  
-  mask-composite: exclude;
-  animation: spin 2s linear infinite;
-  animation-play-state: paused;
-}
+  &:hover {
+    background: var(--neutral-surface);
+    border-top-color: var(--brand-accent);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px -10px rgba(0, 204, 204, 0.15);
 
-@supports not (background: paint(something)) {
-  .mediaObject::before {
-background-image: conic-gradient(#1f2937 80%, #E0D1FF 88%, #E0D1FF 92%, #1f2937 100%);    
+    .iconWrapper {
+      background: var(--brand-accent);
+      color: white;
+    }
+    
+    .nameText {
+      color: var(--brand-accent);
+    }
   }
 }
 
-.mediaObject:hover::before {
-  animation-play-state: running;
+.iconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: rgba(0, 204, 204, 0.1); // Tinted brand color
+  color: var(--brand-accent);
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
 }
 
-@property --angle {
-  syntax: "<angle>";
-  inherits: true;
-  initial-value: 0turn;
+.nameText {
+  transition: color 0.3s ease;
 }
 
-@keyframes spin {
-  to {
-    --angle: 1turn;
+.gridContainer {
+  --brand-main: #00ccccf0;
+  --card-surface: rgba(var(--neutral-surface-rgb), 0.4);
+}
+
+.livingCard {
+  height: 100%;
+  position: relative;
+  background: var(--card-surface);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  border: 1px solid rgba(var(--neutral-on-background-medium-rgb), 0.08);
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+  overflow: hidden;
+
+  // Professional highlight: A very thin glow on hover
+  &:hover {
+    background: rgba(var(--neutral-surface-rgb), 0.8);
+    border-color: var(--brand-main);
+    box-shadow: 
+      0 0 0 1px var(--brand-main), 
+      0 20px 40px -12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-6px);
+
+    .iconBox {
+      background: var(--brand-main);
+      color: white;
+      transform: rotate(-5deg) scale(1.1);
+    }
   }
+}
+
+.iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: rgba(0, 204, 204, 0.08);
+  color: var(--brand-main);
+  border-radius: 12px;
+  margin-bottom: 24px;
+  transition: all 0.4s ease;
+}
+
+.cardContent {
+  position: relative;
+  z-index: 2;
 }

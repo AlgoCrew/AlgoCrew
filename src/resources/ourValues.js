@@ -29,11 +29,11 @@ const ourValues = [
     "description": "Job descriptions are static, don't wait on its update or for assignment of a task to solve a problem worth solving. Take the initiative, be the trailblazer, be the leader!",
     "iconName": "FaLightbulb"
   },
-  {
-    "name": "Excellence",
-    "description": "Pursuit of excellence is a journey, not a destination. Be proud that you're part of an organisation that believes in excellence, and take us a step further.",
-    "iconName": "FaStar"
-  }
+  // {
+  //   "name": "Excellence",
+  //   "description": "Pursuit of excellence is a journey, not a destination. Be proud that you're part of an organisation that believes in excellence, and take us a step further.",
+  //   "iconName": "FaStar"
+  // }
 ]
 
 export { ourValues };

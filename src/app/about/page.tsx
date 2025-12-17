@@ -76,40 +76,7 @@ export default function About() {
       </RevealFx>
  
       <Flex fillWidth mobileDirection="column" horizontal="center">
-        <Column className={styles.blockAlign} flex={12} fillWidth gap="l">
-          {/* <Column
-            id={aboutUs.intro.title}
-            fillWidth
-            minHeight="160"
-            vertical="center"
-            marginBottom="32"
-            marginTop="32"
-          >
-            <RevealFx translateY="16" delay={0.1}>
-              <Heading className={styles.textAlign}  variant="display-strong-xl">
-                {aboutUs.title}
-              </Heading>
-            </RevealFx>
-
-            <RevealFx translateY="16" delay={0.3}>
-              <Column textVariant="body-default-l" fillWidth marginBottom="l" marginTop="l">
-                <Text onBackground="neutral-weak" variant="body-default-l">
-
-                  {aboutUs.description}
-                </Text>
-
-              </Column>
-            </RevealFx>
-
-            <RevealFx translateY="16" delay={0.4}>
-              <Column textVariant="body-default-l" fillWidth>
-                <CeoCalendar />
-              </Column>
-            </RevealFx>
-
-          </Column> */}
-
-
+        <Column className={styles.blockAlign} flex={12} fillWidth gap="s">
           {aboutUs.ourMission.display && (
             <OurMission commingData={aboutUs.ourMission}/>
           )}
@@ -119,14 +86,14 @@ export default function About() {
           )}
 
           {/* <OurTeam /> */}
-
+          
           {aboutUs.ourValues.display && (
             <>
-              <Heading as="h2" id={aboutUs.ourValues.title} variant="display-strong-s" marginBottom="m" marginTop="l">
+              <Heading as="h2" id={aboutUs.ourValues.title} variant="display-strong-s" marginBottom="m" marginTop="m" className="px-5 md:px-16">
                 {aboutUs.ourValues.title}
               </Heading>
 
-              <RevealFx translateY="16" delay={0.6}>
+              <RevealFx translateY="16" delay={0.6} className="px-5 md:px-15">
                 <Flex fillWidth gap="24" mobileDirection="column">
                   <Flex flex={3} paddingX="20">
                     <Cards columns="2" />
@@ -136,16 +103,18 @@ export default function About() {
             </>
           )}
 
-          <Column
-            maxWidth="m"
-            minHeight="80"
-            vertical="center"
-            // marginBottom="8"
-          >
-            <SendUsEmail />
-          </Column>
         </Column>
       </Flex>
+
+      <Column
+        maxWidth="xl"
+        minHeight="80"
+        vertical="center"
+        // marginBottom="8"
+        className="px-3 md:px-16"
+      >
+        <SendUsEmail />
+      </Column>
     </Column>
   );
 }
