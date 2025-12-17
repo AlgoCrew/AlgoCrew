@@ -1,502 +1,209 @@
-"use client"
+"use client";
 
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { mailchimp, social } from "@/resources";
-import { Flex, Heading, Input, Text, Background, Column, Icon, Textarea, Button, IconButton, Select, SmartLink } from "@once-ui-system/core"; // Added Select
-import { opacity, SpacingToken } from "@once-ui-system/core";
+import { social } from "@/resources";
+import { Flex, Heading, Input, Text, Background, Column, Icon, Textarea, Button, IconButton, Select, SmartLink } from "@once-ui-system/core";
+import styles from "./contact.module.scss"; // Using the same styles for consistency
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-    phone: '',
-    bidPrice: '' // Added bidPrice to form data
+    name: '', email: '', subject: '', message: '', phone: '', bidPrice: ''
   });
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [selectedPlan, setSelectedPlan] = useState(''); // State for selected service type
-  const [bidPriceError, setBidPriceError] = useState<string | null>(null); // State for bid price validation error
-
-  const SERVICE_ID = 'service_v75amug'; // Your provided EmailJS Service ID
-  const TEMPLATE_ID_ADMIN = 'template_unqc4m7'; // e.g., 'template_admin_contact'
-  const TEMPLATE_ID_USER_CONFIRMATION = 'template_mp8tgwx'; // e.g., 'template_user_confirm'
-  const PUBLIC_KEY = 'AcRk-xtMNtqCEbSNj'; // e.g., 'user_xxxxxxxxx' - Get this from EmailJS dashboard
-
+  const [selectedPlan, setSelectedPlan] = useState('');
+  
+  const brandColor = "#00ccccf0";
+  const SERVICE_ID = 'service_v75amug';
+  const TEMPLATE_ID_ADMIN = 'template_unqc4m7';
+  const TEMPLATE_ID_USER_CONFIRMATION = 'template_mp8tgwx';
+  const PUBLIC_KEY = 'AcRk-xtMNtqCEbSNj';
   const ADMIN_EMAIL = 'muhammadarqam920@gmail.com';
 
-  const validateEmail = (email: any) => {
-    if (!email || email.trim() === '') {
-      return "Email address cannot be empty.";
-    }
-
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if (!emailRegex.test(email)) {
-      return "Please enter a valid email address (e.g., user@example.com).";
-    }
-
-    return null;
-  };
-
-  const validatePhoneNumber = (phoneNumber: any) => {
-    if (!phoneNumber || phoneNumber.trim() === '') {
-      return "Phone number cannot be empty.";
-    }
-
-    const phoneRegex = /^\+?[0-9\s\-()]{7,20}$/;
-    if (!phoneRegex.test(phoneNumber)) {
-      return "Please enter a valid phone number (e.g., +1 555-123-4567).";
-    }
-    return null;
-  };
-
-  // New validation for bid price
-  const validateBidPrice = (price: any) => {
-    if (selectedPlan === "Fixed-Price Project") { // Only validate if Fixed-Price Project is selected
-      if (!price || price.trim() === '') {
-        return "Bid Price cannot be empty for Fixed-Price Project.";
-      }
-      // Regex to allow only numbers, optional decimal point, and up to two decimal places
-      const priceRegex = /^\d+(\.\d{1,2})?$/;
-      if (!priceRegex.test(price)) {
-        return "Please enter a valid price (e.g., 100 or 1000.00).";
-      }
-    }
-    return null;
-  };
-
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-
-    // Clear specific errors when input changes
-    if (name === 'bidPrice') {
-      setBidPriceError(null);
-    }
-  };
-
-  // Handler for radio button toggle
   const handlePlanToggle = (plan: string) => {
     setSelectedPlan(plan);
-    // Clear bid price and its error if switching from Fixed Gig
-    if (plan !== "Fixed Gig") {
-      setFormData(prevData => ({ ...prevData, bidPrice: '' }));
-      setBidPriceError(null);
+    if (plan !== "Fixed-Price Project") {
+      setFormData(prev => ({ ...prev, bidPrice: '' }));
     }
   };
 
-  const sendEmailWithEmailJS = async (templateId: any, templateParams: any) => {
-    try {
-      const response = await emailjs.send(SERVICE_ID, templateId, templateParams, PUBLIC_KEY);
-      console.log('EmailJS Success:', response.status, response.text);
-      return true;
-    } catch (error: any) { // Type 'any' for error for broader compatibility
-      console.error('EmailJS Failed:', error);
-      return false;
-    }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!selectedPlan) {
+      setErrorMessage("Please select a service type.");
+      return;
+    }
     setLoading(true);
     setSuccessMessage('');
     setErrorMessage('');
-    setBidPriceError(null); // Clear previous bid price error
-
-    const { name, email, subject, message, phone, bidPrice } = formData;
-
-    // Basic validation check for service type selection
-    if (!selectedPlan) {
-      setErrorMessage("Please select a service type.");
-      setLoading(false);
-      return;
-    }
-
-    // Validate bid price if Fixed-Price Project is selected
-    const bidPriceValidationError = validateBidPrice(bidPrice);
-    if (bidPriceValidationError) {
-      setBidPriceError(bidPriceValidationError);
-      setLoading(false);
-      return;
-    }
-
-    let adminMessage = `
-      You have received a new contact form submission:
-
-      Name: ${name}
-      Email: ${email}
-      Phone: ${phone}
-      Service Type: ${selectedPlan}
-      Subject: ${subject}
-      Message: ${message}
-    `;
-
-    if (selectedPlan === "Fixed-Price Project") {
-      adminMessage += `\nBid Price: $${bidPrice}`;
-    }
 
     const adminTemplateParams = {
-      from_name: name,
-      from_email: email,
-      time: new Date().toLocaleString(), // Format date for readability
+      from_name: formData.name,
+      from_email: formData.email,
+      time: new Date().toLocaleString(),
       to_email: ADMIN_EMAIL,
-      subject: `New Query by "${name}" for "${subject}" (${selectedPlan})`, // Updated subject
-      message: adminMessage,
-      from_phone: phone,
-      service_type: selectedPlan, // Include the selected service type
-      bid_price: selectedPlan === "Fixed-Price Project" ? bidPrice : 'N/A' // Include bid price conditionally
-    };
-
-    const userConfirmationTemplateParams = {
-      name: name,
-      email: email,
-      // Ensure your user confirmation template on EmailJS is set up to receive these variables
-      // For example, if your template has {{name}} and {{email}}
+      subject: `General Inquiry: ${formData.subject} (${selectedPlan})`,
+      message: `
+        Service: ${selectedPlan}
+        Bid: ${formData.bidPrice || 'N/A'}
+        Message: ${formData.message}
+      `,
+      from_phone: formData.phone,
     };
 
     try {
-      const adminEmailSent = await sendEmailWithEmailJS(TEMPLATE_ID_ADMIN, adminTemplateParams);
-
-      const userEmailSent = await sendEmailWithEmailJS(TEMPLATE_ID_USER_CONFIRMATION, userConfirmationTemplateParams);
-
-      if (adminEmailSent && userEmailSent) {
-        setSuccessMessage('Your message has been sent successfully! A confirmation has been sent to your email.');
-        setFormData({ name: '', email: '', subject: '', message: '', phone: '', bidPrice: '' }); // Clear form including bidPrice
-        setSelectedPlan(''); // Clear selected service type
-      } else {
-        setErrorMessage('Failed to send your message. Please try again.');
-      }
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, adminTemplateParams, PUBLIC_KEY);
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID_USER_CONFIRMATION, { name: formData.name, email: formData.email }, PUBLIC_KEY);
+      
+      setSuccessMessage('Message sent successfully!');
+      setFormData({ name: '', email: '', subject: '', message: '', phone: '', bidPrice: '' });
+      setSelectedPlan('');
     } catch (error) {
-      console.error('Submission error:', error);
-      setErrorMessage('An unexpected error occurred. Please try again.');
+      setErrorMessage('Unexpected error. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <>
-      <Flex
-        overflow="hidden"
-        fillWidth
-        padding="l"
-        paddingY="xl"
-        radius="l"
-        marginY="l"
-        horizontal="center"
-        align="center"
-        background="surface"
-        border="neutral-alpha-weak"
-        gap='l'
-        mobileDirection='column'
-      >
-        <Column align="start" className='md:w-100 basis-full' marginBottom="l">
-          <Heading style={{ position: "relative" }} marginBottom="0" variant="display-strong-xs">
-            Got Your Back
-          </Heading>
-
-          <Text
-            style={{
-              position: "relative",
-              maxWidth: "var(--responsive-width-xs)",
-            }}
-            wrap="balance"
-            marginBottom="l"
-            onBackground="neutral-medium"
-          >
-            Building, Launching, and Growing Together
-          </Text>
-
-          <Heading style={{ position: "relative" }} marginBottom="0" variant="body-strong-xl">
-            <Icon name="location" size='xs' className='pe-1'></Icon>
-            Location
-          </Heading>
-
-          <Text
-            style={{
-              position: "relative",
-              maxWidth: "var(--responsive-width-xs)",
-            }}
-            wrap="balance"
-            marginBottom="m"
-            marginLeft="20"
-            onBackground="neutral-medium"
-            variant="body-default-s"
-          >
-            <SmartLink href={'https://www.google.com/maps/search/?api=1&query=35+Herkley+Dr,+Brampton,+Ontario+L6V+2E7,+Canada'}>
-              <Text onBackground="neutral-medium">
-                35 Herkley Dr, Brampton, Ontario L6V 2E7, Canada
-              </Text>
-            </SmartLink>
-          </Text>
-
-          <Heading style={{ position: "relative" }} marginBottom="0" variant="body-strong-xl">
-            <Icon name="phone" size='xs' className='pe-1'></Icon>
-            Phone
-          </Heading>
-
-          <Text
-            style={{
-              position: "relative",
-              maxWidth: "var(--responsive-width-xs)",
-            }}
-            wrap="balance"
-            marginBottom="m"
-            marginLeft="20"
-            onBackground="neutral-medium"
-            variant="body-default-s"
-          >
-            {/* +1 (437) 383‑6794 */}
-            <SmartLink href={'tel:+1 (437) 383‑6794'}>
-              <Text onBackground="neutral-medium">
-                +1 (437) 450‑9656
-              </Text>
-            </SmartLink>
-          </Text>
-
-          <Heading style={{ position: "relative" }} marginBottom="0" variant="body-strong-xl">
-            <Icon name="email" size='xs' className='pe-1'></Icon>
-            Email
-          </Heading>
-
-          <Text
-            style={{
-              position: "relative",
-              maxWidth: "var(--responsive-width-xs)",
-            }}
-            wrap="balance"
-            marginLeft="20"
-            onBackground="neutral-medium"
-            variant="body-default-s"
-          >
-            <SmartLink href={'mailto:query@algocrew.io'}>
-              <Text onBackground="neutral-medium">
-                query@algocrew.io
-              </Text>
-            </SmartLink>
-          </Text>
-
-          <Heading style={{ position: "relative" }} marginTop="m" variant="body-strong-xl">
-            <Icon name="social" size='xs' className='pe-1'></Icon>
-            Follow Us
-          </Heading>
-
-          <Flex gap="16" marginLeft="20" marginTop="4">
-            {social.slice(0, 2).map(
-              (item) =>
-                item.link && (
-                  <IconButton
-                    key={item.name}
-                    href={item.link}
-                    icon={item.icon}
-                    tooltip={item.name}
-                    size="s"
-                    variant="ghost"
-                  ></IconButton>
-                ),
-            )}
+    <Flex
+      fillWidth
+      radius="xl"
+      className={styles.contactContainer}
+      mobileDirection="column"
+      minHeight="96"
+    >
+      {/* LEFT PANEL: Contact Information */}
+      <Column padding="48" flex={4} className={styles.infoSide} content="space-between">
+        <Column gap="24">
+          <Flex direction="column" gap="8">
+            <Text variant="label-strong-s" style={{ color: brandColor, letterSpacing: '0.2em' }}>
+              CONTACT US
+            </Text>
+            <Heading variant="display-strong-s">
+              Got Your <span style={{ color: brandColor }}>Back</span>
+            </Heading>
+            <Text variant="body-default-m" onBackground="neutral-weak">
+              Building, Launching, and Growing Together.
+            </Text>
           </Flex>
 
-          {/* <Media
-            src='/images/contact.png' // Ensure this path exists in your data
-            alt='Contact Us'
-            style={{ height: '400px', borderRadius: '8px' }}
-            objectFit='scale-down'
-          /> */}
-        </Column>
-
-        <Column className='h-fit md:w-100 basis-full'>
-          <Column className='' radius="l">
-            <Background
-              top="0"
-              radius="l"
-              position="absolute"
-              mask={{
-                x: mailchimp.effects.mask.x,
-                y: mailchimp.effects.mask.y,
-                radius: mailchimp.effects.mask.radius,
-                cursor: mailchimp.effects.mask.cursor
-              }}
-              gradient={{
-                display: mailchimp.effects.gradient.display,
-                opacity: mailchimp.effects.gradient.opacity as opacity,
-                x: mailchimp.effects.gradient.x,
-                y: mailchimp.effects.gradient.y,
-                width: mailchimp.effects.gradient.width,
-                height: mailchimp.effects.gradient.height,
-                tilt: mailchimp.effects.gradient.tilt,
-                colorStart: mailchimp.effects.gradient.colorStart,
-                colorEnd: mailchimp.effects.gradient.colorEnd,
-              }}
-              dots={{
-                display: mailchimp.effects.dots.display,
-                opacity: mailchimp.effects.dots.opacity as opacity,
-                size: mailchimp.effects.dots.size as SpacingToken,
-                color: mailchimp.effects.dots.color,
-              }}
-              grid={{
-                display: mailchimp.effects.grid.display,
-                opacity: mailchimp.effects.grid.opacity as opacity,
-                color: mailchimp.effects.grid.color,
-                width: mailchimp.effects.grid.width,
-                height: mailchimp.effects.grid.height,
-              }}
-              lines={{
-                display: mailchimp.effects.lines.display,
-                opacity: mailchimp.effects.lines.opacity as opacity,
-                size: mailchimp.effects.lines.size as SpacingToken,
-                thickness: mailchimp.effects.lines.thickness,
-                angle: mailchimp.effects.lines.angle,
-                color: mailchimp.effects.lines.color,
-              }}
-            />
-          
-            <form onSubmit={handleSubmit} style={{zIndex: '9'}} className='flex flex-col gap-y-4 p-20'>
-              {/* Select Component for Service Type */}
-              <Select
-                id="service-type-select"
-                label="Choose a service"
-                value={selectedPlan}
-                searchable
-                emptyState={
-                  <Text onBackground="neutral-weak">
-                    No matching services found
-                  </Text>
-                }
-                hasPrefix={
-                  <Icon marginLeft="4" onBackground="neutral-weak" name="rocket" size="xs" />
-                }
-                options={[
-                  { label: "Staff Augmentation", value: "Staff Augmentation" },
-                  { label: "Dedicated Team", value: "Dedicated Team" },
-                  { label: "Fixed-Price Project", value: "Fixed-Price Project" },
-                  { label: "Time & Material Project", value: "Time & Material Project" },
-                  { label: "IT Consulting/Advisory", value: "IT Consulting/Advisory" },
-                  { label: "Managed Services/Support", value: "Managed Services/Support" },
-                  { label: "General Inquiry", value: "General Inquiry" },
-                ]}
-                onSelect={handlePlanToggle} // once-ui's onSelect typically passes the selected option object
-              />
-
-              {/* Conditional Bid Price Input */}
-              {selectedPlan === "Fixed-Price Project" && (
-                <Input
-                  id="bidPrice"
-                  type="text" // Use text type for price input to handle decimal points
-                  name="bidPrice"
-                  label="Bid Price (USD)"
-                  value={formData.bidPrice}
-                  onChange={(e) => handleChange(e)}
-                  required
-                  validate={validateBidPrice}
-                  hasPrefix={
-                    <Icon marginLeft="4" onBackground="neutral-weak" name="dollar" size="xs" />
-                  }
-                />
-              )}
-
-              <Input
-                id="name"
-                type="text"
-                name="name"
-                label="Name"
-                value={formData.name}
-                onChange={(e) => handleChange(e)}
-                required
-                hasPrefix={
-                  <Icon marginLeft="4" onBackground="neutral-weak" name="person" size="xs" />
-                }
-              />
-
-              <Input
-                id="email"
-                label="Email"
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={(e) => handleChange(e)}
-                required
-                validate={validateEmail}
-                hasPrefix={
-                  <Icon marginLeft="4" onBackground="neutral-weak" name="email" size="xs" />
-                }
-              />
-
-              <Input
-                id="phone"
-                label="Phone"
-                type="text" // Changed to text as type="phone" is not standard HTML and once-ui might not support it directly
-                name="phone"
-                value={formData.phone}
-                onChange={(e) => handleChange(e)}
-                required
-                validate={validatePhoneNumber}
-                hasPrefix={
-                  <Icon marginLeft="4" onBackground="neutral-weak" name="phone" size="xs" />
-                }
-              />
-
-              <Input
-                id="subject"
-                type="text"
-                name="subject"
-                label="Subject"
-                value={formData.subject}
-                onChange={(e) => handleChange(e)}
-                required
-                hasPrefix={
-                  <Icon marginLeft="4" onBackground="neutral-weak" name="mailBox" size="xs" />
-                }
-              />
-
-              <Textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={(e) => handleChange(e)}
-                placeholder="Your message..."
-              />
-
-              {successMessage && (
-                <Text
-                  style={{
-                    position: "relative",
-                    color: "green",
-                    maxWidth: "var(--responsive-width-xs)",
-                  }}
-                  wrap="balance"
-                  marginBottom="l"
-                  onBackground="neutral-medium"
-                >
-                  <strong className="">Success!</strong>
-                  <span className=""> {successMessage}</span>
-                </Text>
-              )}
-
-              {errorMessage && (
-                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                  <strong className="font-bold">Error!</strong>
-                  <span className="block sm:inline"> {errorMessage}</span>
-                </div>
-              )}
-
-              {loading ?
-                <Button fillWidth type="submit" loading disabled={loading}>
-                  Sending...
-                </Button> :
-                <Button fillWidth data-border="rounded" size="s" type="submit">Submit</Button>
-              }
-            </form>
+          <Column gap="32" marginTop="40">
+            {[
+              { icon: 'location', label: 'Office', value: 'Brampton, Ontario L6V 2E7', link: '#' },
+              { icon: 'phone', label: 'Call Us', value: '+1 (437) 450-9656', link: 'tel:+14374509656' },
+              { icon: 'email', label: 'Email', value: 'query@algocrew.io', link: 'mailto:query@algocrew.io' }
+            ].map((item, idx) => (
+              <Flex key={idx} gap="16" align="center">
+                <Flex background="neutral-alpha-weak" padding="12" radius="m" className={styles.brandGlow}>
+                  <Icon name={item.icon} size="s" />
+                </Flex>
+                <Column>
+                  <Text variant="label-strong-xs" onBackground="neutral-medium" align='start'>{item.label}</Text>
+                  <SmartLink href={item.link}>
+                    <Text variant="body-default-s" weight="strong" align='start'>{item.value}</Text>
+                  </SmartLink>
+                </Column>
+              </Flex>
+            ))}
           </Column>
         </Column>
-      </Flex>
-    </>
-  )
+
+        <Flex gap="12" marginTop="48">
+          {social.slice(0, 3).map((item) => (
+            <IconButton key={item.name} href={item.link} icon={item.icon} size="m" variant="ghost" style={{ borderRadius: '50%', border: '1px solid rgba(var(--neutral-border-rgb), 0.1)' }} />
+          ))}
+        </Flex>
+      </Column>
+
+      {/* RIGHT PANEL: The Form */}
+      <Column padding="48" flex={7} className={styles.formSide} position="relative">
+        <Background dots={{ display: true, opacity: 10, size: '2', color: brandColor }} />
+        
+        <form onSubmit={handleSubmit} style={{ position: 'relative', zIndex: 10 }}>
+          <Column gap="24">
+            <Select
+              id="service-type"
+              label="Choose a service"
+              value={selectedPlan}
+              onSelect={handlePlanToggle}
+              hasPrefix={<Icon name="rocket" size="xs" style={{color: brandColor}} />}
+              options={[
+                { label: "Staff Augmentation", value: "Staff Augmentation" },
+                { label: "Dedicated Team", value: "Dedicated Team" },
+                { label: "Fixed-Price Project", value: "Fixed-Price Project" },
+                { label: "IT Consulting", value: "IT Consulting/Advisory" },
+                { label: "General Inquiry", value: "General Inquiry" },
+              ]}
+            />
+
+            {selectedPlan === "Fixed-Price Project" && (
+              <Input
+                id="bidPrice"
+                name="bidPrice"
+                label="Bid Price (USD)"
+                value={formData.bidPrice}
+                onChange={handleChange}
+                required
+                hasPrefix={<Icon name="dollar" size="xs" style={{color: brandColor}} />}
+              />
+            )}
+
+            <Flex gap="20" mobileDirection="column">
+              <Input id="name" name="name" label="Name" value={formData.name} onChange={handleChange} required />
+              <Input id="email" name="email" label="Email" type="email" value={formData.email} onChange={handleChange} required />
+            </Flex>
+
+            <Flex gap="20" mobileDirection="column">
+              <Input id="phone" name="phone" label="Phone" value={formData.phone} onChange={handleChange} required />
+              <Input id="subject" name="subject" label="Subject" value={formData.subject} onChange={handleChange} required />
+            </Flex>
+
+            <Textarea
+              id="message"
+              name="message"
+              label="How can we help?"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Tell us about your inquiry..."
+            />
+
+            {successMessage && (
+              <Flex background="brand-alpha-weak" padding="16" radius="m" border="brand-alpha-medium">
+                <Text variant="body-default-s" color="green-strong">✓ {successMessage}</Text>
+              </Flex>
+            )}
+
+            {errorMessage && (
+              <Flex background="neutral-alpha-weak" padding="16" radius="m" border="neutral-alpha-medium">
+                <Text variant="body-default-s" color="red-strong">⚠ {errorMessage}</Text>
+              </Flex>
+            )}
+
+            <Button 
+                fillWidth 
+                size="l" 
+                type="submit" 
+                loading={loading}
+                style={{ 
+                    background: brandColor, 
+                    color: 'white', 
+                    fontWeight: 'bold',
+                    boxShadow: `0 10px 20px -5px rgba(0, 204, 204, 0.3)`
+                }}
+            >
+              Send Message
+            </Button>
+          </Column>
+        </form>
+      </Column>
+    </Flex>
+  );
 }

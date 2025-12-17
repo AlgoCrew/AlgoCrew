@@ -99,3 +99,36 @@
         height: 5rem;
     }
 }
+
+
+.toggleContainer {
+  background: rgba(var(--neutral-surface-rgb), 0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(var(--neutral-border-rgb), 0.1);
+  padding: 6px;
+  width: fit-content;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.toggleButton {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+
+  &[data-active="true"] {
+    background: #00ccccf0 !important;
+    color: #ffffff !important; // Dark text on light brand color for readability
+    box-shadow: 0 4px 12px rgba(0, 204, 204, 0.3);
+  }
+
+  &[data-active="false"] {
+    background: transparent !important;
+    color: var(--neutral-on-background-medium) !important;
+    
+    &:hover {
+      color: var(--neutral-on-background-strong) !important;
+      background: rgba(var(--neutral-on-background-medium-rgb), 0.05) !important;
+    }
+  }
+}

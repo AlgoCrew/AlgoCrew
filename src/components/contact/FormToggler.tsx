@@ -1,14 +1,11 @@
-"use client"
-import {
-  Column,
-  Flex,
-  Button,
-} from "@once-ui-system/core";
-import { baseURL, aboutUs, person } from "@/resources";
+"use client";
+
+import { Column, Flex, Button } from "@once-ui-system/core";
 import styles from "@/components/about/about.module.scss";
 import HireDeveloperForm from "@/components/contact/HireDeveloperForm";
-import React, { useState } from 'react';
 import ContactForm from "@/components/contact/ContactForm";
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from "framer-motion"; // Highly recommended for professional tab switching
 
 type ActiveForm = 'hireDeveloper' | 'generalInquiry';
 
@@ -16,11 +13,19 @@ export default function FormTogger() {
   const [activeForm, setActiveForm] = useState<ActiveForm>('hireDeveloper');
 
   return (
-    <Column maxWidth="m" gap="s" horizontal="center">
-      <Flex gap="s" horizontal="center" align="center" padding="s" radius="l">
+    <Column fillWidth gap="xl" horizontal="center" paddingTop="m">
+      <Flex 
+        className={styles.toggleContainer} 
+        radius="full" 
+        gap="4" 
+        horizontal="center" 
+        align="center"
+      >
         <Button
           onClick={() => setActiveForm('hireDeveloper')}
-          variant={activeForm === 'hireDeveloper' ? 'primary' : 'secondary'}
+          className={styles.toggleButton}
+          data-active={activeForm === 'hireDeveloper'}
+          variant="tertiary" // We override styles in SCSS
           size="m"
           data-border="rounded"
         >
@@ -29,7 +34,9 @@ export default function FormTogger() {
 
         <Button
           onClick={() => setActiveForm('generalInquiry')}
-          variant={activeForm === 'generalInquiry' ? 'primary' : 'secondary'}
+          className={styles.toggleButton}
+          data-active={activeForm === 'generalInquiry'}
+          variant="tertiary"
           size="m"
           data-border="rounded"
         >
@@ -37,21 +44,31 @@ export default function FormTogger() {
         </Button>
       </Flex>
  
-      {activeForm === 'hireDeveloper' && (
-        <Flex fillWidth mobileDirection="column" horizontal="center">
-          <Column className={styles.blockAlign} flex={12} fillWidth>
-            <HireDeveloperForm />
-          </Column>
-        </Flex>
-      )}
-
-      {activeForm === 'generalInquiry' && (
-        <Flex fillWidth mobileDirection="column" horizontal="center">
-          <Column className={styles.blockAlign} flex={12} fillWidth>
-            <ContactForm />
-          </Column>
-        </Flex>
-      )}
+      {/* Animated Content Transition */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeForm}
+          initial={{ opacity: 0, y: 10, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          exit={{ opacity: 0, y: -10, filter: "blur(10px)" }}
+          transition={{ duration: 0.4, ease: "circOut" }}
+          style={{ width: '100%' }}
+        >
+          {activeForm === 'hireDeveloper' ? (
+            <Flex fillWidth horizontal="center">
+              <Column className={styles.blockAlign} fillWidth>
+                <HireDeveloperForm />
+              </Column>
+            </Flex>
+          ) : (
+            <Flex fillWidth horizontal="center">
+              <Column className={styles.blockAlign} fillWidth>
+                <ContactForm />
+              </Column>
+            </Flex>
+          )}
+        </motion.div>
+      </AnimatePresence>
     </Column>
   );
 }
