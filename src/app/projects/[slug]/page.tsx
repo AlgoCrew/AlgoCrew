@@ -52,7 +52,7 @@ export default async function Project({
   }
 
   return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="l">
+    <Column as="section" maxWidth="m" horizontal="center" gap="l" paddingTop="48" className="px-6 px-lg-0">
       <Schema
         as="blogPosting" // Consider if 'blogPosting' is appropriate for a project; 'article' might be better
         baseURL={baseURL}
@@ -66,13 +66,6 @@ export default async function Project({
           image: `${baseURL}${person.avatar}`,
         }}
       />
-
-      <Column maxWidth="xs" gap="16">
-        <Button data-border="rounded" href="/projects" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
-          Projects
-        </Button>
-
-      </Column>
 
       <>
         <ProjectCard project={project}/>
