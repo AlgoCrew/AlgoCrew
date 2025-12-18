@@ -1,0 +1,124 @@
+.stepsSection {
+    position: relative;
+    overflow: visible;
+}
+
+.timelineTrack {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    z-index: 1;
+}
+
+.timelineProgress {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, #00ccccf0, #00ccccf0);
+    z-index: 2;
+    transform-origin: top;
+}
+
+.stepRow {
+    position: relative;
+    z-index: 3;
+    padding-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    
+    &.rowEven {
+        flex-direction: row;
+        .stepContent { text-align: right; align-items: flex-end; }
+        .stepHeader { flex-direction: row-reverse; }
+    }
+
+    &.rowOdd {
+        flex-direction: row-reverse;
+        .stepContent { text-align: left; align-items: flex-start; }
+        .stepHeader { flex-direction: row; }
+    }
+}
+
+.stepContent {
+    flex: 1;
+    max-width: 450px;
+}
+
+.stepNumber {
+    color: #00ccccf0;
+    font-family: var(--font-family-code);
+}
+
+.stepStatusLine {
+    height: 1px;
+    width: 40px;
+    background: rgba(0, 204, 204, 0.3);
+}
+
+.dotContainer {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.outerDot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--page-background);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    transition: all 0.4s ease;
+}
+
+.innerDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+}
+
+// Highlight the dot when the row becomes active via GSAP
+.stepRow:hover, :global(.active-step) {
+    .outerDot {
+        border-color: #00ccccf0;
+        box-shadow: 0 0 20px rgba(0, 204, 204, 0.4);
+    }
+    .innerDot {
+        background: #00ccccf0;
+        transform: scale(1.2);
+    }
+}
+
+.spacer {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .timelineTrack, .timelineProgress {
+        left: 20px;
+        transform: none;
+    }
+    .stepRow {
+        flex-direction: row-reverse !important;
+        padding-left: 50px;
+        .stepContent { text-align: left !important; align-items: flex-start !important; }
+        .stepHeader { flex-direction: row !important; }
+    }
+    .dotContainer {
+        position: absolute;
+        left: -30px;
+        width: auto;
+    }
+    .spacer { display: none; }
+}

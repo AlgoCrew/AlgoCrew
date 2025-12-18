@@ -1,142 +1,116 @@
-import { Column, Flex, Heading, Text, Grid, Card, Background } from "@once-ui-system/core";
-import { mailchimp } from "@/resources";
-import { opacity, SpacingToken } from "@once-ui-system/core";
+"use client";
 
-export default async function Steps({
-  service,
-}: {
-  service: any
-}) {
+import { Column, Flex, Heading, Text, RevealFx } from "@once-ui-system/core";
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import styles from './Steps.module.scss';
+
+export default function Steps({ service }: { service: any }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animate the vertical progress line height
+    gsap.fromTo(lineRef.current, 
+      { scaleY: 0 },
+      { 
+        scaleY: 1, 
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 20%",
+          end: "bottom 80%",
+          scrub: 0.5,
+        }
+      }
+    );
+
+    // Animate steps appearing and highlighting
+    const steps = gsap.utils.toArray(`.${styles.stepRow}`);
+    steps.forEach((step: any) => {
+      gsap.fromTo(step, 
+        { opacity: 0.3, y: 20 },
+        { 
+          opacity: 1, 
+          y: 0,
+          scrollTrigger: {
+            trigger: step,
+            start: "top 70%",
+            end: "top 40%",
+            scrub: true,
+          }
+        }
+      );
+    });
+  }, [service]);
+
   return (
     <>
       {service.steps && service.steps.length > 0 && (
-        <Column maxWidth="m" horizontal="center" gap="xl">
+        <Column 
+          ref={containerRef}
+          maxWidth="m" 
+          horizontal="center" 
+          paddingY="128" 
+          gap="64"
+          className={styles.stepsSection}
+        >
+          <Column align="center" gap="16">
+            <Text variant="label-strong-s" style={{ color: '#00ccccf0', letterSpacing: '0.3em' }}>
+              THE PROCESS
+            </Text>
+            <Heading variant="display-strong-s" align="center">
+              How It Works
+            </Heading>
+          </Column>
 
-          <Heading variant="display-strong-s" align="center" size="xl">
-            How It Works
-          </Heading>
+          <Flex fillWidth position="relative" direction="column">
+            {/* The Background Track */}
+            <div className={styles.timelineTrack} />
+            {/* The Animated Progress Line */}
+            <div ref={lineRef} className={styles.timelineProgress} />
 
-          <Flex
-            style={{ position: 'relative' }}
-            horizontal="center"
-            vertical="center"
-            fillWidth
-            radius="m"
-            paddingTop="20"
-            paddingBottom="32"
-          >
-            <Background
-              top="0"
-              position="absolute"
-              radius="m"
-              mask={{
-                x: mailchimp.effects.mask.x,
-                y: mailchimp.effects.mask.y,
-                radius: mailchimp.effects.mask.radius,
-                cursor: mailchimp.effects.mask.cursor
-              }}
-              gradient={{
-                display: mailchimp.effects.gradient.display,
-                opacity: mailchimp.effects.gradient.opacity as opacity,
-                x: mailchimp.effects.gradient.x,
-                y: mailchimp.effects.gradient.y,
-                width: mailchimp.effects.gradient.width,
-                height: mailchimp.effects.gradient.height,
-                tilt: mailchimp.effects.gradient.tilt,
-                colorStart: mailchimp.effects.gradient.colorStart,
-                colorEnd: mailchimp.effects.gradient.colorEnd,
-              }}
-              dots={{
-                display: mailchimp.effects.dots.display,
-                opacity: mailchimp.effects.dots.opacity as opacity,
-                size: mailchimp.effects.dots.size as SpacingToken,
-                color: mailchimp.effects.dots.color,
-              }}
-              grid={{
-                display: mailchimp.effects.grid.display,
-                opacity: mailchimp.effects.grid.opacity as opacity,
-                color: mailchimp.effects.grid.color,
-                width: mailchimp.effects.grid.width,
-                height: mailchimp.effects.grid.height,
-              }}
-              lines={{
-                display: mailchimp.effects.lines.display,
-                opacity: mailchimp.effects.lines.opacity as opacity,
-                size: mailchimp.effects.lines.size as SpacingToken,
-                thickness: mailchimp.effects.lines.thickness,
-                angle: mailchimp.effects.lines.angle,
-                color: mailchimp.effects.lines.color,
-              }}
-            />
-
-            <Column as="ol" style={{ width: '100%', position: 'relative' }} gap="16" className="pl-2 md:p-0 md:pl-0">
-              {service.steps.map((step: any, index: number) => {
-                const isRight = index % 2 === 0;
-                
-                return (
-                  <Flex 
-                    as="li" 
-                    key={index} 
-                    gap="m"
-                    padding="0"
-                    className={`sm:ps-2 flex-row-reverse relative ${isRight ? 'md:justify-content-end md:flex-row! md:text-right' : 'md:justify-content-start md:flex-row-reverse md:text-left'}`}
-                  >
-                    <div style={{ flex: '1 1 0' }}>
-                      <Text onBackground="neutral-weak" variant="body-default-s">
-                        step {index + 1}
-                      </Text>
-
-                      <Column gap="s" paddingTop="8"
-                        className={`${isRight ? 'md:items-end' : 'md:items-start'}`}
-                      >
-                        <Heading as="h3" size="l" >
-                          {step.title}
-                        </Heading>
-                        <Text onBackground="neutral-weak" variant="heading-default-s" style={{width: '90%'}}>
-                          {step.description}
+            {service.steps.map((step: any, index: number) => {
+              const isEven = index % 2 === 0;
+              return (
+                <Flex 
+                  key={index} 
+                  className={`${styles.stepRow} ${isEven ? styles.rowEven : styles.rowOdd}`}
+                  fillWidth
+                  align="center"
+                >
+                  {/* Content Side */}
+                  <Column className={styles.stepContent} gap="12">
+                    <Flex align="center" gap="12" className={styles.stepHeader}>
+                        <Text variant="label-strong-m" className={styles.stepNumber}>
+                            0{index + 1}
                         </Text>
-                      </Column>
-                    </div>
-
-                    <Flex
-                      // className="s-flex-hide"
-                      horizontal="center"
-                      vertical="center"
-                      style={{
-                        position: 'relative',
-                        height: 'inherit'
-                      }}
-                    >
-                      <div
-                        style={{
-                          zIndex: 1,
-                          width: '12px',
-                          height: '12px',
-                          borderRadius: '50rem',
-                          backgroundColor: 'white',
-                          border: '2px solid rgba(16, 36, 57, 0.7)',
-                          top: 8,
-                          position: 'absolute',
-                        }}
-                      />
-
-                      <div
-                        style={{
-                          position: 'relative',
-                          height: '100%', // Extend beyond the circle
-                          width: '1px', // Line thickness
-                          backgroundColor: 'gray',
-                          zIndex: -1,
-                          top: '26px', // Position the line below the circle
-                        }}
-                      />
+                        <div className={styles.stepStatusLine} />
                     </Flex>
+                    
+                    <Heading as="h3" variant="heading-strong-m">
+                      {step.title}
+                    </Heading>
+                    <Text onBackground="neutral-weak" variant="body-default-l" className={styles.stepDesc}>
+                      {step.description}
+                    </Text>
+                  </Column>
 
-                    <div style={{ flex: '1 1 0' }} className="s-flex-hide"></div>
-                  </Flex>
-                )
-              })}
-            </Column>
+                  {/* Center Dot Area */}
+                  <div className={styles.dotContainer}>
+                    <div className={styles.outerDot}>
+                        <div className={styles.innerDot} />
+                    </div>
+                  </div>
+
+                  {/* Empty spacer for alternating layout */}
+                  <div className={styles.spacer} />
+                </Flex>
+              );
+            })}
           </Flex>
         </Column>
       )}

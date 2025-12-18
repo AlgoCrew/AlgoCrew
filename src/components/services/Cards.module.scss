@@ -1,102 +1,93 @@
-.premiumCard {
+.sectionWrapper {
+  perspective: 1200px;
+}
+
+.accentTag {
+  color: #00ccccf0;
+  letter-spacing: 0.3em;
+  margin-bottom: 8px;
+}
+
+.mainGrid {
   position: relative;
-  height: 100%;
-  min-height: 380px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-  border-radius: 40px;
+}
+
+.cardItem {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
   overflow: hidden;
-  transition: transform 0.2s ease-out, background 0.5s ease;
-  cursor: pointer;
-  --brand-main: #00ccccf0;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  height: 100%;
 
   &:hover {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
-    border-color: rgba(0, 204, 204, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(0, 204, 204, 0.3);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 
-    .portalGlow {
-      transform: scale(1.5);
-      opacity: 0.6;
+    .cardGlow {
+      opacity: 1;
+    }
+
+    .cardDot {
+      background: #00ccccf0;
+      box-shadow: 0 0 15px #00ccccf0;
     }
 
     .line {
-        width: 40px;
-        background: #00ccccf0;
-    }
-
-    .linkText {
-        color: #00ccccf0;
-    }
-
-    .iconPortal {
-      background: var(--brand-main) !important;
-      color: white;
-      transform: rotate(-5deg) scale(1.1);
+      width: 100%;
+      background: #00ccccf0;
     }
   }
 }
 
-.lightLeak {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    800px circle at var(--mouse-x) var(--mouse-y),
-    rgba(0, 204, 204, 0.133),
-    transparent 40%
-  );
+.cardContent {
+  position: relative;
+  z-index: 2;
+  height: 100%;
 }
 
-.iconPortal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: rgba(0, 204, 204, 0.08);
-  color: var(--brand-main);
-  border-radius: 12px;
-  // margin-bottom: 24px;
+.cardGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(0, 204, 204, 0.08), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.cardDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
   transition: all 0.4s ease;
 }
 
-.portalGlow {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background: #00ccccf0;
-    filter: blur(25px);
-    opacity: 0.2;
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.cardDescription {
+  line-height: 1.6;
 }
 
-.premiumTitle {
-    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: -0.02em;
+.cardFooter {
+  margin-top: auto;
+  padding-top: 16px;
+  
+  .line {
+    height: 2px;
+    width: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
 }
 
-.footerLink {
-  display: flex;
-  align-items: center;
-    .line {
-        height: 1px;
-        width: 20px;
-        background: rgba(255, 255, 255, 0.2);
-        transition: all 0.4s ease;
-    }
-    
-    .linkText {
-        transition: all 0.4s ease;
-        opacity: 0.6;
-        letter-spacing: 0.1em;
-    }
-}
-
-.innerContent {
-    position: relative;
-    z-index: 2;
-    height: 100%;
+@media (max-width: 768px) {
+  .sectionWrapper {
+    padding-top: 64px;
+  }
 }
