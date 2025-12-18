@@ -5,6 +5,7 @@ import { projects } from "@/resources";
 import ProjectCards from "@/components/projects/ProjectCards";
 import { SendUsEmail } from "@/components/projects/SendUsEmail";
 import styles from "@/components/projects/Gallery.module.scss";
+import { CeoCalendar } from "@/components/Calendars/CeoCalendar";
 
 export default function Gallery() {
   return (
@@ -36,6 +37,10 @@ export default function Gallery() {
               {projects.description}
             </Text>
           </RevealFx>
+
+          <Column textVariant="body-default-l" fillWidth>
+              <CeoCalendar />
+          </Column>
         </Column>
 
         <Column flex={7} fillWidth>
@@ -44,10 +49,10 @@ export default function Gallery() {
       </Flex>
 
       <Column
-        maxWidth="m"
+        maxWidth="xl"
         minHeight="80"
         vertical="center"
-        // marginBottom="8"
+        className="px-3 md:px-16"
       >
         <SendUsEmail />
       </Column>

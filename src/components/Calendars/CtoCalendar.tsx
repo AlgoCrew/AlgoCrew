@@ -51,7 +51,7 @@ export function CtoCalendar() {
                       data-cal-config='{"layout":"month_view"}'
                       vertical="center"
                   >
-                      <Button prefixIcon="calendar" data-border="rounded" >
+                      <Button prefixIcon="calendar"  >
                         <Flex padding="8">Book a Free Consultation</Flex>
                       </Button>
                   </Flex>
@@ -83,10 +83,10 @@ export function CtoCalendar() {
                       // marginBottom="m"
                       vertical="center"
                   >
-                    {/* <Button prefixIcon="email" data-border="rounded" href="mailto:info@algocrew.io" variant="primary">
+                    {/* <Button prefixIcon="email"  href="mailto:info@algocrew.io" variant="primary">
                       <Flex padding="8" paddingRight="12" >Email us directly</Flex>
                     </Button> */}
-                    <Button prefixIcon="email" data-border="rounded" href="mailto:cto@algocrew.io" variant="secondary">
+                    <Button prefixIcon="email"  href="mailto:cto@algocrew.io" variant="secondary">
                       <Flex padding="8">Email us directly</Flex>
                     </Button>
                   </Flex>

@@ -45,7 +45,7 @@ export function InfoCalendar() {
                       data-cal-config='{"layout":"month_view"}'
                       vertical="center"
                   >
-                      <Button prefixIcon="calendar" data-border="rounded" >
+                      <Button prefixIcon="calendar"  >
                         <Flex padding="8">Book a Free Consultation</Flex>
                       </Button>
                   </Flex>
@@ -72,7 +72,7 @@ export function InfoCalendar() {
                       gap="8"
                       vertical="center"
                   >
-                    <Button prefixIcon="email" style={{ color: 'white' }}  data-border="rounded" href="mailto:info@algocrew.io" variant="secondary">
+                    <Button prefixIcon="email" style={{ color: 'white' }}   href="mailto:info@algocrew.io" variant="secondary">
                       <Flex padding="8">Email us directly</Flex>
                     </Button>
                   </Flex>

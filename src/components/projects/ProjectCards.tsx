@@ -56,14 +56,16 @@ export default function ProjectCards() {
             
             <div className={`${styles.overlayContent} card-content`}>
                <Flex fillWidth content="space-between" align="center">
-                  <Column gap="8">
+                  <Column gap="8" align="start">
                     <Heading variant="heading-strong-l" style={{ color: 'white' }}>
                         {project.name}
                     </Heading>
+
                     <Text variant="body-default-m" style={{ color: 'rgba(255,255,255,0.8)' }}>
                         Digital Solution — 2024
                     </Text>
                   </Column>
+
                   <ToggleButton
                     href={project.path}
                     label="Explore"
