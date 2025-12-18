@@ -1,87 +1,77 @@
-// Card.tsx (renamed to ServiceCard conceptually, but file remains Card.tsx)
 "use client";
 
-import { Column, Flex, Heading, Text, Card, SmartLink } from '@once-ui-system/core';
+import * as Icons from 'react-icons/fa';
+import {    FaLaptopCode, FaMobileAlt, FaCode, FaPaintBrush, FaBuilding, FaCogs, FaUsers,    FaPowerOff, FaGlobe, FaCube, FaLink, FaBrain, FaMagic, FaChartBar,    FaHandshake, FaCheckCircle, FaCloudUploadAlt, FaShieldAlt, FaCloud,    FaShoppingCart, FaTools, FaRobot, FaPalette, FaEthereum, FaVrCardboard,    FaCloudMeatball, FaExchangeAlt, FaSyncAlt, FaSellsy, FaUserShield, FaAutoprefixer, FaRegCheckCircle,    FaShopify, FaShoppingBasket, FaWordpressSimple, FaRocket} from 'react-icons/fa';
+const IconComponents: { [key: string]: React.ElementType } = {    FaLaptopCode, FaMobileAlt, FaCode, FaPaintBrush, FaBuilding, FaCogs, FaUsers,    FaPowerOff, FaGlobe, FaCube, FaLink, FaBrain, FaMagic, FaChartBar,    FaHandshake, FaCheckCircle, FaCloudUploadAlt, FaShieldAlt, FaCloud,    FaShoppingCart, FaTools, FaRobot, FaPalette, FaEthereum, FaVrCardboard,    FaCloudMeatball, FaExchangeAlt, FaSyncAlt, FaSellsy, FaUserShield, FaAutoprefixer, FaRegCheckCircle,    FaShopify, FaShoppingBasket, FaWordpressSimple, FaRocket};
 
-import styles from './Cards.module.scss'; // Keeping original styles import
+import { useRef, useState } from 'react';
+import { Column, Heading, Text, Icon, Flex } from '@once-ui-system/core';
+import styles from "./Cards.module.scss";
 
-// Import specific icons you plan to use. You might need to add more as you expand.
-// For a comprehensive list, refer to the react-icons documentation:
-// https://react-icons.github.io/react-icons/
-import {
-    FaLaptopCode, FaMobileAlt, FaCode, FaPaintBrush, FaBuilding, FaCogs, FaUsers,
-    FaPowerOff, FaGlobe, FaCube, FaLink, FaBrain, FaMagic, FaChartBar,
-    FaHandshake, FaCheckCircle, FaCloudUploadAlt, FaShieldAlt, FaCloud,
-    FaShoppingCart, FaTools, FaRobot, FaPalette, FaEthereum, FaVrCardboard,
-    FaCloudMeatball, FaExchangeAlt, FaSyncAlt, FaSellsy, FaUserShield, FaAutoprefixer, FaRegCheckCircle,
-    FaShopify, FaShoppingBasket, FaWordpressSimple, FaRocket
-} from 'react-icons/fa'; // Using Font Awesome icons as an example
+export default function ServiceCard({ service }: { service: any }) {
+    const cardRef = useRef<HTMLDivElement>(null);
+    const [style, setStyle] = useState({});
+    const IconComponent = service.iconName ? IconComponents[service.iconName] : Icons.FaStar;
 
-// A mapping object to get the React component from its string name
-const IconComponents: { [key: string]: React.ElementType } = {
-    FaLaptopCode, FaMobileAlt, FaCode, FaPaintBrush, FaBuilding, FaCogs, FaUsers,
-    FaPowerOff, FaGlobe, FaCube, FaLink, FaBrain, FaMagic, FaChartBar,
-    FaHandshake, FaCheckCircle, FaCloudUploadAlt, FaShieldAlt, FaCloud,
-    FaShoppingCart, FaTools, FaRobot, FaPalette, FaEthereum, FaVrCardboard,
-    FaCloudMeatball, FaExchangeAlt, FaSyncAlt, FaSellsy, FaUserShield, FaAutoprefixer, FaRegCheckCircle,
-    FaShopify, FaShoppingBasket, FaWordpressSimple, FaRocket
-};
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!cardRef.current) return;
+        const { left, top, width, height } = cardRef.current.getBoundingClientRect();
+        
 
-interface ServiceCardProps {
-    service: {
-        name: string;
-        short_description: string;
-        path: string;
-        iconName?: string; // Changed to iconName
+        const x = e.clientX - left;
+        const y = e.clientY - top;
+        
+        const rotateX = ((y - height / 2) / (height / 2)) * -5;
+        const rotateY = ((x - width / 2) / (width / 2)) * 5;
+
+        cardRef.current.style.setProperty("--mouse-x", `${x}px`);
+        cardRef.current.style.setProperty("--mouse-y", `${y}px`);
+        
+        setStyle({
+            transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+        });
     };
-    direction?: "row" | "column";
-}
 
-export default function ServiceCard({ service, direction }: ServiceCardProps) {
-    // Use service.iconName to get the icon component
-    const IconComponent = service.iconName ? IconComponents[service.iconName] : null;
+    const handleMouseLeave = () => {
+        setStyle({
+            transform: `perspective(1000px) rotateX(0deg) rotateY(0deg)`,
+        });
+    };
 
     return (
-        <Flex
-            position="relative"
-            transition="micro-medium"
-            direction={direction}
-            // radius="l"
-            className={`${styles.hover} h-fit ${styles.card}`}
-            mobileDirection="column"
-            fillWidth
-            radius="l-4"
-            style={{ cursor: 'default', flexDirection: direction === 'row' ? 'row' : 'column', height: '100%' }}
+        <div 
+            ref={cardRef} 
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={style}
+            className={styles.premiumCard}
         >
-            <Column radius="l-4" fillWidth fillHeight className={`${styles.mediaObject} display-flex surface-background neutral-border-alpha-medium border-solid border-1 radius-l-4 flex-column transition-macro-medium min-width-0 position-relative cursor-interactive neutral-on-background-strong`}>
-                <SmartLink href={service.path}>
-                    <Column
-                        position="relative"
-                        fillWidth gap="8"
-                        padding="24"
-                        vertical="center"
-                        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }} // Center content for column layout
-                    >
-                        {IconComponent && (
-                            <IconComponent size={48} style={{ marginBottom: '16px' }} className={styles.iconColor}/> // Render the icon
-                        )}
-                        <Heading
-                            as="h2"
-                            variant="heading-strong-l"
-                            wrap="balance"
-                            className='mb-3'
-                        >
-                            {service.name}
-                        </Heading>
+            <div className={styles.lightLeak} />
 
-                        <Text
-                            variant="body-default-s"
-                            onBackground="neutral-weak">
-                            {service.short_description}
-                        </Text>
-                    </Column>
-                </SmartLink>
+            <Column padding="40" gap="32" className={styles.innerContent}>
+                <Flex align="center" content="center" className={styles.iconPortal}>
+                    {IconComponent && (
+                        <IconComponent size={24} />
+                    )}
+                </Flex>
+                
+                <Column gap="12">
+                    <Heading variant="heading-strong-l">
+                        {service.name}
+                    </Heading>
+
+                    <Text variant="body-default-m" onBackground="neutral-medium" style={{ opacity: 0.8, fontWeight: 300 }}>
+                        {service.short_description}
+                    </Text>
+                </Column>
+                
+                <Flex marginTop="20" className={styles.footerLink} align="center" gap="12">
+                    <div className={styles.line} />
+                    <Text variant="label-strong-s" className={styles.linkText}>
+                        EXPLORE SERVICE
+                    </Text>
+                </Flex>
             </Column>
-        </Flex>
+        </div>
     );
 }

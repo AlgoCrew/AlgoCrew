@@ -121,8 +121,13 @@ export const ServicesHero = () => {
           <div style={{ opacity: 0.4 }}>
             <Icon name="globe" size="xl" />
           </div>
-          <Text variant="label-strong-xs" style={{ position: 'absolute', bottom: '24px' }}>
-            ALGO CREW
+
+          <Text variant="label-strong-xs" onBackground="brand-strong" style={{ position: 'absolute', bottom: '24px', color: '#00ccccf0'}}>
+            <div className={styles.pulseDot} />
+
+            <Text>
+              ALGOCREW
+            </Text>
           </Text>
         </Flex>
       </Flex>

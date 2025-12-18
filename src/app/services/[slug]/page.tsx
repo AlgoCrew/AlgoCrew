@@ -9,7 +9,7 @@ import { Row, ToggleButton, useTheme } from '@once-ui-system/core';
 import HeroSection from "@/components/services/HeroSection";
 import IncludedServices from "@/components/services/IncludedServices";
 import Steps from "@/components/services/Steps";
-import Parallax from "@/components/Parallax";
+import Parallax from "@/components/services/Parallax";
 import { CtoCalendar } from "@/components/Calendars/CtoCalendar";
 import { SendUsEmail } from "@/components/services/SendUsEmail";
 
@@ -60,7 +60,7 @@ export default async function Service({
   }
 
   return (
-    <Column as="section" maxWidth="l" horizontal="center" gap="l" overflow="visible">
+    <Column as="section" maxWidth="l" horizontal="center" gap="l" paddingTop="48">
       <Schema
         as="article" // 'article' is generally more appropriate for a service page than 'blogPosting'
         baseURL={baseURL}

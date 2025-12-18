@@ -1,6 +1,13 @@
 const categorizedServices = [
   {
     "name": "Web & App Development",
+    "category": "Digital Engineering",
+    "metric_value": "99.9% Uptime",
+    "status": "READY TO DEPLOY",
+    "highlights": [
+      "Optimized for high-performance delivery",
+      "Modular & Scalable architecture"
+    ],
     "description": "Crafting bespoke web and mobile applications tailored to your business needs, from concept to deployment.",
     "slug": "web-app-development",
     "path": "services/web-app-development",
@@ -8,96 +15,35 @@ const categorizedServices = [
     "image": "/images/services/webapp.jpg",
     "side_image": "/images/services/developer1.png",
     "includes": [
-      {
-        "name": "Web Development",
-        "description": "Creating responsive, high-performance websites for all business sizes.",
-        "image": "/images/web-development.jpg",
-        "slug": "web-development"
-      },
-      {
-        "name": "App Development",
-        "description": "Developing native and cross-platform mobile applications for iOS and Android.",
-        "image": "/images/app-development.jpg",
-        "slug": "app-development"
-      },
-      {
-        "name": "Custom Software Development",
-        "description": "Building tailored software solutions to streamline your unique business operations.",
-        "image": "/images/custom-software.jpg",
-        "slug": "custom-software-development"
-      },
-      {
-        "name": "SaaS",
-        "description": "Designing and developing scalable Software-as-a-Service platforms for recurring revenue.",
-        "image": "/images/saas.jpg",
-        "slug": "saas-development"
-      },
-      {
-        "name": "MVP Development",
-        "description": "Building Minimum Viable Products (MVP) to quickly test ideas, gain user feedback, and deliver core features for early market entry.",
-        "image": "mvp-development",
-        "slug": "FaRocket",
-      },
-      {
-        "name": "PaaS (Platform as a Service)",
-        "description": "Providing scalable and flexible platforms for building, deploying, and managing applications.",
-        "image": "/images/paas.jpg",
-        "slug": "paas-development"
-      },
-      {
-        "name": "Cloud Native Application",
-        "description": "Building and deploying applications specifically designed for cloud environments, leveraging microservices and containers.",
-        "image": "/images/cloud-native-application.jpg",
-        "slug": "cloud-native-application"
-      },
-      {
-        "name": "WordPress Development",
-        "description": "Building and customizing feature-rich WordPress websites that are easy to manage, scalable, and fully optimized for SEO.",
-        "image": "/images/cloud-native-application.jpg",
-        "slug": "web-app-development",
-      },
-      {
-        "name": "UX/UI Design",
-        "description": "Crafting intuitive and engaging user experiences and interfaces for your digital products.",
-        "image": "/images/ux-ui-design.jpg",
-        "slug": "ux-ui-design"
-      },
-      {
-        "name": "Business Applications",
-        "description": "Developing powerful applications to enhance specific business functions and productivity.",
-        "image": "/images/business-applications.jpg",
-        "slug": "business-applications"
-      }
+      { "name": "Web Development", "description": "Creating responsive, high-performance websites.", "slug": "web-development" },
+      { "name": "App Development", "description": "Developing native and cross-platform mobile applications.", "slug": "app-development" },
+      { "name": "Custom Software", "description": "Building tailored software solutions.", "slug": "custom-software-development" },
+      { "name": "SaaS", "description": "Scalable Software-as-a-Service platforms.", "slug": "saas-development" },
+      { "name": "MVP Development", "description": "Quickly test ideas with core features.", "slug": "FaRocket" },
+      { "name": "PaaS", "description": "Flexible platforms for managing applications.", "slug": "paas-development" },
+      { "name": "Cloud Native", "description": "Applications designed for cloud environments.", "slug": "cloud-native-application" },
+      { "name": "WordPress", "description": "SEO optimized WordPress websites.", "slug": "web-app-development" },
+      { "name": "UX/UI Design", "description": "Engaging user experiences and interfaces.", "slug": "ux-ui-design" },
+      { "name": "Business Apps", "description": "Enhance specific business functions.", "slug": "business-applications" }
     ],
     "steps": [
-      {
-        "title": "Discovery & Planning",
-        "description": "Understand your vision, define requirements, and create a strategic project roadmap."
-      },
-      {
-        "title": "Design & Prototyping",
-        "description": "Develop intuitive UX/UI designs and interactive prototypes for user testing."
-      },
-      {
-        "title": "Development & Coding",
-        "description": "Build robust, scalable, and secure applications using cutting-edge technologies."
-      },
-      {
-        "title": "Testing & Quality Assurance",
-        "description": "Rigorously test the application to ensure functionality, performance, and security."
-      },
-      {
-        "title": "Deployment & Launch",
-        "description": "Successfully deploy your application to chosen platforms and make it live."
-      },
-      {
-        "title": "Maintenance & Support",
-        "description": "Provide ongoing support, updates, and enhancements to ensure long-term success."
-      }
+      { "title": "Discovery", "description": "Understand vision and define requirements." },
+      { "title": "Design", "description": "Develop UX/UI and interactive prototypes." },
+      { "title": "Coding", "description": "Build using cutting-edge technologies." },
+      { "title": "QA", "description": "Rigorously test for performance and security." },
+      { "title": "Launch", "description": "Successfully deploy to live platforms." },
+      { "title": "Support", "description": "Ongoing updates for long-term success." }
     ]
   },
   {
     "name": "Cloud & DevOps",
+    "category": "Infrastructure",
+    "metric_value": "10ms Latency",
+    "status": "ACTIVE MONITORING",
+    "highlights": [
+      "Automated CI/CD Workflows",
+      "Zero-Downtime Migration"
+    ],
     "description": "Empowering your business with scalable cloud solutions and streamlined development operations.",
     "slug": "cloud-devops",
     "path": "services/cloud-devops",
@@ -105,86 +51,33 @@ const categorizedServices = [
     "image": "/images/services/cloud.jpg",
     "side_image": "/images/services/devops.png",
     "includes": [
-      {
-        "name": "Cloud Application Development",
-        "description": "Designing and developing cloud-native applications for maximum scalability and efficiency.",
-        "image": "/images/cloud-application.jpg",
-        "slug": "cloud-application"
-      },
-      {
-        "name": "Cloud Ops & Migration",
-        "description": "Managing cloud infrastructure and seamlessly migrating existing systems to the cloud.",
-        "image": "/images/cloud-ops-migration.jpg",
-        "slug": "cloud-ops-migration"
-      },
-      {
-        "name": "Cloud Maintenance & Integration",
-        "description": "Ensuring optimal performance and integrating cloud services with your existing ecosystem.",
-        "image": "/images/cloud-maintenance.jpg",
-        "slug": "cloud-maintenance-integration"
-      },
-      {
-        "name": "DevOps",
-        "description": "Implementing DevOps practices to automate development workflows and accelerate deployment cycles.",
-        "image": "/images/devops.jpg",
-        "slug": "devops"
-      },
-      {
-        "name": "CI/CD Pipeline",
-        "description": "Automating continuous integration and continuous delivery to speed up software release cycles.",
-        "image": "/images/ci-cd.jpg",
-        "slug": "ci-cd-pipeline"
-      },
-      {
-        "name": "Compliance & Regulations",
-        "description": "Ensuring compliance with ISO 27001, GDPR, HIPAA, SOC 2, PCI DSS, and NIST.",
-        "image": "/images/compliance.jpg",
-        "slug": "compliance-regulations"
-      },
-      {
-        "name": "Containerization (Docker & Kubernetes)",
-        "description": "Using Docker and Kubernetes to package and manage applications in a scalable, portable way.",
-        "image": "/images/containerization.jpg",
-        "slug": "containerization"
-      },
-      {
-        "name": "Infrastructure as Code (IaC)",
-        "description": "Managing and provisioning infrastructure through code, ensuring consistency and efficiency.",
-        "image": "/images/iac.jpg",
-        "slug": "infrastructure-as-code"
-      },
-      {
-        "name": "Monitoring & Logging",
-        "description": "Setting up robust systems to monitor application performance and collect logs for insights.",
-        "image": "/images/monitoring-logging.jpg",
-        "slug": "monitoring-logging"
-      }
+      { "name": "Cloud App Dev", "description": "Cloud-native apps for maximum efficiency.", "slug": "cloud-application" },
+      { "name": "Migration", "description": "Seamlessly migrating systems to the cloud.", "slug": "cloud-ops-migration" },
+      { "name": "Integration", "description": "Integrating cloud services with your ecosystem.", "slug": "cloud-maintenance-integration" },
+      { "name": "DevOps", "description": "Automate development workflows.", "slug": "devops" },
+      { "name": "CI/CD Pipeline", "description": "Speed up software release cycles.", "slug": "ci-cd-pipeline" },
+      { "name": "Compliance", "description": "Ensuring GDPR, HIPAA, and SOC 2 compliance.", "slug": "compliance-regulations" },
+      { "name": "Containers", "description": "Managing apps with Docker and Kubernetes.", "slug": "containerization" },
+      { "name": "IaC", "description": "Infrastructure as Code for consistency.", "slug": "infrastructure-as-code" },
+      { "name": "Monitoring", "description": "Robust logging and performance insights.", "slug": "monitoring-logging" }
     ],
     "steps": [
-      {
-        "title": "Assessment & Strategy",
-        "description": "Evaluate current infrastructure and define a cloud or DevOps adoption strategy."
-      },
-      {
-        "title": "Architecture & Planning",
-        "description": "Design robust cloud architectures and plan for seamless integration."
-      },
-      {
-        "title": "Implementation & Migration",
-        "description": "Execute cloud deployments, migrations, and set up CI/CD pipelines."
-      },
-      {
-        "title": "Automation & Optimization",
-        "description": "Automate processes, optimize resource usage, and monitor performance."
-      },
-      {
-        "title": "Training & Handover",
-        "description": "Provide knowledge transfer and training for internal teams."
-      }
+      { "title": "Strategy", "description": "Define a cloud or DevOps adoption plan." },
+      { "title": "Architecture", "description": "Design robust cloud architectures." },
+      { "title": "Implementation", "description": "Execute deployments and CI/CD pipelines." },
+      { "title": "Optimization", "description": "Automate and optimize resource usage." },
+      { "title": "Handover", "description": "Knowledge transfer to internal teams." }
     ]
   },
   {
     "name": "E-commerce",
+    "category": "Retail Solutions",
+    "metric_value": "3x Conversion",
+    "status": "STORE READY",
+    "highlights": [
+      "Conversion-focused UX Design",
+      "Secure Payment Gateway Integration"
+    ],
     "description": "Building and maintaining powerful e-commerce platforms to drive online sales and business growth.",
     "slug": "e-commerce",
     "path": "services/e-commerce",
@@ -192,66 +85,30 @@ const categorizedServices = [
     "image": "/images/services/ecommerce.jpg",
     "side_image": "/images/services/commerce.png",
     "includes": [
-      {
-        "name": "E-commerce Design & Development",
-        "description": "Creating robust and visually appealing online stores to maximize your sales.",
-        "image": "/images/ecommerce-design-development.jpg",
-        "slug": "ecommerce-design-development"
-      },
-      {
-        "name": "E-commerce Maintenance & Support",
-        "description": "Ensuring your e-commerce platform runs smoothly with continuous support and updates.",
-        "image": "/images/ecommerce-maintenance.jpg",
-        "slug": "ecommerce-maintenance-support"
-      },
-      {
-        "name": "E-commerce Automation & Apps",
-        "description": "Automating e-commerce processes and integrating custom apps for efficiency.",
-        "image": "/images/ecommerce-automation.jpg",
-        "slug": "ecommerce-automation-apps"
-      },
-      {
-        "name": "Shopify Development",
-        "description": "Specialized development services for building and customizing Shopify stores.",
-        "image": "/images/shopify-development.jpg",
-        "slug": "shopify-development"
-      },
-      {
-        "name": "WooCommerce Development",
-        "description": "Custom solutions for e-commerce platforms built on WooCommerce and WordPress.",
-        "image": "/images/woocommerce-development.jpg",
-        "slug": "woocommerce-development"
-      }
+      { "name": "Store Dev", "description": "Visually appealing stores to maximize sales.", "slug": "ecommerce-design-development" },
+      { "name": "Maintenance", "description": "Smooth operations with continuous support.", "slug": "ecommerce-maintenance-support" },
+      { "name": "Automation", "description": "Automating e-commerce apps for efficiency.", "slug": "ecommerce-automation-apps" },
+      { "name": "Shopify", "description": "Specialized Shopify store development.", "slug": "shopify-development" },
+      { "name": "WooCommerce", "description": "Custom WooCommerce and WordPress solutions.", "slug": "woocommerce-development" }
     ],
     "steps": [
-      {
-        "title": "Strategy & Discovery",
-        "description": "Analyze your business model and target audience to define a successful e-commerce strategy."
-      },
-      {
-        "title": "Design & UX",
-        "description": "Create intuitive and conversion-focused designs for your online store."
-      },
-      {
-        "title": "Platform Development",
-        "description": "Build your e-commerce site on a robust platform like Shopify, WooCommerce, or a custom solution."
-      },
-      {
-        "title": "Integration & Customization",
-        "description": "Integrate third-party apps, payment gateways, and customize features to fit your needs."
-      },
-      {
-        "title": "Launch & Optimization",
-        "description": "Go live with your store and continuously optimize performance based on data."
-      },
-      {
-        "title": "Ongoing Support",
-        "description": "Provide continuous maintenance, security updates, and technical support."
-      }
+      { "title": "Discovery", "description": "Define a successful e-commerce strategy." },
+      { "title": "UX Design", "description": "Conversion-focused online store designs." },
+      { "title": "Development", "description": "Build on Shopify, WooCommerce, or custom." },
+      { "title": "Customization", "description": "Integrate third-party apps and payments." },
+      { "title": "Optimization", "description": "Go live and optimize based on data." },
+      { "title": "Support", "description": "Ongoing security and technical updates." }
     ]
   },
   {
     "name": "Security & Quality",
+    "category": "Cyber Defense",
+    "metric_value": "Zero Vulnerabilities",
+    "status": "SHIELD ACTIVE",
+    "highlights": [
+      "Rigorous Penetration Testing",
+      "ISO 27001 Compliance Standards"
+    ],
     "description": "Ensuring the robustness, reliability, and security of your digital assets.",
     "slug": "security-quality",
     "path": "services/security-quality",
@@ -259,68 +116,30 @@ const categorizedServices = [
     "image": "/images/services/quality.jpg",
     "side_image": "/images/services/quality.png",
     "includes": [
-      {
-        "name": "Manual Testing",
-        "description": "Thoroughly testing software manually to identify usability issues and complex bugs.",
-        "image": "/images/manual-testing.jpg",
-        "slug": "manual-testing"
-      },
-      {
-        "name": "Automation Testing",
-        "description": "Implementing automated test scripts to ensure fast and repeatable quality checks.",
-        "image": "/images/automation-testing.jpg",
-        "slug": "automation-testing"
-      },
-      {
-        "name": "Penetration Testing",
-        "description": "Simulating cyberattacks to find and fix vulnerabilities before they can be exploited.",
-        "image": "/images/penetration-testing.jpg",
-        "slug": "penetration-testing"
-      },
-      {
-        "name": "Security Audits",
-        "description": "Conducting comprehensive reviews of your systems to identify security weaknesses and compliance issues.",
-        "image": "/images/security-audits.jpg",
-        "slug": "security-audits"
-      },
-      {
-        "name": "Cybersecurity Consulting",
-        "description": "Providing expert guidance to develop and implement a robust cybersecurity strategy.",
-        "image": "/images/cybersecurity-consulting.jpg",
-        "slug": "cybersecurity-consulting"
-      },
-      {
-        "name": "Quality Assurance",
-        "description": "Implementing rigorous testing processes to ensure flawless software performance.",
-        "image": "/images/quality-assurance.jpg",
-        "slug": "quality-assurance"
-      }
+      { "name": "Manual Testing", "description": "Identifying usability issues and bugs.", "slug": "manual-testing" },
+      { "name": "Automation", "description": "Repeatable and fast quality checks.", "slug": "automation-testing" },
+      { "name": "Penetration", "description": "Simulating cyberattacks to fix gaps.", "slug": "penetration-testing" },
+      { "name": "Security Audits", "description": "Comprehensive review of system weaknesses.", "slug": "security-audits" },
+      { "name": "Consulting", "description": "Expert guidance for cybersecurity strategy.", "slug": "cybersecurity-consulting" },
+      { "name": "Quality Assurance", "description": "Ensuring flawless software performance.", "slug": "quality-assurance" }
     ],
     "steps": [
-      {
-        "title": "Vulnerability Assessment",
-        "description": "Identify potential security weaknesses and performance bottlenecks."
-      },
-      {
-        "title": "Strategy & Planning",
-        "description": "Develop tailored security protocols and quality control plans."
-      },
-      {
-        "title": "Implementation & Testing",
-        "description": "Deploy security measures and conduct thorough testing cycles (manual & automated)."
-      },
-      {
-        "title": "Monitoring & Reporting",
-        "description": "Continuously monitor systems for anomalies and provide detailed reports."
-      },
-      {
-        "title": "Optimization & Training",
-        "description": "Refine processes and train teams on best practices for security and quality."
-      }
+      { "title": "Assessment", "description": "Identify potential security weaknesses." },
+      { "title": "Planning", "description": "Develop tailored security protocols." },
+      { "title": "Implementation", "description": "Deploy measures and conduct testing." },
+      { "title": "Monitoring", "description": "Continuously monitor for anomalies." },
+      { "title": "Refinement", "description": "Refine processes and train internal teams." }
     ]
   },
   {
     "name": "Data, AI & Automation",
+    "category": "Artificial Intelligence",
+    "metric_value": "85% Automation",
+    "status": "INTELLIGENCE LIVE",
+    "highlights": [
+      "Predictive Analytics Models",
+      "Generative AI Implementation"
+    ],
     "description": "Leveraging the power of data, artificial intelligence, and automation to drive innovation and insights.",
     "slug": "data-automation",
     "path": "services/data-automation",
@@ -328,120 +147,58 @@ const categorizedServices = [
     "image": "/images/services/automation.jpg",
     "side_image": "/images/services/automation.png",
     "includes": [
-      {
-        "name": "Data & AI",
-        "description": "Building intelligent systems and models that learn, adapt, and make informed decisions.",
-        "image": "/images/data-ai.jpg",
-        "slug": "data-ai"
-      },
-      {
-        "name": "Generative AI",
-        "description": "Developing cutting-edge AI solutions for content creation, design, and complex problem-solving.",
-        "image": "/images/generative-ai.jpg",
-        "slug": "generative-ai"
-      },
-      {
-        "name": "Data Analytics",
-        "description": "Transforming raw data into actionable insights through advanced analytical techniques.",
-        "image": "/images/data-analytics.jpg",
-        "slug": "data-analytics"
-      },
-      {
-        "name": "Business Intelligence (BI)",
-        "description": "Implementing BI tools and dashboards to provide comprehensive insights for strategic decision-making.",
-        "image": "/images/business-intelligence.jpg",
-        "slug": "business-intelligence"
-      },
-      {
-        "name": "Robotic Process Automation (RPA)",
-        "description": "Automating repetitive tasks with RPA to increase efficiency and reduce operational costs.",
-        "image": "/images/rpa.jpg",
-        "slug": "rpa"
-      },
-      {
-        "name": "Power Apps",
-        "description": "Creating custom business applications with Microsoft Power Apps for rapid automation and efficiency.",
-        "image": "/images/power-apps.jpg",
-        "slug": "power-apps-data-ai"
-      }
+      { "name": "Data & AI", "description": "Building intelligent learning models.", "slug": "data-ai" },
+      { "name": "Generative AI", "description": "AI solutions for content and problem-solving.", "slug": "generative-ai" },
+      { "name": "Data Analytics", "description": "Transform data into actionable insights.", "slug": "data-analytics" },
+      { "name": "BI", "description": "BI tools for strategic decision-making.", "slug": "business-intelligence" },
+      { "name": "RPA", "description": "Automating repetitive tasks with robotics.", "slug": "rpa" },
+      { "name": "Power Apps", "description": "Custom apps for rapid business automation.", "slug": "power-apps-data-ai" }
     ],
     "steps": [
-      {
-        "title": "Data Collection & Preparation",
-        "description": "Identify, gather, and prepare data for analysis and model training."
-      },
-      {
-        "title": "Model Development & Training",
-        "description": "Design, develop, and train AI/ML models for specific business challenges."
-      },
-      {
-        "title": "Integration & Deployment",
-        "description": "Integrate AI solutions into existing systems and deploy them for real-world use."
-      },
-      {
-        "title": "Monitoring & Optimization",
-        "description": "Continuously monitor model performance, refine, and retrain for accuracy."
-      },
-      {
-        "title": "Reporting & Insights",
-        "description": "Provide clear dashboards and reports with actionable data insights."
-      }
+      { "title": "Data Preparation", "description": "Gather and prepare data for models." },
+      { "title": "Model Training", "description": "Train AI models for specific challenges." },
+      { "title": "Integration", "description": "Deploy AI solutions into existing systems." },
+      { "title": "Optimization", "description": "Monitor and retrain models for accuracy." },
+      { "title": "Reporting", "description": "Provide dashboards with actionable data." }
     ]
   },
   {
     "name": "Microsoft Solutions",
+    "category": "Enterprise Systems",
+    "metric_value": "D365 Optimized",
+    "status": "ENTERPRISE READY",
+    "highlights": [
+      "Low-code Innovation Experts",
+      "Seamless ERP/CRM Integration"
+    ],
     "description": "Optimizing business processes with comprehensive Microsoft Dynamics 365 and Power Platform solutions.",
     "slug": "microsoft-solutions",
     "path": "services/microsoft-solutions",
     "title": "Microsoft Solutions | D365 ERP, CRM & Power Apps Expertise",
     "image": "/images/services/microsoft.jpg",
     "side_image": "/images/services/microsoft.png",
-
     "includes": [
-      {
-        "name": "D365 ERP",
-        "description": "Implementing and customizing Microsoft Dynamics 365 ERP for efficient business resource planning.",
-        "image": "/images/d365-erp.jpg",
-        "slug": "d365-erp"
-      },
-      {
-        "name": "D365 CRM",
-        "description": "Deploying and tailoring Microsoft Dynamics 365 CRM to enhance customer relationships.",
-        "image": "/images/d365-crm.jpg",
-        "slug": "d365-crm"
-      },
-      {
-        "name": "Power Apps",
-        "description": "Building custom, low-code business applications with Microsoft Power Apps for rapid innovation.",
-        "image": "/images/power-apps-microsoft.jpg",
-        "slug": "power-apps-microsoft"
-      }
+      { "name": "D365 ERP", "description": "Customizing D365 for resource planning.", "slug": "d365-erp" },
+      { "name": "D365 CRM", "description": "Tailoring CRM to enhance relationships.", "slug": "d365-crm" },
+      { "name": "Power Apps", "description": "Building custom low-code applications.", "slug": "power-apps-microsoft" }
     ],
     "steps": [
-      {
-        "title": "Requirements Gathering",
-        "description": "Analyze your business needs to determine the best Microsoft solution fit."
-      },
-      {
-        "title": "Solution Design & Customization",
-        "description": "Design the architecture and customize D365 or Power Apps to align with processes."
-      },
-      {
-        "title": "Development & Configuration",
-        "description": "Develop custom features, configure modules, and integrate with existing systems."
-      },
-      {
-        "title": "User Training & Go-Live",
-        "description": "Train your team on the new solutions and facilitate a smooth transition to live operation."
-      },
-      {
-        "title": "Post-Implementation Support",
-        "description": "Provide ongoing support, maintenance, and future enhancements."
-      }
+      { "title": "Requirements", "description": "Determine the best Microsoft solution fit." },
+      { "title": "Design", "description": "Customize D365/Power Apps to processes." },
+      { "title": "Configuration", "description": "Configure modules and integrate systems." },
+      { "title": "Training", "description": "Facilitate a smooth live transition." },
+      { "title": "Support", "description": "Ongoing maintenance and enhancements." }
     ]
   },
   {
     "name": "Digital Marketing",
+    "category": "Growth & Performance",
+    "metric_value": "200% ROI",
+    "status": "CAMPAIGN ACTIVE",
+    "highlights": [
+      "Data-Driven SEO Strategies",
+      "Omni-channel Engagement"
+    ],
     "description": "Boosting your online presence and driving measurable results with comprehensive digital marketing strategies.",
     "slug": "digital-marketing",
     "path": "services/digital-marketing",
@@ -449,84 +206,33 @@ const categorizedServices = [
     "image": "/images/services/digital.png",
     "side_image": "/images/services/digital.png",
     "includes": [
-      {
-        "name": "Search Engine Optimization (SEO)",
-        "description": "Improving your website's visibility on search engines to attract organic traffic.",
-        "image": "/images/dm/seo.jpg",
-        "slug": "seo"
-      },
-      {
-        "name": "Social Media Marketing (SMM)",
-        "description": "Building brand awareness and engagement across social media platforms.",
-        "image": "/images/dm/smm.jpg",
-        "slug": "smm"
-      },
-      {
-        "name": "Content Marketing",
-        "description": "Creating valuable, relevant, and consistent content to attract and retain a clearly defined audience.",
-        "image": "/images/dm/content-marketing.jpg",
-        "slug": "content-marketing"
-      },
-      {
-        "name": "Pay-Per-Click (PPC) Advertising",
-        "description": "Managing targeted ad campaigns on platforms like Google Ads and social media for immediate results.",
-        "image": "/images/dm/ppc.jpg",
-        "slug": "ppc-advertising"
-      },
-      {
-        "name": "Email Marketing",
-        "description": "Designing and executing email campaigns to nurture leads and build customer loyalty.",
-        "image": "/images/dm/email-marketing.jpg",
-        "slug": "email-marketing"
-      },
-      {
-        "name": "Influencer Marketing",
-        "description": "Connecting your brand with influential personalities to reach wider audiences.",
-        "image": "/images/dm/influencer-marketing.jpg",
-        "slug": "influencer-marketing"
-      },
-      {
-        "name": "Marketing Analytics & Reporting",
-        "description": "Tracking, analyzing, and reporting on marketing performance to optimize strategies.",
-        "image": "/images/dm/analytics.jpg",
-        "slug": "marketing-analytics"
-      },
-      {
-        "name": "Conversion Rate Optimization (CRO)",
-        "description": "Optimizing your website and marketing funnels to increase the percentage of visitors who convert.",
-        "image": "/images/dm/cro.jpg",
-        "slug": "cro"
-      }
+      { "name": "SEO", "description": "Improving visibility on search engines.", "slug": "seo" },
+      { "name": "SMM", "description": "Brand engagement across social platforms.", "slug": "smm" },
+      { "name": "Content", "description": "Creating valuable, consistent content.", "slug": "content-marketing" },
+      { "name": "PPC", "description": "Targeted ad campaigns on Google and social.", "slug": "ppc-advertising" },
+      { "name": "Email", "description": "Email campaigns to build customer loyalty.", "slug": "email-marketing" },
+      { "name": "Influencer", "description": "Reach wider audiences with personalities.", "slug": "influencer-marketing" },
+      { "name": "Analytics", "description": "Analyzing performance to optimize strategy.", "slug": "marketing-analytics" },
+      { "name": "CRO", "description": "Optimizing funnels to increase conversion.", "slug": "cro" }
     ],
     "steps": [
-      {
-        "title": "Strategy & Goal Setting",
-        "description": "Define your target audience, set clear objectives, and develop a comprehensive digital marketing strategy."
-      },
-      {
-        "title": "Audience & Market Research",
-        "description": "Analyze consumer behavior, market trends, and competitor strategies to refine targeting."
-      },
-      {
-        "title": "Content & Campaign Creation",
-        "description": "Develop compelling content, creatives, and optimize campaigns for various channels."
-      },
-      {
-        "title": "Execution & Launch",
-        "description": "Implement campaigns across chosen digital platforms and monitor initial performance."
-      },
-      {
-        "title": "Monitoring & Optimization",
-        "description": "Continuously track KPIs, perform A/B testing, and adjust strategies for maximum ROI."
-      },
-      {
-        "title": "Reporting & Analysis",
-        "description": "Provide regular performance reports with actionable insights and future recommendations."
-      }
+      { "title": "Strategy", "description": "Define target audience and set objectives." },
+      { "title": "Research", "description": "Analyze consumer behavior and trends." },
+      { "title": "Campaigns", "description": "Develop compelling content and creatives." },
+      { "title": "Execution", "description": "Implement across digital platforms." },
+      { "title": "Optimization", "description": "A/B testing for maximum ROI." },
+      { "title": "Analysis", "description": "Regular reporting with actionable insights." }
     ]
   },
   {
     "name": "Team & Support Services",
+    "category": "Talent Solutions",
+    "metric_value": "Top 1% Talent",
+    "status": "STAFFED & READY",
+    "highlights": [
+      "Expert Staff Augmentation",
+      "24/7 Technical Management"
+    ],
     "description": "Augmenting your team with expert talent and providing dedicated support for seamless operations.",
     "slug": "team-services",
     "path": "services/team-services",
@@ -534,50 +240,27 @@ const categorizedServices = [
     "image": "/images/services/team.jpg",
     "side_image": "/images/services/team.png",
     "includes": [
-      {
-        "name": "Staff Augmentation",
-        "description": "Providing skilled professionals to seamlessly integrate with and extend your in-house teams.",
-        "image": "/images/staff-augmentation.jpg",
-        "slug": "staff-augmentation"
-      },
-      {
-        "name": "Dedicated Teams",
-        "description": "Building and managing full-fledged dedicated development teams tailored to your project needs.",
-        "image": "/images/dedicated-teams.jpg",
-        "slug": "dedicated-teams"
-      },
-      {
-        "name": "IT Consulting",
-        "description": "Offering expert advice and strategic guidance to optimize your IT infrastructure and processes.",
-        "image": "/images/it-consulting.jpg",
-        "slug": "it-consulting"
-      }
+      { "name": "Augmentation", "description": "Skilled pros to integrate with your team.", "slug": "staff-augmentation" },
+      { "name": "Dedicated Teams", "description": "Managing full teams for your projects.", "slug": "dedicated-teams" },
+      { "name": "IT Consulting", "description": "Strategic guidance for IT infrastructure.", "slug": "it-consulting" }
     ],
     "steps": [
-      {
-        "title": "Needs Assessment",
-        "description": "Understand your project requirements and the specific skills needed for your team."
-      },
-      {
-        "title": "Talent Matching",
-        "description": "Identify and vet top-tier professionals that perfectly match your criteria."
-      },
-      {
-        "title": "Onboarding & Integration",
-        "description": "Facilitate a smooth onboarding process for augmented staff into your existing team."
-      },
-      {
-        "title": "Ongoing Management & Support",
-        "description": "Provide continuous support and ensure successful collaboration."
-      },
-      {
-        "title": "Performance Monitoring",
-        "description": "Regularly monitor performance and gather feedback to ensure satisfaction."
-      }
+      { "title": "Assessment", "description": "Understand project and skill requirements." },
+      { "title": "Matching", "description": "Identify top-tier professionals." },
+      { "title": "Onboarding", "description": "Smooth integration into your team." },
+      { "title": "Management", "description": "Ensure successful ongoing collaboration." },
+      { "title": "Monitoring", "description": "Regular performance and satisfaction checks." }
     ]
   },
   {
     "name": "Emerging Tech",
+    "category": "Future Innovation",
+    "metric_value": "Web3 Integrated",
+    "status": "PIONEERING LIVE",
+    "highlights": [
+      "Metaverse Architecture",
+      "Blockchain/Crypto Security"
+    ],
     "description": "Pioneering the future with cutting-edge solutions in Metaverse, AR, Blockchain, and AI.",
     "slug": "emerging-tech",
     "path": "services/emerging-tech",
@@ -585,56 +268,28 @@ const categorizedServices = [
     "image": "/images/services/emerging.jpg",
     "side_image": "/images/services/emerging.png",
     "includes": [
-      {
-        "name": "Metaverse",
-        "description": "Building immersive virtual worlds and experiences for enterprise and entertainment.",
-        "image": "/images/metaverse.jpg",
-        "slug": "metaverse"
-      },
-      {
-        "name": "Augmented Reality",
-        "description": "Developing AR applications that blend digital content with the real world for interactive experiences.",
-        "image": "/images/augmented-reality.jpg",
-        "slug": "augmented-reality"
-      },
-      {
-        "name": "Blockchain & Cryptography",
-        "description": "Implementing secure and decentralized blockchain solutions for various industries.",
-        "image": "/images/blockchain.jpg",
-        "slug": "blockchain-cryptography"
-      },
-      {
-        "name": "Generative AI",
-        "description": "Leveraging advanced AI for automated content generation, creative design, and complex problem-solving.",
-        "image": "/images/generative-ai-emerging.jpg",
-        "slug": "generative-ai-emerging"
-      },
+      { "name": "Metaverse", "description": "Immersive virtual worlds for enterprise.", "slug": "metaverse" },
+      { "name": "AR", "description": "Blending digital content with the real world.", "slug": "augmented-reality" },
+      { "name": "Blockchain", "description": "Secure and decentralized blockchain solutions.", "slug": "blockchain-cryptography" },
+      { "name": "Gen AI", "description": "Advanced AI for creative design.", "slug": "generative-ai-emerging" }
     ],
     "steps": [
-      {
-        "title": "Concept & Feasibility",
-        "description": "Explore emerging technology trends and assess the viability for your specific use case."
-      },
-      {
-        "title": "Research & Prototyping",
-        "description": "Conduct in-depth research and build early prototypes to validate concepts."
-      },
-      {
-        "title": "Development & Integration",
-        "description": "Develop cutting-edge solutions and integrate them with existing or new platforms."
-      },
-      {
-        "title": "Testing & Iteration",
-        "description": "Rigorously test the technology's performance and iterate based on feedback."
-      },
-      {
-        "title": "Launch & Future-Proofing",
-        "description": "Deploy the solution and plan for future scalability and adaptability."
-      }
+      { "title": "Feasibility", "description": "Assess viability for your specific use case." },
+      { "title": "Prototyping", "description": "Build early prototypes to validate concepts." },
+      { "title": "Integration", "description": "Develop and integrate cutting-edge tech." },
+      { "title": "Iteration", "description": "Test and iterate based on user feedback." },
+      { "title": "Future-Proof", "description": "Plan for future scalability and growth." }
     ]
   },
   {
     "name": "Gaming",
+    "category": "Entertainment Tech",
+    "metric_value": "Unreal 5 High-Fi",
+    "status": "ENGINE READY",
+    "highlights": [
+      "AAA Quality Game Art",
+      "Web3/NFT Game Economies"
+    ],
     "description": "Delivering captivating gaming experiences through exceptional art, design, and innovative technologies.",
     "slug": "gaming",
     "path": "services/gaming",
@@ -642,72 +297,22 @@ const categorizedServices = [
     "image": "/images/services/gaming.jpg",
     "side_image": "/images/services/gaming.png",
     "includes": [
-      {
-        "name": "Gaming Art & Design",
-        "description": "Crafting stunning visuals and engaging gameplay mechanics for immersive gaming experiences.",
-        "image": "/images/gaming-art-design.jpg",
-        "slug": "gaming-art-design"
-      },
-      {
-        "name": "Unity Development",
-        "description": "Building cross-platform games and interactive experiences using the Unity engine.",
-        "image": "/images/unity-development.jpg",
-        "slug": "unity-development"
-      },
-      {
-        "name": "Unreal Engine Development",
-        "description": "Developing high-fidelity games and simulations with the powerful Unreal Engine.",
-        "image": "/images/unreal-engine-development.jpg",
-        "slug": "unreal-engine-development"
-      },
-      {
-        "name": "Metaverse Development",
-        "description": "Creating immersive virtual worlds and experiences for the evolving metaverse.",
-        "image": "/images/metaverse-development.jpg",
-        "slug": "metaverse-development"
-      },
-      {
-        "name": "Game Animation",
-        "description": "Bringing characters and environments to life with dynamic and expressive game animations.",
-        "image": "/images/game-animation.jpg",
-        "slug": "game-animation"
-      },
-      {
-        "name": "Gaming Web3",
-        "description": "Developing decentralized gaming experiences leveraging blockchain, NFTs, and play-to-earn models.",
-        "image": "/images/gaming-web3-main.jpg",
-        "slug": "gaming-web3-main"
-      },
-      {
-        "name": "Gaming AR/VR/XR",
-        "description": "Creating cutting-edge immersive gaming titles for Augmented, Virtual, and Extended Reality platforms.",
-        "image": "/images/gaming-ar-vr-xr-main.jpg",
-        "slug": "gaming-ar-vr-xr-main"
-      }
+      { "name": "Art & Design", "description": "Stunning visuals and gameplay mechanics.", "slug": "gaming-art-design" },
+      { "name": "Unity", "description": "Cross-platform games and experiences.", "slug": "unity-development" },
+      { "name": "Unreal Engine", "description": "High-fidelity games and simulations.", "slug": "unreal-engine-development" },
+      { "name": "Metaverse", "description": "Immersive worlds for the metaverse.", "slug": "metaverse-development" },
+      { "name": "Animation", "description": "Dynamic and expressive game characters.", "slug": "game-animation" },
+      { "name": "Web3", "description": "Decentralized play-to-earn game models.", "slug": "gaming-web3-main" },
+      { "name": "AR/VR/XR", "description": "Cutting-edge immersive gaming titles.", "slug": "gaming-ar-vr-xr-main" }
     ],
     "steps": [
-      {
-        "title": "Concept & Storyboarding",
-        "description": "Define game concept, narrative, and core mechanics."
-      },
-      {
-        "title": "Art & Asset Creation",
-        "description": "Develop game art, characters, environments, and animations."
-      },
-      {
-        "title": "Gameplay Development",
-        "description": "Program game logic, physics, and interactive elements."
-      },
-      {
-        "title": "Testing & Optimization",
-        "description": "Conduct extensive testing for bugs, performance, and user experience."
-      },
-      {
-        "title": "Launch & Post-Launch Support",
-        "description": "Publish the game on target platforms and provide ongoing updates and support."
-      }
+      { "title": "Storyboarding", "description": "Define narrative and core game mechanics." },
+      { "title": "Asset Creation", "description": "Develop art, characters, and environments." },
+      { "title": "Development", "description": "Program game logic and physics." },
+      { "title": "Testing", "description": "Test for bugs, performance, and UX." },
+      { "title": "Launch", "description": "Publish on target platforms and support." }
     ]
   }
-]
+];
 
 export { categorizedServices };

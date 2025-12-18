@@ -61,10 +61,10 @@ export default function Home() {
            <Cards columns="3" />
         </Flex>
       </RevealFx>
-
+{/* 
       <RevealFx translateY="16" delay={0.6}>
         <OfferingTechnologies />
-      </RevealFx>
+      </RevealFx> */}
 
       <Column maxWidth="m" paddingY="80" vertical="center" horizontal="center">
         <SendUsEmail />

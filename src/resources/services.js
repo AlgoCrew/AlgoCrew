@@ -217,7 +217,7 @@ const allServices = [
   },
   {
     "name": "WooCommerce Development",
-    "iconName": "HiOutlineShoppingCart",
+    "iconName": "FaGlobe",
     "path": "services/e-commerce",
     "short_description": "Custom solutions for e-commerce platforms built on WooCommerce and WordPress.",
   },
