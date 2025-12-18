@@ -9,6 +9,7 @@ import { OfferingTechnologies } from "@/components/services/OfferingTechnologies
 import styles from "@/components/about/about.module.scss";
 import { CtoCalendar } from "@/components/Calendars/CtoCalendar";
 import { SendUsEmail } from "@/components/services/SendUsEmail";
+import { ServicesHero } from "@/components/services/ServicesHero";
 
 export default function Home() {
   return (
@@ -27,7 +28,7 @@ export default function Home() {
         }}
       />
 
-      <Column fillWidth paddingTop="24" gap="m">
+      {/* <Column fillWidth paddingTop="24" gap="m">
         <Column maxWidth="s">
           <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
             <Heading wrap="balance" variant="display-strong-l">
@@ -51,29 +52,25 @@ export default function Home() {
             <CtoCalendar />
           </Column>
         </Column>
-      </Column>
+      </Column> */}
 
+      <ServicesHero />
 
-      <RevealFx translateY="16" delay={0.6}>
-        <Flex fillWidth gap="24" mobileDirection="column">
-          <Flex flex={3} paddingX="20">
-            <Cards columns="3" />
-          </Flex>
+      <RevealFx translateY="16" delay={0.4}>
+        <Flex fillWidth paddingY="64">
+           <Cards columns="3" />
         </Flex>
       </RevealFx>
 
-      <RevealFx translateY="16" delay={1.3}>
+      <RevealFx translateY="16" delay={0.6}>
         <OfferingTechnologies />
       </RevealFx>
 
-      <Column
-        maxWidth="m"
-        minHeight="80"
-        vertical="center"
-        // marginBottom="8"
-      >
+      <Column maxWidth="m" paddingY="80" vertical="center" horizontal="center">
         <SendUsEmail />
       </Column>
     </Column>
   );
 }
+
+

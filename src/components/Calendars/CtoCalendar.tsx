@@ -20,9 +20,9 @@ export function CtoCalendar() {
 
   return (
     <>     
-      <Text onBackground="neutral-weak" variant="body-default-l" marginBottom="m">
+      {/* <Text onBackground="neutral-weak" variant="body-default-l" marginBottom="m">
         Looking for the right tech partner? Let’s explore how we can help. Talk to our experts now!!
-      </Text>
+      </Text> */}
 
       <Flex maxWidth="m" gap="s" horizontal="start" vertical="start" mobileDirection="column">
           <Column

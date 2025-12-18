@@ -286,11 +286,14 @@ const work = {
 const services = {
   path: "/services",
   label: "Services",
-  title: "What We Do – AlgoCrew",
-  description: "All services under one roof. We help our customers bring ideas to life and turn them into real-world solutions.",
-  headline: <>We provide cutting-edge digital solutions!</>,
-  subline: <>We&apos;re not just here to deliver projects&mdash;we&apos;re here to partner for the long term. By understanding your business challenges, we craft solutions designed to create a meaningful, long-term impact.</>,
+  title: "What We Do at AlgoCrew",
+  description: "A complete suite of services designed to turn ambitious ideas into scalable and impactful digital solutions.",
+  headline: "Shaping digital experiences for growth",
+  subline: (
+    <>We partner with you to turn vision into impact. By aligning with your goals and challenges, we create thoughtful solutions that deliver lasting value and meaningful results.</>
+  ),
 };
+
 
 const projects = {
   path: "/projects",
