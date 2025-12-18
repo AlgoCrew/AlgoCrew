@@ -2,18 +2,29 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Fade, Flex, Line, ToggleButton, MegaMenu } from "@once-ui-system/core";
+import { Flex, Line, ToggleButton, MegaMenu, Background } from "@once-ui-system/core";
 
-import { routes, display, person, about, blog, contact, projects, services } from "@/resources";
+import { routes, display, about, contact, projects, effects } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
 import { ThemeLogo } from "./ThemeLogo";
 import styles from "./Header.module.scss";
-import { Background, Column, Meta, opacity, SpacingToken } from "@once-ui-system/core";
-import { Footer, RouteGuard, Providers } from '@/components';
-import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
+import { opacity, SpacingToken } from "@once-ui-system/core";
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <Flex
@@ -28,31 +39,21 @@ export const Header = () => {
       horizontal="center"
       vertical="center"
       background="page"
-      // borderBottom="neutral-alpha-weak"
       paddingTop="4"
       paddingBottom="4"
-      className="px-3 md:px-12"
+      className={`${scrolled ? styles.hasShadow : ""} px-3 md:px-12`}
     >
       <Flex fillWidth horizontal="space-between" vertical="center" maxWidth="xl">
         <ToggleButton href="/" selected={pathname === "/"} className="m-0 p-0">
           <ThemeLogo />
         </ToggleButton>
 
-        {/* 2. Navigation and Toggles Section (Right Side) */}
         <Flex 
-          // background="page"
-          // border="neutral-alpha-weak"
-          // radius="m-4"
-          // shadow="l"
           padding="4"
           horizontal="center"
           zIndex={1}
         >
           <Flex gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
-            {/* {routes["/"] && (
-              <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
-            )}
-            <Line background="neutral-alpha-medium" vert maxHeight="24" /> */}
             {routes["/services"] && (
               <>
                 <MegaMenu

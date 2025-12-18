@@ -1,5 +1,11 @@
 @use "./breakpoints.scss" as breakpoints;
 
+.hasShadow {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid var(--neutral-alpha-weak);
+    transition: box-shadow 0.3s ease;
+}
+
 .position {
     position: sticky;
     top: 0;
@@ -29,9 +35,8 @@
 
 .servicesButton > div ~ div > div {
     opacity: 100;
-    //  background-color: #00474a;
     border: none !important;
-    background: linear-gradient(135deg, #00000084 0%, #00ccccf0 100%);
+    background: linear-gradient(var(--brand-alpha-strong) 0%, transparent 100%);
     right: 0 !important;
 }
 
@@ -40,5 +45,13 @@
 }
 
 .servicesButton > div ~ div * {
- color: white !important;
+    color: #55575a !important;
+    font-weight: lighter;
 }
+
+[data-theme=dark] { 
+    .servicesButton > div ~ div * {
+        color: white !important;
+    }
+}
+
