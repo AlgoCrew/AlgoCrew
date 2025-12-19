@@ -12,103 +12,90 @@ type Testimonial = {
   src: string;
 };
 
-export const Testimonials = ({ testimonials }: { testimonials: Testimonial[] }) => {
+export const Testimonials = ({ testimonials }: { testimonials: any[] }) => {
   const [active, setActive] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const metaRef = useRef<HTMLDivElement>(null); // Added Ref for Meta Info
+  const imageCardRef = useRef<HTMLDivElement>(null);
   const isAnimating = useRef(false);
 
-  const changeStep = (nextIndex: number) => {
-    if (isAnimating.current || nextIndex === active) return;
-    isAnimating.current = true;
+  // Apple-style Tilt Logic
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!imageCardRef.current) return;
+    
+    const card = imageCardRef.current;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left; // x position within element
+    const y = e.clientY - rect.top;  // y position within element
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    // Calculate rotation (Max 15 degrees)
+    const rotateX = ((y - centerY) / centerY) * -15; 
+    const rotateY = ((x - centerX) / centerX) * 15;
 
-    const tl = gsap.timeline({
-      onComplete: () => {
-        setActive(nextIndex);
-        isAnimating.current = false;
-      }
-    });
-
-    // Fade out everything before switching state
-    tl.to([imageRef.current, textRef.current, metaRef.current], {
-      opacity: 0,
-      y: -10,
-      duration: 0.3,
-      ease: "power2.in",
+    gsap.to(card, {
+      rotateX: rotateX,
+      rotateY: rotateY,
+      duration: 0.5,
+      ease: "power2.out",
+      transformPerspective: 1000,
     });
   };
 
-  useEffect(() => {
-    // GSAP Context makes selectors relative to containerRef
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
+  const handleMouseLeave = () => {
+    if (!imageCardRef.current) return;
+    gsap.to(imageCardRef.current, {
+      rotateX: 0,
+      rotateY: 0,
+      duration: 0.8,
+      ease: "elastic.out(1, 0.5)"
+    });
+  };
 
-      // Start by ensuring they are invisible but in position
-      tl.set([imageRef.current, textRef.current, metaRef.current], { opacity: 0 });
-
-      // 1. Image Entrance
-      tl.fromTo(imageRef.current, 
-        { opacity: 0, scale: 0.9, rotateY: -15 },
-        { opacity: 1, scale: 1, rotateY: 0, duration: 0.7, ease: "back.out(1.2)" }
-      );
-
-      // 2. Word Reveal (Targeting spans inside textRef)
-      const words = textRef.current?.querySelectorAll('.word-span');
-      if (words && words.length > 0) {
-        tl.fromTo(words, 
-          { opacity: 0, filter: 'blur(10px)', y: 5 },
-          { opacity: 1, filter: 'blur(0px)', y: 0, stagger: 0.01, duration: 0.4 },
-          "-=0.4"
-        );
-      } else {
-        // Fallback if split fails
-        tl.to(textRef.current, { opacity: 1, duration: 0.4 }, "-=0.4");
+  // Original ChangeStep logic
+  const changeStep = (nextIndex: number) => {
+    if (isAnimating.current || nextIndex === active) return;
+    isAnimating.current = true;
+    gsap.to(containerRef.current, {
+      opacity: 0,
+      y: 10,
+      duration: 0.3,
+      onComplete: () => {
+        setActive(nextIndex);
+        gsap.to(containerRef.current, { opacity: 1, y: 0, duration: 0.4 });
+        isAnimating.current = false;
       }
-
-      // 3. Meta Info (Name/Designation)
-      tl.fromTo(metaRef.current, 
-        { opacity: 0, x: -15 },
-        { opacity: 1, x: 0, duration: 0.4 },
-        "-=0.2"
-      );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, [active]);
-
-  const handleNext = () => changeStep((active + 1) % testimonials.length);
-  const handlePrev = () => changeStep((active - 1 + testimonials.length) % testimonials.length);
+    });
+  };
 
   return (
     <div ref={containerRef} className={styles.wrapper}>
       <div className={styles.grid}>
-        
         <div className={styles.imageContainer}>
-          <div ref={imageRef} className={styles.imageCard}>
+          {/* Apply Mouse Events Here */}
+          <div 
+            ref={imageCardRef} 
+            className={styles.imageCard}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+          >
             <img src={testimonials[active].src} alt={testimonials[active].name} />
-            <div className={styles.imageOverlay} />
+            <div className={styles.glare} /> 
           </div>
         </div>
 
         <div className={styles.contentSection}>
           <div className={styles.quoteWrapper}>
             <span className={styles.quoteIcon}>“</span>
-            
-            <div ref={textRef} className="mb-8">
-              <Text 
-                variant="heading-default-m" 
-                className="italic leading-relaxed neutral-on-background-weak dark:text-neutral-300"
-              >
+            <div className="mb-8">
+              <Text variant="heading-default-m" className="italic leading-relaxed">
                 {testimonials[active].quote}
               </Text>
             </div>
 
-            <div ref={metaRef} className="flex flex-col gap-1 border-l-4 border-cyan-500 pl-6">
-              <Heading variant="heading-strong-m">
-                {testimonials[active].name}
-              </Heading>
+            <div className="flex flex-col gap-1 border-l-4 border-cyan-500 pl-6">
+              <Heading variant="heading-strong-m">{testimonials[active].name}</Heading>
               <Text variant="body-default-s" onBackground="brand-medium">
                 {testimonials[active].designation}
               </Text>
@@ -116,8 +103,8 @@ export const Testimonials = ({ testimonials }: { testimonials: Testimonial[] }) 
           </div>
 
           <Flex gap="12" className="mt-12 items-center">
-            <IconButton icon="chevronLeft" variant="secondary" onClick={handlePrev} />
-            <IconButton icon="chevronRight" variant="secondary" onClick={handleNext} />
+            <IconButton icon="chevronLeft" variant="secondary" onClick={() => changeStep((active - 1 + testimonials.length) % testimonials.length)} />
+            <IconButton icon="chevronRight" variant="secondary" onClick={() => changeStep((active + 1) % testimonials.length)} />
             <div className={styles.pagination}>
               <span className="text-cyan-500">{active + 1}</span> / {testimonials.length}
             </div>
