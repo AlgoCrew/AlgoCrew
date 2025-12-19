@@ -57,11 +57,10 @@ export function ProcessSteps() {
             <div className={styles.processContentWrapper}>
                 <div className={`${styles.sectionHeader} section-content`}>
                     <Heading wrap="balance" variant="display-strong-s" className="mb-3">
-                        Our <span className={styles.accent}>Engineering</span> Process
+                        Our <span className={styles.accent}>Engineering</span> Cycle
                     </Heading>
-                    <div className={styles.processHeaderUnderline}></div>
-                    <Text className={styles.sectionDescription} variant="heading-default-s">
-                        Designed with intention, then refined through an iterative process
+                    <Text variant="body-default-l" onBackground="neutral-weak" className="text-center mt-3 mx-auto" style={{ maxWidth: '500px' }}>
+                        A systematic approach to solving complex problems through modular design and rapid deployment.
                     </Text>
                 </div>
 

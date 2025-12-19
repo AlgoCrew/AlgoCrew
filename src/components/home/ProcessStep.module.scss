@@ -4,9 +4,14 @@
     padding: 80px 24px;
     background: radial-gradient(circle at center center, rgba(0, 204, 204, 0.104) 0%, transparent 70%);
 }
+
 .sectionHeader {
+    justify-content: center;
+    display: flex;
     text-align: center;
+    flex-direction: column;
 }
+
 .processContentWrapper {
     max-width: 1200px;
     margin: 0 auto;
@@ -44,6 +49,14 @@
         transform: translateY(-8px);
         border-color: #00cccc;
         background: rgba(0, 204, 204, 0.02);
+
+        .stepNumber {
+            background: #00cccc;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(148, 150, 150, 0.79);
+            border-color: #00cccc;
+        }
     }
 }
 
@@ -71,9 +84,9 @@
     position: absolute;
     top: -10px;
     right: calc(50% - 55px);
-    background: #1a1a1a;
-    border: 2px solid #00cccc;
-    color: #00cccc;
+    background: #cccccc;
+    border: 2px solid #cccccc;
+    color: #848989;
     width: 32px;
     height: 32px;
     border-radius: 50%;
