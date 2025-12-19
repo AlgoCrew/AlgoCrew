@@ -1,6 +1,6 @@
 .aboutUsContainer {
     padding: 100px 24px;
-    overflow: hidden;
+    background: var(--page-background); // Adapts to theme
 }
 
 .contentWrapper {
@@ -8,83 +8,69 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 60px;
+    gap: 80px;
     align-items: center;
 
     @media (min-width: 1024px) {
-        grid-template-columns: 1.2fr 0.8fr;
+        grid-template-columns: 1.1fr 0.9fr;
     }
+}
+
+.maxText {
+    max-width: 520px;
 }
 
 .badge {
     display: inline-block;
-    padding: 6px 16px;
-    background: rgba(0, 204, 204, 0.1);
+    // padding: 6px 16px;
+    // background: rgba(0, 204, 204, 0.1);
     color: #00cccc;
-    border-radius: 100px;
-    font-size: 0.75rem;
+    // border-radius: 4px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 24px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
 }
 
 .highlight {
     color: #00cccc;
-    position: relative;
-    white-space: nowrap;
-    
-    &::after {
-        content: "";
-        position: absolute;
-        bottom: 8px;
-        left: 0;
-        width: 100%;
-        height: 8px;
-        background: rgba(0, 204, 204, 0.15);
-        z-index: -1;
-    }
 }
 
 .statsGrid {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
 }
 
 .statCard {
     position: relative;
     padding: 32px;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.03); // Works for dark mode
     border: 1px solid rgba(0, 0, 0, 0.05);
-    border-radius: 24px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    border-radius: 32px;
+    transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
     overflow: hidden;
 
     &:hover {
-        transform: scale(1.03) translateX(-10px);
-        box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.05);
-        border-color: rgba(0, 204, 204, 0.3);
+        transform: translateX(-12px);
+        border-color: rgba(0, 204, 204, 0.4);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 
-        .cardGradient {
+        .accentBar {
+            height: 40%;
             opacity: 1;
         }
     }
 }
 
-.statHeader {
-    display: flex;
-    align-items: baseline;
-    gap: 4px;
-}
-
 .statNumber {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 800;
     line-height: 1;
-    color: #111;
-    letter-spacing: -2px;
+    letter-spacing: -3px;
+    // For a modern look, let's use a techy font if available
+    font-family: var(--font-family-code); 
 }
 
 .plus {
@@ -94,29 +80,28 @@
 }
 
 .statLabel {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    color: #111;
-    margin-top: 8px;
+    margin-top: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.cardGradient {
+.accentBar {
     position: absolute;
-    top: 0;
     right: 0;
-    width: 100px;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 204, 204, 0.05));
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 0%;
+    background: #00cccc;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: all 0.4s ease;
+    border-radius: 4px 0 0 4px;
 }
 
-/* Dark mode adjustments (if applicable) */
-:global(.dark) {
-    .statCard {
-        background: rgba(255, 255, 255, 0.03);
-        border-color: rgba(255, 255, 255, 0.08);
-        .statNumber { color: #eee; }
-        .statLabel { color: #fff; }
-    }
+/* Light/Dark Mode handling */
+[data-theme='light'] .statCard {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.08);
 }
