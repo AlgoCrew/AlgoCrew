@@ -149,12 +149,12 @@ export default function Home() {
         <SliderItems />
       </RevealFx> */}
 
-      <RevealFx translateY="16" delay={1} fillWidth >
-        <Services />
-      </RevealFx>
-
       <RevealFx translateY="16" delay={1.3} paddingY="64">
         <OfferingTechnologies />
+      </RevealFx>
+
+      <RevealFx translateY="16" delay={1} fillWidth >
+        <Services />
       </RevealFx>
 
       <RevealFx translateY="16" delay={1} fillWidth horizontal="center">

@@ -1,143 +1,159 @@
 "use client";
 
-import React, { useEffect } from 'react';
-import styles from './ProcessStep1.module.scss'; // Keeping original styles import
-
-import { Column, Heading, Text, Flex, Background, SpacingToken, opacity, ToggleButton } from '@once-ui-system/core';
-import { FaUserShield, FaChartLine, FaCloud, FaRocket, FaHandshake, FaSyncAlt } from 'react-icons/fa';
+import React, { useEffect, useRef } from 'react';
+import styles from './WhyChooseUs.module.scss';
+import { Column, Heading, Text, Flex, Background, SpacingToken, opacity } from '@once-ui-system/core';
+import { FaGlobeAmericas, FaBolt, FaUsers, FaShieldAlt, FaComments, FaMicrochip, FaLock } from 'react-icons/fa';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { effects } from '@/resources';
-import { usePathname } from "next/navigation";
-import { ThemeLogo } from '../ThemeLogo';
-
-if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-}
 
 const features = [
     {
-        title: "Global Reach, Local Expertise",
-        description: "Headquartered in Canada with delivery capabilities across North America and internationally.",
-        icon: <FaUserShield />,
-        image: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=800&auto=format&fit=crop",
+        title: "Global Reach",
+        tag: "North America & EU",
+        description: "Strategically headquartered in Canada with a global network of elite engineers.",
+        icon: <FaGlobeAmericas />,
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200",
         size: "large" 
     },
     {
-        title: "Rapid Deployment",
-        description: "Access qualified IT professionals in days, not months.",
-        icon: <FaRocket />,
-        image: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop",
+        title: "Speed to Market",
+        tag: "48hr Matching",
+        description: "Deploy world-class talent in days, not months.",
+        icon: <FaBolt />,
+        image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800",
         size: "small"
     },
     {
-        title: "Flexible Engagement",
-        description: "Staff augmentation, dedicated teams, or turnkey project delivery.",
-        icon: <FaHandshake />,
-        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
+        title: "Agile Teams",
+        tag: "Scalable",
+        description: "From staff augmentation to full turnkey product delivery.",
+        icon: <FaUsers />,
+        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800",
         size: "small"
     },
     {
-        title: "Quality Guaranteed",
-        description: "Rigorous vetting processes ensure you get top-tier talent every time.",
-        icon: <FaChartLine />,
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+        title: "Vetted Quality",
+        tag: "Top 1% Talent",
+        description: "A rigorous 5-stage vetting process for technical and soft skills.",
+        icon: <FaShieldAlt />,
+        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800",
         size: "medium"
     },
     {
-        title: "Transparent Communication",
-        description: "Regular updates, clear milestones, and responsive support.",
-        icon: <FaCloud />,
-        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop",
+        title: "AI-First Approach",
+        tag: "Future-Proof",
+        description: "Integrating LLMs and modern cloud infra into every workflow.",
+        icon: <FaMicrochip />,
+        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800",
         size: "medium"
     },
     {
-        title: "Future-Ready Solutions",
-        description: "Leveraging AI and modern cloud architectures to keep your business ahead of the curve.",
-        icon: <FaSyncAlt />, // Consider importing FaBrain or FaLightbulb for this
-        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop",
+        title: "Security & Compliance",
+        tag: "Enterprise-Grade",
+        description: "Built with SOC 2–aligned practices, data privacy, and secure-by-design architecture.",
+        icon: <FaLock />,
+        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800",
         size: "medium"
     }
 ];
 
 export function WhyChooseUs() {
-    const pathname = usePathname() ?? "";
+    const sectionRef = useRef(null);
 
     useEffect(() => {
-        const cards = document.querySelectorAll(`.${styles.card}`);
+        gsap.registerPlugin(ScrollTrigger);
         
-        cards.forEach((card, i) => {
-            gsap.fromTo(card, 
-                { opacity: 0, y: 50 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    delay: i * 0.1,
-                    scrollTrigger: {
-                        trigger: card,
-                        start: "top 85%",
-                        toggleActions: "play none none reverse"
-                    }
+        const cards = gsap.utils.toArray(`.${styles.card}`);
+        
+        // Entrance animation
+        gsap.fromTo(cards, 
+            { opacity: 0, scale: 0.9, y: 30 },
+            {
+                opacity: 1, scale: 1, y: 0,
+                duration: 0.8,
+                stagger: 0.15,
+                ease: "expo.out",
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top 80%",
                 }
-            );
-        });
+            }
+        );
+
+        // Subtle Parallax on Mouse Move
+        const handleMouseMove = (e: MouseEvent) => {
+            const { clientX, clientY } = e;
+            const xPos = (clientX / window.innerWidth - 0.5) * 20;
+            const yPos = (clientY / window.innerHeight - 0.5) * 20;
+
+            gsap.to(`.${styles.cardImage}`, {
+                x: xPos,
+                y: yPos,
+                duration: 1,
+                ease: "power2.out",
+                overwrite: 'auto'
+            });
+        };
+
+        window.addEventListener("mousemove", handleMouseMove);
+        return () => window.removeEventListener("mousemove", handleMouseMove);
     }, []);
 
     return (
-        <>
-            <section className={`${styles.section} z-2`}>
-                <div className={styles.container}>
-                    <div className={styles.header}>
-                        <Heading variant="display-strong-s" className={styles.title}>
-                            Why Top Companies Choose <span className={styles.gradientText}>AlgoCrew</span>
-                        </Heading>
-                        <Text variant="body-default-l" onBackground="neutral-weak" className={styles.subtitle}>
-                            Our principles are built around your success. We guarantee performance, transparency, and future-proof technology.
-                        </Text>
-                    </div>
+        <section ref={sectionRef} className={styles.section}>
+            <Column fillWidth className="z-2">
+                <Column align="start" gap="16" marginBottom="64">
+                    <div className={styles.accent}>The AlgoCrew Edge</div>
+                    <Heading variant="display-strong-s">
+                        Why Top Companies <span className={styles.accent}>Trust Us</span>
+                    </Heading>
+                    <Text variant="body-default-l" onBackground="neutral-weak" style={{ maxWidth: '600px' }}>
+                        We blend high-level engineering strategy with rapid execution to deliver measurable business impact.
+                    </Text>
+                </Column>
 
-                    <div className={styles.grid}>
-                        {features.map((feature, index) => (
+                <div className={styles.bentoGrid}>
+                    {features.map((feature, index) => (
+                        <div key={index} className={`${styles.card} ${styles[feature.size]}`}>
+                            {/* Background Image Layer */}
                             <div 
-                                key={index} 
-                                className={`${styles.card} ${styles[feature.size]}`}
-                                style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url(${feature.image})` }}
-                            >
-                                <div className={styles.cardContent}>
-                                    <div className={styles.iconWrapper}>
-                                        {feature.icon}
-                                    </div>
-                                    <div>
-                                        <Heading variant="heading-strong-m" className={styles.cardTitle}>
+                                className={styles.cardImage} 
+                                style={{ backgroundImage: `url(${feature.image})` }} 
+                            />
+                            
+                            {/* Glass Overlay */}
+                            <div className={styles.glassOverlay} />
+
+                            <div className={styles.cardContent}>
+                                <Flex direction="column" gap="12" fillWidth>
+                                    <Flex horizontal="space-between" vertical="center">
+                                        <div className={styles.iconContainer}>
+                                            {feature.icon}
+                                        </div>
+                                        <span className={styles.cardTag}>{feature.tag}</span>
+                                    </Flex>
+                                    
+                                    <Column gap="8" marginTop="20">
+                                        <Heading variant="heading-strong-l" className={styles.textWhite}>
                                             {feature.title}
                                         </Heading>
-                                        <Text variant="body-default-m" className={styles.cardDescription}>
+                                        <Text variant="body-default-m" className={styles.textMuted}>
                                             {feature.description}
                                         </Text>
-                                    </div>
-                                </div>
+                                    </Column>
+                                </Flex>
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    ))}
                 </div>
-            </section>
+            </Column>
 
             <Background
                 position="absolute"
-                mask={{
-                x: 100,
-                y: 50,
-                radius: 120,
-                cursor: effects.mask.cursor,
-                }}
-                dots={{
-                display: effects.dots.display,
-                opacity: effects.dots.opacity as opacity,
-                size: effects.dots.size as SpacingToken,
-                color: effects.dots.color,
-                }}
+                mask={{ x: 50, y: 50, radius: 100, cursor: true }}
+                dots={{ display: true, opacity: 0.1 as opacity, size: '2' as SpacingToken, color: 'accent' }}
             />
-        </>
+        </section>
     );
 }

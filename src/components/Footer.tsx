@@ -10,7 +10,7 @@ export const Footer = () => {
   return (
     <Column as="footer" fillWidth horizontal="center" paddingTop="80" paddingBottom="40" className="px-3 md:px-16">
       {/* Main Footer Content */}
-      <Grid columns={4} mobileColumns="1" fillWidth maxWidth="xl" gap="48" marginBottom="64">
+      <Grid columns={4} mobileColumns="1" fillWidth maxWidth="xl" gap="48" marginBottom="64" className="z-2">
         
         {/* Column 1: Brand & Headquarters */}
         <Column gap="16">
@@ -70,7 +70,7 @@ export const Footer = () => {
       </Grid>
 
       {/* Sub-Footer: Copyright & Socials */}
-      <Column fillWidth maxWidth="xl">
+      <Column fillWidth maxWidth="xl" className="z-2">
         <Line background="neutral-alpha-medium" fillWidth marginBottom="32" />
         <Flex fillWidth horizontal="space-between" vertical="center" mobileDirection="column" gap="24">
           <Flex gap="4" vertical="center">
@@ -105,6 +105,7 @@ export const Footer = () => {
 
       <Background
         position="absolute"
+        className="bottom-0"
         mask={{
           x: 90,
           y: 100,
