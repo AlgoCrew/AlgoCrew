@@ -10,6 +10,21 @@
   padding: 0 24px;
 }
 
+.badge {
+  // padding: 6px 16px;
+  // background: rgba(0, 204, 204, 0.1);
+  // border: 1px solid rgba(0, 204, 204, 0.2);
+  // border-radius: 100px;
+  color: #00ccccf0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  // width: fit-content;
+}
+.accent{
+  color: #00ccccf0;
+}
+
 .serviceGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

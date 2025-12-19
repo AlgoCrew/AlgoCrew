@@ -79,11 +79,11 @@ export function Services() {
   return (
     <>
       <section ref={containerRef} className={`${styles.mainWrapper} z-2 px-6 md:px-15`}>
-        <Column fillWidth paddingY="128" gap="64" className={styles.container}>
+        <Column fillWidth paddingTop="96" gap="64" className={styles.container}>
           
           <Flex direction="column" gap="16">
-            <Text variant="label-strong-s" onBackground="accent-medium">WHAT WE DO</Text>
-            <Heading variant="display-strong-s">Core pillars of <br/> digital transformation.</Heading>
+            <Text variant="label-strong-s" onBackground="accent-medium" className={styles.badge}>WHAT WE DO</Text>
+            <Heading variant="display-strong-s">Core pillars of <span className={styles.accent}>digital <br /> transformation</span></Heading>
           </Flex>
 
           <div className={styles.serviceGrid}>
@@ -134,7 +134,7 @@ export function Services() {
           </div>
 
           {/* New "Show All Services" Action */}
-          <Flex fillWidth horizontal="center" marginTop="40">
+          <Flex fillWidth horizontal="center" marginTop="16">
             <Button 
               href="/services" 
               variant="secondary" 
