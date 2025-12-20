@@ -79,7 +79,7 @@ export function Services() {
   return (
     <>
       <section ref={containerRef} className={`${styles.mainWrapper} z-2 px-6 md:px-15`}>
-        <Column fillWidth paddingTop="96" gap="64" className={styles.container}>
+        <Column fillWidth paddingTop="104" gap="64" className={styles.container}>
           
           <Flex direction="column" gap="16">
             <Text variant="label-strong-s" onBackground="accent-medium" className={styles.badge}>WHAT WE DO</Text>
