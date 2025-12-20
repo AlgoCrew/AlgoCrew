@@ -165,15 +165,15 @@ export default function Home() {
         <WhyChooseUs />
       </RevealFx>
 
-      <RevealFx translateY="16" delay={0.6} fillWidth>
-        <Projects />
-      </RevealFx>
+      <Projects />
+      {/* <RevealFx translateY="16" delay={0.6} fillWidth>
+      </RevealFx> */}
 
-      <RevealFx translateY="16" delay={1.6} horizontal="center">
+      <RevealFx translateY="16" delay={1.6} horizontal="center" background="page">
         <Details />
       </RevealFx>
 
-      <RevealFx translateY="16" delay={1} fillWidth>
+      <RevealFx translateY="16" delay={1} fillWidth background="page">
         <AnimatedTestimonials />
       </RevealFx>
 
@@ -182,6 +182,7 @@ export default function Home() {
         minHeight="80"
         vertical="center"
         className="px-3 md:px-16"
+        background="page"
         // marginBottom="8"
       >
         <SendUsEmail />

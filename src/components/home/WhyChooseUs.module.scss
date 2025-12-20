@@ -3,6 +3,9 @@
     // background: #050505;
     position: relative;
     overflow: hidden;
+    @media (max-width: 786px) {
+        padding: 24px 24px;
+    }
 }
 
 .badge {
