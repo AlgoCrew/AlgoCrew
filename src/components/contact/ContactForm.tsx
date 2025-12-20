@@ -78,7 +78,7 @@ export default function ContactForm() {
       radius="xl"
       className={styles.contactContainer}
       mobileDirection="column"
-      minHeight="96"
+      minHeight="104"
     >
       {/* LEFT PANEL: Contact Information */}
       <Column padding="48" flex={4} className={styles.infoSide} content="space-between">

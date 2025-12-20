@@ -51,8 +51,8 @@ export default function ServiceHero({ service }: { service: any }) {
     <Flex 
       ref={containerRef}
       fillWidth 
-      minHeight="96" 
-      paddingY="96"
+      minHeight="104" 
+      paddingY="104"
       className={styles.heroWrapper}
       horizontal="center"
     >

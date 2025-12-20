@@ -673,7 +673,7 @@ export default function HireDeveloperForm() {
       radius="xl"
       className={styles.contactContainer}
       mobileDirection="column"
-      minHeight="96"
+      minHeight="104"
     >
       {/* LEFT SIDE: Brand & Info */}
       <Column 

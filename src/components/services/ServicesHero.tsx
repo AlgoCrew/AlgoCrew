@@ -41,7 +41,7 @@ export const ServicesHero = () => {
   return (
     <Flex 
       fillWidth 
-      minHeight="96" 
+      minHeight="104" 
       paddingY="80" 
       mobileDirection="column" 
       align="center"
