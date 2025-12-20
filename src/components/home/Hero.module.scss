@@ -1,0 +1,212 @@
+.heroWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--page-background);
+  overflow: hidden;
+  padding: 0 5vw;
+  @media (max-width: 992px) {
+    display: block;
+    min-height: 500px;
+  }
+}
+
+.brandGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(0, 204, 204, 0.15) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.title {
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--neutral-on-background-strong);
+}
+
+.accentText {
+  color: #00cccc;
+  text-shadow: 0 0 30px rgba(0, 204, 204, 0.3);
+}
+
+.subline {
+  max-width: 540px;
+  opacity: 0.7;
+}
+
+/* Floating Card Styles */
+.cardContainer {
+  position: relative;
+  perspective: 1000px;
+  display: flex;
+  justify-content: flex-end;
+  
+  @media (max-width: 1024px) {
+    display: none; // Keep it clean on mobile
+  }
+}
+
+.glowOrb {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: var(--brand-solid-strong);
+    filter: blur(80px);
+    opacity: 0.15;
+    border-radius: 50%;
+}
+
+
+.floatingCard {
+  width: 320px;
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+}
+
+.divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
+
+.loadingBar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  overflow: hidden;
+  div {
+    height: 100%;
+    background: #00cccc;
+    box-shadow: 0 0 10px #00cccc;
+  }
+}
+
+.badge {
+  border: 1px solid rgba(0, 204, 204, 0.3);
+  color: #00cccc !important;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.liveDot {
+  width: 6px; height: 6px;
+  background: #00cccc;
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 0 0 8px #00ccccf0;
+}
+
+/* Scroll Indicator */
+.scrollZone {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mouse {
+  width: 24px;
+  height: 40px;
+  border: 2px solid #00ccccf0;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.wheel {
+  width: 4px;
+  height: 8px;
+  background: #00cccc;
+  border-radius: 2px;
+  animation: scrollWheel 2s infinite;
+}
+
+@keyframes scrollWheel {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(12px); opacity: 0; }
+}
+
+.miniCardAnalytics, .miniCardSecurity {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 12px 16px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.miniCardAnalytics {
+    top: -20px;
+    right: 250px;
+    width: 145px;
+}
+
+.miniCardSecurity {
+    bottom: 20px;
+    right: -40px;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    width: 140px;
+}
+
+.securityPulse {
+    width: 8px;
+    height: 8px;
+    background: #00cccc;
+    border-radius: 50%;
+    position: relative;
+    &::after {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border: 1px solid #00cccc;
+        border-radius: 50%;
+        animation: pulseRing 1.5s infinite;
+    }
+}
+
+@keyframes pulseRing {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* Update Flex to handle desktop spacing better */
+.mainFlex {
+    padding-top: 5vh;
+    @media (max-width: 1024px) {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Ensure the button row stays centered if column flips */
+@media (max-width: 1024px) {
+    .mainFlex div[class*="Row"] {
+        justify-content: center;
+    }
+}

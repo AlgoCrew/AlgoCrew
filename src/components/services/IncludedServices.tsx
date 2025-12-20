@@ -4,7 +4,7 @@ import { Column, Flex, Heading, Text, Grid, RevealFx } from "@once-ui-system/cor
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import styles from './Cards.module.scss';
+import styles from './ServicesCard.module.scss';
 
 export default function IncludedServices({ service }: { service: any }) {
   const containerRef = useRef<HTMLDivElement>(null);

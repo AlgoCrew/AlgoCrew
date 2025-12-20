@@ -14,6 +14,7 @@ import { InfoCalendar } from "@/components/Calendars/InfoCalendar";
 import AnimatedTestimonials from "@/components/home/Testimonals";
 import { SendUsEmail } from "@/components/home/SendUsEmail";
 import { Services } from "@/components/services/Services";
+import { Hero } from "@/components/home/Hero";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -77,73 +78,7 @@ export default function Home() {
         </Column>
       </Column> */}
 
-      <Column
-        fillWidth
-        paddingY="64"
-        gap="m"
-        style={{
-          backgroundImage: `url('/images/hero.png')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundColor: 'rgba(0, 0, 0, .6)',
-          backgroundBlendMode: 'color',
-          minHeight: '700px',
-        }}
-        horizontal="end"
-      >
-        <Column maxWidth="s" paddingRight="48" className="px-5">
-          {home.featured.display && (
-            <RevealFx fillWidth horizontal="start" paddingTop="16" paddingBottom="32" paddingLeft="12">
-              <Badge
-                background="brand-alpha-weak"
-                paddingX="12"
-                paddingY="4"
-                onBackground="neutral-strong" // Keep the background interaction logic if needed
-                style={{ color: 'white' }} // Explicitly set text color to white
-                textVariant="label-default-s"
-                arrow={false}
-                href={home.featured.href}
-              >
-                <Row paddingY="2">{home.featured.title}</Row>
-              </Badge>
-            </RevealFx>
-          )}
-          <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
-            <Heading
-              wrap="balance"
-              variant="display-strong-l"
-              color="white"
-              style={{ color: 'white' }}
-            >
-              {home.headline}
-            </Heading>
-          </RevealFx>
-
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
-            <Text
-              wrap="balance"
-              onBackground="neutral-weak"
-              style={{ color: 'white' }}
-              variant="body-default-l"
-            >
-              {home.subline}
-            </Text>
-          </RevealFx>
-
-          <RevealFx translateY="8" delay={0.3} fillWidth horizontal="start">
-            <Column
-              id={about.intro.title}
-              fillWidth
-              minHeight="80"
-              vertical="center"
-              style={{isolation: "isolate"}}
-            >
-              <InfoCalendar />
-            </Column>
-          </RevealFx>
-        </Column>
-      </Column>
+      <Hero />
 
       {/* <RevealFx translateY="16" delay={1} fillWidth className="px-6 md:px-16">
         <SliderItems />
