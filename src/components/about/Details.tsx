@@ -65,7 +65,7 @@ export default function Details() {
                         <span className={styles.highlight}>Technical Mastery</span>
                     </Heading>
                     <Text wrap="balance" onBackground="neutral-weak" variant="body-default-l" className={styles.maxText}>
-                        At AlgoCrew, we aren't just developers; we are architects of the digital future. We specialize in delivering top-tier solutions tailored to the high-stakes needs of modern enterprise.
+                        At AlgoCrew, we aren&apos;t just developers; we are architects of the digital future. We specialize in delivering top-tier solutions tailored to the high-stakes needs of modern enterprise.
                     </Text>
                 </div>
 

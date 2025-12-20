@@ -9,7 +9,7 @@ import styles from './OurMission.module.scss';
 export const OurMission = ({ commingData }: { commingData: any }) => {
   const sectionRef = useRef(null);
   const textRef = useRef(null);
-  const visualRef = useRef(null);
+  const visualRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -25,8 +25,9 @@ export const OurMission = ({ commingData }: { commingData: any }) => {
         scrollTrigger: { trigger: textRef.current, start: "top 80%" }
       });
 
-      // 2. Floating Parallax for the visual cards
-      const cards = visualRef.current.querySelectorAll('.floating-card');
+      const container = visualRef.current;
+      if (!container) return;
+      const cards = container?.querySelectorAll('.floating-card');
       cards.forEach((card: any, i: number) => {
         gsap.to(card, {
           y: -40 * (i + 1),

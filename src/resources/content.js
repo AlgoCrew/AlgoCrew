@@ -180,7 +180,7 @@ const aboutUs = {
     description: (
       <div>
         <p>
-          We don't just write code; we architect success. Our mission is to bridge the gap between 
+          We don&apos;t just write code; we architect success. Our mission is to bridge the gap between 
           bold ideas and market-ready products with a focus on <strong>velocity, precision, and zero friction.</strong>
         </p>
         
@@ -213,7 +213,7 @@ const aboutUs = {
     description: (
       <div>
         <p>
-          We foresee a world where technology isn't just a tool, but an intelligent extension of human potential. Our vision is to be the <strong className="highlight">bedrock upon which that future is built.</strong>
+          We foresee a world where technology isn&apos;t just a tool, but an intelligent extension of human potential. Our vision is to be the <strong className="highlight">bedrock upon which that future is built.</strong>
         </p>
         
         <h4>Future-Forward Focus</h4>
@@ -225,11 +225,11 @@ const aboutUs = {
         </ul>
 
         <p className="trial-text">
-           We don't just solve today's problems. We anticipate tomorrow's challenges, ensuring your platform evolves faster than the market.
+           We don&apos;t just solve today&apos;s problems. We anticipate tomorrow&apos;s challenges, ensuring your platform evolves faster than the market.
         </p>
 
         <p className="footer-quote">
-          Coding for today's launch. Engineering for the next decade's dominance.
+          Coding for today&apos;s launch. Engineering for the next decade&apos;s dominance.
         </p>
       </div>
     ),

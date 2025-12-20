@@ -3,6 +3,7 @@
 import { Flex, IconButton, Text, Heading, Avatar, Grid, Column, Line, Background, opacity, SpacingToken } from "@once-ui-system/core";
 import { person, social, services, routes, effects } from "@/resources";
 import styles from "./Footer.module.scss";
+import Link from 'next/link';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -32,10 +33,10 @@ export const Footer = () => {
         {/* Column 2: Quick Links */}
         <Column gap="12">
           <Text variant="label-strong-m" marginBottom="8">Navigation</Text>
-          <a href="/about" className={styles.footerLink}>About Us</a>
-          <a href="/projects" className={styles.footerLink}>Our Work</a>
-          <a href="/services" className={styles.footerLink}>Services</a>
-          <a href="/contact" className={styles.footerLink}>Hire a Developer</a>
+          <Link className={styles.footerLink} href="/about">About Us</Link>
+          <Link className={styles.footerLink} href="/projects">Our Work</Link>
+          <Link className={styles.footerLink} href="/services">Services</Link>
+          <Link className={styles.footerLink} href="/contact">Hire a Developer</Link>
         </Column>
 
         {/* Column 3: Contact Details */}
@@ -78,13 +79,10 @@ export const Footer = () => {
               © {currentYear} AlgoCrew Inc.
             </Text>
             <Text variant="body-default-s" onBackground="neutral-medium" paddingX="8">|</Text>
-            <a 
-                href="https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?lang=eng&corpId=17177011" 
-                target="_blank" 
-                className={styles.legalLink}
-            >
+            <Link className={styles.legalLink} target="_blank" href="https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?lang=eng&corpId=17177011" >
               <Text variant="body-default-xs">Federal Corporation Details</Text>
-            </a>
+              About Us
+            </Link>
           </Flex>
 
           <Flex gap="8">

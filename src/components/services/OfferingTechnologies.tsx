@@ -80,11 +80,13 @@ export function OfferingTechnologies() {
       });
     };
 
-    if (row1Ref.current) setupInfiniteMarquee(row1Ref.current, 1);
-    if (row2Ref.current) setupInfiniteMarquee(row2Ref.current, -1);
+    const row1Ref1: any = row1Ref.current
+    const row2Ref2: any = row2Ref.current
+    if (row1Ref1) setupInfiniteMarquee(row1Ref1, 1);
+    if (row2Ref2) setupInfiniteMarquee(row2Ref2, -1);
 
     return () => {
-      gsap.killTweensOf([row1Ref.current, row2Ref.current]);
+      gsap.killTweensOf([row1Ref1, row2Ref2]);
     };
   }, []);
 

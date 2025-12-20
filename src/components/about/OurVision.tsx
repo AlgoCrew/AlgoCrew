@@ -9,7 +9,7 @@ import styles from './OurVision.module.scss'; // Note: New SCSS file
 export const OurVision = ({ commingData }: { commingData: any }) => {
   const sectionRef = useRef(null);
   const textRef = useRef(null);
-  const visualRef = useRef(null);
+  const visualRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -26,7 +26,9 @@ export const OurVision = ({ commingData }: { commingData: any }) => {
       });
 
       // 2. Floating Parallax (Same effect, different elements)
-      const cards = visualRef.current.querySelectorAll('.floating-element');
+      const container = visualRef.current;
+      if (!container) return;
+      const cards = container?.querySelectorAll('.floating-element');
       cards.forEach((card: any, i: number) => {
         // Reverse direction for variety (y: positive value)
         gsap.to(card, {

@@ -268,7 +268,7 @@ export default function ProjectCard({ project }: CardsProp) {
               suffixIcon="chevronRight"
               style={{ color: "#00ccccf0" }}
             >
-              Have a similar project? Let's talk
+              Have a similar project? Let&apos;s talk
             </Button>
         </Flex>
       </div>
