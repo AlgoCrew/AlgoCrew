@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import { Heading, Text, Column, Flex, Button, Row, RevealFx, Badge } from "@once-ui-system/core";
-import { routes } from "@/resources";
 import gsap from "gsap";
 import styles from "./Hero.module.scss";
 
@@ -50,28 +49,21 @@ export function Hero() {
         
         {/* LEFT: Content */}
         <Column maxWidth="m" gap="32" zIndex={1}>
-          <RevealFx translateY="12">
-            <Badge background="brand-alpha-weak" className={styles.badge}>
-              <span className={styles.liveDot} />
-              SYSTEMS ONLINE • ARCHITECTING 2025
-            </Badge>
-          </RevealFx>
+          <Badge background="brand-alpha-weak" className={styles.badge}>
+            <span className={styles.liveDot} />
+            SYSTEMS ONLINE • ARCHITECTING 2025
+          </Badge>
 
           <Column gap="16">
-            <RevealFx translateY="20" delay={0.2}>
-              <Heading variant="display-strong-xl" onBackground="neutral-strong" className={styles.title}>
-                Engineering <br />
-                <span className={styles.accentText}>Digital Resilience.</span>
-              </Heading>
-            </RevealFx>
-            <RevealFx translateY="20" delay={0.4}>
-              <Text variant="body-default-xl" onBackground="neutral-weak" className={styles.subline}>
-                We bridge the gap between complex backend architecture and world-class user experiences. Built for Fintech, Health, and Cloud-native pioneers.
-              </Text>
-            </RevealFx>
+            <Heading variant="display-strong-xl" onBackground="neutral-strong" className={styles.title}>
+              Engineering <br />
+              <span className={styles.accentText}>Digital Resilience.</span>
+            </Heading>
+            <Text variant="body-default-xl" onBackground="neutral-weak" className={styles.subline}>
+              We bridge the gap between complex backend architecture and world-class user experiences. Built for Fintech, Health, and Cloud-native pioneers.
+            </Text>
           </Column>
 
-          <RevealFx translateY="20" delay={0.6}>
             <Row gap="16" vertical="center">
               <Button href='/projects' variant="primary" size="l" weight="strong">
                 Explore Archive
@@ -80,26 +72,21 @@ export function Hero() {
                 Start a Project
               </Button>
             </Row>
-          </RevealFx>
         </Column>
 
-        {/* RIGHT: Floating System Card + Satellites */}
         <div className={`${styles.cardContainer} parallax-layer`}>
           <div className={`${styles.glowOrb} float-element`} />
 
-          {/* Satellite Card 1: Analytics */}
           <div className={`${styles.miniCardAnalytics} satellite-card`}>
              <Text variant="label-default-xs" style={{opacity: 0.5}}>NODE_TRAFFIC</Text>
              <Text variant="label-strong-s" style={{color: '#00cccc'}}>+240%</Text>
           </div>
 
-          {/* Satellite Card 2: Security */}
           <div className={`${styles.miniCardSecurity} satellite-card`}>
              <div className={styles.securityPulse} />
              <Text variant="label-default-xs">SSL_ACTIVE</Text>
           </div>
 
-          {/* Main Card */}
           <div className={`${styles.floatingCard} floating-card`}>
             <Column gap="20">
               <Row horizontal="center" vertical="center">

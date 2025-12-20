@@ -12,29 +12,28 @@ const projects = [
         company: "Global Finance Corp", 
         tags: ["Payments", "Security", "Real-time"],
         // High-end digital finance/data visualization image
-        image: "https://images.unsplash.com/photo-1738737271801-d404a575d870?q=80&&w=2070" 
+        image: "/images/uplash/fintech.png"
     },
     { 
         title: "Precision HealthTech Platforms", 
         company: "Nexus Health", 
         tags: ["HIPAA", "Data Viz", "AI"],
         // Professional medical research/tech laboratory image
-        image: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?q=80&w=2070" 
+        image: "/images/uplash/health.png"
     },
     { 
         title: "Hybrid Cloud Orchestration", 
         company: "VCloud Systems", 
         tags: ["DevOps", "Kubernetes", "AWS"],
-        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072" 
+        image: "/images/uplash/global.png"
     },
     { 
         title: "Automated Supply Chain AI", 
         company: "LogiTech Solutions", 
         tags: ["Automation", "IoT", "SaaS"],
-        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070" 
+        image: "/images/uplash/industry.png"
     },
 ];
-
 
 
 export function Projects() {

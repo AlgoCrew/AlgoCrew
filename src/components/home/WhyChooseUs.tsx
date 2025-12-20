@@ -13,7 +13,7 @@ const features = [
         tag: "North America & EU",
         description: "Strategically headquartered in Canada with a global network of elite engineers.",
         icon: <FaGlobeAmericas />,
-        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200",
+        image: "/images/uplash/global.png",
         size: "large" 
     },
     {
@@ -21,7 +21,7 @@ const features = [
         tag: "48hr Matching",
         description: "Deploy world-class talent in days, not months.",
         icon: <FaBolt />,
-        image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800",
+        image: "/images/uplash/market.png",
         size: "small"
     },
     {
@@ -29,7 +29,7 @@ const features = [
         tag: "Scalable",
         description: "From staff augmentation to full turnkey product delivery.",
         icon: <FaUsers />,
-        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800",
+        image: "/images/uplash/team.png",
         size: "small"
     },
     {
@@ -37,7 +37,7 @@ const features = [
         tag: "Top 1% Talent",
         description: "A rigorous 5-stage vetting process for technical and soft skills.",
         icon: <FaShieldAlt />,
-        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800",
+        image: "/images/uplash/quality.png",
         size: "medium"
     },
     {
@@ -45,7 +45,7 @@ const features = [
         tag: "Future-Proof",
         description: "Integrating LLMs and modern cloud infra into every workflow.",
         icon: <FaMicrochip />,
-        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800",
+        image: "/images/uplash/ai.png",
         size: "medium"
     },
     {
@@ -53,7 +53,7 @@ const features = [
         tag: "Enterprise-Grade",
         description: "Built with SOC 2–aligned practices, data privacy, and secure-by-design architecture.",
         icon: <FaLock />,
-        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800",
+        image: "/images/uplash/security.png",
         size: "medium"
     }
 ];

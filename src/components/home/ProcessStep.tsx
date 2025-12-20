@@ -18,7 +18,6 @@ export function ProcessSteps() {
         gsap.registerPlugin(ScrollTrigger);
         
         const ctx = gsap.context(() => {
-            // Animating the header first
             gsap.from(".section-content", {
                 y: 30,
                 opacity: 0,
@@ -29,7 +28,6 @@ export function ProcessSteps() {
                 }
             });
 
-            // Improved staggered entrance for steps
             gsap.from(".process-card", {
                 y: 50,
                 opacity: 0,

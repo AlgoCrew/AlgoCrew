@@ -3,10 +3,8 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './Technologies.module.scss';
 import gsap from "gsap";
-import { effects } from '@/resources';
-import { Column, Row, Media, Heading, Text, Background, SpacingToken, opacity } from "@once-ui-system/core";
+import { Column, Heading, Text} from "@once-ui-system/core";
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/free-mode';
 
@@ -63,7 +61,6 @@ export function OfferingTechnologies() {
       const content = el.querySelector(`.${styles.marqueeContent}`) as HTMLElement;
       if (!content) return;
 
-      // Create 2 clones for a total of 3 identical strips to ensure zero "blank" space
       const clone1 = content.cloneNode(true);
       const clone2 = content.cloneNode(true);
       el.appendChild(clone1);
@@ -94,7 +91,6 @@ export function OfferingTechnologies() {
     <section className={styles.section}>
       <Column fillWidth horizontal="center" gap="48" className="z-2">
         <Column align="center" gap="16" className="px-6 text-center">
-          {/* <div className={styles.badge}>Our Stack</div> */}
           <Heading variant="display-strong-s">
             Engineered with <span className={styles.accent}>Industry Leaders</span>
           </Heading>
@@ -122,12 +118,6 @@ export function OfferingTechnologies() {
           </div>
         </div>
       </Column>
-
-      <Background
-        position="absolute"
-        mask={{ x: 0, y: 50, radius: 100, cursor: effects.mask.cursor }}
-        dots={{ display: true, opacity: 20 as opacity, size: '2' as SpacingToken, color: 'accent' }}
-      />
     </section>
   );
 }
