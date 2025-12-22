@@ -104,20 +104,6 @@ export function Projects() {
                       </Column>
                   </div>
 
-                    {/* {projects.map((project, i) => (
-                        <div key={i} className={styles.projectSlide}>
-                            <div className={styles.card}>
-                                <div className={styles.imageWrapper}>
-                                    <img src={project.image} alt={project.title} />
-                                </div>
-                                <Column gap="8" paddingTop="24">
-                                    <Text variant="label-strong-s" onBackground="accent-medium">{project.company}</Text>
-                                    <Heading variant="heading-strong-m">{project.title}</Heading>
-                                </Column>
-                            </div>
-                        </div>
-                    ))} */}
-
                     {projects.map((project, i) => (
                         <div key={i} className={styles.projectSlide}>
                             <div className={styles.card}>
@@ -153,10 +139,10 @@ export function Projects() {
                         <div className={styles.smokyOverlay} />
                         <Column gap="16" horizontal="center" className={styles.exploreContent}>
                             <div className={styles.verticalLine} />
-                            <SmartLink href="/projects" className={styles.rotatedText}>
+                            <SmartLink href="/projects" className={styles.rotatedText} aria-label="explore latest projects">
                                 <Text variant="label-strong-s">VIEW ALL</Text>
                             </SmartLink>
-                            <Button href="/projects" variant="primary" size="l" suffixIcon="arrowRight" className={styles.buttonStyle} />
+                            <Button href="/projects" variant="primary" size="l" suffixIcon="arrowRight" aria-label="explore our projects" className={styles.buttonStyle} />
                         </Column>
                     </div>
                 )}

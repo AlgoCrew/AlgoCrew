@@ -31,7 +31,7 @@ export const Footer = () => {
         </Column>
 
         {/* Column 2: Quick Links */}
-        <Column gap="12">
+        <Column gap="4">
           <Text variant="label-strong-m" marginBottom="8">Navigation</Text>
           <Link className={styles.footerLink} href="/about">About Us</Link>
           <Link className={styles.footerLink} href="/projects">Our Work</Link>
