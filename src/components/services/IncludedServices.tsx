@@ -45,7 +45,7 @@ export default function IncludedServices({ service }: { service: any }) {
           maxWidth="m" 
           horizontal="center" 
           gap="64" 
-          paddingY="128"
+          paddingY="20"
           className={styles.sectionWrapper}
         >
           <Column align="center" gap="16">

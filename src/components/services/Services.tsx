@@ -147,23 +147,6 @@ export function Services() {
           </Flex>
         </Column>
       </section>
-
-      <Background
-          position="absolute"
-          mask={{
-            x: 50,
-            y: 50,
-            radius: 30,
-            cursor: effects.mask.cursor,
-          }}
-          grid={{
-            display: true,
-            opacity: 100,
-            color: "brand-alpha-medium",
-            width: effects.grid.width,
-            height: effects.grid.height,
-          }}
-      />
     </>
   );
 }

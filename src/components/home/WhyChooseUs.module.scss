@@ -1,5 +1,5 @@
 .section {
-    padding: 120px 60px;
+    padding: 20px 60px;
     // background: #050505;
     position: relative;
     overflow: hidden;
@@ -63,6 +63,13 @@
 
         .glassOverlay {
             background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0, 204, 204, 0.1));
+        }
+        .textMuted {
+            color: white !important;
+            background-blend-mode: luminosity
+        }
+        .cardTag {
+            background-color: #323232;
         }
     }
 }

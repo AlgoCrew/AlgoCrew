@@ -6,6 +6,10 @@
     transition: box-shadow 0.3s ease;
 }
 
+.headerBg {
+    background: linear-gradient(to right, var(--brand-background-strong), var(--page-background));
+}
+
 .position {
     position: sticky;
     top: 0;

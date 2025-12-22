@@ -19,10 +19,6 @@ export {
 } from "./services";
 
 export {
-  allSliderServices,
-} from "./allSliderServices";
-
-export {
   ourValues,
 } from "./ourValues";
 
@@ -37,5 +33,8 @@ export {
 export {
   categorizedServices,
 } from "./categorizedServices";
+export {
+  offeringTechnologies,
+} from "./offeringTechnologies";
 
 export { display, mailchimp, routes, protectedRoutes, baseURL, fonts, style, schema, sameAs, effects, dataStyle } from "./once-ui.config";

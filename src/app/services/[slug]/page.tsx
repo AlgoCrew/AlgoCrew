@@ -60,7 +60,7 @@ export default async function Service({
   }
 
   return (
-    <Column as="section" maxWidth="l" horizontal="center" gap="l" paddingTop="48">
+    <Column as="section" maxWidth="l" horizontal="center" gap="xl">
       <Schema
         as="article" // 'article' is generally more appropriate for a service page than 'blogPosting'
         baseURL={baseURL}

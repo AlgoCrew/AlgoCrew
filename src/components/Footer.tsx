@@ -78,11 +78,11 @@ export const Footer = () => {
             <Text variant="body-default-s" onBackground="neutral-weak">
               © {currentYear} AlgoCrew Inc.
             </Text>
-            <Text variant="body-default-s" onBackground="neutral-medium" paddingX="8">|</Text>
+            {/* <Text variant="body-default-s" onBackground="neutral-medium" paddingX="8">|</Text>
             <Link className={styles.legalLink} target="_blank" href="https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?lang=eng&corpId=17177011" >
               <Text variant="body-default-xs">Federal Corporation Details</Text>
               About Us
-            </Link>
+            </Link> */}
           </Flex>
 
           <Flex gap="8">

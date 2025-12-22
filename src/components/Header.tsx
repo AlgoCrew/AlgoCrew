@@ -41,10 +41,10 @@ export const Header = () => {
       background="page"
       paddingTop="4"
       paddingBottom="4"
-      className={`${scrolled ? styles.hasShadow : ""} px-3 md:px-12`}
+      className={`${scrolled ? styles.hasShadow : ""} ${styles.headerBg} px-3 md:px-12 headerBg`}
     >
       <Flex fillWidth horizontal="space-between" vertical="center" maxWidth="xl">
-        <ToggleButton href="/" selected={pathname === "/"} className="m-0 p-0">
+        <ToggleButton href="/" selected={pathname === "/"} className="m-0 p-0 bg-transparent!">
           <ThemeLogo />
         </ToggleButton>
 
@@ -218,22 +218,6 @@ export const Header = () => {
           </Flex>
         </Flex>
       </Flex>
-
-      <Background
-        position="absolute"
-        mask={{
-          x: 0,
-          y: 0,
-          radius: 200,
-          cursor: effects.mask.cursor,
-        }}
-        dots={{
-          display: effects.dots.display,
-          opacity: effects.dots.opacity as opacity,
-          size: effects.dots.size as SpacingToken,
-          color: effects.dots.color,
-        }}
-      />
     </Flex>
   );
 };

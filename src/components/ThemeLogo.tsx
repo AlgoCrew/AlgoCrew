@@ -45,7 +45,7 @@ export const ThemeLogo: React.FC = () => {
   }
 
   return (
-    <Flex vertical="center" zIndex={10} gap="s">
+    <Flex vertical="center" zIndex={10} gap="s" >
       <img
         src={logoSrc}
         alt={logoAlt}

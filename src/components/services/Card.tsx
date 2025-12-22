@@ -1,11 +1,11 @@
 "use client";
 
 import * as Icons from 'react-icons/fa';
-import {    FaLaptopCode, FaMobileAlt, FaCode, FaPaintBrush, FaBuilding, FaCogs, FaUsers,    FaPowerOff, FaGlobe, FaCube, FaLink, FaBrain, FaMagic, FaChartBar,    FaHandshake, FaCheckCircle, FaCloudUploadAlt, FaShieldAlt, FaCloud,    FaShoppingCart, FaTools, FaRobot, FaPalette, FaEthereum, FaVrCardboard,    FaCloudMeatball, FaExchangeAlt, FaSyncAlt, FaSellsy, FaUserShield, FaAutoprefixer, FaRegCheckCircle,    FaShopify, FaShoppingBasket, FaWordpressSimple, FaRocket} from 'react-icons/fa';
+import { FaLaptopCode, FaMobileAlt, FaCode, FaPaintBrush, FaBuilding, FaCogs, FaUsers,    FaPowerOff, FaGlobe, FaCube, FaLink, FaBrain, FaMagic, FaChartBar,    FaHandshake, FaCheckCircle, FaCloudUploadAlt, FaShieldAlt, FaCloud,    FaShoppingCart, FaTools, FaRobot, FaPalette, FaEthereum, FaVrCardboard,    FaCloudMeatball, FaExchangeAlt, FaSyncAlt, FaSellsy, FaUserShield, FaAutoprefixer, FaRegCheckCircle,    FaShopify, FaShoppingBasket, FaWordpressSimple, FaRocket} from 'react-icons/fa';
 const IconComponents: { [key: string]: React.ElementType } = {    FaLaptopCode, FaMobileAlt, FaCode, FaPaintBrush, FaBuilding, FaCogs, FaUsers,    FaPowerOff, FaGlobe, FaCube, FaLink, FaBrain, FaMagic, FaChartBar,    FaHandshake, FaCheckCircle, FaCloudUploadAlt, FaShieldAlt, FaCloud,    FaShoppingCart, FaTools, FaRobot, FaPalette, FaEthereum, FaVrCardboard,    FaCloudMeatball, FaExchangeAlt, FaSyncAlt, FaSellsy, FaUserShield, FaAutoprefixer, FaRegCheckCircle,    FaShopify, FaShoppingBasket, FaWordpressSimple, FaRocket};
 
 import { useRef, useState } from 'react';
-import { Column, Heading, Text, Icon, Flex } from '@once-ui-system/core';
+import { Column, Heading, Text, Icon, Flex, SmartLink } from '@once-ui-system/core';
 import styles from "./Cards.module.scss";
 
 export default function ServiceCard({ service }: { service: any }) {
@@ -55,7 +55,7 @@ export default function ServiceCard({ service }: { service: any }) {
                     )}
                 </Flex>
                 
-                <Column gap="12">
+                <Column gap="12" marginBottom="20">
                     <Heading variant="heading-strong-l">
                         {service.name}
                     </Heading>
@@ -65,12 +65,12 @@ export default function ServiceCard({ service }: { service: any }) {
                     </Text>
                 </Column>
                 
-                <Flex marginTop="20" className={styles.footerLink} align="center" gap="12">
+                <SmartLink className={styles.footerLink} href={service.path}>
                     <div className={styles.line} />
                     <Text variant="label-strong-s" className={styles.linkText}>
                         EXPLORE SERVICE
                     </Text>
-                </Flex>
+                </SmartLink>
             </Column>
         </div>
     );

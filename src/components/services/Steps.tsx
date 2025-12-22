@@ -54,7 +54,6 @@ export default function Steps({ service }: { service: any }) {
           ref={containerRef}
           maxWidth="m" 
           horizontal="center" 
-          paddingY="128" 
           gap="64"
           className={styles.stepsSection}
         >

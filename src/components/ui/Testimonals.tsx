@@ -31,8 +31,8 @@ export const Testimonials = ({ testimonials }: { testimonials: any[] }) => {
     const centerY = rect.height / 2;
     
     // Calculate rotation (Max 15 degrees)
-    const rotateX = ((y - centerY) / centerY) * -15; 
-    const rotateY = ((x - centerX) / centerX) * 15;
+    const rotateX = ((y - centerY) / centerY) * -6; 
+    const rotateY = ((x - centerX) / centerX) * 6;
 
     gsap.to(card, {
       rotateX: rotateX,
