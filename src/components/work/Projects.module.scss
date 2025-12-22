@@ -1,13 +1,19 @@
 .desktopWrapper {
-    width: 100%;
+    width: 100vw;
   background: linear-gradient(90deg, var(--page-background), #00cccc65);
     .viewport {
         position: relative;
         height: 100vh;
-        width: 100%;
+        width: 100vw;
         display: flex;
         align-items: center;
         overflow: hidden;
+    }
+    @media (max-width: 1024px) {
+        width: 100% !important;
+        .viewport {
+            width: 100% !important;
+        }
     }
 }
 
@@ -81,12 +87,15 @@
 }
 
 .viewport {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
     overflow: hidden; // This keeps the scrollbar from appearing horizontally
     position: relative;
+    @media (max-width: 1024px) {
+        width: 100% !important;
+    }
 }
 
 .projectTrack {

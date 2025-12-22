@@ -10,28 +10,31 @@ interface MarqueeControllerProps {
   speed?: number;
 }
 
-export function MarqueeController({ children, direction, speed = 100 }: MarqueeControllerProps) {
+export function MarqueeController({ children, direction, speed = 120 }: MarqueeControllerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = containerRef.current;
-    if (!el) return;
+    if (!el || !el.firstElementChild) return;
 
     const content = el.firstElementChild as HTMLElement;
-    if (!content) return;
 
-    // Clone the content twice to ensure there's enough overflow for a seamless loop
-    const clone1 = content.cloneNode(true);
-    const clone2 = content.cloneNode(true);
-    el.appendChild(clone1);
-    el.appendChild(clone2);
+    // Remove any existing clones if useEffect re-runs
+    const existingClones = el.querySelectorAll('.is-clone');
+    existingClones.forEach(clone => clone.remove());
+
+    // Clone the content for the loop
+    const clone = content.cloneNode(true) as HTMLElement;
+    clone.classList.add('is-clone');
+    el.appendChild(clone);
 
     const totalWidth = content.offsetWidth;
 
+    // Use xPercent for smoother rendering or standard x with the calculated width
     const animation = gsap.to(el, {
       x: direction > 0 ? -totalWidth : 0,
       ease: "none",
-      duration: speed,
+      duration: window.innerWidth < 768 ? speed / 2 : speed, // Speed up slightly on mobile for better feel
       repeat: -1,
       startAt: { x: direction > 0 ? 0 : -totalWidth }
     });
@@ -42,7 +45,11 @@ export function MarqueeController({ children, direction, speed = 100 }: MarqueeC
   }, [direction, speed]);
 
   return (
-    <div className={styles.marqueeRow} ref={containerRef}>
+    <div 
+      className={styles.marqueeRow} 
+      ref={containerRef}
+      style={{ display: 'flex' }} // Ensure flex is forced
+    >
       {children}
     </div>
   );

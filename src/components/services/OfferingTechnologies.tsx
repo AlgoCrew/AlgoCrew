@@ -19,7 +19,7 @@ export function OfferingTechnologies() {
         </Column>
 
         <div className={styles.marqueeWrapper}>
-          <MarqueeController direction={1} speed={80}>
+          <MarqueeController direction={1} speed={100}>
             <div className={styles.marqueeContent}>
               {offeringTechnologies.map((tech, i) => (
                 <TechCard key={`row1-${i}`} tech={tech} />
@@ -27,7 +27,7 @@ export function OfferingTechnologies() {
             </div>
           </MarqueeController>
 
-          <MarqueeController direction={-1} speed={100}>
+          <MarqueeController direction={-1} speed={120}>
             <div className={styles.marqueeContent}>
               {[...offeringTechnologies].reverse().map((tech, i) => (
                 <TechCard key={`row2-${i}`} tech={tech} />

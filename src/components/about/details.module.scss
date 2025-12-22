@@ -1,6 +1,9 @@
 .aboutUsContainer {
-    padding: 100px 24px;
+    padding: 100px 60px;
     background: var(--page-background); // Adapts to theme
+    @media (max-width: 1024px) {
+        padding: 100px 24px;
+    }
 }
 
 .contentWrapper {

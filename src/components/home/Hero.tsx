@@ -11,10 +11,10 @@ export function Hero() {
       <Flex fillWidth maxWidth="xl" horizontal="center" vertical="center" className={styles.mainFlex}>
         
         <Column maxWidth="m" gap="32" zIndex={1}>
-          <Badge background="brand-alpha-weak" className={styles.badge}>
-            <span className={styles.liveDot} />
+          <span className={styles.badge}>
+            {/* <span className={styles.liveDot} /> */}
             SYSTEMS ONLINE • ARCHITECTING 2025
-          </Badge>
+          </span>
 
           <Column gap="16">
             <Heading variant="display-strong-xl" onBackground="neutral-strong" className={styles.title}>
@@ -26,7 +26,7 @@ export function Hero() {
             </Text>
           </Column>
 
-          <Row gap="16" vertical="center" mobileDirection="column">
+          <Row gap="16" vertical="center" tabletDirection="column">
             <Button href='/projects' variant="primary" size="l" weight="strong">
               Explore Archive
             </Button>
