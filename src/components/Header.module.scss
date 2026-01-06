@@ -40,8 +40,16 @@
 .servicesButton > div ~ div > div {
     opacity: 100;
     border: none !important;
-    background: linear-gradient(var(--brand-alpha-strong) 0%, transparent 100%);
+    // background: linear-gradient(var(--brand-alpha-strong) 0%, transparent 100%);
     right: 0 !important;
+    background: linear-gradient(#ffffff90 0%, #fff 100%);
+}
+
+[data-theme=dark] { 
+  .servicesButton > div ~ div > div {
+    background: linear-gradient(var(--brand-alpha-strong) 0%, #000 100%)
+}
+
 }
 
 .servicesButton > div ~ div {
