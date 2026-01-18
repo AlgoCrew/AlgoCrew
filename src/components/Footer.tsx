@@ -49,10 +49,10 @@ export const Footer = () => {
             +1 (437) 450-9656
           </Text>
           <Text variant="body-default-s" onBackground="neutral-weak">
-            info@algocrew.com
+            info@algocrew.io
           </Text>
           <Text variant="body-default-s" onBackground="neutral-weak">
-            hr@algocrew.com
+            hr@algocrew.io
           </Text>
         </Column>
 

@@ -33,13 +33,13 @@ We’re a team of developers, designers, and digital thinkers passionate about b
 | Huzaifa Khalid | Full Stack Developer | [LinkedIn](https://www.linkedin.com/in/hafiz-m-huzaifa-khalid/)          |
 | Irfan Nazeer   | Devops engineer      | [LinkedIn](https://www.linkedin.com/in/irfan-nazeer/)          |
 
-> Want to join our crew? [Contact us](mailto:hello@algocrew.com)
+> Want to join our crew? [Contact us](mailto:info@algocrew.io)
 
 ---
 
 ## 📬 Contact
 
-📧 Email: [hello@algocrew.com](mailto:hello@algocrew.com)  
+📧 Email: [hello@algocrew.com](mailto:info@algocrew.io)
 🌐 Website: [https://algocrew.io](https://algocrew.io)  
 💬 LinkedIn: [Algo Crew](https://linkedin.com/company/algocrew)
 
