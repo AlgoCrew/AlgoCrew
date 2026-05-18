@@ -1,22 +1,66 @@
-import { Testimonials } from "../../components/ui/Testimonals";
+"use client";
+import { useState } from "react";
+import styles from "./Testimonals.module.scss";
+
+const testimonials = [
+  {
+    quote: "AlgoCrew didn't just build our product — they transformed how we think about software. The team felt like a genuine extension of our company.",
+    author: "Sarah Chen",
+    role: "CTO, Meridian Health",
+    company: "Meridian Health",
+    initials: "SC",
+  },
+  {
+    quote: "From kickoff to launch in 8 weeks. I've never seen an agency execute this fast without sacrificing quality. Our conversion rate jumped 340% after launch.",
+    author: "Marcus Williams",
+    role: "Founder & CEO, Launchpad",
+    company: "Launchpad",
+    initials: "MW",
+  },
+  {
+    quote: "The AI integration they built for us cut our ops time by 60%. They don't just code — they solve business problems at the root level.",
+    author: "Priya Sharma",
+    role: "VP Engineering, NovaTech",
+    company: "NovaTech",
+    initials: "PS",
+  },
+];
 
 export default function AnimatedTestimonials() {
-  const testimonials = [
-    {
-      quote:
-        "I have been working with the team at AlgoCrew for nearly three years. I work with their team day in and day out to advance the Nice2stay platform. They have met high-pressure deadlines and created work for us on a product that has thousands of daily unique visitors. They’re easy to get in touch with and quick to follow up and resolve any issues. It has been a great experience to work with the team at AlgoCrew.",
-      name: "Femke Zawan",
-      designation: "Funder of Nice2Stay",
-      src: "/images/testimonals/femke.jpeg",
-    },
+  const [active, setActive] = useState(0);
+  const t = testimonials[active];
 
-    {
-      quote:
-        "Working with the team at AlgoCrew has been an absolute pleasure. Their expertise and dedication to delivering results have made a significant impact on our platform. From the seamless implementation to the excellent support, their team truly exceeds expectations.",
-      name: "Natalia Serwar",
-      designation: "Founder of Hotel Weekend",
-      src: "/images/testimonals/natalia.png",
-    },
-  ];
-  return <Testimonials testimonials={testimonials} />;
+  return (
+    <section className={styles.section} id="testimonials">
+      <div className={styles.inner}>
+        <span className={styles.label}>CLIENT STORIES</span>
+
+        <div className={styles.quoteWrap}>
+          <span className={styles.quoteIcon}>&ldquo;</span>
+          <blockquote className={styles.quote} key={active}>
+            {t.quote}
+          </blockquote>
+        </div>
+
+        <div className={styles.author}>
+          <div className={styles.avatar}>{t.initials}</div>
+          <div className={styles.authorInfo}>
+            <p className={styles.authorName}>{t.author}</p>
+            <p className={styles.authorRole}>{t.role}</p>
+          </div>
+        </div>
+
+        <div className={styles.dots}>
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              className={`${styles.dot} ${i === active ? styles.dotActive : ""}`}
+              onClick={() => setActive(i)}
+              aria-label={`Testimonial ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

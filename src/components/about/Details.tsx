@@ -1,93 +1,72 @@
 "use client";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import styles from "./details.module.scss";
 
-import React, { useEffect, useRef } from 'react';
-import styles from './details.module.scss';
-import { Heading, Text, Column, Flex } from '@once-ui-system/core';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+const stats = [
+  { num: 50, suffix: "+", label: "Projects Delivered", desc: "Across 12+ industry verticals" },
+  { num: 30, suffix: "+", label: "Happy Clients", desc: "From startups to global enterprises" },
+  { num: 5, suffix: "+", label: "Years of Mastery", desc: "Deep technical expertise" },
+  { num: 98, suffix: "%", label: "Satisfaction Rate", desc: "Measured by NPS and retention" },
+];
 
 export default function Details() {
-    const containerRef = useRef(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-        
-        const ctx = gsap.context(() => {
-            // Smooth reveal for the text side
-            gsap.from(".reveal-content", {
-                x: -30,
-                opacity: 0,
-                duration: 1,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: ".reveal-content",
-                    start: "top 85%",
-                }
-            });
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      const nums = gsap.utils.toArray<HTMLElement>(`.${styles.num}`);
+      nums.forEach((el) => {
+        const target = parseInt(el.dataset.target || "0");
+        ScrollTrigger.create({
+          trigger: el,
+          start: "top 85%",
+          onEnter: () => {
+            gsap.fromTo(el,
+              { innerText: 0 },
+              {
+                innerText: target, duration: 2, snap: { innerText: 1 }, ease: "power2.out",
+                onUpdate: function() { el.innerText = Math.round(+el.innerText).toString(); }
+              }
+            );
+          },
+          once: true,
+        });
+      });
 
-            // Count-up animation for the numbers
-            const numbers = gsap.utils.toArray(".stat-num");
-            numbers.forEach((num: any) => {
-                const target = parseInt(num.innerText);
-                gsap.fromTo(num, 
-                    { innerText: 0 }, 
-                    { 
-                        innerText: target, 
-                        duration: 2, 
-                        snap: { innerText: 1 },
-                        scrollTrigger: {
-                            trigger: num,
-                            start: "top 90%",
-                        }
-                    }
-                );
-            });
-        }, containerRef);
+      gsap.fromTo(`.${styles.statCard}`,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0, stagger: 0.12, duration: 0.8, ease: "power3.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 75%" }
+        }
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
-        return () => ctx.revert();
-    }, []);
-
-    const stats = [
-        { number: "20", label: "Projects", desc: "Successfully delivered precision-engineered digital products." },
-        { number: "8", label: "Happy Clients", desc: "Partnering with global brands to solve complex problems." },
-        { number: "5", label: "Years Exp.", desc: "Over half a decade of technical mastery and innovation." }
-    ];
-
-    return (
-        <section ref={containerRef} className={styles.aboutUsContainer}>
-            <div className={styles.contentWrapper}>
-                
-                {/* Keep your original text layout */}
-                <div className={`${styles.textSection} reveal-content`}>
-                    <div className={styles.badge}>About Us</div>
-                    <Heading wrap="balance" variant="display-strong-s" className="mb-4">
-                        Driving Innovation Through <br/>
-                        <span className={styles.highlight}>Technical Mastery</span>
-                    </Heading>
-                    <Text wrap="balance" onBackground="neutral-weak" variant="body-default-l" className={styles.maxText}>
-                        At AlgoCrew, we aren&apos;t just developers; we are architects of the digital future. We specialize in delivering top-tier solutions tailored to the high-stakes needs of modern enterprise.
-                    </Text>
-                </div>
-
-                {/* Keep your original vertical stack layout */}
-                <div className={styles.statsGrid}>
-                    {stats.map((stat, index) => (
-                        <div key={index} className={styles.statCard}>
-                            <div className={styles.statHeader}>
-                                <span className={`${styles.statNumber} stat-num`}>{stat.number}</span>
-                                <span className={styles.plus}>+</span>
-                            </div>
-                            <p className={styles.statLabel}>{stat.label}</p>
-                            <Text variant="body-default-s" onBackground="neutral-weak" className="mt-2">
-                                {stat.desc}
-                            </Text>
-                            {/* Subtle tech-line decoration */}
-                            <div className={styles.accentBar} />
-                        </div>
-                    ))}
-                </div>
-
+  return (
+    <section ref={sectionRef} className={styles.section} id="stats">
+      <div className={styles.inner}>
+        <div className={styles.header}>
+          <span className={styles.label}>BY THE NUMBERS</span>
+          <h2 className={styles.heading}>Results that<br /><span className={styles.accent}>speak.</span></h2>
+        </div>
+        <div className={styles.grid}>
+          {stats.map((s) => (
+            <div key={s.label} className={styles.statCard}>
+              <div className={styles.numRow}>
+                <span className={styles.num} data-target={s.num}>0</span>
+                <span className={styles.suffix}>{s.suffix}</span>
+              </div>
+              <p className={styles.statLabel}>{s.label}</p>
+              <p className={styles.statDesc}>{s.desc}</p>
             </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

@@ -1,129 +1,50 @@
-"use client";
-
-import { Flex, IconButton, Text, Heading, Avatar, Grid, Column, Line, Background, opacity, SpacingToken } from "@once-ui-system/core";
-import { person, social, services, routes, effects } from "@/resources";
+import Link from "next/link";
 import styles from "./Footer.module.scss";
-import Link from 'next/link';
 
-export const Footer = () => {
-  const currentYear = new Date().getFullYear();
+const links = [
+  { href: "/services", label: "Services" },
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contact", label: "Contact" },
+];
 
+export function Footer() {
   return (
-    <Column as="footer" fillWidth horizontal="center" paddingTop="80" paddingBottom="40" className="px-3 md:px-16">
-      {/* Main Footer Content */}
-      <Grid columns={4} mobileColumns="1" fillWidth maxWidth="xl" gap="48" marginBottom="64" className="z-2">
-        
-        {/* Column 1: Brand & Headquarters */}
-        <Column gap="16">
-            <Heading variant="display-strong-xs" marginBottom="8">
-                AlgoCrew<span style={{ color: 'var(--brand-primary, #00cccc)' }}>.</span>
-            </Heading>
-            <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="16">
-                Pioneering digital excellence through custom software, cloud infrastructure, and emerging technologies.
-            </Text>
-            <Flex vertical="center" gap="12">
-                <Avatar src="/images/countries/canada1.webp" size="s" />
-                <Column>
-                    <Text variant="label-strong-s">Canada HQ</Text>
-                    <Text variant="body-default-xs" onBackground="neutral-weak">Global Delivery Center</Text>
-                </Column>
-            </Flex>
-        </Column>
-
-        {/* Column 2: Quick Links */}
-        <Column gap="4">
-          <Text variant="label-strong-m" marginBottom="8">Navigation</Text>
-          <Link className={styles.footerLink} href="/about">About Us</Link>
-          <Link className={styles.footerLink} href="/projects">Our Work</Link>
-          <Link className={styles.footerLink} href="/services">Services</Link>
-          <Link className={styles.footerLink} href="/contact">Hire a Developer</Link>
-        </Column>
-
-        {/* Column 3: Contact Details */}
-        <Column gap="12">
-          <Text variant="label-strong-m" marginBottom="8">Get in Touch</Text>
-          <Text variant="body-default-s" onBackground="neutral-weak">
-            35 Herkley Dr, Brampton,<br /> Ontario L6V 2E7, Canada
-          </Text>
-          <Text variant="body-default-s" className={styles.accentText}>
-            +1 (437) 450-9656
-          </Text>
-          <Text variant="body-default-s" onBackground="neutral-weak">
-            info@algocrew.io
-          </Text>
-          <Text variant="body-default-s" onBackground="neutral-weak">
-            hr@algocrew.io
-          </Text>
-        </Column>
-
-        {/* Column 4: Newsletter/CTA */}
-        <Column gap="16">
-          <Text variant="label-strong-m" marginBottom="8">Compliance</Text>
-          <Flex direction="column" gap="8">
-            <Text variant="body-default-xs" onBackground="neutral-weak">Registered Corporation</Text>
-            <Text variant="body-default-s">1717701-1</Text>
-            <Line background="neutral-alpha-medium" fillWidth marginTop="8" />
-            <Text variant="body-default-xs" onBackground="neutral-weak" marginTop="8">
-                Operating globally with dedicated teams in multiple timezones.
-            </Text>
-          </Flex>
-        </Column>
-      </Grid>
-
-      {/* Sub-Footer: Copyright & Socials */}
-      <Column fillWidth maxWidth="xl" className="z-2">
-        <Line background="neutral-alpha-medium" fillWidth marginBottom="32" />
-        <Flex fillWidth horizontal="space-between" vertical="center" mobileDirection="column" gap="24">
-          <Flex gap="4" vertical="center">
-            <Text variant="body-default-s" onBackground="neutral-weak">
-              © {currentYear} AlgoCrew Inc.
-            </Text>
-            {/* <Text variant="body-default-s" onBackground="neutral-medium" paddingX="8">|</Text>
-            <Link className={styles.legalLink} target="_blank" href="https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?lang=eng&corpId=17177011" >
-              <Text variant="body-default-xs">Federal Corporation Details</Text>
-              About Us
-            </Link> */}
-          </Flex>
-
-          <Flex gap="8">
-            {social.map((item) => item.link && (
-              <IconButton
-                key={item.name}
-                href={item.link}
-                icon={item.icon}
-                tooltip={item.name}
-                size="m"
-                variant="ghost"
-                className={styles.socialIcon}
-              />
+    <footer className={styles.footer}>
+      <div className={styles.inner}>
+        <div className={styles.top}>
+          <Link href="/" className={styles.logo}>
+            <span className={styles.logoDot} />
+            AlgoCrew
+          </Link>
+          <nav className={styles.links}>
+            {links.map(l => (
+              <Link key={l.href} href={l.href} className={styles.link}>{l.label}</Link>
             ))}
-          </Flex>
-        </Flex>
-      </Column>
+          </nav>
+        </div>
 
-      <Background
-        position="absolute"
-        className="bottom-0"
-        mask={{
-          x: 90,
-          y: 100,
-          radius: 40,
-          cursor: effects.mask.cursor,
-        }}
-        dots={{
-          display: effects.dots.display,
-          opacity: effects.dots.opacity as opacity,
-          size: effects.dots.size as SpacingToken,
-          color: effects.dots.color,
-        }}
-        grid={{
-          display: true,
-          opacity: 100,
-          color: "brand-alpha-medium",
-          width: effects.grid.width,
-          height: effects.grid.height,
-        }}
-      />
-    </Column>
+        <div className={styles.divider} />
+
+        <div className={styles.bottom}>
+          <p className={styles.copy}>
+            © {new Date().getFullYear()} AlgoCrew Inc. · Canada 🇨🇦
+          </p>
+          <div className={styles.socials}>
+            <a href="https://www.linkedin.com/company/algocrew" target="_blank" rel="noopener noreferrer" className={styles.social} aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+            <a href="mailto:hello@algocrew.io" className={styles.social} aria-label="Email">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
-};
+}

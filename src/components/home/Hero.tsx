@@ -1,85 +1,81 @@
-// Hero.tsx
-import { Heading, Text, Column, Flex, Button, Row, Badge } from "@once-ui-system/core";
-import HeroAnimations from "./HeroAnimations"
+"use client";
+
+import React, { useEffect, useRef } from "react";
+import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./Hero.module.scss";
 
 export function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (!heroRef.current) return;
+
+    gsap.to(heroRef.current, {
+      scale: 0.92,
+      opacity: 0.3,
+      filter: "blur(8px)",
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1.5,
+      },
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
+
   return (
-    <section className={styles.heroWrapper}>
-      <div className={styles.brandGlow} />
+    <section ref={heroRef} className={styles.hero} id="hero">
+      {/* Background layers */}
+      <div className={styles.bg} />
+      <div className={styles.grid} />
+      <div className={styles.noise} />
 
-      <Flex fillWidth maxWidth="xl" horizontal="center" vertical="center" className={styles.mainFlex}>
-        
-        <Column maxWidth="m" gap="32" zIndex={1}>
-          <span className={styles.badge}>
-            {/* <span className={styles.liveDot} /> */}
-            SYSTEMS ONLINE • ARCHITECTING 2025
-          </span>
+      {/* Main content */}
+      <div className={styles.content}>
+        <h1 className={`${styles.headline} ${styles.animIn1}`}>
+          <span>We Build</span>
+          <br />
+          <span className={styles.gradientWord}>Digital</span>
+          <br />
+          <span className={styles.strokeWord}>Experiences</span>
+        </h1>
 
-          <Column gap="16">
-            <Heading variant="display-strong-xl" onBackground="neutral-strong" className={styles.title}>
-              Engineering <br />
-              <span className={styles.accentText}>Digital Resilience.</span>
-            </Heading>
-            <Text variant="body-default-xl" onBackground="neutral-weak" className={styles.subline}>
-              We bridge the gap between complex backend architecture and world-class user experiences. Built for Fintech, Health, and Cloud-native pioneers.
-            </Text>
-          </Column>
+        <p className={`${styles.sub} ${styles.animIn2}`}>
+          We craft high-performance digital products for startups and enterprises.
+          From concept to launch — fast, precise, cinematic.
+        </p>
 
-          <Row gap="16" vertical="center" tabletDirection="column">
-            <Button href='/projects' variant="primary" size="l" weight="strong">
-              Explore Archive
-            </Button>
-            <Button href='/contact' variant="secondary" size="l">
-              Start a Project
-            </Button>
-          </Row>
-        </Column>
-
-        <HeroAnimations >
-          <div className={`${styles.cardContainer} parallax-layer`}>
-            <div className={`${styles.glowOrb} float-element`} />
-
-            <div className={`${styles.miniCardAnalytics} satellite-card`}>
-              <Text variant="label-default-xs" style={{opacity: 0.5}}>NODE_TRAFFIC</Text>
-              <Text variant="label-strong-s" style={{color: '#00cccc'}}>+240%</Text>
-            </div>
-
-            <div className={`${styles.miniCardSecurity} satellite-card`}>
-              <div className={styles.securityPulse} />
-              <Text variant="label-default-xs">SSL_ACTIVE</Text>
-            </div>
-
-            <div className={`${styles.floatingCard} floating-card`}>
-              <Column gap="20">
-                <Row horizontal="center" vertical="center">
-                  <Text variant="label-strong-s" onBackground="neutral-weak">INFRASTRUCTURE STATUS</Text>
-                </Row>
-                <div className={styles.divider} />
-                <Column gap="12">
-                  <Flex horizontal="center">
-                    <Text variant="label-default-s">Uptime</Text>
-                    <Text variant="label-strong-s" style={{color: '#00cccc'}}>99.99%</Text>
-                  </Flex>
-                  <div className={styles.loadingBar}><div style={{width: '94%'}} /></div>
-                  <Flex horizontal="center">
-                    <Text variant="label-default-s">Deployment Speed</Text>
-                    <Text variant="label-strong-s" style={{color: '#00cccc'}}>2.4ms</Text>
-                  </Flex>
-                </Column>
-                <div className={styles.cardFooter}>
-                  <Text variant="label-default-xs">ACTIVE ENCRYPTION: AES-256</Text>
-                </div>
-              </Column>
-            </div>
-          </div>
-        </HeroAnimations>
-      </Flex>
-
-      <div className={styles.scrollZone}>
-        <div className={styles.mouse}>
-          <div className={styles.wheel} />
+        <div className={`${styles.actions} ${styles.animIn3}`}>
+          <Link href="/contact" className={styles.btnPrimary}>
+            Start Building →
+          </Link>
+          <Link href="/projects" className={styles.btnGhost}>
+            View Our Work
+          </Link>
         </div>
+      </div>
+
+      {/* Metrics strip */}
+      <div className={`${styles.metricsStrip} ${styles.animIn4}`}>
+        {["50+ Projects", "30+ Clients", "5+ Years", "48hr Matching"].map((m) => (
+          <span key={m} className={styles.metric}>
+            {m}
+          </span>
+        ))}
+      </div>
+
+      {/* Scroll indicator */}
+      <div className={styles.scrollHint}>
+        <span>SCROLL</span>
+        <div className={styles.scrollLine} />
       </div>
     </section>
   );

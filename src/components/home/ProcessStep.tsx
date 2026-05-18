@@ -1,87 +1,92 @@
-"use client"
+"use client";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import styles from "./ProcessStep.module.scss";
 
-import React, { useEffect, useRef } from 'react';
-import styles from './ProcessStep.module.scss';
-import { Flex, Heading, Text } from '@once-ui-system/core';
-import { FaRegLightbulb, FaCogs, FaSyncAlt } from 'react-icons/fa';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-const IconComponents: { [key: string]: React.ElementType } = {
-    FaRegLightbulb, FaCogs, FaSyncAlt
-};
+const steps = [
+  {
+    num: "01",
+    title: "Discover",
+    phase: "Understanding",
+    desc: "Deep discovery sessions to understand your market, users, and technical landscape. We document everything, challenge assumptions, and align on a north star before writing a single line of code.",
+    details: ["Stakeholder interviews", "Technical audit", "Competitive analysis", "Architecture planning"],
+  },
+  {
+    num: "02",
+    title: "Build",
+    phase: "Execution",
+    desc: "Precision engineering with full transparency. Weekly demos, real-time progress, and zero surprises. We ship in cycles so you see value from week one.",
+    details: ["Agile sprints", "Daily standups", "CI/CD pipelines", "Code reviews"],
+  },
+  {
+    num: "03",
+    title: "Evolve",
+    phase: "Growth",
+    desc: "We don't disappear at launch. Continuous improvement, performance monitoring, and iterative enhancement based on real user data and market feedback.",
+    details: ["Analytics integration", "A/B testing", "Performance monitoring", "Feature iteration"],
+  },
+];
 
 export function ProcessSteps() {
-    const containerRef = useRef(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-        
-        const ctx = gsap.context(() => {
-            gsap.from(".section-content", {
-                y: 30,
-                opacity: 0,
-                duration: 0.8,
-                scrollTrigger: {
-                    trigger: ".section-content",
-                    start: "top 85%",
-                }
-            });
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray<HTMLElement>(`.${styles.step}`).forEach((step) => {
+        gsap.fromTo(step,
+          { opacity: 0, x: 60 },
+          {
+            opacity: 1, x: 0, duration: 0.8, ease: "power3.out",
+            scrollTrigger: { trigger: step, start: "top 80%", toggleActions: "play none none reverse" }
+          }
+        );
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
-            gsap.from(".process-card", {
-                y: 50,
-                opacity: 0,
-                stagger: 0.2,
-                duration: 1,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: ".process-card",
-                    start: "top 90%",
-                }
-            });
-        }, containerRef);
+  return (
+    <section ref={sectionRef} className={styles.section} id="process">
+      <div className={styles.inner}>
+        <div className={styles.left}>
+          <span className={styles.label}>HOW WE WORK</span>
+          <h2 className={styles.heading}>
+            Our<br />
+            <span className={styles.accent}>Engineering</span><br />
+            Cycle
+          </h2>
+          <p className={styles.leftDesc}>
+            A systematic approach to solving complex problems through modular design and rapid deployment.
+          </p>
+          <div className={styles.stepIndicators}>
+            {steps.map((s) => (
+              <div key={s.num} className={styles.indicator}>
+                <span className={styles.indicatorNum}>{s.num}</span>
+                <span className={styles.indicatorTitle}>{s.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
 
-        return () => ctx.revert();
-    }, []);
-
-    const steps = [
-        { id: "1", title: "Think", icon: 'FaRegLightbulb', desc: "We prioritize understanding user requirements to align system architecture perfectly." },
-        { id: "2", title: "Create", icon: 'FaCogs', desc: "We translate requirements into solutions with precision and transparent progress." },
-        { id: "3", title: "Iterate", icon: 'FaSyncAlt', desc: "We evolve designs through rapid feedback loops and rigorous performance testing." }
-    ];
-
-    return (
-        <section ref={containerRef} className={styles.processSectionContainer}>
-            <div className={styles.processContentWrapper}>
-                <div className={`${styles.sectionHeader} section-content`}>
-                    <Heading wrap="balance" variant="display-strong-s" className="mb-3">
-                        Our <span className={styles.accent}>Engineering</span> Cycle
-                    </Heading>
-                    <Text variant="body-default-l" onBackground="neutral-weak" className="text-center mt-3 mx-auto" style={{ maxWidth: '500px' }}>
-                        A systematic approach to solving complex problems through modular design and rapid deployment.
-                    </Text>
-                </div>
-
-                <div className={styles.processStepsGrid}>
-                    {steps.map((step, index) => (
-                        <div key={step.id} className={`${styles.processCard} process-card`}>
-                            <div className={styles.iconContainer}>
-                                <div className={styles.stepCircle}>
-                                    {React.createElement(IconComponents[step.icon], { size: 32 })}
-                                </div>
-                                <span className={styles.stepNumber}>{step.id}</span>
-                                {index < steps.length - 1 && <div className={styles.desktopConnector} />}
-                            </div>
-                            <Heading variant="heading-strong-m" className="mt-4 mb-2">
-                                {step.title}
-                            </Heading>
-                            <Text variant="body-default-m" onBackground="neutral-weak">
-                                {step.desc}
-                            </Text>
-                        </div>
-                    ))}
-                </div>
+        <div className={styles.right}>
+          {steps.map((step, i) => (
+            <div key={step.num} className={styles.step}>
+              <div className={styles.stepHeader}>
+                <span className={styles.stepNum}>{step.num}</span>
+                <span className={styles.stepPhase}>{step.phase}</span>
+              </div>
+              <h3 className={styles.stepTitle}>{step.title}</h3>
+              <p className={styles.stepDesc}>{step.desc}</p>
+              <ul className={styles.stepDetails}>
+                {step.details.map(d => <li key={d}>{d}</li>)}
+              </ul>
+              {i < steps.length - 1 && <div className={styles.connector} />}
             </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

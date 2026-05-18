@@ -11,7 +11,16 @@
 }
 
 .accent {
-    color: #00ccccf0;
+    background: linear-gradient(90deg, #00cccc, #0077ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.sectionDescription {
+    color: rgba(255,255,255,0.5) !important;
+    max-width: 500px;
+    text-align: center;
 }
 
 .badge {
@@ -55,25 +64,29 @@
 .techCard {
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 12px 24px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 14px;
+    padding: 12px 22px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: default;
     min-width: max-content;
     max-height: 60px !important;
 
-
     &:hover {
-        background: rgba(0, 204, 204, 0.08);
-        border-color: rgba(0, 204, 204, 0.3);
-        transform: translateY(-4px) scale(1.02);
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-        
+        background: rgba(0,204,204,0.07);
+        border-color: rgba(0,204,204,0.25);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 20px rgba(0,204,204,0.05);
+
         .techIcon {
-            filter: grayscale(0%) brightness(1.2);
+            filter: grayscale(0%) brightness(1.15);
+            transform: scale(1.1);
+        }
+
+        .techName {
+            color: rgba(255,255,255,0.9);
         }
     }
 }

@@ -1,152 +1,118 @@
 "use client";
-
 import { useEffect, useRef } from "react";
-import { Column, Flex, Heading, Text, Button, Icon, Background, SpacingToken, opacity, } from "@once-ui-system/core";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./Services.module.scss";
-import { effects } from '@/resources';
 
- const serviceCategories = [
+const services = [
   {
     id: "team-services",
-    name: "Strategic Staffing",
+    num: "01",
+    title: "Strategic\nStaffing",
     tagline: "Pre-vetted IT Talent",
-    description: "Scale your technical capabilities instantly with dedicated managed teams.",
-    subServices: ["Staff Augmentation", "Dedicated Teams", "Project Management"],
-    gif: "/images/service/team.gif",
-    icon: "person"
+    desc: "Scale your technical capabilities instantly with dedicated managed teams. From staff augmentation to full turnkey delivery.",
+    tags: ["Staff Augmentation", "Dedicated Teams", "Project Management"],
+    color: "#00cccc",
+    icon: "◈",
   },
   {
-    id: "web-app-develpoment",
-    name: "Product Engineering",
+    id: "web-app-development",
+    num: "02",
+    title: "Product\nEngineering",
     tagline: "MVP to Enterprise Scale",
-    description: "Bespoke digital solutions engineered for performance and market dominance.",
-    subServices: ["Web & Mobile", "SaaS", "E-commerce"],
-    gif: "/images/service/web.gif",
-    icon: "globe"
+    desc: "Bespoke digital solutions engineered for performance and market dominance. Web, mobile, SaaS — built to last.",
+    tags: ["Web & Mobile", "SaaS Platforms", "E-commerce"],
+    color: "#0077ff",
+    icon: "⬡",
   },
   {
     id: "cloud-devops",
-    name: "Cloud & DevOps",
-    tagline: "Secure & Scalable Architecture",
-    description: "Architecting the backbone of modern business with cloud-native transitions.",
-    subServices: ["DevOps", "Cybersecurity", "Cloud Migration"],
-    gif: "/images/service/devops.gif",
-    icon: "clouds"
+    num: "03",
+    title: "Cloud &\nDevOps",
+    tagline: "Secure & Scalable Infrastructure",
+    desc: "Architecting the backbone of modern business with cloud-native transitions, CI/CD pipelines, and enterprise security.",
+    tags: ["DevOps", "Cybersecurity", "Cloud Migration"],
+    color: "#7c3aed",
+    icon: "⬢",
   },
   {
-    id: "intelligence",
-    name: "Data & AI Solutions",
+    id: "data-automation",
+    num: "04",
+    title: "Data &\nAI Solutions",
     tagline: "Intelligence-Driven Strategy",
-    description: "Leverage the next industrial revolution with Generative AI and ML.",
-    subServices: ["Generative AI", "Blockchain", "AR/VR"],
-    gif: "/images/service/ai.gif",
-    icon: "bulb"
-  }
+    desc: "Leverage the next industrial revolution with Generative AI, machine learning, and intelligent automation workflows.",
+    tags: ["Generative AI", "Blockchain", "AR/VR"],
+    color: "#f59e0b",
+    icon: "◎",
+  },
 ];
 
 export function Services() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]);
+  const sectionRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    ScrollTrigger.getAll().forEach(t => t.kill());
 
-    const ctx = gsap.context(() => {
-      gsap.set(cardsRef.current, { opacity: 0, y: 60, scale: 0.95 });
+    const section = sectionRef.current;
+    const track = trackRef.current;
+    if (!section || !track) return;
 
-      gsap.to(cardsRef.current, {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 85%",
-          end: "bottom 20%",
-          toggleActions: "play reverse play reverse", 
-        }
-      });
-    }, containerRef);
+    const getScrollAmount = () => -(track.scrollWidth - window.innerWidth);
 
-    return () => ctx.revert();
+    const tween = gsap.to(track, {
+      x: getScrollAmount,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: () => `+=${track.scrollWidth}`,
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    return () => {
+      tween.kill();
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
   }, []);
 
   return (
-    <>
-      <section ref={containerRef} className={`${styles.mainWrapper} z-2 px-6 md:px-15`}>
-        <Column fillWidth paddingTop="104" gap="64" className={styles.container}>
-          
-          <Flex direction="column" gap="16">
-            <Text variant="label-strong-s" onBackground="accent-medium" className={styles.badge}>WHAT WE DO</Text>
-            <Heading variant="display-strong-s">Core pillars of <span className={styles.accent}>digital <br /> transformation</span></Heading>
-          </Flex>
+    <section ref={sectionRef} className={styles.section} id="services">
+      <div className={styles.sectionMeta}>
+        <span className={styles.label}>WHAT WE DO</span>
+        <h2 className={styles.heading}>Our Capabilities</h2>
+      </div>
 
-          <div className={styles.serviceGrid}>
-            {serviceCategories.map((service, index) => (
-              <div 
-                key={service.id} 
-                ref={(el) => { if (el) cardsRef.current[index] = el; }}
-                className={styles.serviceCard}
-              >
-                {/* Updated GIF Overlay for ambient feel */}
-                <div className={styles.gifOverlay}>
-                  <img src={service.gif} alt="" />
-                  <div className={styles.ambientGlow} />
-                </div>
-
-                <div className={styles.cardContent}>
-                  <Flex fillWidth content="space-between" align="start" marginBottom="40">
-                    <div className={styles.iconBox}>
-                      <Icon name={service.icon} size="m" />
-                    </div>
-                    <Text variant="label-strong-s" className={styles.indexNumber}>0{index + 1}</Text>
-                  </Flex>
-
-                  <Column gap="12" marginBottom="40">
-                    <Heading variant="heading-strong-l">{service.name}</Heading>
-                    <Text variant="body-default-m" weight="strong" style={{ color: 'var(--accent-solid)' }}>
-                      {service.tagline}
-                    </Text>
-                    <Text variant="body-default-m" onBackground="neutral-medium">
-                      {service.description}
-                    </Text>
-                  </Column>
-
-                  <Flex gap="8" wrap marginBottom="20">
-                    {service.subServices.map((sub) => (
-                      <span key={sub} className={styles.tag}>{sub}</span>
-                    ))}
-                  </Flex>
-
-                  <div className={styles.buttonWrapper}>
-                    <Button href={`/services/${service.id}`} variant="primary" size="s" suffixIcon="arrowRight">
-                      Explore Vertical
-                    </Button>
-                  </div>
-                </div>
+      <div className={styles.track} ref={trackRef}>
+        {services.map((s) => (
+          <div key={s.id} className={styles.panel}>
+            <div className={styles.panelInner}>
+              <div className={styles.panelNum}>{s.num}</div>
+              <div className={styles.panelIcon} style={{ color: s.color }}>{s.icon}</div>
+              <h3 className={styles.panelTitle} style={{ '--accent': s.color } as React.CSSProperties}>
+                {s.title.split('\n').map((line, i) => <span key={i}>{line}<br/></span>)}
+              </h3>
+              <p className={styles.panelTagline} style={{ color: s.color }}>{s.tagline}</p>
+              <p className={styles.panelDesc}>{s.desc}</p>
+              <div className={styles.panelTags}>
+                {s.tags.map(t => <span key={t} className={styles.tag}>{t}</span>)}
               </div>
-            ))}
+              <Link href={`/services/${s.id}`} className={styles.panelLink} style={{ color: s.color }}>
+                Explore →
+              </Link>
+            </div>
           </div>
+        ))}
+      </div>
 
-          {/* New "Show All Services" Action */}
-          <Flex fillWidth horizontal="center" marginTop="16">
-            <Button 
-              href="/services" 
-              variant="secondary" 
-              size="l" 
-              weight="strong"
-              suffixIcon="chevronRight"
-            >
-              View All Specialized Services
-            </Button>
-          </Flex>
-        </Column>
-      </section>
-    </>
+      <div className={styles.progressBar}>
+        <div className={styles.progressFill} id="services-progress" />
+      </div>
+    </section>
   );
 }

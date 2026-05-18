@@ -1,69 +1,205 @@
-@use "./breakpoints.scss" as breakpoints;
-
-.hasShadow {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    border-bottom: 1px solid var(--neutral-alpha-weak);
-    transition: box-shadow 0.3s ease;
+/* ---- Floating Island Nav ---- */
+.nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  transition: top 0.3s ease;
 }
 
-.headerBg {
-    background: linear-gradient(to right, var(--brand-background-strong), var(--page-background));
+.island {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 10px 10px 20px;
+  border-radius: 100px;
+  background: rgba(8, 8, 12, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.position {
-    position: sticky;
-    top: 0;
-    width: 100%
+.scrolled .island {
+  background: rgba(8, 8, 12, 0.92);
+  border-color: rgba(0, 204, 204, 0.12);
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(0, 204, 204, 0.06),
+    0 1px 0 rgba(255, 255, 255, 0.04) inset;
 }
 
-.mask {
-    pointer-events: none;
-    backdrop-filter: blur(0.5rem);
-    background: linear-gradient(to bottom, var(--page-background), var(--static-transparent));
-    mask-image: linear-gradient(rgba(0,0,0) 25%, rgba(0, 0, 0, 0) 100%);
-    mask-size: 100% 100%;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 800;
+  color: white;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  margin-right: 8px;
+  flex-shrink: 0;
 }
 
-@media (max-width: breakpoints.$s) {
-    .position {
-        top: auto;
-        position: fixed;
-        bottom: var(--static-space-24);
-    }
-
-    .mask {
-        transform: rotate(180deg);
-        bottom: 0;
-    }
+.logoDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00cccc, #0077ff);
+  box-shadow: 0 0 10px rgba(0, 204, 204, 0.7);
+  flex-shrink: 0;
 }
 
-.servicesButton > div ~ div > div {
-    opacity: 100;
-    border: none !important;
-    // background: linear-gradient(var(--brand-alpha-strong) 0%, transparent 100%);
-    right: 0 !important;
-    background: linear-gradient(#ffffff90 0%, #fff 100%);
+.navLinks {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
-[data-theme=dark] { 
-  .servicesButton > div ~ div > div {
-    background: linear-gradient(var(--brand-alpha-strong) 0%, #000 100%)
+.navLink {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  &.active {
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+  }
 }
 
+.cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: 100px;
+  background: linear-gradient(135deg, #00cccc, #0077ff);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  margin-left: 4px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    box-shadow: 0 4px 20px rgba(0, 204, 204, 0.35);
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
-.servicesButton > div ~ div {
-    left: -100px !important;
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 8px;
+
+  span {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    transform-origin: center;
+  }
+
+  &.open {
+    span:first-child { transform: translateY(5.5px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    span:last-child { transform: translateY(-5.5px) rotate(-45deg); }
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
 }
 
-.servicesButton > div ~ div * {
-    color: #55575a !important;
-    font-weight: lighter;
+/* ---- Mobile Menu ---- */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: rgba(3, 6, 9, 0.97);
+  backdrop-filter: blur(24px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 32px 48px;
+  gap: 8px;
 }
 
-[data-theme=dark] { 
-    .servicesButton > div ~ div * {
-        color: white !important;
-    }
+.mobileLink {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 2rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  letter-spacing: -0.03em;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  animation: slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  &:hover { color: white; }
+
+  @keyframes slide-in {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
 }
 
+.mobileLinkNum {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.2);
+  font-family: monospace;
+  margin-top: 4px;
+}
+
+.mobileCta {
+  display: inline-flex;
+  margin-top: 32px;
+  padding: 14px 28px;
+  border-radius: 100px;
+  background: linear-gradient(135deg, #00cccc, #0077ff);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  align-self: flex-start;
+}

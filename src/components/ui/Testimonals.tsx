@@ -1,16 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from 'react';
-import { IconButton, Heading, Text, Flex } from '@once-ui-system/core';
+import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import styles from './Testimonials.module.scss';
-
-type Testimonial = {
-  quote: string;
-  name: string;
-  designation: string;
-  src: string;
-};
 
 export const Testimonials = ({ testimonials }: { testimonials: any[] }) => {
   const [active, setActive] = useState(0);
@@ -18,97 +10,116 @@ export const Testimonials = ({ testimonials }: { testimonials: any[] }) => {
   const imageCardRef = useRef<HTMLDivElement>(null);
   const isAnimating = useRef(false);
 
-  // Apple-style Tilt Logic
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!imageCardRef.current) return;
-    
     const card = imageCardRef.current;
     const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left; // x position within element
-    const y = e.clientY - rect.top;  // y position within element
-    
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    
-    // Calculate rotation (Max 15 degrees)
-    const rotateX = ((y - centerY) / centerY) * -6; 
-    const rotateY = ((x - centerX) / centerX) * 6;
+    const rotateX = ((y - centerY) / centerY) * -7;
+    const rotateY = ((x - centerX) / centerX) * 7;
 
     gsap.to(card, {
-      rotateX: rotateX,
-      rotateY: rotateY,
-      duration: 0.5,
-      ease: "power2.out",
-      transformPerspective: 1000,
+      rotateX, rotateY,
+      duration: 0.5, ease: "power2.out", transformPerspective: 1000,
     });
   };
 
   const handleMouseLeave = () => {
     if (!imageCardRef.current) return;
     gsap.to(imageCardRef.current, {
-      rotateX: 0,
-      rotateY: 0,
-      duration: 0.8,
-      ease: "elastic.out(1, 0.5)"
+      rotateX: 0, rotateY: 0,
+      duration: 0.8, ease: "elastic.out(1, 0.5)",
     });
   };
 
-  // Original ChangeStep logic
   const changeStep = (nextIndex: number) => {
     if (isAnimating.current || nextIndex === active) return;
     isAnimating.current = true;
+
     gsap.to(containerRef.current, {
-      opacity: 0,
-      y: 10,
-      duration: 0.3,
+      opacity: 0, y: 10, duration: 0.25,
       onComplete: () => {
         setActive(nextIndex);
         gsap.to(containerRef.current, { opacity: 1, y: 0, duration: 0.4 });
         isAnimating.current = false;
-      }
+      },
     });
   };
 
   return (
-    <div ref={containerRef} className={styles.wrapper}>
-      <div className={styles.grid}>
+    <div style={{ padding: "0 60px", maxWidth: "1280px", margin: "0 auto" }}>
+      {/* Section header */}
+      <span className={styles.sectionLabel}>CLIENT STORIES</span>
+      <h2 className={styles.sectionTitle}>
+        Trusted by <span className={styles.accentText}>industry leaders</span>
+      </h2>
+
+      <div ref={containerRef} className={styles.grid}>
+        {/* Image */}
         <div className={styles.imageContainer}>
-          {/* Apply Mouse Events Here */}
-          <div 
-            ref={imageCardRef} 
+          <div
+            ref={imageCardRef}
             className={styles.imageCard}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            <img src={testimonials[active].src} alt={testimonials[active].name} />
-            <div className={styles.glare} /> 
+            <img
+              src={testimonials[active].src}
+              alt={testimonials[active].name}
+            />
+            <div className={styles.imageOverlay} />
+            <div className={styles.glare} />
           </div>
         </div>
 
+        {/* Content */}
         <div className={styles.contentSection}>
-          <div className={styles.quoteWrapper}>
-            <span className={styles.quoteIcon}>“</span>
-            <div className="mb-8">
-              <Text variant="heading-default-m" className="italic leading-relaxed">
-                {testimonials[active].quote}
-              </Text>
-            </div>
+          {/* Stars */}
+          <div className={styles.stars}>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <span key={i} className={styles.star}>★</span>
+            ))}
+          </div>
 
-            <div className="flex flex-col gap-1 border-l-4 border-cyan-500 pl-6">
-              <Heading variant="heading-strong-m">{testimonials[active].name}</Heading>
-              <Text variant="body-default-s" onBackground="brand-medium">
-                {testimonials[active].designation}
-              </Text>
+          <div className={styles.quoteWrapper}>
+            <span className={styles.quoteIcon}>&ldquo;</span>
+            <p className={styles.quoteText}>
+              {testimonials[active].quote}
+            </p>
+
+            <div className={styles.authorBlock}>
+              <p className={styles.authorName}>{testimonials[active].name}</p>
+              <p className={styles.authorRole}>{testimonials[active].designation}</p>
             </div>
           </div>
 
-          <Flex gap="12" className="mt-12 items-center">
-            <IconButton icon="chevronLeft" variant="secondary" onClick={() => changeStep((active - 1 + testimonials.length) % testimonials.length)} />
-            <IconButton icon="chevronRight" variant="secondary" onClick={() => changeStep((active + 1) % testimonials.length)} />
-            <div className={styles.pagination}>
-              <span className="text-cyan-500">{active + 1}</span> / {testimonials.length}
-            </div>
-          </Flex>
+          {/* Navigation */}
+          <div className={styles.paginationRow}>
+            <button
+              className={styles.navBtn}
+              onClick={() => changeStep((active - 1 + testimonials.length) % testimonials.length)}
+              aria-label="Previous testimonial"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            <button
+              className={styles.navBtn}
+              onClick={() => changeStep((active + 1) % testimonials.length)}
+              aria-label="Next testimonial"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            <span className={styles.pagination}>
+              <span>{active + 1}</span> / {testimonials.length}
+            </span>
+          </div>
         </div>
       </div>
     </div>

@@ -1,110 +1,115 @@
-.aboutUsContainer {
-    padding: 100px 60px;
-    background: var(--page-background); // Adapts to theme
-    @media (max-width: 1024px) {
-        padding: 100px 24px;
-    }
+.section {
+  background: #030609;
+  padding: 120px 60px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+
+  @media (max-width: 768px) {
+    padding: 80px 24px;
+  }
 }
 
-.contentWrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 80px;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.heading {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: white;
+  margin: 0;
+  line-height: 1;
+}
+
+.accent {
+  background: linear-gradient(135deg, #00cccc, #0077ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
     grid-template-columns: 1fr;
-    gap: 80px;
-    align-items: center;
-
-    @media (min-width: 1024px) {
-        grid-template-columns: 1.1fr 0.9fr;
-    }
-}
-
-.maxText {
-    max-width: 520px;
-}
-
-.badge {
-    display: inline-block;
-    // padding: 6px 16px;
-    // background: rgba(0, 204, 204, 0.1);
-    color: #00cccc;
-    // border-radius: 4px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-}
-
-.highlight {
-    color: #00cccc;
-}
-
-.statsGrid {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  }
 }
 
 .statCard {
-    position: relative;
-    padding: 32px;
-    background: rgba(255, 255, 255, 0.03); // Works for dark mode
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    border-radius: 32px;
-    transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
-    overflow: hidden;
+  padding: 40px;
+  border-right: 1px solid rgba(255,255,255,0.06);
 
-    &:hover {
-        transform: translateX(-12px);
-        border-color: rgba(0, 204, 204, 0.4);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  &:first-child { padding-left: 0; }
+  &:last-child { border-right: none; }
 
-        .accentBar {
-            height: 40%;
-            opacity: 1;
-        }
-    }
+  @media (max-width: 900px) {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 32px 0;
+
+    &:nth-child(odd) { padding-right: 20px; }
+    &:nth-child(even) { padding-left: 20px; border-left: 1px solid rgba(255,255,255,0.06); }
+  }
 }
 
-.statNumber {
-    font-size: 4rem;
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -3px;
-    // For a modern look, let's use a techy font if available
-    font-family: var(--font-family-code); 
+.numRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  margin-bottom: 12px;
 }
 
-.plus {
-    font-size: 2rem;
-    color: #00cccc;
-    font-weight: 700;
+.num {
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, white, rgba(255,255,255,0.5));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.suffix {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 900;
+  color: #00cccc;
+  margin-top: 8px;
 }
 
 .statLabel {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-top: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
 }
 
-.accentBar {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 0%;
-    background: #00cccc;
-    opacity: 0;
-    transition: all 0.4s ease;
-    border-radius: 4px 0 0 4px;
-}
-
-/* Light/Dark Mode handling */
-[data-theme='light'] .statCard {
-    background: #ffffff;
-    border-color: rgba(0, 0, 0, 0.08);
+.statDesc {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  margin: 0;
+  line-height: 1.5;
 }

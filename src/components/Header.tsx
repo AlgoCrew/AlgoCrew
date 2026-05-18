@@ -1,223 +1,109 @@
 "use client";
-
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Flex, Line, ToggleButton, MegaMenu, Background } from "@once-ui-system/core";
-
-import { routes, display, about, contact, projects, effects } from "@/resources";
-import { ThemeToggle } from "./ThemeToggle";
-import { ThemeLogo } from "./ThemeLogo";
 import styles from "./Header.module.scss";
-import { opacity, SpacingToken } from "@once-ui-system/core";
 
-export const Header = () => {
-  const pathname = usePathname() ?? "";
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/work", label: "Work" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contact", label: "Contact" },
+];
+
+export function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const ctaRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setScrolled(true);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Magnetic CTA effect
+  useEffect(() => {
+    const el = ctaRef.current;
+    if (!el) return;
+    const onMove = (e: MouseEvent) => {
+      const rect = el.getBoundingClientRect();
+      const dx = e.clientX - (rect.left + rect.width / 2);
+      const dy = e.clientY - (rect.top + rect.height / 2);
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 80) {
+        el.style.transform = `translate(${dx * 0.3}px, ${dy * 0.3}px)`;
       } else {
-        setScrolled(false);
+        el.style.transform = "";
       }
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", onMove);
+    return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
   return (
-    <Flex
-      as="header"
-      position="fixed"
-      top="0"
-      left="0"
-      right="0"
-      height="80"
-      zIndex={9}
-      fillWidth
-      horizontal="center"
-      vertical="center"
-      background="page"
-      paddingTop="4"
-      paddingBottom="4"
-      className={`${scrolled ? styles.hasShadow : ""} ${styles.headerBg} px-3 md:px-12 headerBg`}
-    >
-      <Flex fillWidth horizontal="space-between" vertical="center" maxWidth="xl">
-        <ToggleButton href="/" selected={pathname === "/"} className="m-0 p-0 bg-transparent!">
-          <ThemeLogo />
-        </ToggleButton>
+    <>
+      <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}>
+        <div className={styles.island}>
+          {/* Logo */}
+          <Link href="/" className={styles.logo}>
+            <span className={styles.logoDot} />
+            AlgoCrew
+          </Link>
 
-        <Flex 
-          padding="4"
-          horizontal="center"
-          zIndex={1}
-        >
-          <Flex gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
-            {routes["/services"] && (
-              <>
-                <MegaMenu
-                  className={`${styles.servicesButton} s-flex-hide`}
-                  menuGroups={[
-                    {
-                      id: "services",
-                      label: "Services",
-                      suffixIcon: "chevronDown",
-                      sections: [
-                        {
-                          links: [
-                            {
-                              label: "Web & App Development",
-                              href: "/services/web-app-development",
-                              icon: "code",
-                              description: "Custom digital product solutions",
-                            },
-                            {
-                              label: "Cloud & DevOps",
-                              href: "/services/cloud-devops",
-                              icon: "clouds",
-                              description: "Scalable cloud infrastructure services",
-                            },
-                            {
-                              label: "Security & Quality",
-                              href: "/services/security-quality",
-                              icon: "shield",
-                              description: "Protection and performance assurance",
-                            },
-                            {
-                              label: "E-commerce",
-                              href: "/services/e-commerce",
-                              icon: "cart",
-                              description: "E-commerce platforms for business growth.",
-                            },
-                            {
-                              label: "Data, AI & Automation",
-                              href: "/services/data-automation",
-                              icon: "bulb",
-                              description: "Intelligent insights and automation",
-                            },
-                            {
-                              label: "Microsoft Solutions",
-                              href: "/services/microsoft-solutions",
-                              icon: "server",
-                              description: "Enterprise-ready Microsoft platforms",
-                            },
-                            {
-                              label: "Digital Marketing",
-                              href: "/services/digital-marketing",
-                              icon: "globe",
-                              description: "Boost Your Online Presence",
-                            },
-                            {
-                              label: "Team & Support Services",
-                              href: "/services/team-services",
-                              icon: "users",
-                              description: "On-demand tech talent support",
-                            },
-                            {
-                              label: "Emerging Tech",
-                              href: "/services/emerging-tech",
-                              icon: "sparkle",
-                              description: "Next-gen immersive technologies",
-                            },
-                            {
-                              label: "Gaming",
-                              href: "/services/gaming",
-                              icon: "game",
-                              description: "Creative and immersive gaming",
-                            },
-                          ],
-                        },
-                        {
-                          links: [
-                            {
-                              label: "Services",
-                              href: "/services",
-                              icon: "rocket",
-                              description: "see all our services",
-                            },
-                            {
-                              label: "Hire a Developer",
-                              href: "/contact",
-                              icon: "email",
-                              description: "Hire our dedicated team",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ]}
-                />
-                
-                <ToggleButton
-                  className="s-flex-show"
-                  prefixIcon="rocket"
-                  href="/services"
-                  selected={pathname === "/services"}
-                />
-              </>
-            )}
+          {/* Nav links - desktop */}
+          <ul className={styles.navLinks}>
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className={`${styles.navLink} ${pathname === link.href ? styles.active : ""}`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-            {routes["/about"] && (
-              <>
-                <ToggleButton
-                  className="s-flex-hide"
-                  prefixIcon="person"
-                  href="/about"
-                  label={about.label}
-                  selected={pathname === "/about"}
-                />
-                <ToggleButton
-                  className="s-flex-show"
-                  prefixIcon="person"
-                  href="/about"
-                  selected={pathname === "/about"}
-                />
-              </>
-            )}
-            {routes["/projects"] && (
-              <>
-                <ToggleButton
-                  className="s-flex-hide"
-                  prefixIcon="collections"
-                  href="/projects"
-                  label={projects.label}
-                  selected={pathname.startsWith("/projects")}
-                />
-                <ToggleButton
-                  className="s-flex-show"
-                  prefixIcon="collections"
-                  href="/projects"
-                  selected={pathname.startsWith("/projects")}
-                />
-              </>
-            )}
-            {routes["/contact"] && (
-              <>
-                <ToggleButton
-                  className="s-flex-hide"
-                  prefixIcon="phone"
-                  href="/contact"
-                  label={contact.label}
-                  selected={pathname.startsWith("/contact")}
-                />
-                <ToggleButton
-                  className="s-flex-show"
-                  prefixIcon="phone"
-                  href="/contact"
-                  selected={pathname.startsWith("/contact")}
-                />
-              </>
-            )}
-            {display.themeSwitcher && (
-              <>
-                <Line background="neutral-alpha-medium" vert maxHeight="24" />
-                <ThemeToggle />
-              </>
-            )}
-          </Flex>
-        </Flex>
-      </Flex>
-    </Flex>
+          {/* CTA */}
+          <Link href="/contact" className={styles.cta} ref={ctaRef}>
+            Start a Project
+          </Link>
+
+          {/* Mobile hamburger */}
+          <button
+            className={`${styles.hamburger} ${menuOpen ? styles.open : ""}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span /><span /><span />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className={styles.mobileMenu}>
+          {navLinks.map((link, i) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={styles.mobileLink}
+              onClick={() => setMenuOpen(false)}
+              style={{ animationDelay: `${i * 60}ms` }}
+            >
+              <span className={styles.mobileLinkNum}>0{i + 1}</span>
+              {link.label}
+            </Link>
+          ))}
+          <Link href="/contact" className={styles.mobileCta} onClick={() => setMenuOpen(false)}>
+            Start a Project →
+          </Link>
+        </div>
+      )}
+    </>
   );
-};
+}

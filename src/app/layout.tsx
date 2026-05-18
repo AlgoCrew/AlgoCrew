@@ -50,6 +50,16 @@ export default async function RootLayout({
       as="html"
       lang="en"
       fillWidth
+      data-theme="dark"
+      data-brand="custom"
+      data-accent="custom"
+      data-neutral="slate"
+      data-solid="contrast"
+      data-solid-style="flat"
+      data-border="playful"
+      data-surface="translucent"
+      data-transition="all"
+      data-scaling="100"
       className={classNames(
         fonts.heading.variable,
         fonts.body.variable,
@@ -66,7 +76,7 @@ export default async function RootLayout({
               (function() {
                 try {
                   const root = document.documentElement;
-                  const defaultTheme = 'system';
+                  const defaultTheme = 'dark';
                   
                   // Set defaults from config
                   const config = ${JSON.stringify({
@@ -89,7 +99,7 @@ export default async function RootLayout({
                   
                   // Resolve theme
                   const resolveTheme = (themeValue) => {
-                    if (!themeValue) return 'light';
+                    if (!themeValue) return 'dark';
                     if (themeValue === 'system') {
                       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
                     }
@@ -148,8 +158,8 @@ export default async function RootLayout({
             <Flex
               zIndex={0}
               fillWidth
-              paddingTop="80"
-              paddingBottom="l"
+              paddingTop="0"
+              paddingBottom="0"
               horizontal="center"
               flex={1}
             >
