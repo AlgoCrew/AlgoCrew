@@ -268,12 +268,15 @@ function renderHighlighted(quote: string, highlight: string, gradient: string) {
       {quote.slice(0, idx)}
       <mark
         style={{
+          display: "inline",
           background: gradient,
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           backgroundClip: "text",
           backgroundColor: "transparent",
           fontWeight: 700,
+          padding: 0,
+          margin: 0,
         }}
       >
         {highlight}
