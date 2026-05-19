@@ -1,7 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
 import styles from "./ProcessStep.module.scss";
 
 const steps = [
@@ -30,49 +28,93 @@ const steps = [
 
 export function ProcessSteps() {
   const sectionRef = useRef<HTMLElement>(null);
+  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [progressPct, setProgressPct] = useState(0);
 
+  // Entrance animation for step cards
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>(`.${styles.step}`).forEach((step) => {
-        gsap.fromTo(step,
-          { opacity: 0, x: 60 },
-          {
-            opacity: 1, x: 0, duration: 0.8, ease: "power3.out",
-            scrollTrigger: { trigger: step, start: "top 80%", toggleActions: "play none none reverse" }
+    const stepEls = stepRefs.current.filter(Boolean) as HTMLDivElement[];
+    if (!stepEls.length) return;
+
+    const observers = stepEls.map((el, i) => {
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            el.style.opacity = "1";
+            el.style.transform = "translateX(0)";
+            setActiveIdx(i);
+            setProgressPct(((i + 1) / steps.length) * 100);
           }
-        );
-      });
-    }, sectionRef);
-    return () => ctx.revert();
+        },
+        { threshold: 0.45 }
+      );
+      obs.observe(el);
+      return obs;
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
   }, []);
 
   return (
     <section ref={sectionRef} className={styles.section} id="process">
       <div className={styles.inner}>
+
+        {/* ---- Sticky left panel ---- */}
         <div className={styles.left}>
-          <span className={styles.label}>HOW WE WORK</span>
-          <h2 className={styles.heading}>
-            Our<br />
-            <span className={styles.accent}>Engineering</span><br />
-            Cycle
-          </h2>
-          <p className={styles.leftDesc}>
-            A systematic approach to solving complex problems through modular design and rapid deployment.
-          </p>
-          <div className={styles.stepIndicators}>
-            {steps.map((s) => (
-              <div key={s.num} className={styles.indicator}>
-                <span className={styles.indicatorNum}>{s.num}</span>
-                <span className={styles.indicatorTitle}>{s.title}</span>
+          {/* Glass card */}
+          <div className={styles.glassCard}>
+            <span className={styles.label}>HOW WE WORK</span>
+            <h2 className={styles.heading}>
+              Our<br />
+              <span className={styles.accent}>Engineering</span><br />
+              Cycle
+            </h2>
+            <p className={styles.leftDesc}>
+              A systematic approach to solving complex problems through modular design and rapid deployment.
+            </p>
+
+            {/* Step nav with progress line */}
+            <nav className={styles.stepNav} aria-label="Process steps">
+              {/* Progress bar */}
+              <div className={styles.progressTrack} aria-hidden="true">
+                <div
+                  className={styles.progressFill}
+                  style={{ height: `${progressPct}%` }}
+                />
               </div>
-            ))}
+
+              {steps.map((s, i) => (
+                <div
+                  key={s.num}
+                  className={`${styles.stepNavItem} ${i === activeIdx ? styles.stepNavActive : ""}`}
+                >
+                  <div className={styles.stepNavDot}>
+                    {i === activeIdx ? (
+                      <span className={styles.stepNavDotActive} aria-hidden="true" />
+                    ) : (
+                      <span className={styles.stepNavDotIdle} aria-hidden="true" />
+                    )}
+                  </div>
+                  <div className={styles.stepNavContent}>
+                    <span className={styles.stepNavNum}>{s.num}</span>
+                    <span className={styles.stepNavTitle}>{s.title}</span>
+                    <span className={styles.stepNavPhase}>{s.phase}</span>
+                  </div>
+                </div>
+              ))}
+            </nav>
           </div>
         </div>
 
+        {/* ---- Right: step cards ---- */}
         <div className={styles.right}>
           {steps.map((step, i) => (
-            <div key={step.num} className={styles.step}>
+            <div
+              key={step.num}
+              ref={(el) => { stepRefs.current[i] = el; }}
+              className={`${styles.step} ${i === activeIdx ? styles.stepActive : ""}`}
+            >
               <div className={styles.stepHeader}>
                 <span className={styles.stepNum}>{step.num}</span>
                 <span className={styles.stepPhase}>{step.phase}</span>
@@ -80,9 +122,8 @@ export function ProcessSteps() {
               <h3 className={styles.stepTitle}>{step.title}</h3>
               <p className={styles.stepDesc}>{step.desc}</p>
               <ul className={styles.stepDetails}>
-                {step.details.map(d => <li key={d}>{d}</li>)}
+                {step.details.map((d) => <li key={d}>{d}</li>)}
               </ul>
-              {i < steps.length - 1 && <div className={styles.connector} />}
             </div>
           ))}
         </div>

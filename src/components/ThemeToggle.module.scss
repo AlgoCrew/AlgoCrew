@@ -1,10 +1,66 @@
-.button {
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px 7px;
+  border-radius: 100px;
+  border: 1px solid var(--border-muted);
+  background: var(--bg-glass-light);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-strong);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--brand-cyan);
+    outline-offset: 2px;
+  }
+}
+
+/* Ensure good contrast in light mode */
+[data-theme="light"] .toggle {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.13);
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.09);
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.placeholder {
+  width: 56px;
+  height: 32px;
+}
+
+.icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  svg {
-    width: 1em;
-    height: 1em;
-  }
+  width: 22px;
+  height: 22px;
+  border-radius: 100px;
+  color: var(--text-muted);
+  transition: color 0.25s ease, background 0.25s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.active {
+  color: var(--text-primary);
+  background: var(--bg-card-hover);
+  transform: scale(1.05);
+}
+
+/* Sun: warm tint in light mode */
+[data-theme="light"] .sun.active {
+  color: #d97706;
+  background: rgba(217, 119, 6, 0.1);
+}
+
+/* Moon: cyan tint in dark mode */
+.moon.active {
+  color: var(--brand-cyan);
+  background: rgba(0, 204, 204, 0.1);
 }

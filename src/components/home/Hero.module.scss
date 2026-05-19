@@ -118,16 +118,30 @@
   padding: 14px 32px;
   border-radius: 100px;
   background: var(--brand-gradient);
-  color: var(--text-primary);
+  color: #fff;
   font-weight: 700;
   font-size: 15px;
   text-decoration: none;
+  letter-spacing: -0.01em;
   transition: box-shadow 0.25s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0);
+    transition: background 0.2s ease;
+  }
 
   &:hover {
     box-shadow: var(--glow-cyan-strong);
     transform: translateY(-2px);
+    &::before { background: rgba(255,255,255,0.08); }
   }
+
+  &:active { transform: translateY(0); }
 }
 
 .btnGhost {
@@ -140,11 +154,14 @@
   font-weight: 600;
   font-size: 15px;
   text-decoration: none;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  letter-spacing: -0.01em;
+  background: transparent;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
 
   &:hover {
-    border-color: var(--border-strong);
+    border-color: var(--border-accent);
     color: var(--text-primary);
+    background: var(--bg-glass-light);
   }
 }
 

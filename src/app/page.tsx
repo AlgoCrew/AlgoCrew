@@ -52,8 +52,7 @@ export default function Home() {
       <div style={wrap}><ProcessSteps /></div>
       <div style={wrap}><WhyChooseUs /></div>
       <div style={wrap}><TechShowcase /></div>
-      {/* Projects: solid bg prevents any bleed-through from sections above */}
-      <div style={{ ...wrap, background: "#030609" }}><Projects /></div>
+      <div style={wrap}><Projects /></div>
       <div style={wrap}><Details /></div>
       <div style={wrap}><AnimatedTestimonials /></div>
       <div style={wrap}><SendUsEmail /></div>
