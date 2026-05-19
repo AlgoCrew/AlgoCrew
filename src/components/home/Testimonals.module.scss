@@ -134,21 +134,11 @@
   grid-template-columns: 1fr 260px;
   gap: 0;
   border-radius: 28px;
-  border: 1px solid var(--border-muted);
+  border: none;
   background: var(--bg-card);
   overflow: hidden;
   backdrop-filter: blur(12px);
 
-  /* Top gradient accent line */
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: var(--brand-gradient);
-    opacity: 0.5;
-    z-index: 1;
-  }
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
