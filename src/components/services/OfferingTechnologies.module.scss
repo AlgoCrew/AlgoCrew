@@ -1,0 +1,130 @@
+/* ================================================================
+   OFFERING TECHNOLOGIES — CSS marquee, theme-safe
+   ================================================================ */
+
+@keyframes marquee-ltr {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-rtl {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.section {
+  background: var(--bg-page);
+  padding: 80px 0;
+  overflow: hidden;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.header {
+  text-align: center;
+  padding: 0 24px 56px;
+}
+
+.label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.heading {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin: 0 0 12px;
+}
+
+.accent {
+  background: var(--brand-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sub {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0 auto;
+  max-width: 420px;
+  line-height: 1.6;
+}
+
+/* ---- Marquee ---- */
+.marqueeWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* Fade edges */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+
+  /* Pause on hover */
+  &:hover .track { animation-play-state: paused; }
+}
+
+.track {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  animation: marquee-ltr 36s linear infinite;
+}
+
+.trackReverse {
+  animation: marquee-rtl 40s linear infinite;
+}
+
+/* ---- Pill ---- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 100px;
+  border: 1px solid var(--border-muted);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  cursor: default;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--c) 40%, transparent);
+    background: color-mix(in srgb, var(--c) 6%, var(--bg-card));
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18), 0 0 20px color-mix(in srgb, var(--c) 15%, transparent);
+
+    .pillIcon { color: var(--c); }
+    .pillName { color: var(--text-primary); }
+  }
+}
+
+.pillIcon {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1;
+  transition: color 0.25s ease;
+  font-style: normal;
+}
+
+.pillName {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: color 0.25s ease;
+  letter-spacing: -0.01em;
+}

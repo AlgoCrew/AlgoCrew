@@ -1,7 +1,7 @@
 .section {
-  background: #030609;
+  background: var(--bg-page);
   padding: 120px 60px;
-  border-top: 1px solid rgba(255,255,255,0.04);
+  border-top: 1px solid var(--border-subtle);
 
   @media (max-width: 768px) {
     padding: 80px 24px;
@@ -22,7 +22,7 @@
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
+  color: var(--text-muted);
   display: block;
   margin-bottom: 16px;
 }
@@ -31,13 +31,13 @@
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 900;
   letter-spacing: -0.04em;
-  color: white;
+  color: var(--text-primary);
   margin: 0;
   line-height: 1;
 }
 
 .accent {
-  background: linear-gradient(135deg, #00cccc, #0077ff);
+  background: var(--brand-gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -60,7 +60,7 @@
 
 .statCard {
   padding: 40px 32px;
-  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  border-right: 1px solid var(--border-muted);
 
   &:last-child {
     border-right: none;
@@ -68,7 +68,7 @@
 
   @media (max-width: 900px) {
     border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid var(--border-muted);
     padding: 32px 0;
 
     &:last-child {
@@ -98,21 +98,21 @@
 .suffix {
   font-size: clamp(1.5rem, 3vw, 2.5rem);
   font-weight: 900;
-  color: #00cccc;
+  color: var(--brand-cyan);
   margin-top: 8px;
 }
 
 .statLabel {
   font-size: 14px;
   font-weight: 700;
-  color: white;
+  color: var(--text-primary);
   margin: 0 0 6px;
   letter-spacing: -0.01em;
 }
 
 .statDesc {
   font-size: 12px;
-  color: rgba(255,255,255,0.3);
+  color: var(--text-muted);
   margin: 0;
   line-height: 1.5;
 }

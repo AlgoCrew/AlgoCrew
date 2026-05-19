@@ -1,6 +1,6 @@
 .footer {
-  background: #030609;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--bg-page);
+  border-top: 1px solid var(--border-subtle);
   padding: 80px 0 40px;
   position: relative;
 
@@ -55,7 +55,7 @@
   gap: 8px;
   font-size: 15px;
   font-weight: 800;
-  color: white;
+  color: var(--text-primary);
   text-decoration: none;
   letter-spacing: -0.01em;
   width: fit-content;
@@ -72,7 +72,7 @@
 
 .tagline {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--text-muted);
   line-height: 1.65;
   margin: 0;
   max-width: 260px;
@@ -88,18 +88,18 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-muted);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
   text-decoration: none;
   transition: all 0.2s ease;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-card);
 
   &:hover {
-    color: #00cccc;
-    border-color: rgba(0, 204, 204, 0.3);
+    color: var(--brand-cyan);
+    border-color: var(--border-accent);
     background: rgba(0, 204, 204, 0.06);
     transform: translateY(-2px);
   }
@@ -116,7 +116,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--text-muted);
   margin: 0 0 4px;
 }
 
@@ -131,20 +131,20 @@
 
 .colLink {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-secondary);
   text-decoration: none;
   transition: all 0.2s ease;
   display: inline-block;
 
   &:hover {
-    color: white;
+    color: var(--text-primary);
     transform: translateX(4px);
   }
 }
 
 .ctaDesc {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--text-muted);
   margin: 0 0 16px;
   line-height: 1.5;
 }
@@ -154,8 +154,8 @@
   align-items: center;
   padding: 10px 20px;
   border-radius: 100px;
-  background: linear-gradient(135deg, #00cccc, #0077ff);
-  color: white;
+  background: var(--brand-gradient);
+  color: var(--text-primary);
   font-size: 13px;
   font-weight: 700;
   text-decoration: none;
@@ -170,7 +170,7 @@
 
 .divider {
   height: 1px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--border-subtle);
   margin-bottom: 32px;
 }
 
@@ -184,6 +184,6 @@
 
 .copy {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--text-faint);
   margin: 0;
 }

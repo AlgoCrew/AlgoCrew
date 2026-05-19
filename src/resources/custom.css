@@ -1,39 +1,53 @@
 /* ================================================================
-   ALGOCREW — PREMIUM DESIGN TOKENS
-   Semantic tokens for light + dark mode
+   ALGOCREW — SEMANTIC DESIGN TOKENS
+   All components use these variables. No hardcoded colors allowed.
    ================================================================ */
 
-/* ---- Base palette ---- */
 :root {
+  /* Brand */
   --brand-cyan: #00cccc;
   --brand-blue: #0077ff;
   --brand-purple: #7c3aed;
+  --brand-amber: #f59e0b;
   --brand-gradient: linear-gradient(135deg, #00cccc, #0077ff);
+  --brand-gradient-text: linear-gradient(135deg, #00cccc, #0077ff);
 
-  /* Surfaces */
-  --surface-page: #030609;
-  --surface-card: rgba(255, 255, 255, 0.025);
-  --surface-card-hover: rgba(255, 255, 255, 0.05);
-  --surface-glass: rgba(8, 8, 12, 0.75);
-  --surface-glass-strong: rgba(8, 8, 12, 0.92);
+  /* Page backgrounds */
+  --bg-page: #030609;
+  --bg-elevated: #0a0e1a;
+  --bg-card: rgba(255, 255, 255, 0.025);
+  --bg-card-hover: rgba(255, 255, 255, 0.05);
+  --bg-glass: rgba(8, 8, 12, 0.75);
+  --bg-glass-strong: rgba(8, 8, 12, 0.92);
+  --bg-glass-light: rgba(255, 255, 255, 0.04);
+
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.55);
+  --text-muted: rgba(255, 255, 255, 0.35);
+  --text-faint: rgba(255, 255, 255, 0.15);
+  --text-accent: #00cccc;
 
   /* Borders */
   --border-subtle: rgba(255, 255, 255, 0.05);
   --border-muted: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.15);
   --border-accent: rgba(0, 204, 204, 0.2);
 
-  /* Typography */
-  --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.55);
-  --text-muted: rgba(255, 255, 255, 0.3);
-  --text-faint: rgba(255, 255, 255, 0.15);
-  --text-accent: #00cccc;
+  /* Shadows / glows */
+  --shadow-sm: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 60px rgba(0, 0, 0, 0.6);
+  --glow-cyan: 0 0 40px rgba(0, 204, 204, 0.12);
+  --glow-cyan-strong: 0 0 60px rgba(0, 204, 204, 0.25);
 
-  /* Glows */
-  --glow-cyan: 0 0 40px rgba(0, 204, 204, 0.15);
+  /* Legacy aliases (kept for components not yet migrated) */
+  --surface-page: var(--bg-page);
+  --surface-card: var(--bg-card);
+  --surface-card-hover: var(--bg-card-hover);
+  --surface-glass: var(--bg-glass);
+  --surface-glass-strong: var(--bg-glass-strong);
   --glow-blue: 0 0 40px rgba(0, 119, 255, 0.15);
 
-  /* Legacy palette (kept for existing components) */
   --scheme-brand-100: #000b12;
   --scheme-brand-200: #001b20;
   --scheme-brand-300: #00474a;
@@ -74,62 +88,86 @@
   --text-h2: clamp(2rem, 4vw, 3.5rem);
 }
 
-/* ---- Light mode overrides ---- */
+/* ---- Light mode ---- */
 [data-theme="light"] {
-  --surface-page: #f8f9fc;
-  --surface-card: rgba(0, 0, 0, 0.03);
-  --surface-card-hover: rgba(0, 0, 0, 0.06);
-  --surface-glass: rgba(255, 255, 255, 0.8);
-  --surface-glass-strong: rgba(255, 255, 255, 0.95);
+  --bg-page: #f4f6fb;
+  --bg-elevated: #edf0f7;
+  --bg-card: rgba(0, 0, 0, 0.03);
+  --bg-card-hover: rgba(0, 0, 0, 0.06);
+  --bg-glass: rgba(255, 255, 255, 0.82);
+  --bg-glass-strong: rgba(255, 255, 255, 0.96);
+  --bg-glass-light: rgba(0, 0, 0, 0.03);
 
-  --border-subtle: rgba(0, 0, 0, 0.06);
-  --border-muted: rgba(0, 0, 0, 0.1);
-  --border-accent: rgba(0, 140, 200, 0.3);
+  --text-primary: #080c14;
+  --text-secondary: rgba(8, 12, 20, 0.62);
+  --text-muted: rgba(8, 12, 20, 0.42);
+  --text-faint: rgba(8, 12, 20, 0.2);
+  --text-accent: #007799;
 
-  --text-primary: #0a0a0f;
-  --text-secondary: rgba(10, 10, 15, 0.6);
-  --text-muted: rgba(10, 10, 15, 0.4);
-  --text-faint: rgba(10, 10, 15, 0.2);
-  --text-accent: #0066cc;
+  --border-subtle: rgba(0, 0, 0, 0.07);
+  --border-muted: rgba(0, 0, 0, 0.11);
+  --border-strong: rgba(0, 0, 0, 0.2);
+  --border-accent: rgba(0, 119, 153, 0.25);
 
+  --shadow-sm: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 60px rgba(0, 0, 0, 0.12);
+  --glow-cyan: 0 0 40px rgba(0, 140, 160, 0.08);
+  --glow-cyan-strong: 0 0 60px rgba(0, 140, 160, 0.15);
+
+  --brand-cyan: #0099aa;
+  --brand-blue: #0055dd;
+  --brand-gradient: linear-gradient(135deg, #0099aa, #0055dd);
+  --brand-gradient-text: linear-gradient(135deg, #0099aa, #0055dd);
+
+  /* Legacy aliases */
+  --surface-page: var(--bg-page);
+  --surface-card: var(--bg-card);
+  --surface-card-hover: var(--bg-card-hover);
+  --surface-glass: var(--bg-glass);
+  --surface-glass-strong: var(--bg-glass-strong);
+  --text-accent: #007799;
   --glow-cyan: 0 0 40px rgba(0, 140, 200, 0.1);
   --glow-blue: 0 0 40px rgba(0, 100, 200, 0.1);
 }
 
 /* ================================================================
-   GLOBAL STYLES
+   GLOBAL BASE
    ================================================================ */
+* { box-sizing: border-box; }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: auto; /* Lenis handles this */
-}
+html { scroll-behavior: auto; }
 
 body {
-  background: var(--surface-page);
+  background: var(--bg-page);
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Noise texture overlay */
+/* Noise overlay */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* Gradient text utility */
+.grad { background: var(--brand-gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
 /* ================================================================
    UTILITY CLASSES
    ================================================================ */
-
 .gradient-text {
   background: var(--brand-gradient);
   -webkit-background-clip: text;
@@ -160,21 +198,16 @@ body::after {
   display: block;
 }
 
-/* Lenis smooth scroll */
-html.lenis, html.lenis body {
-  height: auto;
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,204,204,0.3); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,204,204,0.6); }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
+/* Selection */
+::selection {
+  background: rgba(0,204,204,0.25);
+  color: #fff;
 }
 
 /* ================================================================
@@ -203,21 +236,21 @@ html.lenis, html.lenis body {
   gap: 8px;
   padding: 6px 16px;
   background: rgba(0,204,204,0.08);
-  border: 1px solid rgba(0,204,204,0.2);
+  border: 1px solid var(--border-accent);
   border-radius: 100px;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #00cccc;
+  color: var(--brand-cyan);
 }
 
 .premium-badge .live-dot {
   width: 6px;
   height: 6px;
-  background: #00cccc;
+  background: var(--brand-cyan);
   border-radius: 50%;
-  box-shadow: 0 0 8px #00cccc;
+  box-shadow: 0 0 8px var(--brand-cyan);
   animation: pulse-dot 2s ease infinite;
 }
 
@@ -297,7 +330,7 @@ html.lenis, html.lenis body {
 }
 
 /* ================================================================
-   REVEAL ON SCROLL - Base State (enhanced by GSAP)
+   REVEAL ON SCROLL
    ================================================================ */
 .reveal {
   opacity: 0;
@@ -308,7 +341,7 @@ html.lenis, html.lenis body {
    GLASS CARD BASE
    ================================================================ */
 .glass-card {
-  background: var(--surface-card);
+  background: var(--bg-card);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-muted);
@@ -317,7 +350,7 @@ html.lenis, html.lenis body {
 
 .glass-card:hover {
   border-color: var(--border-accent);
-  background: var(--surface-card-hover);
+  background: var(--bg-card-hover);
 }
 
 /* ================================================================
@@ -368,22 +401,6 @@ html.lenis, html.lenis body {
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
-}
-
-/* ================================================================
-   SCROLLBAR
-   ================================================================ */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(0,204,204,0.3); border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(0,204,204,0.6); }
-
-/* ================================================================
-   SELECTION COLOR
-   ================================================================ */
-::selection {
-  background: rgba(0,204,204,0.25);
-  color: #fff;
 }
 
 /* ================================================================

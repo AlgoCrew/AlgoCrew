@@ -21,12 +21,12 @@
 
   &::before {
     left: 0;
-    background: linear-gradient(90deg, #030609, transparent);
+    background: linear-gradient(90deg, var(--bg-page), transparent);
   }
 
   &::after {
     right: 0;
-    background: linear-gradient(-90deg, #030609, transparent);
+    background: linear-gradient(-90deg, var(--bg-page), transparent);
   }
 }
 
@@ -59,18 +59,18 @@
 .value {
   font-size: 15px;
   font-weight: 800;
-  color: #00cccc;
+  color: var(--brand-cyan);
   letter-spacing: -0.02em;
 }
 
 .divider {
-  color: rgba(255, 255, 255, 0.15);
+  color: var(--text-faint);
   font-size: 14px;
 }
 
 .label {
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
   letter-spacing: 0.02em;
 }

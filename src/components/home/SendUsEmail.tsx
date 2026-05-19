@@ -10,17 +10,17 @@ export function SendUsEmail() {
         <span className={styles.label}>GET STARTED</span>
         <h2 className={styles.heading}>
           Ready to build<br />
-          <span className={styles.accent}>something great?</span>
+          <span className={styles.accent}>something exceptional?</span>
         </h2>
         <p className={styles.sub}>
           From idea to launch in weeks, not months. Let&apos;s talk about your project.
         </p>
         <div className={styles.actions}>
           <Link href="/contact" className={styles.btnPrimary}>
-            Start a Project →
+            Build Something Exceptional →
           </Link>
           <Link href="/hire" className={styles.btnGhost}>
-            Schedule a Call
+            Book a Strategy Call
           </Link>
         </div>
       </div>

@@ -55,21 +55,12 @@ export function Hero() {
 
         <div className={`${styles.actions} ${styles.animIn3}`}>
           <Link href="/contact" className={styles.btnPrimary}>
-            Start Building →
+            Launch Your Product →
           </Link>
           <Link href="/projects" className={styles.btnGhost}>
-            View Our Work
+            See Case Studies
           </Link>
         </div>
-      </div>
-
-      {/* Metrics strip */}
-      <div className={`${styles.metricsStrip} ${styles.animIn4}`}>
-        {["50+ Projects", "30+ Clients", "5+ Years", "48hr Matching"].map((m) => (
-          <span key={m} className={styles.metric}>
-            {m}
-          </span>
-        ))}
       </div>
 
       {/* Scroll indicator */}

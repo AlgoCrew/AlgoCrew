@@ -1,5 +1,5 @@
 .section {
-  background: #030609;
+  background: var(--bg-page);
   padding: 120px 60px;
   position: relative;
   z-index: 1;
@@ -42,7 +42,7 @@
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #00cccc;
+  color: var(--brand-cyan);
   display: block;
   margin-bottom: 20px;
 }
@@ -52,12 +52,12 @@
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.04em;
-  color: white;
+  color: var(--text-primary);
   margin: 0 0 24px;
 }
 
 .accent {
-  background: linear-gradient(135deg, #00cccc, #0077ff);
+  background: var(--brand-gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -65,7 +65,7 @@
 
 .leftDesc {
   font-size: 0.95rem;
-  color: rgba(255,255,255,0.4);
+  color: var(--text-muted);
   line-height: 1.7;
   max-width: 340px;
   margin-bottom: 48px;
@@ -82,13 +82,13 @@
   align-items: center;
   gap: 12px;
   padding: 10px 0;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .indicatorNum {
   font-size: 10px;
   font-weight: 700;
-  color: rgba(255,255,255,0.2);
+  color: var(--text-faint);
   font-family: monospace;
   width: 24px;
 }
@@ -96,7 +96,7 @@
 .indicatorTitle {
   font-size: 13px;
   font-weight: 600;
-  color: rgba(255,255,255,0.4);
+  color: var(--text-muted);
 }
 
 .right {
@@ -107,7 +107,7 @@
 
 .step {
   padding: 56px 0;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid var(--border-muted);
 
   &:first-child { padding-top: 0; border-top: none; }
 }
@@ -122,7 +122,7 @@
 .stepNum {
   font-size: 11px;
   font-weight: 700;
-  color: rgba(255,255,255,0.2);
+  color: var(--text-faint);
   font-family: monospace;
 }
 
@@ -131,9 +131,9 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #00cccc;
+  color: var(--brand-cyan);
   padding: 3px 10px;
-  border: 1px solid rgba(0,204,204,0.2);
+  border: 1px solid var(--border-accent);
   border-radius: 100px;
 }
 
@@ -141,14 +141,14 @@
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 900;
   letter-spacing: -0.04em;
-  color: white;
+  color: var(--text-primary);
   margin: 0 0 20px;
 }
 
 .stepDesc {
   font-size: 1rem;
   line-height: 1.7;
-  color: rgba(255,255,255,0.45);
+  color: var(--text-secondary);
   max-width: 480px;
   margin-bottom: 28px;
 }
@@ -163,7 +163,7 @@
 
   li {
     font-size: 13px;
-    color: rgba(255,255,255,0.35);
+    color: var(--text-muted);
     padding-left: 16px;
     position: relative;
 
@@ -171,7 +171,7 @@
       content: '→';
       position: absolute;
       left: 0;
-      color: #00cccc;
+      color: var(--brand-cyan);
       font-size: 11px;
     }
   }

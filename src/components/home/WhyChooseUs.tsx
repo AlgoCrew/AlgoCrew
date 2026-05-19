@@ -1,7 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
 import styles from "./WhyChooseUs.module.scss";
 
 const features = [
@@ -14,26 +12,35 @@ const features = [
 
 export function WhyChooseUs() {
   const sectionRef = useRef<HTMLElement>(null);
+  const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeIdx, setActiveIdx] = useState(-1);
+  const [progressPct, setProgressPct] = useState(0);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>(`.${styles.featureRow}`).forEach((row) => {
-        gsap.fromTo(row,
-          { opacity: 0, x: 40 },
-          {
-            opacity: 1, x: 0, duration: 0.7, ease: "power3.out",
-            scrollTrigger: { trigger: row, start: "top 85%", toggleActions: "play none none reverse" }
+    const rows = rowRefs.current.filter(Boolean) as HTMLDivElement[];
+    if (!rows.length) return;
+
+    const observers: IntersectionObserver[] = rows.map((row, i) => {
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveIdx(i);
+            setProgressPct(((i + 1) / features.length) * 100);
           }
-        );
-      });
-    }, sectionRef);
-    return () => ctx.revert();
+        },
+        { threshold: 0.55 }
+      );
+      obs.observe(row);
+      return obs;
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
   }, []);
 
   return (
     <section ref={sectionRef} className={styles.section} id="why">
       <div className={styles.inner}>
+        {/* Left sticky panel */}
         <div className={styles.left}>
           <span className={styles.label}>THE ALGOCREW EDGE</span>
           <h2 className={styles.statement}>
@@ -48,11 +55,28 @@ export function WhyChooseUs() {
             <span className={styles.statNum}>98%</span>
             <span className={styles.statLabel}>Client satisfaction rate</span>
           </div>
+
+          {/* Progress indicator */}
+          <div className={styles.progressTrack} aria-hidden="true">
+            <div className={styles.progressBar} style={{ height: `${progressPct}%` }} />
+            {features.map((f, i) => (
+              <div
+                key={i}
+                className={`${styles.progressDot} ${i <= activeIdx ? styles.progressDotActive : ""}`}
+                title={f.title}
+              />
+            ))}
+          </div>
         </div>
 
+        {/* Right — feature rows */}
         <div className={styles.right}>
           {features.map((f, i) => (
-            <div key={i} className={styles.featureRow}>
+            <div
+              key={i}
+              ref={(el) => { rowRefs.current[i] = el; }}
+              className={`${styles.featureRow} ${i === activeIdx ? styles.featureRowActive : ""}`}
+            >
               <div className={styles.featureLeft}>
                 <span className={styles.featureTag}>{f.tag}</span>
                 <h3 className={styles.featureTitle}>{f.title}</h3>

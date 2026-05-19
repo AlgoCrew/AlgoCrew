@@ -1,17 +1,29 @@
 "use client";
 import { useState } from "react";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiNodedotjs,
+  SiTailwindcss,
+  SiAmazonwebservices,
+  SiDocker,
+  SiKubernetes,
+  SiPostgresql,
+} from "react-icons/si";
+import { FaBrain } from "react-icons/fa";
 import styles from "./TechShowcase.module.scss";
 
 const capabilities = [
-  { icon: "⚡", title: "React / Next.js", category: "Frontend", color: "#61dafb" },
-  { icon: "🔷", title: "TypeScript", category: "Language", color: "#3178c6" },
-  { icon: "☁️", title: "AWS / GCP", category: "Cloud", color: "#ff9900" },
-  { icon: "🐳", title: "Docker / K8s", category: "DevOps", color: "#2496ed" },
-  { icon: "🤖", title: "LLM / AI APIs", category: "AI", color: "#00cccc" },
-  { icon: "🗄️", title: "PostgreSQL", category: "Database", color: "#336791" },
-  { icon: "📱", title: "React Native", category: "Mobile", color: "#61dafb" },
-  { icon: "🔒", title: "Cybersecurity", category: "Security", color: "#7c3aed" },
-  { icon: "📊", title: "Data Pipelines", category: "Data", color: "#f59e0b" },
+  { Icon: SiReact,             title: "React",       category: "Frontend",  color: "#61dafb" },
+  { Icon: SiNextdotjs,         title: "Next.js",     category: "Framework", color: "#ffffff" },
+  { Icon: SiTypescript,        title: "TypeScript",  category: "Language",  color: "#3178c6" },
+  { Icon: SiNodedotjs,         title: "Node.js",     category: "Runtime",   color: "#339933" },
+  { Icon: SiTailwindcss,       title: "Tailwind",    category: "Styling",   color: "#06b6d4" },
+  { Icon: SiAmazonwebservices, title: "AWS",          category: "Cloud",     color: "#ff9900" },
+  { Icon: SiDocker,            title: "Docker",      category: "DevOps",    color: "#2496ed" },
+  { Icon: SiKubernetes,        title: "Kubernetes",  category: "DevOps",    color: "#326ce5" },
+  { Icon: SiPostgresql,        title: "PostgreSQL",  category: "Database",  color: "#336791" },
 ];
 
 export function TechShowcase() {
@@ -41,7 +53,9 @@ export function TechShowcase() {
               onMouseLeave={() => setHovered(null)}
               style={{ "--color": cap.color } as React.CSSProperties}
             >
-              <span className={styles.cardIcon}>{cap.icon}</span>
+              <span className={styles.cardIcon}>
+                <cap.Icon size={28} />
+              </span>
               <span className={styles.cardTitle}>{cap.title}</span>
               <span className={styles.cardCategory}>{cap.category}</span>
             </div>

@@ -1,10 +1,10 @@
 .section {
-  background: #030609;
+  background: var(--bg-page);
   padding: 160px 60px;
   text-align: center;
   position: relative;
   overflow: hidden;
-  border-top: 1px solid rgba(255,255,255,0.04);
+  border-top: 1px solid var(--border-subtle);
 
   @media (max-width: 768px) {
     padding: 100px 24px;
@@ -35,7 +35,7 @@
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
+  color: var(--text-muted);
   display: block;
   margin-bottom: 24px;
 }
@@ -44,13 +44,13 @@
   font-size: clamp(2.5rem, 6vw, 5.5rem);
   font-weight: 900;
   letter-spacing: -0.04em;
-  color: white;
+  color: var(--text-primary);
   margin: 0 0 24px;
   line-height: 1;
 }
 
 .accent {
-  background: linear-gradient(135deg, #00cccc, #0077ff);
+  background: var(--brand-gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -58,7 +58,7 @@
 
 .sub {
   font-size: 1.05rem;
-  color: rgba(255,255,255,0.4);
+  color: var(--text-muted);
   max-width: 440px;
   margin: 0 auto 48px;
   line-height: 1.65;
@@ -75,8 +75,8 @@
   display: inline-flex;
   padding: 16px 36px;
   border-radius: 100px;
-  background: linear-gradient(135deg, #00cccc, #0077ff);
-  color: white;
+  background: var(--brand-gradient);
+  color: var(--text-primary);
   font-size: 15px;
   font-weight: 700;
   text-decoration: none;
@@ -92,17 +92,17 @@
   display: inline-flex;
   padding: 16px 36px;
   border-radius: 100px;
-  border: 1px solid rgba(255,255,255,0.12);
-  color: rgba(255,255,255,0.7);
+  border: 1px solid var(--border-muted);
+  color: var(--text-secondary);
   font-size: 15px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.25s ease;
-  background: rgba(255,255,255,0.02);
+  background: var(--bg-card);
 
   &:hover {
-    border-color: rgba(255,255,255,0.25);
-    color: white;
-    background: rgba(255,255,255,0.05);
+    border-color: var(--border-strong);
+    color: var(--text-primary);
+    background: var(--bg-card-hover);
   }
 }

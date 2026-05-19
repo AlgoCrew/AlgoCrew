@@ -1,7 +1,7 @@
 .section {
-  background: #030609;
+  background: var(--bg-page);
   padding: 120px 60px;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-top: 1px solid var(--border-subtle);
   position: relative;
   z-index: 1;
 
@@ -38,7 +38,7 @@
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--text-muted);
   display: block;
   margin-bottom: 20px;
 }
@@ -48,12 +48,12 @@
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.04em;
-  color: white;
+  color: var(--text-primary);
   margin: 0 0 24px;
 }
 
 .accent {
-  background: linear-gradient(135deg, #00cccc, #0077ff);
+  background: var(--brand-gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -61,7 +61,7 @@
 
 .desc {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
   line-height: 1.7;
   max-width: 340px;
   margin: 0;
@@ -79,9 +79,9 @@
 
 .card {
   padding: 24px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-muted);
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-card);
   cursor: default;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
@@ -106,8 +106,8 @@
 }
 
 .cardActive {
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-strong);
+  background: var(--bg-card-hover);
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 
@@ -124,19 +124,22 @@
   font-size: 24px;
   line-height: 1;
   transition: transform 0.3s ease;
+  color: var(--color, var(--brand-cyan));
+  display: flex;
+  align-items: center;
 }
 
 .cardTitle {
   font-size: 13px;
   font-weight: 700;
-  color: white;
+  color: var(--text-primary);
   letter-spacing: -0.01em;
 }
 
 .cardCategory {
   font-size: 10px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
