@@ -142,7 +142,7 @@ export default function AnimatedTestimonials() {
 
               <blockquote className={styles.quote}>
                 {/* Render quote with highlight inline */}
-                {renderHighlighted(t.quote, t.highlight, t.gradient)}
+                {renderHighlighted(t.quote, t.highlight, t.color)}
               </blockquote>
 
               {/* Author */}
@@ -258,29 +258,15 @@ export default function AnimatedTestimonials() {
   );
 }
 
-/* Inline highlight: bold + gradient text on matched phrase */
-function renderHighlighted(quote: string, highlight: string, gradient: string) {
+/* Inline highlight — plain color, no webkit-clip (avoids column split) */
+function renderHighlighted(quote: string, highlight: string, color: string) {
   if (!highlight) return <>{quote}</>;
   const idx = quote.indexOf(highlight);
   if (idx === -1) return <>{quote}</>;
   return (
     <>
       {quote.slice(0, idx)}
-      <mark
-        style={{
-          display: "inline",
-          background: gradient,
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
-          backgroundColor: "transparent",
-          fontWeight: 700,
-          padding: 0,
-          margin: 0,
-        }}
-      >
-        {highlight}
-      </mark>
+      <span style={{ color, fontWeight: 700 }}>{highlight}</span>
       {quote.slice(idx + highlight.length)}
     </>
   );
