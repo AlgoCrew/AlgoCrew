@@ -119,7 +119,7 @@ export function Services() {
                 <div className={styles.panelIcon} style={{ color: s.color }}>{s.icon}</div>
                 <h3
                   className={styles.panelTitle}
-                  style={{ "--accent": s.color } as React.CSSProperties}
+                  style={{ color: s.color } as React.CSSProperties}
                 >
                   {s.title}
                 </h3>

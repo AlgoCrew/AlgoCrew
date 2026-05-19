@@ -20,7 +20,7 @@
   width: 800px;
   height: 800px;
   border-radius: 50%;
-  opacity: 0.06;
+  opacity: 0.1;
   filter: blur(120px);
   pointer-events: none;
   transition: background 1s ease;
@@ -182,7 +182,7 @@
   line-height: 1.7;
   color: var(--text-secondary);
   margin: 0;
-  padding: 0;
+  padding: 12px;
   border: none;
   font-style: normal;
   letter-spacing: -0.01em;

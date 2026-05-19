@@ -3,32 +3,31 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./WhyChooseUs.module.scss";
 
 const features = [
-  { title: "Global Reach", tag: "North America & EU", desc: "Strategically headquartered in Canada with a global network of elite engineers." },
-  { title: "Speed to Market", tag: "48hr Matching", desc: "Deploy world-class talent in days, not months. From brief to kickoff in 48 hours." },
-  { title: "Top 1% Talent", tag: "Vetted Quality", desc: "A rigorous 5-stage vetting process for both technical mastery and soft skills." },
-  { title: "AI-First", tag: "Future-Proof", desc: "Integrating LLMs and modern cloud infrastructure into every workflow." },
-  { title: "Security First", tag: "Enterprise-Grade", desc: "Built with SOC 2–aligned practices and secure-by-design architecture." },
+  { title: "Global Reach",     tag: "North America & EU", desc: "Strategically headquartered in Canada with a global network of elite engineers." },
+  { title: "Speed to Market",  tag: "48hr Matching",      desc: "Deploy world-class talent in days, not months. From brief to kickoff in 48 hours." },
+  { title: "Top 1% Talent",    tag: "Vetted Quality",     desc: "A rigorous 5-stage vetting process for both technical mastery and soft skills." },
+  { title: "AI-First",         tag: "Future-Proof",       desc: "Integrating LLMs and modern cloud infrastructure into every workflow." },
+  { title: "Security First",   tag: "Enterprise-Grade",   desc: "Built with SOC 2–aligned practices and secure-by-design architecture." },
 ];
 
 export function WhyChooseUs() {
-  const sectionRef = useRef<HTMLElement>(null);
   const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [activeIdx, setActiveIdx] = useState(-1);
-  const [progressPct, setProgressPct] = useState(0);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [visibleRows, setVisibleRows] = useState<boolean[]>(features.map(() => false));
 
   useEffect(() => {
     const rows = rowRefs.current.filter(Boolean) as HTMLDivElement[];
     if (!rows.length) return;
 
-    const observers: IntersectionObserver[] = rows.map((row, i) => {
+    const observers = rows.map((row, i) => {
       const obs = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
             setActiveIdx(i);
-            setProgressPct(((i + 1) / features.length) * 100);
+            setVisibleRows(prev => { const next = [...prev]; next[i] = true; return next; });
           }
         },
-        { threshold: 0.55 }
+        { threshold: 0.3 }
       );
       obs.observe(row);
       return obs;
@@ -38,9 +37,10 @@ export function WhyChooseUs() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.section} id="why">
+    <section className={styles.section} id="why">
       <div className={styles.inner}>
-        {/* Left sticky panel */}
+
+        {/* ---- Left sticky ---- */}
         <div className={styles.left}>
           <span className={styles.label}>THE ALGOCREW EDGE</span>
           <h2 className={styles.statement}>
@@ -48,43 +48,37 @@ export function WhyChooseUs() {
             companies<br />
             <span className={styles.accent}>trust us.</span>
           </h2>
-          <p className={styles.leftSub}>
+          <p className={styles.sub}>
             We blend engineering excellence with business strategy to deliver measurable impact.
           </p>
+
           <div className={styles.stat}>
             <span className={styles.statNum}>98%</span>
             <span className={styles.statLabel}>Client satisfaction rate</span>
           </div>
-
-          {/* Progress indicator */}
-          <div className={styles.progressTrack} aria-hidden="true">
-            <div className={styles.progressBar} style={{ height: `${progressPct}%` }} />
-            {features.map((f, i) => (
-              <div
-                key={i}
-                className={`${styles.progressDot} ${i <= activeIdx ? styles.progressDotActive : ""}`}
-                title={f.title}
-              />
-            ))}
-          </div>
         </div>
 
-        {/* Right — feature rows */}
+        {/* ---- Right feature list ---- */}
         <div className={styles.right}>
           {features.map((f, i) => (
             <div
               key={i}
               ref={(el) => { rowRefs.current[i] = el; }}
-              className={`${styles.featureRow} ${i === activeIdx ? styles.featureRowActive : ""}`}
+              className={`${styles.row} ${styles.rowActive} ${styles.rowVisible}`}
+              style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <div className={styles.featureLeft}>
-                <span className={styles.featureTag}>{f.tag}</span>
-                <h3 className={styles.featureTitle}>{f.title}</h3>
+              <div className={styles.rowAccent} aria-hidden="true" />
+              <div className={styles.rowInner}>
+                <div className={styles.rowHead}>
+                  <span className={styles.rowTag}>{f.tag}</span>
+                  <h3 className={styles.rowTitle}>{f.title}</h3>
+                </div>
+                <p className={styles.rowDesc}>{f.desc}</p>
               </div>
-              <p className={styles.featureDesc}>{f.desc}</p>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

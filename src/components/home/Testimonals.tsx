@@ -23,7 +23,7 @@ const testimonials = [
     company: "Launchpad",
     initials: "MW",
     color: "#7c3aed",
-    gradient: "linear-gradient(135deg, #7c3aed 0%, #0077ff 100%)",
+    gradient: "linear-gradient(135deg, #7c3aed 0%, #0053b2 100%)",
     metric: "340%",
     metricLabel: "conversion lift",
   },
@@ -141,8 +141,7 @@ export default function AnimatedTestimonials() {
               <div className={styles.quoteGlyph} aria-hidden="true">&ldquo;</div>
 
               <blockquote className={styles.quote}>
-                {/* Render quote with highlight inline */}
-                {renderHighlighted(t.quote, t.highlight, t.color)}
+                {t.quote}
               </blockquote>
 
               {/* Author */}
@@ -226,48 +225,7 @@ export default function AnimatedTestimonials() {
             />
           </div>
         </div>
-
-        {/* Author strip — other testimonials */}
-        <div className={styles.strip}>
-          {testimonials
-            .map((t2, i) => ({ t: t2, i }))
-            .filter(({ i }) => i !== active)
-            .map(({ t: t2, i }) => (
-              <button
-                key={i}
-                className={styles.stripItem}
-                onClick={() => navigate(i)}
-                aria-label={`View ${t2.author}'s testimonial`}
-              >
-                <div
-                  className={styles.stripAvatar}
-                  style={{ background: t2.gradient }}
-                >
-                  {t2.initials}
-                </div>
-                <div className={styles.stripInfo}>
-                  <p className={styles.stripName}>{t2.author}</p>
-                  <p className={styles.stripCo}>{t2.company}</p>
-                </div>
-                <span className={styles.stripMetric} style={{ color: t2.color }}>{t2.metric}</span>
-              </button>
-            ))}
-        </div>
       </div>
     </section>
-  );
-}
-
-/* Inline highlight — plain color, no webkit-clip (avoids column split) */
-function renderHighlighted(quote: string, highlight: string, color: string) {
-  if (!highlight) return <>{quote}</>;
-  const idx = quote.indexOf(highlight);
-  if (idx === -1) return <>{quote}</>;
-  return (
-    <>
-      {quote.slice(0, idx)}
-      <span style={{ color, fontWeight: 700 }}>{highlight}</span>
-      {quote.slice(idx + highlight.length)}
-    </>
   );
 }

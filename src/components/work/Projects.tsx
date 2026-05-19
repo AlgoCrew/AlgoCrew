@@ -4,49 +4,80 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SiStripe, SiKubernetes, SiDocker, SiOpenai, SiGrafana, SiAmazonwebservices, SiN8N } from "react-icons/si";
+import { HiShieldCheck, HiCpuChip, HiBolt } from "react-icons/hi2";
+import { TbWifi, TbCloudCode, TbRobot } from "react-icons/tb";
+import { FintechIllustration, HealthIllustration, CloudIllustration, SupplyChainIllustration } from "./ProjectIllustrations";
 import styles from "./Projects.module.scss";
 
-const techIcons: Record<string, { icon: string; color: string }> = {
-  "Payments":   { icon: "💳", color: "#00cccc" },
-  "Security":   { icon: "🔒", color: "#7c3aed" },
-  "Real-time":  { icon: "⚡", color: "#f59e0b" },
-  "HIPAA":      { icon: "🏥", color: "#10b981" },
-  "Data Viz":   { icon: "📊", color: "#0077ff" },
-  "AI":         { icon: "🤖", color: "#00cccc" },
-  "DevOps":     { icon: "🐳", color: "#2496ed" },
-  "Kubernetes": { icon: "☸️", color: "#326ce5" },
-  "AWS":        { icon: "☁️", color: "#ff9900" },
-  "Automation": { icon: "⚙️", color: "#7c3aed" },
-  "IoT":        { icon: "📡", color: "#f59e0b" },
-  "SaaS":       { icon: "🔷", color: "#0077ff" },
+type TagConfig = { icon: React.ElementType; color: string; bg: string };
+
+const techTags: Record<string, TagConfig> = {
+  "Payments":    { icon: SiStripe,              color: "#00d4aa", bg: "rgba(0,212,170,0.08)"  },
+  "Security":    { icon: HiShieldCheck,          color: "#a78bfa", bg: "rgba(167,139,250,0.08)"},
+  "Real-time":   { icon: HiBolt,                 color: "#fbbf24", bg: "rgba(251,191,36,0.08)" },
+  "HIPAA":       { icon: HiShieldCheck,          color: "#34d399", bg: "rgba(52,211,153,0.08)" },
+  "Data Viz":    { icon: SiGrafana,              color: "#f97316", bg: "rgba(249,115,22,0.08)" },
+  "AI":          { icon: SiOpenai,               color: "#22d3ee", bg: "rgba(34,211,238,0.08)" },
+  "DevOps":      { icon: SiDocker,               color: "#38bdf8", bg: "rgba(56,189,248,0.08)" },
+  "Kubernetes":  { icon: SiKubernetes,           color: "#6366f1", bg: "rgba(99,102,241,0.08)" },
+  "AWS":         { icon: SiAmazonwebservices,    color: "#fb923c", bg: "rgba(251,146,60,0.08)"  },
+  "Automation":  { icon: SiN8N,                  color: "#c084fc", bg: "rgba(192,132,252,0.08)" },
+  "IoT":         { icon: TbWifi,                 color: "#fbbf24", bg: "rgba(251,191,36,0.08)" },
+  "SaaS":        { icon: TbCloudCode,            color: "#38bdf8", bg: "rgba(56,189,248,0.08)" },
+  "LLM Ops":     { icon: HiCpuChip,             color: "#22d3ee", bg: "rgba(34,211,238,0.08)" },
+  "MLOps":       { icon: TbRobot,               color: "#a78bfa", bg: "rgba(167,139,250,0.08)"},
 };
 
 const projects = [
   {
-    title: "Scalable Fintech Ecosystems",
-    company: "Global Finance Corp",
+    title: "AI-Powered Trading Infrastructure",
+    company: "NexaCapital",
     tags: ["Payments", "Security", "Real-time"],
-    image: "/images/uplash/fintech.png",
+    illustration: FintechIllustration,
+    accent: "#00d4aa",
+    gradient: "linear-gradient(135deg, #00d4aa 0%, #0077ff 100%)",
   },
   {
-    title: "Precision HealthTech Platforms",
+    title: "Precision HealthTech Platform",
     company: "Nexus Health",
     tags: ["HIPAA", "Data Viz", "AI"],
-    image: "/images/uplash/health.png",
+    illustration: HealthIllustration,
+    accent: "#34d399",
+    gradient: "linear-gradient(135deg, #34d399 0%, #22d3ee 100%)",
   },
   {
     title: "Hybrid Cloud Orchestration",
     company: "VCloud Systems",
     tags: ["DevOps", "Kubernetes", "AWS"],
-    image: "/images/uplash/global.png",
+    illustration: CloudIllustration,
+    accent: "#6366f1",
+    gradient: "linear-gradient(135deg, #6366f1 0%, #38bdf8 100%)",
   },
   {
-    title: "Automated Supply Chain AI",
+    title: "Autonomous Supply Chain AI",
     company: "LogiTech Solutions",
-    tags: ["Automation", "IoT", "SaaS"],
-    image: "/images/uplash/industry.png",
+    tags: ["Automation", "IoT", "LLM Ops"],
+    illustration: SupplyChainIllustration,
+    accent: "#c084fc",
+    gradient: "linear-gradient(135deg, #c084fc 0%, #6366f1 100%)",
   },
 ];
+
+function TagPill({ tag }: { tag: string }) {
+  const cfg = techTags[tag];
+  if (!cfg) return null;
+  const Icon = cfg.icon;
+  return (
+    <span
+      className={styles.techTag}
+      style={{ color: cfg.color, background: cfg.bg, borderColor: `${cfg.color}28` }}
+    >
+      <Icon size={10} aria-hidden="true" />
+      {tag}
+    </span>
+  );
+}
 
 export function Projects() {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -67,7 +98,6 @@ export function Projects() {
     const track = trackRef.current;
     if (!wrapper || !track || isMobile) return;
 
-    // CSS sticky approach — same as Services, no pin:true, no z-index blowup
     const updateHeight = () => {
       const scrollAmount = track.scrollWidth - window.innerWidth;
       if (scrollAmount > 0) {
@@ -107,25 +137,24 @@ export function Projects() {
           <h2 className={styles.mobileHeading}>
             Transforming <span className={styles.gradientText}>Complex Sectors.</span>
           </h2>
+          <p className={styles.mobileDesc}>
+            From secure Fintech gateways to high-availability HealthTech systems,
+            we architect solutions for every vertical.
+          </p>
         </div>
         <div className={styles.mobileGrid}>
           {projects.map((project, i) => (
             <div key={i} className={styles.mobileCard}>
               <div className={styles.imageWrapper}>
-                <img src={project.image} alt={project.title} loading="lazy" />
+                <project.illustration />
+                <div className={styles.cardOverlay} aria-hidden="true"
+                  style={{ background: `linear-gradient(to top, rgba(5,8,14,0.6) 0%, transparent 60%)` }} />
               </div>
               <div className={styles.cardMeta}>
-                <p className={styles.company}>{project.company}</p>
+                <p className={styles.company} style={{ color: project.accent }}>{project.company}</p>
                 <h3 className={styles.cardTitle}>{project.title}</h3>
                 <div className={styles.tagRow}>
-                  {project.tags.map((tag) => {
-                    const t = techIcons[tag] || { icon: "◆", color: "#00cccc" };
-                    return (
-                      <span key={tag} className={styles.techTag} style={{ borderColor: `${t.color}30`, color: t.color }}>
-                        <span>{t.icon}</span> {tag}
-                      </span>
-                    );
-                  })}
+                  {project.tags.map((tag) => <TagPill key={tag} tag={tag} />)}
                 </div>
               </div>
             </div>
@@ -139,58 +168,70 @@ export function Projects() {
   }
 
   return (
-    /* CSS sticky wrapper — no GSAP pin */
     <div ref={wrapperRef} className={styles.wrapper}>
       <div className={styles.sticky}>
         <div ref={trackRef} className={styles.track}>
+
           {/* Intro slide */}
           <div className={styles.introSlide}>
             <span className={styles.introLabel}>INDUSTRY SOLUTIONS</span>
             <h2 className={styles.introHeading}>
               Transforming<br />
-              <span className={styles.gradientText}>Complex Sectors.</span>
+              <span className={styles.gradientText}>Complex<br />Sectors.</span>
             </h2>
             <p className={styles.introDesc}>
-              From secure Fintech gateways to high-availability HealthTech systems,
-              we architect solutions for every vertical.
+              From secure Fintech gateways to high-availability HealthTech
+              systems, we architect solutions for every vertical.
             </p>
+            <div className={styles.introDots}>
+              {projects.map((p, i) => (
+                <span key={i} className={styles.introDot} style={{ background: p.accent }} />
+              ))}
+            </div>
           </div>
 
           {/* Project cards */}
           {projects.map((project, i) => (
             <div key={i} className={styles.projectSlide}>
-              <div className={styles.card}>
+              <div className={styles.card} style={{ "--accent": project.accent } as React.CSSProperties}>
+
+                {/* Ambient glow behind card */}
+                <div className={styles.cardGlow} style={{ background: project.gradient }} aria-hidden="true" />
+
                 <div className={styles.imageWrapper}>
-                  <img src={project.image} alt={project.title} loading="lazy" />
-                  <div className={styles.cardOverlay} aria-hidden="true" />
+                  <project.illustration />
+                  <div className={styles.cardOverlay} aria-hidden="true"
+                    style={{ background: `linear-gradient(to top, rgba(5,8,14,0.75) 0%, transparent 50%)` }} />
+                  {/* Accent top bar */}
+                  <div className={styles.cardTopBar} style={{ background: project.gradient }} aria-hidden="true" />
                 </div>
+
                 <div className={styles.cardMeta}>
-                  <p className={styles.company}>{project.company}</p>
+                  <p className={styles.company} style={{ color: project.accent }}>{project.company}</p>
                   <h3 className={styles.cardTitle}>{project.title}</h3>
                   <div className={styles.tagRow}>
-                    {project.tags.map((tag) => {
-                      const t = techIcons[tag] || { icon: "◆", color: "#00cccc" };
-                      return (
-                        <span key={tag} className={styles.techTag} style={{ borderColor: `${t.color}30`, color: t.color }}>
-                          <span>{t.icon}</span> {tag}
-                        </span>
-                      );
-                    })}
+                    {project.tags.map((tag) => <TagPill key={tag} tag={tag} />)}
                   </div>
                 </div>
+
               </div>
             </div>
           ))}
 
-          {/* View all CTA slide */}
+          {/* CTA slide */}
           <div className={styles.ctaSlide}>
-            <Link href="/projects" className={styles.ctaBtn}>
-              View All Work
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </Link>
+            <div className={styles.ctaContent}>
+              <p className={styles.ctaEyebrow}>Ready to build?</p>
+              <p className={styles.ctaHeading}>Your vertical.<br />Our expertise.</p>
+              <Link href="/projects" className={styles.ctaBtn}>
+                View All Work
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </Link>
+            </div>
           </div>
+
         </div>
       </div>
     </div>

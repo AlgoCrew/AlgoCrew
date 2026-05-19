@@ -118,8 +118,9 @@
   padding: 14px 32px;
   border-radius: 100px;
   background: var(--brand-gradient);
-  color: #fff;
-  font-weight: 700;
+  color: #04121a;
+  -webkit-text-fill-color: #04121a;
+  font-weight: 800;
   font-size: 15px;
   text-decoration: none;
   letter-spacing: -0.01em;
@@ -149,19 +150,19 @@
   align-items: center;
   padding: 14px 32px;
   border-radius: 100px;
-  border: 1px solid var(--border-strong);
-  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.88);
   font-weight: 600;
   font-size: 15px;
   text-decoration: none;
   letter-spacing: -0.01em;
-  background: transparent;
-  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  background: rgba(255, 255, 255, 0.04);
+  transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
 
   &:hover {
-    border-color: var(--border-accent);
-    color: var(--text-primary);
-    background: var(--bg-glass-light);
+    border-color: rgba(0, 204, 204, 0.5);
+    color: #fff;
+    background: rgba(0, 204, 204, 0.08);
   }
 }
 
