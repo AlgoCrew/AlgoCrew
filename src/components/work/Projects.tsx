@@ -162,6 +162,7 @@ export function Projects() {
               <div className={styles.card}>
                 <div className={styles.imageWrapper}>
                   <img src={project.image} alt={project.title} loading="lazy" />
+                  <div className={styles.cardOverlay} aria-hidden="true" />
                 </div>
                 <div className={styles.cardMeta}>
                   <p className={styles.company}>{project.company}</p>
