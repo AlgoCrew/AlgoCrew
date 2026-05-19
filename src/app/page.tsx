@@ -10,6 +10,8 @@ import Details from "@/components/about/Details";
 import AnimatedTestimonials from "@/components/home/Testimonals";
 import { SendUsEmail } from "@/components/home/SendUsEmail";
 import { Projects } from "@/components/work/Projects";
+import { TechShowcase } from "@/components/home/TechShowcase";
+import { AchievementsStrip } from "@/components/home/AchievementsStrip";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -23,7 +25,14 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <main id="main-content" style={{ width: "100%", overflow: "hidden" }}>
+    <main
+      id="main-content"
+      style={{
+        width: "100%",
+        overflowX: "clip", /* clips horizontal without breaking sticky */
+        position: "relative",
+      }}
+    >
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -38,38 +47,62 @@ export default function Home() {
         }}
       />
 
-      {/* 1. Cinematic hero — full viewport, compresses on scroll */}
+      {/* 1. Cinematic hero */}
       <Hero />
 
       {/* 2. Tech marquee strip */}
       <OfferingTechnologies />
 
-      {/* 3. Horizontal scroll services — pinned section */}
+      {/* 3. Horizontal scroll services (CSS sticky, no GSAP pin) */}
       <Services />
 
-      {/* 4. Sticky sidebar process steps */}
+      {/* 4. NEW: Achievements / metrics strip */}
+      <AchievementsStrip />
+
+      {/* 5. Sticky sidebar process steps */}
       <ProcessSteps />
 
-      {/* 5. Split-screen Why Choose Us */}
+      {/* 6. Split-screen Why Choose Us */}
       <WhyChooseUs />
 
-      {/* 6. Selected work */}
-      <div style={{ background: "#030609", borderTop: "1px solid rgba(255,255,255,0.04)", padding: "120px 60px" }}>
+      {/* 7. NEW: Interactive tech showcase */}
+      <TechShowcase />
+
+      {/* 8. Selected work */}
+      <div
+        style={{
+          background: "#030609",
+          borderTop: "1px solid rgba(255,255,255,0.04)",
+          padding: "120px 60px",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <span style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.25)", display: "block", marginBottom: "20px" }}>
+          <span
+            style={{
+              fontSize: "10px",
+              fontWeight: 700,
+              letterSpacing: "0.25em",
+              textTransform: "uppercase" as const,
+              color: "rgba(255,255,255,0.25)",
+              display: "block",
+              marginBottom: "20px",
+            }}
+          >
             SELECTED WORK
           </span>
           <Projects />
         </div>
       </div>
 
-      {/* 7. Number wall stats */}
+      {/* 9. Number wall stats */}
       <Details />
 
-      {/* 8. Testimonials */}
+      {/* 10. Testimonials */}
       <AnimatedTestimonials />
 
-      {/* 9. Cinematic CTA */}
+      {/* 11. Cinematic CTA */}
       <SendUsEmail />
     </main>
   );

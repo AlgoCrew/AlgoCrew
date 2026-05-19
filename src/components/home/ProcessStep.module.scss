@@ -1,6 +1,9 @@
 .section {
   background: #030609;
   padding: 120px 60px;
+  position: relative;
+  z-index: 1;
+  overflow: visible; /* explicit — never hide overflow here */
 
   @media (max-width: 768px) {
     padding: 80px 24px;
@@ -14,6 +17,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: start;
+  overflow: visible; /* never clip — sticky needs visible overflow */
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
@@ -23,7 +27,12 @@
 
 .left {
   position: sticky;
-  top: 120px;
+  top: 100px;
+  align-self: start; /* required for sticky in grid */
+
+  @media (max-width: 900px) {
+    position: static;
+  }
 }
 
 .label {

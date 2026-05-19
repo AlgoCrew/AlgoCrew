@@ -1,5 +1,19 @@
-.section {
+/* ================================================================
+   SERVICES — CSS STICKY HORIZONTAL SCROLL
+   No GSAP pin → no z-index/visibility blowup
+   ================================================================ */
+
+/* Outer scroll space — height = 100vh per panel + 1 extra for the label */
+.wrapper {
+  height: calc(100vh * 5); /* 1 sticky view + 4 panels worth of scroll */
   position: relative;
+  background: #030609;
+}
+
+/* CSS sticky container — always visible, never fixed */
+.sticky {
+  position: sticky;
+  top: 0;
   height: 100vh;
   overflow: hidden;
   background: #030609;
@@ -11,6 +25,11 @@
   left: 60px;
   z-index: 10;
   pointer-events: none;
+
+  @media (max-width: 768px) {
+    left: 24px;
+    top: 32px;
+  }
 }
 
 .label {
@@ -18,7 +37,7 @@
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
+  color: rgba(255, 255, 255, 0.3);
   display: block;
   margin-bottom: 6px;
 }
@@ -26,10 +45,11 @@
 .heading {
   font-size: 13px;
   font-weight: 600;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   margin: 0;
 }
 
+/* Horizontal track */
 .track {
   display: flex;
   align-items: stretch;
@@ -38,25 +58,34 @@
   will-change: transform;
 }
 
+/* Each panel = one full viewport */
 .panel {
   width: 100vw;
   height: 100vh;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 60px;
-  border-right: 1px solid rgba(255,255,255,0.04);
+  padding: 80px 60px 60px;
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
   position: relative;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,204,204,0.04), transparent);
+    inset: 0;
+    background: radial-gradient(
+      ellipse 60% 50% at 50% 50%,
+      rgba(0, 204, 204, 0.04),
+      transparent
+    );
     pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    padding: 80px 24px 60px;
+    align-items: flex-start;
+    padding-top: 100px;
   }
 }
 
@@ -69,9 +98,9 @@
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.2em;
-  color: rgba(255,255,255,0.15);
+  color: rgba(255, 255, 255, 0.15);
   margin-bottom: 32px;
-  font-family: 'SF Mono', monospace;
+  font-family: "SF Mono", "Fira Code", monospace;
 }
 
 .panelIcon {
@@ -81,16 +110,19 @@
 }
 
 .panelTitle {
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(2.5rem, 5vw, 5rem);
   font-weight: 900;
-  line-height: 0.9;
+  line-height: 0.95;
   letter-spacing: -0.04em;
   color: white;
   margin: 0 0 20px;
-  white-space: pre-line;
 
   span:last-child {
-    background: linear-gradient(135deg, var(--accent, #00cccc), rgba(255,255,255,0.7));
+    background: linear-gradient(
+      135deg,
+      var(--accent, #00cccc),
+      rgba(255, 255, 255, 0.7)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -98,7 +130,7 @@
 }
 
 .panelTagline {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -106,18 +138,18 @@
 }
 
 .panelDesc {
-  font-size: 1rem;
-  line-height: 1.65;
-  color: rgba(255,255,255,0.45);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.45);
   max-width: 480px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .panelTags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
 
 .tag {
@@ -125,9 +157,9 @@
   font-weight: 600;
   padding: 5px 12px;
   border-radius: 100px;
-  border: 1px solid rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.5);
-  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .panelLink {
@@ -135,8 +167,11 @@
   font-weight: 700;
   text-decoration: none;
   letter-spacing: 0.02em;
+  transition: opacity 0.2s;
 
-  &:hover { opacity: 0.7; }
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .progressBar {
@@ -145,12 +180,12 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
+  z-index: 10;
 }
 
 .progressFill {
   height: 100%;
   background: linear-gradient(90deg, #00cccc, #0077ff);
   width: 0%;
-  transition: width 0.1s linear;
 }

@@ -1,0 +1,142 @@
+.section {
+  background: #030609;
+  padding: 120px 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 768px) {
+    padding: 80px 24px;
+  }
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
+
+.left {
+  position: sticky;
+  top: 100px;
+
+  @media (max-width: 900px) {
+    position: static;
+  }
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.heading {
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: white;
+  margin: 0 0 24px;
+}
+
+.accent {
+  background: linear-gradient(135deg, #00cccc, #0077ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.7;
+  max-width: 340px;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  padding: 24px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: default;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(0, 204, 204, 0.08),
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+}
+
+.cardActive {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+
+  &::before {
+    opacity: 1;
+  }
+
+  .cardIcon {
+    transform: scale(1.2);
+  }
+}
+
+.cardIcon {
+  font-size: 24px;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.cardTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.01em;
+}
+
+.cardCategory {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.25);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -72,6 +73,11 @@ export function Header() {
           <Link href="/contact" className={styles.cta} ref={ctaRef}>
             Start a Project
           </Link>
+
+          {/* Theme toggle */}
+          <div className={styles.themeToggleWrap}>
+            <ThemeToggle />
+          </div>
 
           {/* Mobile hamburger */}
           <button
