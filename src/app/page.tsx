@@ -11,7 +11,9 @@ import AnimatedTestimonials from "@/components/home/Testimonals";
 import { SendUsEmail } from "@/components/home/SendUsEmail";
 import { Projects } from "@/components/work/Projects";
 import { TechShowcase } from "@/components/home/TechShowcase";
-import { AchievementsStrip } from "@/components/home/AchievementsStrip";
+import { StatsBento } from "@/components/home/StatsBento";
+import { TrustStrip } from "@/components/home/TrustStrip";
+import { FAQ } from "@/components/home/FAQ";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -48,13 +50,15 @@ export default function Home() {
       <div style={wrap}><Hero /></div>
       <div style={wrap}><OfferingTechnologies /></div>
       <div style={wrap}><Services /></div>
-      <div style={wrap}><AchievementsStrip /></div>
+      <div style={wrap}><TrustStrip /></div>
+      <div style={wrap}><StatsBento /></div>
       <div style={wrap}><ProcessSteps /></div>
       <div style={wrap}><WhyChooseUs /></div>
       <div style={wrap}><TechShowcase /></div>
       <div style={wrap}><Projects /></div>
       <div style={wrap}><Details /></div>
       <div style={wrap}><AnimatedTestimonials /></div>
+      <div style={wrap}><FAQ /></div>
       <div style={wrap}><SendUsEmail /></div>
     </main>
   );

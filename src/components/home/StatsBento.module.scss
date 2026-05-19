@@ -1,0 +1,216 @@
+.section {
+  background: var(--bg-page);
+  padding: 120px 60px;
+  border-top: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 768px) { padding: 80px 24px; }
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ---- Header ---- */
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: 28px;
+  margin-bottom: 56px;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.heading {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.05;
+}
+
+.accent {
+  background: var(--brand-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ================================================================
+   BENTO GRID
+   ================================================================ */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto;
+  gap: 12px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---- Cell base ---- */
+.cell {
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid var(--border-muted);
+  background: var(--bg-card);
+  overflow: hidden;
+  padding: 32px 28px;
+  cursor: default;
+  transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--accent, #06c8e8) 40%, transparent);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25),
+                0 0 28px color-mix(in srgb, var(--accent, #06c8e8) 12%, transparent);
+
+    .cellBg  { opacity: 1; }
+    .cellGlow { opacity: 1; }
+    .cellLine { width: 100%; }
+    .num { color: var(--accent, #06c8e8); -webkit-text-fill-color: var(--accent, #06c8e8); }
+    .prefix, .suffix { color: var(--accent, #06c8e8); -webkit-text-fill-color: var(--accent, #06c8e8); }
+  }
+}
+
+/* ---- Size variants ---- */
+.cell_featured {
+  grid-column: span 2;
+  grid-row: span 2;
+  padding: 44px 36px;
+
+  .num { font-size: clamp(4rem, 6vw, 6.5rem); }
+
+  @media (max-width: 640px) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
+.cell_tall {
+  grid-column: span 1;
+  grid-row: span 2;
+  @media (max-width: 1024px) { grid-row: span 1; }
+}
+
+.cell_wide {
+  grid-column: span 3;
+  @media (max-width: 1024px) { grid-column: span 4; }
+  @media (max-width: 640px) { grid-column: span 2; }
+}
+
+.cell_medium {
+  grid-column: span 1;
+  @media (max-width: 640px) { grid-column: span 1; }
+}
+
+/* ---- Cell internals ---- */
+.cellBg {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient, transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.cellGlow {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: var(--accent, #06c8e8);
+  opacity: 0;
+  filter: blur(50px);
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.cellContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+}
+
+.numWrap {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.num {
+  font-size: clamp(2.8rem, 4vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+  -webkit-text-fill-color: inherit;
+}
+
+.prefix,
+.suffix {
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+  -webkit-text-fill-color: inherit;
+}
+
+.cellLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.cellSub {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+  margin-top: 2px;
+}
+
+/* Bottom accent line — grows on hover */
+.cellLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--accent, #06c8e8);
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 0 2px 0 0;
+}

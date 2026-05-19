@@ -1,0 +1,313 @@
+.section {
+  background: var(--bg-page);
+  padding: 120px 60px;
+  border-top: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 768px) { padding: 80px 24px; }
+}
+
+/* Subtle bg gradient */
+.section::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 600px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(6,200,232,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 80px;
+  align-items: start;
+
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* ---- Left panel ---- */
+.left {
+  position: sticky;
+  top: 100px;
+
+  @media (max-width: 960px) { position: static; }
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.heading {
+  font-size: clamp(2.4rem, 3.5vw, 3.6rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  margin: 0 0 16px;
+  line-height: 1;
+}
+
+.accent {
+  background: var(--brand-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sub {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin: 0 0 28px;
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--brand-cyan);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  margin-bottom: 36px;
+  transition: gap 0.2s ease, opacity 0.2s ease;
+
+  svg { transition: transform 0.2s ease; }
+
+  &:hover {
+    opacity: 0.8;
+    gap: 12px;
+    svg { transform: translateX(2px); }
+  }
+}
+
+/* Index pills */
+.indexPills {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 20px;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.2s ease;
+  opacity: 0.4;
+}
+
+.pillActive {
+  opacity: 1;
+
+  .pillNum { color: var(--brand-cyan); }
+  .pillTag { color: var(--text-primary); font-weight: 700; }
+}
+
+.pillNum {
+  font-size: 9px;
+  font-weight: 700;
+  font-family: "SF Mono", "Fira Code", monospace;
+  color: var(--text-faint);
+  width: 20px;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.pillTag {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+/* ================================================================
+   ACCORDION
+   ================================================================ */
+.accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+  transition: background 0.3s ease;
+
+  &:first-child { border-top: 1px solid var(--border-subtle); }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--brand-gradient);
+    border-radius: 2px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+}
+
+.itemOpen {
+  background: rgba(6, 200, 232, 0.025);
+
+  &::before { opacity: 1; }
+
+  .triggerQ { color: var(--text-primary); }
+  .triggerNum { color: var(--brand-cyan); }
+  .triggerTag {
+    color: var(--brand-cyan);
+    background: rgba(6, 200, 232, 0.1);
+    border-color: rgba(6, 200, 232, 0.25);
+  }
+}
+
+/* Trigger button */
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 20px 24px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
+
+  &:hover { background: rgba(255,255,255,0.02); }
+
+  @media (max-width: 640px) {
+    padding: 20px 16px;
+    gap: 12px;
+  }
+}
+
+.triggerNum {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: "SF Mono", "Fira Code", monospace;
+  color: var(--text-faint);
+  flex-shrink: 0;
+  width: 24px;
+  transition: color 0.25s ease;
+}
+
+.triggerQ {
+  flex: 1;
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: -0.015em;
+  line-height: 1.4;
+  transition: color 0.25s ease;
+}
+
+.triggerTag {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  padding: 3px 8px;
+  border-radius: 100px;
+  border: 1px solid var(--border-subtle);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+
+  @media (max-width: 480px) { display: none; }
+}
+
+/* Plus / minus icon */
+.triggerIcon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid var(--border-muted);
+  transition: border-color 0.25s ease, background 0.25s ease;
+
+  .itemOpen & {
+    border-color: rgba(6, 200, 232, 0.4);
+    background: rgba(6, 200, 232, 0.08);
+  }
+}
+
+.iconH,
+.iconV {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--text-muted);
+  border-radius: 2px;
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, background 0.25s ease;
+
+  .itemOpen & { background: var(--brand-cyan); }
+}
+
+.iconH {
+  width: 9px;
+  height: 1.5px;
+  transform: translate(-50%, -50%);
+}
+
+.iconV {
+  width: 1.5px;
+  height: 9px;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.iconVOpen {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+/* Answer body — CSS height animation via display toggle + max-height trick */
+.body {
+  overflow: hidden;
+  padding: 0 20px 0 40px;
+  animation: faq-open 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @media (max-width: 640px) { padding: 0 16px 0 36px; }
+}
+
+@keyframes faq-open {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.answer {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin: 0;
+  padding-bottom: 24px;
+  max-width: 680px;
+}
