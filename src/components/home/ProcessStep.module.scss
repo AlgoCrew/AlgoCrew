@@ -30,8 +30,10 @@
   top: 100px;
   align-self: start; /* required for sticky in grid */
 
+  /* Mobile/tablet: disable sticky — avoids content lock and overlap */
   @media (max-width: 900px) {
     position: static;
+    top: auto;
   }
 }
 

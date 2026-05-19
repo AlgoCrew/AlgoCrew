@@ -1,34 +1,46 @@
 /* ================================================================
    SERVICES — CSS STICKY HORIZONTAL SCROLL
-   No GSAP pin → no z-index/visibility blowup
+   Height set dynamically in JS; CSS is a safe fallback for mobile
    ================================================================ */
 
-/* Outer scroll space — height = 100vh per panel + 1 extra for the label */
+/* Outer scroll space — JS sets exact height at runtime */
 .wrapper {
-  height: calc(100vh * 5); /* 1 sticky view + 4 panels worth of scroll */
+  /* CSS fallback: approx 300vw of scroll + 100vh viewport */
+  height: calc(300vw + 100vh);
   position: relative;
   background: #030609;
+
+  /* Mobile: normal block flow, auto height */
+  @media (max-width: 767px) {
+    height: auto !important;
+  }
 }
 
-/* CSS sticky container — always visible, never fixed */
+/* CSS sticky — stays in viewport as user scrolls through wrapper */
 .sticky {
   position: sticky;
   top: 0;
   height: 100vh;
   overflow: hidden;
   background: #030609;
+
+  @media (max-width: 767px) {
+    position: static;
+    height: auto;
+    overflow: visible;
+  }
 }
 
 .sectionMeta {
   position: absolute;
-  top: 48px;
+  top: 40px;
   left: 60px;
   z-index: 10;
   pointer-events: none;
 
-  @media (max-width: 768px) {
-    left: 24px;
-    top: 32px;
+  @media (max-width: 767px) {
+    position: static;
+    padding: 40px 24px 0;
   }
 }
 
@@ -49,24 +61,32 @@
   margin: 0;
 }
 
-/* Horizontal track */
+/* ---- Desktop: horizontal track ---- */
 .track {
   display: flex;
   align-items: stretch;
   height: 100vh;
   width: max-content;
   will-change: transform;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    transform: none !important; /* prevent GSAP from touching mobile */
+  }
 }
 
-/* Each panel = one full viewport */
+/* Each panel = exactly one viewport wide (desktop) */
 .panel {
+  /* Desktop: panels side by side, each 100vw */
   width: 100vw;
   height: 100vh;
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 80px 60px 60px;
+  justify-content: flex-start;
+  padding: 80px 10vw 60px 10vw;
   border-right: 1px solid rgba(255, 255, 255, 0.04);
   position: relative;
 
@@ -75,53 +95,69 @@
     position: absolute;
     inset: 0;
     background: radial-gradient(
-      ellipse 60% 50% at 50% 50%,
-      rgba(0, 204, 204, 0.04),
+      ellipse 50% 60% at 30% 50%,
+      rgba(0, 204, 204, 0.03),
       transparent
     );
     pointer-events: none;
   }
 
-  @media (max-width: 768px) {
-    padding: 80px 24px 60px;
+  /* Mobile: full-width stacked cards */
+  @media (max-width: 767px) {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    flex-direction: column;
     align-items: flex-start;
-    padding-top: 100px;
+    padding: 48px 24px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }
 
+/* Content block inside each panel */
 .panelInner {
-  max-width: 600px;
+  max-width: 700px;
   width: 100%;
+
+  @media (max-width: 767px) {
+    max-width: 100%;
+  }
 }
 
 .panelNum {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.2em;
   color: rgba(255, 255, 255, 0.15);
-  margin-bottom: 32px;
+  margin-bottom: 28px;
   font-family: "SF Mono", "Fira Code", monospace;
 }
 
 .panelIcon {
-  font-size: 48px;
-  margin-bottom: 24px;
+  font-size: 40px;
+  margin-bottom: 20px;
   line-height: 1;
 }
 
 .panelTitle {
-  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-size: clamp(2.2rem, 4.5vw, 4.5rem);
   font-weight: 900;
-  line-height: 0.95;
+  line-height: 1.0;
   letter-spacing: -0.04em;
   color: white;
-  margin: 0 0 20px;
+  margin: 0 0 16px;
 
-  span:last-child {
+  /* Last word accent gradient */
+  span:last-of-type {
     background: linear-gradient(
       135deg,
       var(--accent, #00cccc),
-      rgba(255, 255, 255, 0.7)
+      rgba(255, 255, 255, 0.75)
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -134,22 +170,22 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .panelDesc {
   font-size: 0.95rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.45);
-  max-width: 480px;
-  margin-bottom: 28px;
+  max-width: 520px;
+  margin-bottom: 24px;
 }
 
 .panelTags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 36px;
+  margin-bottom: 32px;
 }
 
 .tag {
@@ -174,18 +210,24 @@
   }
 }
 
+/* Progress bar — desktop only */
 .progressBar {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 2px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.05);
   z-index: 10;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 }
 
 .progressFill {
   height: 100%;
-  background: linear-gradient(90deg, #00cccc, #0077ff);
   width: 0%;
+  background: linear-gradient(90deg, #00cccc, #0077ff);
+  transition: width 0.05s linear;
 }

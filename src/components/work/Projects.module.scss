@@ -1,111 +1,241 @@
-.desktopWrapper {
-    width: 100vw;
-  background: linear-gradient(90deg, var(--page-background), #00cccc65);
-    .viewport {
-        position: relative;
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-    }
-    @media (max-width: 1024px) {
-        width: 100% !important;
-        .viewport {
-            width: 100% !important;
-        }
-    }
+/* ================================================================
+   PROJECTS — CSS STICKY HORIZONTAL (desktop) / STACKED (mobile)
+   ================================================================ */
+
+/* ---- DESKTOP ---- */
+.wrapper {
+  height: calc(300vw + 100vh); /* JS overrides with exact calculation */
+  position: relative;
+  background: #030609;
+  z-index: 1;
 }
 
-.mobileWrapper {
-    width: 100%;
-    // background: #000;
-    padding: 80px 24px;
-    .viewport { height: auto; }
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #030609 60%, rgba(0, 119, 255, 0.04));
 }
 
-.projectTrack { // Desktop Horizontal
-    display: flex;
-    flex-wrap: nowrap;
-    padding-left: 10vw;
-    padding-right: 400px;
-    will-change: transform;
-}
-
-.mobileTrack { // Mobile Vertical
-    display: flex;
-    flex-direction: column;
-    gap: 64px;
+.track {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  width: max-content;
+  padding-left: 10vw;
+  padding-right: 15vw;
+  gap: 60px;
+  will-change: transform;
 }
 
 .introSlide {
-    flex-shrink: 0;
-    @media (min-width: 1024px) { min-width: 500px; margin-right: 100px; }
+  flex-shrink: 0;
+  width: 420px;
+  margin-right: 40px;
+}
+
+.introLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #00cccc;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.introHeading {
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: white;
+  margin: 0 0 20px;
+  line-height: 1;
+}
+
+.gradientText {
+  background: linear-gradient(135deg, #00cccc, #0077ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.introDesc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.7;
+  margin: 0;
 }
 
 .projectSlide {
-    flex-shrink: 0;
-    @media (min-width: 1024px) { width: 450px; margin-right: 80px; }
-    @media (max-width: 1023px) { width: 100%; }
+  flex-shrink: 0;
+  width: 360px;
 }
 
 .card {
-    .imageWrapper {
-        width: 100%;
-        aspect-ratio: 4 / 5;
-        border-radius: 32px;
-        overflow: hidden;
-        border: 1px solid rgba(255,255,255,0.1);
-        img { width: 100%; height: 100%; object-fit: cover; }
-    }
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.stickyExplore {
-    position: absolute;
-    top: 0; right: 0; height: 100%; width: 200px;
-    z-index: 50; display: flex; align-items: center; justify-content: center;
-    .smokyOverlay {
-        position: absolute; inset: 0;
-        // background: linear-gradient(to right, transparent, rgba(0,0,0,0.9) 90%);
-        backdrop-filter: blur(12px);
-    }
-    .exploreContent { position: relative; z-index: 51; }
-}
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
 
-.verticalLine { width: 2px; height: 80px; background: #00cccc; }
-.rotatedText { writing-mode: vertical-rl; letter-spacing: 4px; color: #00cccc; margin: 20px 0; }
-.gradientText { color: #00ccccf0; }
-.buttonStyle { background-color: #00cccc !important; border: none; }
-.mobileFooter { padding: 40px 0; text-align: center; }
-
-
-.desktopWrapper {
+  img {
     width: 100%;
-    // background: #000;
-    position: relative;
-    // DO NOT add overflow: hidden or height: 100vh here
-}
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
 
-.viewport {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden; // This keeps the scrollbar from appearing horizontally
-    position: relative;
-    @media (max-width: 1024px) {
-        width: 100% !important;
+    &:hover {
+      transform: scale(1.04);
     }
+  }
 }
 
-.projectTrack {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    padding-left: 10vw;
-    // Add significant padding to the end so the last card doesn't hide behind the sticky bar
-    padding-right: 40vw; 
-    will-change: transform;
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-/* Rest of the styles (mobileWrapper, cards, stickyExplore) remain the same */
+.company {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #00cccc;
+  margin: 0;
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.techTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 100px;
+  border: 1px solid;
+  background: rgba(255, 255, 255, 0.02);
+  letter-spacing: 0.02em;
+}
+
+.ctaSlide {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+}
+
+.ctaBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+
+  svg {
+    transform: rotate(-45deg);
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    color: #00cccc;
+
+    svg {
+      transform: rotate(-45deg) translate(3px, -3px);
+    }
+  }
+}
+
+.viewAll {
+  display: inline-flex;
+  padding: 14px 28px;
+  border-radius: 100px;
+  background: linear-gradient(135deg, #00cccc, #0077ff);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 204, 204, 0.25);
+  }
+}
+
+/* ---- MOBILE ---- */
+.mobileWrapper {
+  background: #030609;
+  padding: 80px 24px 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.mobileHeader {
+  margin-bottom: 48px;
+}
+
+.mobileLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #00cccc;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.mobileHeading {
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: white;
+  margin: 0;
+  line-height: 1.05;
+}
+
+.mobileGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.mobileCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobileFooter {
+  margin-top: 48px;
+  display: flex;
+  justify-content: center;
+}

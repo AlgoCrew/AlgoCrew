@@ -9,7 +9,7 @@ const services = [
   {
     id: "team-services",
     num: "01",
-    title: "Strategic\nStaffing",
+    title: "Strategic Staffing",
     tagline: "Pre-vetted IT Talent",
     desc: "Scale your technical capabilities instantly with dedicated managed teams. From staff augmentation to full turnkey delivery.",
     tags: ["Staff Augmentation", "Dedicated Teams", "Project Management"],
@@ -19,7 +19,7 @@ const services = [
   {
     id: "web-app-development",
     num: "02",
-    title: "Product\nEngineering",
+    title: "Product Engineering",
     tagline: "MVP to Enterprise Scale",
     desc: "Bespoke digital solutions engineered for performance and market dominance. Web, mobile, SaaS — built to last.",
     tags: ["Web & Mobile", "SaaS Platforms", "E-commerce"],
@@ -29,7 +29,7 @@ const services = [
   {
     id: "cloud-devops",
     num: "03",
-    title: "Cloud &\nDevOps",
+    title: "Cloud & DevOps",
     tagline: "Secure & Scalable Infrastructure",
     desc: "Architecting the backbone of modern business with cloud-native transitions, CI/CD pipelines, and enterprise security.",
     tags: ["DevOps", "Cybersecurity", "Cloud Migration"],
@@ -39,7 +39,7 @@ const services = [
   {
     id: "data-automation",
     num: "04",
-    title: "Data &\nAI Solutions",
+    title: "Data & AI Solutions",
     tagline: "Intelligence-Driven Strategy",
     desc: "Leverage the next industrial revolution with Generative AI, machine learning, and intelligent automation workflows.",
     tags: ["Generative AI", "Blockchain", "AR/VR"],
@@ -50,7 +50,6 @@ const services = [
 
 export function Services() {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const stickyRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -60,34 +59,58 @@ export function Services() {
     const track = trackRef.current;
     if (!wrapper || !track) return;
 
-    // CSS sticky approach — no pin:true, no fixed positioning, no z-index blowup
+    // Mobile: no horizontal scroll
+    if (window.innerWidth < 768) return;
+
+    // Dynamically set wrapper height = exact scroll distance + one viewport
+    // so the sticky releases ONLY after the last card fully enters view
+    const updateHeight = () => {
+      const scrollAmount = track.scrollWidth - window.innerWidth;
+      wrapper.style.height = `${scrollAmount + window.innerHeight}px`;
+    };
+    updateHeight();
+
     const ctx = gsap.context(() => {
-      gsap.to(track, {
+      const tween = gsap.to(track, {
         x: () => -(track.scrollWidth - window.innerWidth),
         ease: "none",
         scrollTrigger: {
           trigger: wrapper,
           start: "top top",
           end: () => `+=${track.scrollWidth - window.innerWidth}`,
-          scrub: 1,
+          scrub: 1.2,
           invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            // Update progress bar
+            const fill = document.getElementById("services-progress");
+            if (fill) fill.style.width = `${self.progress * 100}%`;
+          },
         },
       });
     });
 
-    return () => ctx.revert();
+    const onResize = () => {
+      updateHeight();
+      ScrollTrigger.refresh();
+    };
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      ctx.revert();
+      window.removeEventListener("resize", onResize);
+    };
   }, []);
 
   return (
-    /* Outer wrapper provides the vertical scroll space */
     <div ref={wrapperRef} className={styles.wrapper} id="services">
-      {/* CSS sticky — stays in view without GSAP pin */}
-      <div ref={stickyRef} className={styles.sticky}>
+      <div className={styles.sticky}>
+        {/* Label — visible in first panel */}
         <div className={styles.sectionMeta}>
           <span className={styles.label}>WHAT WE DO</span>
           <h2 className={styles.heading}>Our Capabilities</h2>
         </div>
 
+        {/* Horizontal track */}
         <div className={styles.track} ref={trackRef}>
           {services.map((s) => (
             <div key={s.id} className={styles.panel}>
@@ -98,9 +121,7 @@ export function Services() {
                   className={styles.panelTitle}
                   style={{ "--accent": s.color } as React.CSSProperties}
                 >
-                  {s.title.split("\n").map((line, i) => (
-                    <span key={i}>{line}<br /></span>
-                  ))}
+                  {s.title}
                 </h3>
                 <p className={styles.panelTagline} style={{ color: s.color }}>{s.tagline}</p>
                 <p className={styles.panelDesc}>{s.desc}</p>
@@ -117,9 +138,8 @@ export function Services() {
           ))}
         </div>
 
-        {/* Scroll progress bar */}
         <div className={styles.progressBar}>
-          <div className={styles.progressFill} />
+          <div className={styles.progressFill} id="services-progress" />
         </div>
       </div>
     </div>

@@ -141,7 +141,9 @@ export default async function RootLayout({
           `}
         </script>
 
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/images/icon.png" sizes="any" />
+        <link rel="apple-touch-icon" href="/images/icon.png" />
         <meta name="keywords" content="software company, software agency, custom software development, web development, custom software, cloud solution, mobile app development, Next.js, React, Node.js, AWS, software solutions, IT consulting, Algocrew" />
       </head>
 

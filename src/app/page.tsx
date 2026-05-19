@@ -23,15 +23,13 @@ export async function generateMetadata() {
   });
 }
 
+const wrap: React.CSSProperties = { position: "relative", zIndex: 1 };
+
 export default function Home() {
   return (
     <main
       id="main-content"
-      style={{
-        width: "100%",
-        overflowX: "clip", /* clips horizontal without breaking sticky */
-        position: "relative",
-      }}
+      style={{ width: "100%", overflowX: "clip", position: "relative" }}
     >
       <Schema
         as="webPage"
@@ -47,63 +45,18 @@ export default function Home() {
         }}
       />
 
-      {/* 1. Cinematic hero */}
-      <Hero />
-
-      {/* 2. Tech marquee strip */}
-      <OfferingTechnologies />
-
-      {/* 3. Horizontal scroll services (CSS sticky, no GSAP pin) */}
-      <Services />
-
-      {/* 4. NEW: Achievements / metrics strip */}
-      <AchievementsStrip />
-
-      {/* 5. Sticky sidebar process steps */}
-      <ProcessSteps />
-
-      {/* 6. Split-screen Why Choose Us */}
-      <WhyChooseUs />
-
-      {/* 7. NEW: Interactive tech showcase */}
-      <TechShowcase />
-
-      {/* 8. Selected work */}
-      <div
-        style={{
-          background: "#030609",
-          borderTop: "1px solid rgba(255,255,255,0.04)",
-          padding: "120px 60px",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <span
-            style={{
-              fontSize: "10px",
-              fontWeight: 700,
-              letterSpacing: "0.25em",
-              textTransform: "uppercase" as const,
-              color: "rgba(255,255,255,0.25)",
-              display: "block",
-              marginBottom: "20px",
-            }}
-          >
-            SELECTED WORK
-          </span>
-          <Projects />
-        </div>
-      </div>
-
-      {/* 9. Number wall stats */}
-      <Details />
-
-      {/* 10. Testimonials */}
-      <AnimatedTestimonials />
-
-      {/* 11. Cinematic CTA */}
-      <SendUsEmail />
+      <div style={wrap}><Hero /></div>
+      <div style={wrap}><OfferingTechnologies /></div>
+      <div style={wrap}><Services /></div>
+      <div style={wrap}><AchievementsStrip /></div>
+      <div style={wrap}><ProcessSteps /></div>
+      <div style={wrap}><WhyChooseUs /></div>
+      <div style={wrap}><TechShowcase /></div>
+      {/* Projects: solid bg prevents any bleed-through from sections above */}
+      <div style={{ ...wrap, background: "#030609" }}><Projects /></div>
+      <div style={wrap}><Details /></div>
+      <div style={wrap}><AnimatedTestimonials /></div>
+      <div style={wrap}><SendUsEmail /></div>
     </main>
   );
 }

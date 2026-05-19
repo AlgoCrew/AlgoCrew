@@ -1,152 +1,197 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Heading, Text, Column, Button, SmartLink, Flex } from "@once-ui-system/core";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./Projects.module.scss";
 
+const techIcons: Record<string, { icon: string; color: string }> = {
+  "Payments":   { icon: "💳", color: "#00cccc" },
+  "Security":   { icon: "🔒", color: "#7c3aed" },
+  "Real-time":  { icon: "⚡", color: "#f59e0b" },
+  "HIPAA":      { icon: "🏥", color: "#10b981" },
+  "Data Viz":   { icon: "📊", color: "#0077ff" },
+  "AI":         { icon: "🤖", color: "#00cccc" },
+  "DevOps":     { icon: "🐳", color: "#2496ed" },
+  "Kubernetes": { icon: "☸️", color: "#326ce5" },
+  "AWS":        { icon: "☁️", color: "#ff9900" },
+  "Automation": { icon: "⚙️", color: "#7c3aed" },
+  "IoT":        { icon: "📡", color: "#f59e0b" },
+  "SaaS":       { icon: "🔷", color: "#0077ff" },
+};
+
 const projects = [
-    { 
-        title: "Scalable Fintech Ecosystems", 
-        company: "Global Finance Corp", 
-        tags: ["Payments", "Security", "Real-time"],
-        // High-end digital finance/data visualization image
-        image: "/images/uplash/fintech.png"
-    },
-    { 
-        title: "Precision HealthTech Platforms", 
-        company: "Nexus Health", 
-        tags: ["HIPAA", "Data Viz", "AI"],
-        // Professional medical research/tech laboratory image
-        image: "/images/uplash/health.png"
-    },
-    { 
-        title: "Hybrid Cloud Orchestration", 
-        company: "VCloud Systems", 
-        tags: ["DevOps", "Kubernetes", "AWS"],
-        image: "/images/uplash/global.png"
-    },
-    { 
-        title: "Automated Supply Chain AI", 
-        company: "LogiTech Solutions", 
-        tags: ["Automation", "IoT", "SaaS"],
-        image: "/images/uplash/industry.png"
-    },
+  {
+    title: "Scalable Fintech Ecosystems",
+    company: "Global Finance Corp",
+    tags: ["Payments", "Security", "Real-time"],
+    image: "/images/uplash/fintech.png",
+  },
+  {
+    title: "Precision HealthTech Platforms",
+    company: "Nexus Health",
+    tags: ["HIPAA", "Data Viz", "AI"],
+    image: "/images/uplash/health.png",
+  },
+  {
+    title: "Hybrid Cloud Orchestration",
+    company: "VCloud Systems",
+    tags: ["DevOps", "Kubernetes", "AWS"],
+    image: "/images/uplash/global.png",
+  },
+  {
+    title: "Automated Supply Chain AI",
+    company: "LogiTech Solutions",
+    tags: ["Automation", "IoT", "SaaS"],
+    image: "/images/uplash/industry.png",
+  },
 ];
 
-
 export function Projects() {
-    const triggerRef = useRef<HTMLDivElement>(null);
-    const scrollRef = useRef<HTMLDivElement>(null);
-    const [isMobile, setIsMobile] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-        
-        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
-        // We use a GSAP Context for easy cleanup
-        let ctx = gsap.context(() => {
-            if (!isMobile && scrollRef.current && triggerRef.current) {
-                const track = scrollRef.current;
-                
-                // Calculate the actual distance the track needs to move
-                // We move it until the LAST card is fully visible
-                const horizontalDistance = track.scrollWidth - window.innerWidth;
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
-                gsap.to(track, {
-                    x: -horizontalDistance,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: triggerRef.current,
-                        start: "top top",
-                        // CRITICAL: This 'end' defines the scroll "length"
-                        // Making it the track width ensures the pin lasts long enough
-                        end: () => `+=${track.scrollWidth}`, 
-                        pin: true,
-                        scrub: 1,
-                        pinSpacing: true, // This adds the physical padding to keep next section away
-                        invalidateOnRefresh: true,
-                        anticipatePin: 1,
-                    }
-                });
-            }
-        });
+    const wrapper = wrapperRef.current;
+    const track = trackRef.current;
+    if (!wrapper || !track || isMobile) return;
 
-        return () => {
-            ctx.revert();
-            window.removeEventListener('resize', checkMobile);
-        };
-    }, [isMobile]);
+    // CSS sticky approach — same as Services, no pin:true, no z-index blowup
+    const updateHeight = () => {
+      const scrollAmount = track.scrollWidth - window.innerWidth;
+      if (scrollAmount > 0) {
+        wrapper.style.height = `${scrollAmount + window.innerHeight}px`;
+      }
+    };
+    updateHeight();
 
+    const ctx = gsap.context(() => {
+      gsap.to(track, {
+        x: () => -(track.scrollWidth - window.innerWidth),
+        ease: "none",
+        scrollTrigger: {
+          trigger: wrapper,
+          start: "top top",
+          end: () => `+=${track.scrollWidth - window.innerWidth}`,
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+    });
+
+    const onResize = () => { updateHeight(); ScrollTrigger.refresh(); };
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      ctx.revert();
+      window.removeEventListener("resize", onResize);
+    };
+  }, [isMobile]);
+
+  if (isMobile) {
     return (
-        <section ref={triggerRef} className={isMobile ? styles.mobileWrapper : styles.desktopWrapper}>
-            <div className={styles.viewport}>
-                <div ref={scrollRef} className={isMobile ? styles.mobileTrack : styles.projectTrack}>
-                    <div className={styles.introSlide}>
-                      <Column gap="16">
-                          <Flex gap="8" align="center">
-                              <div className={styles.dot} />
-                              <Text variant="label-strong-s" onBackground="accent-strong" style={{ letterSpacing: '2px' }}>
-                                  INDUSTRY SOLUTIONS
-                              </Text>
-                          </Flex>
-                          <Heading variant="display-strong-l">
-                              Transforming <br/> 
-                              <span className={styles.gradientText}>Complex Sectors.</span>
-                          </Heading>
-                          <Text variant="body-default-l" onBackground="neutral-weak" style={{ maxWidth: '440px' }}>
-                              From secure Fintech gateways to high-availability HealthTech systems, we architect solutions for every vertical.
-                          </Text>
-                      </Column>
-                  </div>
-
-                    {projects.map((project, i) => (
-                        <div key={i} className={styles.projectSlide}>
-                            <div className={styles.card}>
-                                <div className={styles.imageWrapper}>
-                                    <img src={project.image} alt={project.title} loading="lazy" />
-                                    <div className={styles.tagOverlay}>
-                                        {project.tags.map(tag => (
-                                            <span key={tag} className={styles.miniTag}>{tag}</span>
-                                        ))}
-                                    </div>
-                                </div>
-                                <Column gap="8" paddingTop="24">
-                                    <Text variant="label-strong-s" onBackground="accent-medium" style={{ opacity: 0.8 }}>
-                                        {project.company}
-                                    </Text>
-                                    <Heading variant="heading-strong-m" style={{ letterSpacing: '-0.5px' }}>
-                                        {project.title}
-                                    </Heading>
-                                </Column>
-                            </div>
-                        </div>
-                    ))}
-                    
-                    {isMobile && (
-                         <div className={styles.mobileFooter}>
-                            <Button href="/projects" variant="primary" size="l" suffixIcon="arrowRight">View All Work</Button>
-                         </div>
-                    )}
+      <div className={styles.mobileWrapper}>
+        <div className={styles.mobileHeader}>
+          <span className={styles.mobileLabel}>INDUSTRY SOLUTIONS</span>
+          <h2 className={styles.mobileHeading}>
+            Transforming <span className={styles.gradientText}>Complex Sectors.</span>
+          </h2>
+        </div>
+        <div className={styles.mobileGrid}>
+          {projects.map((project, i) => (
+            <div key={i} className={styles.mobileCard}>
+              <div className={styles.imageWrapper}>
+                <img src={project.image} alt={project.title} loading="lazy" />
+              </div>
+              <div className={styles.cardMeta}>
+                <p className={styles.company}>{project.company}</p>
+                <h3 className={styles.cardTitle}>{project.title}</h3>
+                <div className={styles.tagRow}>
+                  {project.tags.map((tag) => {
+                    const t = techIcons[tag] || { icon: "◆", color: "#00cccc" };
+                    return (
+                      <span key={tag} className={styles.techTag} style={{ borderColor: `${t.color}30`, color: t.color }}>
+                        <span>{t.icon}</span> {tag}
+                      </span>
+                    );
+                  })}
                 </div>
-
-                {!isMobile && (
-                    <div className={styles.stickyExplore}>
-                        <div className={styles.smokyOverlay} />
-                        <Column gap="16" horizontal="center" className={styles.exploreContent}>
-                            <div className={styles.verticalLine} />
-                            <SmartLink href="/projects" className={styles.rotatedText} aria-label="explore latest projects">
-                                <Text variant="label-strong-s">VIEW ALL</Text>
-                            </SmartLink>
-                            <Button href="/projects" variant="primary" size="l" suffixIcon="arrowRight" aria-label="explore our projects" className={styles.buttonStyle} />
-                        </Column>
-                    </div>
-                )}
+              </div>
             </div>
-        </section>
+          ))}
+        </div>
+        <div className={styles.mobileFooter}>
+          <Link href="/projects" className={styles.viewAll}>View All Work →</Link>
+        </div>
+      </div>
     );
+  }
+
+  return (
+    /* CSS sticky wrapper — no GSAP pin */
+    <div ref={wrapperRef} className={styles.wrapper}>
+      <div className={styles.sticky}>
+        <div ref={trackRef} className={styles.track}>
+          {/* Intro slide */}
+          <div className={styles.introSlide}>
+            <span className={styles.introLabel}>INDUSTRY SOLUTIONS</span>
+            <h2 className={styles.introHeading}>
+              Transforming<br />
+              <span className={styles.gradientText}>Complex Sectors.</span>
+            </h2>
+            <p className={styles.introDesc}>
+              From secure Fintech gateways to high-availability HealthTech systems,
+              we architect solutions for every vertical.
+            </p>
+          </div>
+
+          {/* Project cards */}
+          {projects.map((project, i) => (
+            <div key={i} className={styles.projectSlide}>
+              <div className={styles.card}>
+                <div className={styles.imageWrapper}>
+                  <img src={project.image} alt={project.title} loading="lazy" />
+                </div>
+                <div className={styles.cardMeta}>
+                  <p className={styles.company}>{project.company}</p>
+                  <h3 className={styles.cardTitle}>{project.title}</h3>
+                  <div className={styles.tagRow}>
+                    {project.tags.map((tag) => {
+                      const t = techIcons[tag] || { icon: "◆", color: "#00cccc" };
+                      return (
+                        <span key={tag} className={styles.techTag} style={{ borderColor: `${t.color}30`, color: t.color }}>
+                          <span>{t.icon}</span> {tag}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/* View all CTA slide */}
+          <div className={styles.ctaSlide}>
+            <Link href="/projects" className={styles.ctaBtn}>
+              View All Work
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
