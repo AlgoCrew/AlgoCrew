@@ -6,18 +6,19 @@ import styles from "./Header.module.scss";
 import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
-  { href: "/", label: "Home" },
+  { href: "/",         label: "Home"     },
   { href: "/services", label: "Services" },
-  { href: "/about", label: "About" },
-  { href: "/work", label: "Work" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
+  { href: "/work",     label: "Work"     },
+  { href: "/pricing",  label: "Pricing"  },
+  { href: "/careers",  label: "Careers", badge: "Hiring" },
+  { href: "/about",    label: "About"    },
+  { href: "/contact",  label: "Contact"  },
 ];
 
 export function Header() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled,  setScrolled]  = useState(false);
+  const [menuOpen,  setMenuOpen]  = useState(false);
   const ctaRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Magnetic CTA effect
+  // Magnetic CTA
   useEffect(() => {
     const el = ctaRef.current;
     if (!el) return;
@@ -35,17 +36,13 @@ export function Header() {
       const dx = e.clientX - (rect.left + rect.width / 2);
       const dy = e.clientY - (rect.top + rect.height / 2);
       const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 100) {
-        el.style.transform = `translate(${dx * 0.25}px, ${dy * 0.25}px)`;
-      } else {
-        el.style.transform = "";
-      }
+      el.style.transform = dist < 100 ? `translate(${dx * 0.25}px,${dy * 0.25}px)` : "";
     };
     window.addEventListener("mousemove", onMove);
     return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
-  // Lock body scroll when mobile menu open
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -59,19 +56,20 @@ export function Header() {
         aria-label="Main navigation"
       >
         <div className={styles.island}>
+
           {/* Logo */}
           <Link href="/" className={styles.logo} aria-label="AlgoCrew home">
             <span className={styles.logoDot} />
             <span className={styles.logoText}>AlgoCrew</span>
           </Link>
 
-          {/* Divider */}
           <div className={styles.divider} aria-hidden="true" />
 
-          {/* Nav links — desktop */}
+          {/* Desktop nav */}
           <ul className={styles.navLinks} role="list">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = pathname === link.href ||
+                (link.href !== "/" && pathname.startsWith(link.href));
               return (
                 <li key={link.href}>
                   <Link
@@ -80,7 +78,9 @@ export function Header() {
                     aria-current={isActive ? "page" : undefined}
                   >
                     {link.label}
-                    {isActive && <span className={styles.activePip} aria-hidden="true" />}
+                    {link.badge && (
+                      <span className={styles.navBadge}>{link.badge}</span>
+                    )}
                   </Link>
                 </li>
               );
@@ -89,18 +89,16 @@ export function Header() {
 
           {/* Right cluster */}
           <div className={styles.rightCluster}>
-            {/* Theme toggle */}
             <div className={styles.themeToggleWrap}>
               <ThemeToggle />
             </div>
 
-            {/* CTA */}
             <Link href="/contact" className={styles.cta} ref={ctaRef}>
+              <span className={styles.ctaShimmer} aria-hidden="true" />
               <span className={styles.ctaText}>Get Started</span>
               <span className={styles.ctaArrow} aria-hidden="true">→</span>
             </Link>
 
-            {/* Mobile hamburger */}
             <button
               className={`${styles.hamburger} ${menuOpen ? styles.open : ""}`}
               onClick={() => setMenuOpen(!menuOpen)}
@@ -124,10 +122,12 @@ export function Header() {
         aria-label="Navigation menu"
       >
         <div className={styles.mobileMenuBg} onClick={() => setMenuOpen(false)} />
+
         <div className={styles.mobileMenuInner}>
           <div className={styles.mobileMenuHeader}>
             <Link href="/" className={styles.mobileLogo} onClick={() => setMenuOpen(false)}>
-              <span className={styles.logoDot} />AlgoCrew
+              <span className={styles.logoDot} />
+              AlgoCrew
             </Link>
             <button
               className={styles.mobileClose}
@@ -139,20 +139,29 @@ export function Header() {
           </div>
 
           <ul className={styles.mobileLinks} role="list">
-            {navLinks.map((link, i) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`${styles.mobileLink} ${pathname === link.href ? styles.mobileLinkActive : ""}`}
-                  onClick={() => setMenuOpen(false)}
-                  style={{ transitionDelay: menuOpen ? `${i * 50 + 80}ms` : "0ms" }}
-                >
-                  <span className={styles.mobileLinkNum}>0{i + 1}</span>
-                  <span className={styles.mobileLinkLabel}>{link.label}</span>
-                  <span className={styles.mobileLinkArrow}>→</span>
-                </Link>
-              </li>
-            ))}
+            {navLinks.map((link, i) => {
+              const isActive = pathname === link.href ||
+                (link.href !== "/" && pathname.startsWith(link.href));
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={`${styles.mobileLink} ${isActive ? styles.mobileLinkActive : ""}`}
+                    onClick={() => setMenuOpen(false)}
+                    style={{ transitionDelay: menuOpen ? `${i * 45 + 60}ms` : "0ms" }}
+                  >
+                    <span className={styles.mobileLinkNum}>0{i + 1}</span>
+                    <span className={styles.mobileLinkLabel}>
+                      {link.label}
+                      {link.badge && (
+                        <span className={styles.mobileBadge}>{link.badge}</span>
+                      )}
+                    </span>
+                    <span className={styles.mobileLinkArrow}>→</span>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
 
           <div className={styles.mobileFooter}>
@@ -160,9 +169,18 @@ export function Header() {
               href="/contact"
               className={styles.mobileCta}
               onClick={() => setMenuOpen(false)}
-              style={{ transitionDelay: menuOpen ? "400ms" : "0ms" }}
+              style={{ transitionDelay: menuOpen ? "380ms" : "0ms" }}
             >
               Book a Strategy Call →
+            </Link>
+            <Link
+              href="/careers"
+              className={styles.mobileCtaGhost}
+              onClick={() => setMenuOpen(false)}
+              style={{ transitionDelay: menuOpen ? "420ms" : "0ms" }}
+            >
+              <span className={styles.mobileCtaGhostDot} />
+              We&apos;re hiring — View open roles
             </Link>
           </div>
         </div>

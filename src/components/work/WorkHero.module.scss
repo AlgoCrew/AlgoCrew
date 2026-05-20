@@ -1,0 +1,79 @@
+.section {
+  padding: 140px 60px 80px;
+  background: var(--bg-page);
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 768px) { padding: 120px 24px 60px; }
+}
+
+.glow {
+  position: absolute; top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 900px; height: 500px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(6,200,232,0.07) 0%, rgba(37,99,235,0.04) 40%, transparent 70%);
+  pointer-events: none;
+}
+
+.inner {
+  max-width: 1280px; margin: 0 auto; position: relative; z-index: 1;
+}
+
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
+}
+
+.label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--text-muted);
+  display: block; margin-bottom: 20px;
+}
+
+.heading {
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 900; letter-spacing: -0.04em;
+  color: var(--text-primary); margin: 0 0 24px; line-height: 0.97;
+}
+
+.accent {
+  background: linear-gradient(135deg, #06c8e8 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sub {
+  font-size: 1.1rem; color: var(--text-muted);
+  max-width: 520px; line-height: 1.7; margin: 0 0 56px;
+}
+
+.statsRow { display: flex; gap: 0; flex-wrap: wrap; }
+
+.stat {
+  display: flex; flex-direction: column;
+  padding: 0 40px 0 0;
+  border-right: 1px solid var(--border-subtle);
+  margin-right: 40px;
+
+  &:last-child { border-right: none; margin-right: 0; }
+
+  @media (max-width: 600px) {
+    width: 50%; padding: 12px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-right: 0;
+  }
+}
+
+.statNum {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 900; letter-spacing: -0.04em;
+  color: var(--text-primary);
+  line-height: 1; margin-bottom: 4px;
+}
+
+.statLabel {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--text-muted);
+}

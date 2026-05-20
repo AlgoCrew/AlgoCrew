@@ -13,7 +13,7 @@ const services = [
     tagline: "Pre-vetted IT Talent",
     desc: "Scale your technical capabilities instantly with dedicated managed teams. From staff augmentation to full turnkey delivery.",
     tags: ["Staff Augmentation", "Dedicated Teams", "Project Management"],
-    color: "#00cccc",
+    color: "#06c8e8",
     icon: "◈",
   },
   {

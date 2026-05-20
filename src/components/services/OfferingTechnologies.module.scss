@@ -120,16 +120,16 @@
     box-shadow 0.3s ease;
 
   &:hover {
-    border-color: color-mix(in srgb, var(--c, #00cccc) 50%, transparent);
-    background: color-mix(in srgb, var(--c, #00cccc) 7%, var(--bg-card));
+    border-color: color-mix(in srgb, var(--c, #06c8e8) 50%, transparent);
+    background: color-mix(in srgb, var(--c, #06c8e8) 7%, var(--bg-card));
     transform: translateY(-5px);
     box-shadow:
       0 10px 32px rgba(0, 0, 0, 0.2),
-      0 0 24px color-mix(in srgb, var(--c, #00cccc) 20%, transparent);
+      0 0 24px color-mix(in srgb, var(--c, #06c8e8) 20%, transparent);
     z-index: 10;
 
-    .pillIconWrap { background: color-mix(in srgb, var(--c, #00cccc) 18%, transparent); }
-    .pillIcon { color: var(--c, #00cccc); filter: none; }
+    .pillIconWrap { background: color-mix(in srgb, var(--c, #06c8e8) 18%, transparent); }
+    .pillIcon { color: var(--c, #06c8e8); filter: none; }
     .pillName { color: var(--text-primary); }
     .pillCategory { opacity: 1; }
   }

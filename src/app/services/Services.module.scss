@@ -1,0 +1,203 @@
+/* ================================================================
+   SERVICES PAGE — modern editorial
+   ================================================================ */
+
+/* ── Hero ── */
+.hero {
+  padding: 160px 60px 100px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) { padding: 120px 24px 64px; }
+}
+
+.heroLabel {
+  display: inline-block;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--brand-cyan, #06c8e8);
+  margin-bottom: 20px;
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 900; letter-spacing: -0.04em;
+  color: var(--text-primary); margin: 0 0 24px; line-height: 1;
+}
+
+.heroAccent {
+  background: linear-gradient(135deg, #06c8e8 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSub {
+  font-size: 1.05rem; color: var(--text-muted);
+  max-width: 480px; line-height: 1.7; margin: 0 0 48px;
+}
+
+/* Stats row */
+.heroStats {
+  display: flex; gap: 40px; flex-wrap: wrap;
+}
+
+.heroStat {}
+
+.heroStatNum {
+  font-size: 1.8rem; font-weight: 900; letter-spacing: -0.04em;
+  color: var(--text-primary); display: block;
+}
+
+.heroStatLabel {
+  font-size: 11px; font-weight: 600; color: var(--text-muted);
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+
+/* ── Grid section ── */
+.gridSection {
+  padding: 0 60px 120px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) { padding: 0 24px 80px; }
+}
+
+.sectionLabel {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-bottom: 32px; display: block;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+
+  @media (max-width: 1024px) { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 600px)  { grid-template-columns: 1fr; }
+}
+
+/* ── Service card ── */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  border-radius: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+
+  &::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at top left, color-mix(in srgb, var(--accent, #06c8e8) 6%, transparent), transparent 60%);
+    opacity: 0; transition: opacity 0.4s;
+    pointer-events: none;
+  }
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--accent, #06c8e8) 35%, transparent);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+
+    &::before { opacity: 1; }
+    .cardArrow { transform: translate(3px, -3px); }
+    .cardAccentLine { width: 100%; }
+  }
+}
+
+/* Bottom accent line */
+.cardAccentLine {
+  position: absolute; bottom: 0; left: 0;
+  height: 2px; width: 0%;
+  background: linear-gradient(90deg, var(--accent, #06c8e8), transparent);
+  transition: width 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+
+.cardHeader {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.cardCat {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent, #06c8e8);
+  padding: 4px 10px; border-radius: 100px;
+  background: color-mix(in srgb, var(--accent, #06c8e8) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent, #06c8e8) 20%, transparent);
+}
+
+.cardMetric {
+  font-size: 11px; font-weight: 700;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.cardArrow {
+  color: var(--text-muted);
+  font-size: 18px;
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
+  flex-shrink: 0;
+}
+
+.cardName {
+  font-size: 1.25rem; font-weight: 900; letter-spacing: -0.03em;
+  color: var(--text-primary); margin: 0 0 10px;
+}
+
+.cardDesc {
+  font-size: 13px; color: var(--text-muted);
+  line-height: 1.65; margin: 0 0 20px;
+  flex: 1;
+}
+
+.cardTags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+
+.cardTag {
+  font-size: 10px; font-weight: 600;
+  padding: 3px 9px; border-radius: 100px;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+}
+
+/* ── CTA strip ── */
+.cta {
+  text-align: center;
+  padding: 80px 60px 120px;
+  border-top: 1px solid var(--border-subtle);
+
+  @media (max-width: 768px) { padding: 60px 24px 80px; }
+}
+
+.ctaTitle {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900; letter-spacing: -0.04em;
+  color: var(--text-primary); margin: 0 0 16px;
+}
+
+.ctaSub {
+  font-size: 1rem; color: var(--text-muted);
+  margin: 0 0 36px;
+}
+
+.ctaBtn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 16px 40px; border-radius: 100px;
+  background: linear-gradient(135deg, #06c8e8 0%, #2563eb 100%);
+  color: #04121a; -webkit-text-fill-color: #04121a;
+  font-size: 15px; font-weight: 800;
+  text-decoration: none; letter-spacing: -0.01em;
+  transition: transform 0.25s, box-shadow 0.25s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(6,200,232,0.3);
+  }
+}

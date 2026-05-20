@@ -3,7 +3,7 @@
 }
 
 .accentTag {
-  color: #00ccccf0;
+  color: #06c8e8;
   letter-spacing: 0.3em;
   margin-bottom: 8px;
 }
@@ -14,8 +14,8 @@
 
 .cardItem {
   position: relative;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
   border-radius: 24px;
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -23,8 +23,8 @@
   height: 100%;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(0, 204, 204, 0.3);
+    background: var(--bg-elevated);
+    border-color: rgba(6, 200, 232, 0.3);
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 
@@ -33,13 +33,13 @@
     }
 
     .cardDot {
-      background: #00ccccf0;
-      box-shadow: 0 0 15px #00ccccf0;
+      background: #06c8e8;
+      box-shadow: 0 0 15px #06c8e8;
     }
 
     .line {
       width: 100%;
-      background: #00ccccf0;
+      background: #06c8e8;
     }
   }
 }

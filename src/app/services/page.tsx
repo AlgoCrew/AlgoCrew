@@ -1,6 +1,14 @@
+export const dynamic = "force-static";
+
 import { Meta } from "@once-ui-system/core";
 import { baseURL } from "@/resources";
+import { categorizedServices } from "@/resources";
 import Link from "next/link";
+import styles from "./Services.module.scss";
+import AnimatedTestimonials from "@/components/home/Testimonals";
+import { ProcessSteps } from "@/components/home/ProcessStep";
+import { FAQ } from "@/components/home/FAQ";
+import { SendUsEmail } from "@/components/home/SendUsEmail";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -12,95 +20,103 @@ export async function generateMetadata() {
   });
 }
 
-const services = [
-  {
-    id: "team-services",
-    num: "01",
-    title: "Strategic Staffing",
-    desc: "Scale your technical capabilities instantly with dedicated managed teams. From staff augmentation to full turnkey delivery.",
-    tags: ["Staff Augmentation", "Dedicated Teams", "Project Management"],
-    color: "#00cccc",
-  },
-  {
-    id: "web-app-development",
-    num: "02",
-    title: "Product Engineering",
-    desc: "Bespoke digital solutions engineered for performance and market dominance. Web, mobile, SaaS — built to last.",
-    tags: ["Web & Mobile", "SaaS Platforms", "E-commerce"],
-    color: "#0077ff",
-  },
-  {
-    id: "cloud-devops",
-    num: "03",
-    title: "Cloud & DevOps",
-    desc: "Architecting the backbone of modern business with cloud-native transitions, CI/CD pipelines, and enterprise security.",
-    tags: ["DevOps", "Cybersecurity", "Cloud Migration"],
-    color: "#7c3aed",
-  },
-  {
-    id: "data-automation",
-    num: "04",
-    title: "Data & AI Solutions",
-    desc: "Leverage the next industrial revolution with Generative AI, machine learning, and intelligent automation workflows.",
-    tags: ["Generative AI", "Blockchain", "AR/VR"],
-    color: "#f59e0b",
-  },
-];
+const accentColors: Record<string, string> = {
+  "web-app-development":  "#06c8e8",
+  "cloud-devops":         "#a78bfa",
+  "e-commerce":           "#f472b6",
+  "security-quality":     "#ef4444",
+  "data-automation":      "#34d399",
+  "microsoft-solutions":  "#3b82f6",
+  "digital-marketing":    "#fb923c",
+  "team-services":        "#fbbf24",
+  "emerging-tech":        "#c084fc",
+  "gaming":               "#4ade80",
+};
+
+const services = categorizedServices as any[];
 
 export default function ServicesPage() {
   return (
-    <main style={{ minHeight: "100vh", background: "#030609", paddingTop: "100px" }}>
-      {/* Hero */}
-      <section style={{ padding: "80px 60px 120px", maxWidth: "1200px", margin: "0 auto" }}>
-        <span style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", display: "block", marginBottom: "20px" }}>
-          WHAT WE DO
-        </span>
-        <h1 style={{ fontSize: "clamp(3rem, 7vw, 6rem)", fontWeight: 900, letterSpacing: "-0.04em", color: "white", margin: "0 0 24px", lineHeight: 1 }}>
+    <main style={{ width: "100%", overflowX: "clip", background: "var(--bg-page)" }}>
+
+      {/* ── Hero ── */}
+      <section className={styles.hero}>
+        <span className={styles.heroLabel}>WHAT WE DO</span>
+        <h1 className={styles.heroTitle}>
           Our{" "}
-          <span style={{ background: "linear-gradient(135deg, #00cccc, #0077ff)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            Capabilities
-          </span>
+          <span className={styles.heroAccent}>Capabilities</span>
         </h1>
-        <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.45)", maxWidth: "480px", lineHeight: 1.7, margin: 0 }}>
-          End-to-end digital solutions from a team of elite engineers. Pick a vertical or go all-in.
+        <p className={styles.heroSub}>
+          End-to-end digital solutions from a team of elite engineers.
+          {" "}10 practice areas. 30+ sub-services. One crew.
         </p>
+        <div className={styles.heroStats}>
+          <div className={styles.heroStat}>
+            <span className={styles.heroStatNum}>10</span>
+            <span className={styles.heroStatLabel}>Service Areas</span>
+          </div>
+          <div className={styles.heroStat}>
+            <span className={styles.heroStatNum}>30+</span>
+            <span className={styles.heroStatLabel}>Sub-services</span>
+          </div>
+          <div className={styles.heroStat}>
+            <span className={styles.heroStatNum}>8+</span>
+            <span className={styles.heroStatLabel}>Countries Served</span>
+          </div>
+          <div className={styles.heroStat}>
+            <span className={styles.heroStatNum}>Top 1%</span>
+            <span className={styles.heroStatLabel}>Talent Only</span>
+          </div>
+        </div>
       </section>
 
-      {/* Services list */}
-      <section style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 60px 160px" }}>
-        {services.map((s) => (
-          <Link
-            key={s.id}
-            href={`/services/${s.id}`}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "80px 1fr auto",
-              gap: "40px",
-              padding: "48px 0",
-              borderTop: "1px solid rgba(255,255,255,0.06)",
-              textDecoration: "none",
-              alignItems: "center",
-              transition: "all 0.25s ease",
-            }}
-          >
-            <span style={{ fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.2)", fontFamily: "monospace" }}>{s.num}</span>
-            <div>
-              <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)", fontWeight: 900, color: "white", letterSpacing: "-0.03em", margin: "0 0 12px" }}>
-                {s.title}
-              </h2>
-              <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.4)", margin: "0 0 16px", lineHeight: 1.6, maxWidth: "500px" }}>{s.desc}</p>
-              <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-                {s.tags.map(t => (
-                  <span key={t} style={{ fontSize: "11px", padding: "4px 10px", borderRadius: "100px", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.4)" }}>
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <span style={{ fontSize: "24px", color: s.color, opacity: 0.7 }}>→</span>
-          </Link>
-        ))}
+      {/* ── Services Grid ── */}
+      <section className={styles.gridSection}>
+        <span className={styles.sectionLabel}>ALL SERVICES</span>
+        <div className={styles.grid}>
+          {services.map((s) => {
+            const accent = accentColors[s.slug] ?? "#06c8e8";
+            const tags: string[] = (s.includes ?? []).slice(0, 3).map((i: any) => i.name);
+            return (
+              <Link
+                key={s.slug}
+                href={`/services/${s.slug}`}
+                className={styles.card}
+                style={{ "--accent": accent } as React.CSSProperties}
+              >
+                <div className={styles.cardAccentLine} />
+                <div className={styles.cardHeader}>
+                  <span className={styles.cardCat}>{s.category}</span>
+                  <span className={styles.cardArrow}>↗</span>
+                </div>
+                <h2 className={styles.cardName}>{s.name}</h2>
+                <p className={styles.cardDesc}>{s.description}</p>
+                <div className={styles.cardTags}>
+                  {tags.map((t: string) => (
+                    <span key={t} className={styles.cardTag}>{t}</span>
+                  ))}
+                  {(s.includes?.length ?? 0) > 3 && (
+                    <span className={styles.cardTag}>+{s.includes.length - 3} more</span>
+                  )}
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </section>
+
+      {/* ── How we work ── */}
+      <ProcessSteps />
+
+      {/* ── Testimonials ── */}
+      <AnimatedTestimonials />
+
+      {/* ── FAQ ── */}
+      <FAQ />
+
+      {/* ── SendUsEmail CTA ── */}
+      <SendUsEmail />
+
     </main>
   );
 }

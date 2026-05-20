@@ -1,33 +1,48 @@
-import { getPosts } from "@/utils/utils";
-import { baseURL, ourProjects, categorizedServices, routes as routesConfig } from "@/resources";
+import type { MetadataRoute } from "next";
+import { baseURL, categorizedServices } from "@/resources";
+import { ourProjects } from "@/resources/ourProjects";
+import { blogPosts } from "@/resources/blog";
 
-export default async function sitemap() {
-  const blogs = getPosts(["src", "app", "blog", "posts"]).map((post) => ({
-    url: `${baseURL}/blog/${post.slug}`,
-    lastModified: post.metadata.publishedAt,
+export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date().toISOString();
+
+  /* ── Static routes ── */
+  const staticRoutes: MetadataRoute.Sitemap = [
+    { url: baseURL,                    lastModified: now, changeFrequency: "weekly",  priority: 1.0  },
+    { url: `${baseURL}/services`,      lastModified: now, changeFrequency: "weekly",  priority: 0.9  },
+    { url: `${baseURL}/work`,          lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseURL}/pricing`,       lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseURL}/about`,         lastModified: now, changeFrequency: "monthly", priority: 0.8  },
+    { url: `${baseURL}/careers`,       lastModified: now, changeFrequency: "weekly",  priority: 0.8  },
+    { url: `${baseURL}/blog`,          lastModified: now, changeFrequency: "daily",   priority: 0.9  },
+    { url: `${baseURL}/contact`,       lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${baseURL}/privacy-policy`,lastModified: now, changeFrequency: "yearly",  priority: 0.3  },
+    { url: `${baseURL}/terms`,         lastModified: now, changeFrequency: "yearly",  priority: 0.3  },
+  ];
+
+  /* ── Service detail pages ── */
+  const serviceRoutes: MetadataRoute.Sitemap = categorizedServices.map((s) => ({
+    url: `${baseURL}/services/${s.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
   }));
 
-  const works = getPosts(["src", "app", "work", "projects"]).map((post) => ({
-    url: `${baseURL}/work/${post.slug}`,
-    lastModified: post.metadata.publishedAt,
+  /* ── Blog posts ── */
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((p) => ({
+    url: `${baseURL}/blog/${p.slug}`,
+    lastModified: new Date(p.date).toISOString(),
+    changeFrequency: "monthly",
+    priority: 0.7,
   }));
 
-  const projects = ourProjects.map((post) => ({
-    url: `${baseURL}/projects/${post.slug}`,
-    lastModified: "2025-07-12",
+  /* ── Work / case study pages ── */
+  const workRoutes: MetadataRoute.Sitemap = ourProjects.map((p) => ({
+    url: `${baseURL}/work/${p.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.7,
   }));
 
-  const services = categorizedServices.map((post) => ({
-    url: `${baseURL}/services/${post.slug}`,
-    lastModified: "2025-07-12",
-  }));
-
-  const activeRoutes = Object.keys(routesConfig).filter((route) => routesConfig[route as keyof typeof routesConfig]);
-
-  const routes = activeRoutes.map((route) => ({
-    url: `${baseURL}${route !== "/" ? route : ""}`,
-    lastModified: new Date().toISOString().split("T")[0],
-  }));
-
-  return [...routes, ...blogs, ...works, ...projects, ...services];
+  return [...staticRoutes, ...serviceRoutes, ...blogRoutes, ...workRoutes];
 }

@@ -50,14 +50,14 @@ export const ServicesHero = () => {
       {/* LEFT: Text Content */}
       <Column flex={6} gap="24" className={styles.textContent} align="start">
         <RevealFx translateY="8">
-            <Text variant="label-strong-s" style={{ color: "#00ccccf0", letterSpacing: '0.3em' }}>
+            <Text variant="label-strong-s" style={{ color: "#06c8e8", letterSpacing: '0.3em' }}>
             OUR EXPERTISE
             </Text>
         </RevealFx>
 
         <Heading wrap="balance" variant="display-strong-l" marginTop="16">
           {services?.headline?.split(' ').map((word, i) => (
-            <span key={i} style={word.toLowerCase() === 'digital' || word.toLowerCase() === 'growth' ? {color: '#00ccccf0'} : {}}>
+            <span key={i} style={word.toLowerCase() === 'digital' || word.toLowerCase() === 'growth' ? {color: '#06c8e8'} : {}}>
               {word}{' '}
             </span>
           ))}
@@ -88,7 +88,7 @@ export const ServicesHero = () => {
         
         {/* Node 1: Dev */}
         <div className={`${styles.iconNode} floating-node`} style={{ top: '5%', left: '15%' }}>
-          <Icon name="code" size="m" style={{ color: "#00ccccf0" }} />
+          <Icon name="code" size="m" style={{ color: "#06c8e8" }} />
           <span>DEV</span>
         </div>
 
@@ -122,7 +122,7 @@ export const ServicesHero = () => {
             <Icon name="globe" size="xl" />
           </div>
 
-          <Text variant="label-strong-xs" onBackground="brand-strong" style={{ position: 'absolute', bottom: '24px', color: '#00ccccf0'}}>
+          <Text variant="label-strong-xs" onBackground="brand-strong" style={{ position: 'absolute', bottom: '24px', color: '#06c8e8'}}>
             <div className={styles.pulseDot} />
 
             <Text>

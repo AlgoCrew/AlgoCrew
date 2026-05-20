@@ -1,0 +1,74 @@
+/* ================================================================
+   LEGAL PAGES — Privacy Policy, Terms
+   ================================================================ */
+
+.page {
+  background: var(--bg-page);
+  min-height: 100vh;
+  padding: 140px 60px 120px;
+
+  @media (max-width: 768px) { padding: 100px 24px 80px; }
+}
+
+.inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 64px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.label {
+  display: block;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.25em;
+  text-transform: uppercase; color: #06c8e8;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 900; letter-spacing: -0.04em;
+  color: var(--text-primary); margin: 0 0 16px; line-height: 1;
+}
+
+.meta {
+  font-size: 13px; color: var(--text-muted); margin: 0;
+}
+
+/* Body */
+.body {
+  display: flex; flex-direction: column; gap: 0;
+}
+
+.section {
+  padding: 36px 0;
+  border-bottom: 1px solid var(--border-subtle);
+
+  &:last-child { border-bottom: none; }
+}
+
+.sectionTitle {
+  font-size: 1rem; font-weight: 800; color: var(--text-primary);
+  letter-spacing: -0.02em; margin: 0 0 16px;
+}
+
+.sectionBody {
+  font-size: 14px; color: var(--text-muted); line-height: 1.8;
+
+  p { margin: 0 0 12px; &:last-child { margin-bottom: 0; } }
+
+  ul {
+    padding-left: 20px; margin: 8px 0 12px;
+    li { margin-bottom: 6px; }
+  }
+
+  strong { color: var(--text-primary); font-weight: 700; }
+
+  a {
+    color: #06c8e8; text-decoration: none;
+    &:hover { text-decoration: underline; }
+  }
+}

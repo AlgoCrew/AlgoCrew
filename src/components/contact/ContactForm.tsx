@@ -15,7 +15,7 @@ export default function ContactForm() {
   const [errorMessage, setErrorMessage] = useState('');
   const [selectedPlan, setSelectedPlan] = useState('');
   
-  const brandColor = "#00ccccf0";
+  const brandColor = "#06c8e8";
   const SERVICE_ID = 'service_v75amug';
   const TEMPLATE_ID_ADMIN = 'template_unqc4m7';
   const TEMPLATE_ID_USER_CONFIRMATION = 'template_mp8tgwx';
@@ -187,16 +187,17 @@ export default function ContactForm() {
               </Flex>
             )}
 
-            <Button 
-                fillWidth 
-                size="l" 
-                type="submit" 
+            <Button
+                fillWidth
+                size="l"
+                type="submit"
                 loading={loading}
-                style={{ 
-                    background: brandColor, 
-                    color: 'white', 
-                    fontWeight: 'bold',
-                    boxShadow: `0 10px 20px -5px rgba(0, 204, 204, 0.3)`
+                style={{
+                    background: "linear-gradient(135deg, #06c8e8 0%, #2563eb 100%)",
+                    color: '#04121a',
+                    WebkitTextFillColor: '#04121a',
+                    fontWeight: 800,
+                    boxShadow: "0 10px 28px -5px rgba(6, 200, 232, 0.35)",
                 }}
             >
               Send Message

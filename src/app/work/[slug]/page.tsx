@@ -1,99 +1,70 @@
 import { notFound } from "next/navigation";
-import { getPosts } from "@/utils/utils";
-import { Meta, Schema, AvatarGroup, Button, Column, Flex, Heading, Media, Text } from "@once-ui-system/core";
+import { Meta, Schema } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
-import { formatDate } from "@/utils/formatDate";
-import { ScrollToHash, CustomMDX } from "@/components";
+import { ourProjects } from "@/resources";
 import { Metadata } from "next";
+import { ProjectDetail } from "@/components/work/ProjectDetail";
+import { SendUsEmail } from "@/components/home/SendUsEmail";
+
+const catColors: Record<string, string> = {
+  "Web application":   "#06c8e8",
+  "Cloud application": "#a78bfa",
+  "SaaS Platform":     "#34d399",
+};
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = getPosts(["src", "app", "work", "projects"]);
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  return (ourProjects as any[]).map((p: any) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string | string[] }>;
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const routeParams = await params;
-  const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
-
-  const posts = getPosts(["src", "app", "work", "projects"])
-  let post = posts.find((post) => post.slug === slugPath);
-
-  if (!post) return {};
-
+  const { slug } = await params;
+  const project = (ourProjects as any[]).find((p: any) => p.slug === slug);
+  if (!project) return {};
   return Meta.generate({
-    title: post.metadata.title,
-    description: post.metadata.summary,
-    baseURL: baseURL,
-    image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
-    path: `${work.path}/${post.slug}`,
+    title: `${project.title} — AlgoCrew`,
+    description: project.description,
+    baseURL,
+    image: project.img,
+    path: `${work.path}/${slug}`,
   });
 }
 
-export default async function Project({
-  params
-}: { params: Promise<{ slug: string | string[] }> }) {
-  const routeParams = await params;
-  const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
+export default async function ProjectPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const project = (ourProjects as any[]).find((p: any) => p.slug === slug);
+  if (!project) notFound();
 
-  let post = getPosts(["src", "app", "work", "projects"]).find((post) => post.slug === slugPath);
-
-  if (!post) {
-    notFound();
-  }
-
-  const avatars =
-    post.metadata.team?.map((person) => ({
-      src: person.avatar,
-    })) || [];
+  const accent   = catColors[project.category] ?? "#06c8e8";
+  const all      = ourProjects as any[];
+  const idx      = all.findIndex((p: any) => p.slug === slug);
+  const prev     = idx > 0 ? all[idx - 1] : null;
+  const next     = idx < all.length - 1 ? all[idx + 1] : null;
 
   return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="l">
+    <main style={{ width: "100%", overflowX: "clip", background: "var(--bg-page)" }}>
       <Schema
-        as="blogPosting"
+        as="webPage"
         baseURL={baseURL}
-        path={`${work.path}/${post.slug}`}
-        title={post.metadata.title}
-        description={post.metadata.summary}
-        datePublished={post.metadata.publishedAt}
-        dateModified={post.metadata.publishedAt}
-        image={post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`}
+        path={`${work.path}/${slug}`}
+        title={`${project.title} — AlgoCrew`}
+        description={project.description}
+        image={project.img}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Column maxWidth="xs" gap="16">
-        <Button data-border="rounded" href="/work" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
-          Projects
-        </Button>
-        <Heading variant="display-strong-s">{post.metadata.title}</Heading>
-      </Column>
-      {post.metadata.images.length > 0 && (
-        <Media
-          priority
-          aspectRatio="16 / 9"
-          radius="m"
-          alt="image"
-          src={post.metadata.images[0]}
-        />
-      )}
-      <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
-        <Flex gap="12" marginBottom="24" vertical="center">
-          {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
-          <Text variant="body-default-s" onBackground="neutral-weak">
-            {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
-          </Text>
-        </Flex>
-        <CustomMDX source={post.content} />
-      </Column>
-      <ScrollToHash />
-    </Column>
+      <ProjectDetail project={project} accent={accent} prev={prev} next={next} />
+      <SendUsEmail />
+    </main>
   );
 }

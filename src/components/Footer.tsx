@@ -1,104 +1,150 @@
 import Link from "next/link";
 import styles from "./Footer.module.scss";
+import {
+  TbBrandLinkedin, TbBrandGithub, TbBrandX, TbMail,
+  TbMapPin, TbPhone, TbArrowUpRight,
+} from "react-icons/tb";
+
+const stats = [
+  { n: "Top 1%", l: "Engineers only"   },
+  { n: "8+",     l: "Countries served" },
+  { n: "48h",    l: "First commit"     },
+  { n: "30-day", l: "Rolling exit"     },
+];
 
 const services = [
-  { href: "/services/team-services", label: "Strategic Staffing" },
-  { href: "/services/web-app-development", label: "Product Engineering" },
-  { href: "/services/cloud-devops", label: "Cloud & DevOps" },
-  { href: "/services/data-automation", label: "Data & AI" },
+  { href: "/services/web-app-development", label: "Product Engineering"  },
+  { href: "/services/cloud-devops",        label: "Cloud & DevOps"       },
+  { href: "/services/data-automation",     label: "Data & AI"            },
+  { href: "/services/team-services",       label: "Strategic Staffing"   },
+  { href: "/services/e-commerce",          label: "E-Commerce"           },
+  { href: "/services/emerging-tech",       label: "Emerging Tech"        },
 ];
 
 const company = [
-  { href: "/about", label: "About" },
-  { href: "/work", label: "Work" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
+  { href: "/about",    label: "About Us"     },
+  { href: "/work",     label: "Case Studies" },
+  { href: "/pricing",  label: "Pricing"      },
+  { href: "/careers",  label: "Careers", badge: true },
+  { href: "/blog",     label: "Blog"         },
+  { href: "/contact",  label: "Contact"      },
+];
+
+const socials = [
+  { href: "https://www.linkedin.com/company/algocrew", Icon: TbBrandLinkedin, label: "LinkedIn"   },
+  { href: "https://github.com/algocrew",               Icon: TbBrandGithub,   label: "GitHub"     },
+  { href: "https://x.com/algocrew",                    Icon: TbBrandX,        label: "X"          },
+  { href: "mailto:query@algocrew.io",                  Icon: TbMail,          label: "Email"      },
 ];
 
 export function Footer() {
   return (
     <footer className={styles.footer}>
+
       <div className={styles.inner}>
-        {/* Top grid */}
+
+        {/* ── Stats strip ── */}
+        <div className={styles.statsStrip}>
+          {stats.map(s => (
+            <div key={s.l} className={styles.statItem}>
+              <span className={styles.statNum}>{s.n}</span>
+              <span className={styles.statLabel}>{s.l}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* ── Main grid ── */}
         <div className={styles.grid}>
-          {/* Brand column */}
+
+          {/* Brand */}
           <div className={styles.brand}>
             <Link href="/" className={styles.logo}>
               <span className={styles.logoDot} />
               AlgoCrew
             </Link>
             <p className={styles.tagline}>
-              Elite software engineering for ambitious teams. Headquartered in Canada, operating globally.
+              Elite engineering for ambitious teams.
+              Senior-only, async-first, globally distributed.
             </p>
+            <div className={styles.availBadge}>
+              <span className={styles.availDot} />
+              Accepting new projects
+            </div>
+            <div className={styles.contactBlock}>
+              <a href="mailto:query@algocrew.io" className={styles.contactRow}>
+                <TbMail size={12} /><span>query@algocrew.io</span>
+              </a>
+              <a href="tel:+14374509656" className={styles.contactRow}>
+                <TbPhone size={12} /><span>+1 (437) 450-9656</span>
+              </a>
+              <div className={styles.contactRow}>
+                <TbMapPin size={12} /><span>Brampton, Canada 🇨🇦</span>
+              </div>
+            </div>
             <div className={styles.socials}>
-              <a
-                href="https://www.linkedin.com/company/algocrew"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.social}
-                aria-label="LinkedIn"
-              >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                  <rect x="2" y="9" width="4" height="12"/>
-                  <circle cx="4" cy="4" r="2"/>
-                </svg>
-              </a>
-              <a href="mailto:hello@algocrew.io" className={styles.social} aria-label="Email">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-              </a>
+              {socials.map(({ href, Icon, label }) => (
+                <a key={label} href={href} aria-label={label}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  className={styles.social}>
+                  <Icon size={15} />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Services column */}
-          <div className={styles.col}>
-            <h4 className={styles.colHeading}>Services</h4>
-            <ul className={styles.colLinks}>
+          {/* Services */}
+          <nav aria-label="Services">
+            <p className={styles.colHeading}>Services</p>
+            <ul className={styles.colList}>
               {services.map(l => (
-                <li key={l.href}>
-                  <Link href={l.href} className={styles.colLink}>{l.label}</Link>
-                </li>
+                <li key={l.href}><Link href={l.href} className={styles.colLink}>{l.label}</Link></li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Company column */}
-          <div className={styles.col}>
-            <h4 className={styles.colHeading}>Company</h4>
-            <ul className={styles.colLinks}>
+          {/* Company */}
+          <nav aria-label="Company">
+            <p className={styles.colHeading}>Company</p>
+            <ul className={styles.colList}>
               {company.map(l => (
                 <li key={l.href}>
-                  <Link href={l.href} className={styles.colLink}>{l.label}</Link>
+                  <Link href={l.href} className={styles.colLink}>
+                    {l.label}
+                    {l.badge && <span className={styles.hiringPip} />}
+                  </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* CTA column */}
-          <div className={styles.col}>
-            <h4 className={styles.colHeading}>Ready to build?</h4>
-            <p className={styles.ctaDesc}>Let&apos;s talk about your next project.</p>
+          {/* CTA */}
+          <div className={styles.ctaCol}>
+            <p className={styles.colHeading}>Let&apos;s build together</p>
+            <p className={styles.ctaText}>
+              From first commit to production — senior team, no lock-in, 100% your IP.
+            </p>
             <Link href="/contact" className={styles.ctaBtn}>
-              Start a Project →
+              Start a Project <TbArrowUpRight size={14} />
+            </Link>
+            <Link href="/careers" className={styles.ctaSecondary}>
+              Join the Crew →
             </Link>
           </div>
+
         </div>
 
-        {/* Divider */}
-        <div className={styles.divider} />
-
-        {/* Bottom bar */}
+        {/* ── Bottom bar ── */}
         <div className={styles.bottom}>
-          <p className={styles.copy}>
-            © {new Date().getFullYear()} AlgoCrew Inc. · Canada 🇨🇦
-          </p>
-          <p className={styles.copy} style={{ opacity: 0.4 }}>
-            Built with precision. Delivered with pride.
-          </p>
+          <span className={styles.copy}>© {new Date().getFullYear()} AlgoCrew Inc.</span>
+          <span className={styles.builtBy}>Built with precision. Delivered with pride.</span>
+          <div className={styles.legal}>
+            <Link href="/privacy-policy" className={styles.legalLink}>Privacy</Link>
+            <span className={styles.sep} />
+            <Link href="/terms" className={styles.legalLink}>Terms</Link>
+          </div>
         </div>
+
       </div>
     </footer>
   );

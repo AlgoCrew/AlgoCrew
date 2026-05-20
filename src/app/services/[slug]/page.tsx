@@ -1,73 +1,53 @@
 import { notFound } from "next/navigation";
-import { Meta, Schema, AvatarGroup, Button, Column, Flex, Heading, Grid, Text, RevealFx, Card } from "@once-ui-system/core";
-import { baseURL, about, person, work, categorizedServices } from "@/resources"; // Import categorizedServices
-import { formatDate } from "@/utils/formatDate"; // Keep if you add publishedAt back
-import { ScrollToHash, CustomMDX } from "@/components"; // Keep if you use CustomMDX for markdown content
-import { Metadata } from "next"; // Import Metadata type
-import ProjectCard from "@/components/projects/ProjectCard";
-import { Row, ToggleButton, useTheme } from '@once-ui-system/core';
-import HeroSection from "@/components/services/HeroSection";
+import { Meta, Schema } from "@once-ui-system/core";
+import { baseURL, about, person, categorizedServices } from "@/resources";
+import { Metadata } from "next";
+import Parallax from "@/components/services/Parallax";
 import IncludedServices from "@/components/services/IncludedServices";
 import Steps from "@/components/services/Steps";
-import Parallax from "@/components/services/Parallax";
-import { CtoCalendar } from "@/components/Calendars/CtoCalendar";
-import { SendUsEmail } from "@/components/services/SendUsEmail";
+import ServiceRelatedWork from "@/components/services/ServiceRelatedWork";
+import { FAQ } from "@/components/home/FAQ";
+import { SendUsEmail } from "@/components/home/SendUsEmail";
 
-// Generate static paths for all services based on their slugs
 export async function generateStaticParams() {
-  // Map over your imported categorizedServices array to get slugs
-  return categorizedServices.map((service) => ({
-    slug: service.slug,
-  }));
+  return (categorizedServices as any[]).map((s: any) => ({ slug: s.slug }));
 }
 
-// Generate metadata for each service page
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string | string[] }>;
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const routeParams = await params;
-  const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
-
-  let service = categorizedServices.find((p) => p.slug === slugPath);
-
-  if (!service) return {}; // Return empty metadata if service not found
-
+  const { slug } = await params;
+  const service = (categorizedServices as any[]).find((s: any) => s.slug === slug);
+  if (!service) return {};
   return Meta.generate({
-    title: service.title,       // Use service.title
-    description: service.description, // Use service.description for meta description
-    baseURL: baseURL,
-    image: service.image || `/api/og/generate?title=${encodeURIComponent(service.title)}`, // Use service.image
-    path: `/services/${service.slug}`, // Use service.slug for path
+    title: service.title,
+    description: service.description,
+    baseURL,
+    image: service.image || `/api/og/generate?title=${encodeURIComponent(service.title)}`,
+    path: `/services/${service.slug}`,
   });
 }
 
-// Main service component
-export default async function Service({
+export default async function ServicePage({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }) {
-
-  const routeParams = await params
-  const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
-  
-  let service = categorizedServices.find((p) => p.slug === slugPath);
-
-  if (!service?.name) {
-    notFound(); // Display 404 page if service not found
-  }
+  const { slug } = await params;
+  const service = (categorizedServices as any[]).find((s: any) => s.slug === slug);
+  if (!service?.name) notFound();
 
   return (
-    <Column as="section" maxWidth="l" horizontal="center" gap="xl">
+    <main style={{ width: "100%", overflowX: "clip", background: "var(--bg-page)" }}>
       <Schema
-        as="article" // 'article' is generally more appropriate for a service page than 'blogPosting'
+        as="article"
         baseURL={baseURL}
-        path={`/services/${service.slug}`} // Use service.slug for path
-        title={service.title}       // Use service.title
-        description={service.description} // Use service.description for schema description
-        image={service.image || `/api/og/generate?title=${encodeURIComponent(service.title)}`} // Use service.image
+        path={`/services/${service.slug}`}
+        title={service.title}
+        description={service.description}
+        image={service.image || `/api/og/generate?title=${encodeURIComponent(service.title)}`}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
@@ -75,23 +55,27 @@ export default async function Service({
         }}
       />
 
-      <Parallax service={service}/>
+      {/* Full-bleed parallax hero */}
+      <Parallax service={service} />
 
-      {/* <HeroSection service={service} /> */}
+      {/* Included sub-services grid */}
+      <div style={{ padding: "80px 0 40px", background: "var(--bg-page)" }}>
+        <IncludedServices service={service} />
+      </div>
 
-      <IncludedServices service={service} />
+      {/* Process steps timeline */}
+      <div style={{ padding: "40px 0 0", background: "var(--bg-page)" }}>
+        <Steps service={service} />
+      </div>
 
-      <Steps service={service} />
+      {/* Related projects from /work */}
+      <ServiceRelatedWork serviceSlug={service.slug} serviceName={service.name} />
 
-      <Column
-        id={about.intro.title}
-        maxWidth="m"
-        minHeight="80"
-        vertical="center"
-        // marginBottom="8"
-      >
-        <SendUsEmail />
-      </Column>
-    </Column>
+      {/* FAQ */}
+      <FAQ />
+
+      {/* Email CTA */}
+      <SendUsEmail />
+    </main>
   );
 }

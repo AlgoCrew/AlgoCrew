@@ -12,14 +12,27 @@ import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
 
 export async function generateMetadata() {
   return {
-    title: home.title,
+    title: {
+      default: home.title,
+      template: "%s | AlgoCrew",
+    },
     description: home.description,
     metadataBase: new URL(baseURL),
     alternates: {
       canonical: `${baseURL}${home.path}`,
     },
-
+    keywords: [
+      "software agency", "custom software development", "web development",
+      "mobile app development", "Next.js", "React", "Node.js", "AWS",
+      "cloud solutions", "IT consulting", "AlgoCrew",
+    ],
+    authors: [{ name: "AlgoCrew", url: baseURL }],
+    creator: "AlgoCrew",
+    publisher: "AlgoCrew",
     openGraph: {
+      type: "website",
+      locale: "en_US",
+      siteName: "AlgoCrew",
       title: home.title,
       description: home.description,
       url: `${baseURL}${home.path}`,
@@ -32,8 +45,36 @@ export async function generateMetadata() {
         },
       ],
     },
+    twitter: {
+      card: "summary_large_image",
+      site: "@algocrew",
+      creator: "@algocrew",
+      title: home.title,
+      description: home.description,
+      images: [`${baseURL}${home.image}`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     icons: {
-      icon: '/icon.png',
+      icon: [
+        { url: "/favicon.svg", type: "image/svg+xml" },
+        { url: "/images/icon.png", sizes: "any" },
+      ],
+      apple: "/images/icon.png",
+    },
+    manifest: "/manifest.json",
+    verification: {
+      // Add your Google Search Console verification token here after verifying
+      // google: "YOUR_GOOGLE_SITE_VERIFICATION_TOKEN",
     },
   };
 }
@@ -69,6 +110,58 @@ export default async function RootLayout({
       )}
     >
       <head>
+        {/* -- Preconnect for performance -- */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+        {/* -- Organization + WebSite schema -- */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": baseURL + "/#organization",
+                  name: "AlgoCrew",
+                  url: baseURL,
+                  logo: {
+                    "@type": "ImageObject",
+                    url: baseURL + "/images/LogoDark.png",
+                    width: 200,
+                    height: 60,
+                  },
+                  description: "Top-tier software agency delivering custom software development, cloud solutions, and mobile apps across North America.",
+                  email: "info@algocrew.io",
+                  foundingDate: "2020",
+                  areaServed: ["CA", "US", "GB"],
+                  sameAs: [
+                    "https://www.linkedin.com/company/algocrew/",
+                    "https://github.com/AlgoCrew",
+                  ],
+                  contactPoint: {
+                    "@type": "ContactPoint",
+                    contactType: "customer support",
+                    email: "info@algocrew.io",
+                    availableLanguage: ["English"],
+                  },
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": baseURL + "/#website",
+                  url: baseURL,
+                  name: "AlgoCrew",
+                  description: "Custom software development agency for web, mobile, cloud and AI.",
+                  publisher: { "@id": baseURL + "/#organization" },
+                },
+              ],
+            }),
+          }}
+        />
+
         <script
           id="theme-init"
           dangerouslySetInnerHTML={{
@@ -132,14 +225,7 @@ export default async function RootLayout({
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-WPN816FH63"
         />
-        <script id="ga">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-WPN816FH63');
-          `}
-        </script>
+        <script id="ga" dangerouslySetInnerHTML={{ __html: "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WPN816FH63');" }} />
 
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/images/icon.png" sizes="any" />

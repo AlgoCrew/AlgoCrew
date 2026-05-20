@@ -12,6 +12,10 @@ const routes = {
   "/projects": true,
   "/contact": true,
   "/hire": true,
+  "/careers": true,
+  "/pricing": true,
+  "/privacy-policy": true,
+  "/terms": true,
 };
 
 const display = {

@@ -117,9 +117,10 @@
   letter-spacing: 0.02em;
 
   &[data-active="true"] {
-    background: #00ccccf0 !important;
-    color: #ffffff !important; // Dark text on light brand color for readability
-    box-shadow: 0 4px 12px rgba(0, 204, 204, 0.3);
+    background: linear-gradient(135deg, #06c8e8 0%, #2563eb 100%) !important;
+    color: #04121a !important;
+    -webkit-text-fill-color: #04121a !important;
+    box-shadow: 0 4px 16px rgba(6, 200, 232, 0.35);
   }
 
   &[data-active="false"] {

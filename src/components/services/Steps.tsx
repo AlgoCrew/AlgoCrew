@@ -1,10 +1,9 @@
 "use client";
 
-import { Column, Flex, Heading, Text, RevealFx } from "@once-ui-system/core";
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import styles from './Steps.module.scss';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import styles from "./Steps.module.scss";
 
 export default function Steps({ service }: { service: any }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,106 +12,94 @@ export default function Steps({ service }: { service: any }) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Animate the vertical progress line height
-    gsap.fromTo(lineRef.current, 
+    // Animate progress line
+    gsap.fromTo(lineRef.current,
       { scaleY: 0 },
-      { 
-        scaleY: 1, 
+      {
+        scaleY: 1,
         ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top 20%",
           end: "bottom 80%",
           scrub: 0.5,
-        }
+        },
       }
     );
 
-    // Animate steps appearing and highlighting
-    const steps = gsap.utils.toArray(`.${styles.stepRow}`);
-    steps.forEach((step: any) => {
-      gsap.fromTo(step, 
+    // Animate each step row
+    const rows = gsap.utils.toArray<HTMLElement>(`.${styles.stepRow}`);
+    rows.forEach((step) => {
+      gsap.fromTo(step,
         { opacity: 0.3, y: 20 },
-        { 
-          opacity: 1, 
-          y: 0,
+        {
+          opacity: 1, y: 0,
           scrollTrigger: {
             trigger: step,
             start: "top 70%",
             end: "top 40%",
             scrub: true,
-          }
+          },
         }
       );
     });
   }, [service]);
 
+  if (!service.steps?.length) return null;
+
   return (
-    <>
-      {service.steps && service.steps.length > 0 && (
-        <Column 
-          ref={containerRef}
-          maxWidth="m" 
-          horizontal="center" 
-          gap="64"
-          className={styles.stepsSection}
-        >
-          <Column align="center" gap="16">
-            <Text variant="label-strong-s" style={{ color: '#00ccccf0', letterSpacing: '0.3em' }}>
-              THE PROCESS
-            </Text>
-            <Heading variant="display-strong-s" align="center">
-              How It Works
-            </Heading>
-          </Column>
+    <div ref={containerRef} className={styles.stepsSection}
+      style={{ maxWidth: 1100, margin: "0 auto", padding: "0 60px 80px" }}>
 
-          <Flex fillWidth position="relative" direction="column">
-            {/* The Background Track */}
-            <div className={styles.timelineTrack} />
-            {/* The Animated Progress Line */}
-            <div ref={lineRef} className={styles.timelineProgress} />
+      {/* Header */}
+      <div style={{ textAlign: "center", marginBottom: 72 }}>
+        <span style={{ display: "block", fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#06c8e8", marginBottom: 12 }}>
+          THE PROCESS
+        </span>
+        <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 900, letterSpacing: "-0.04em", color: "var(--text-primary)", margin: 0 }}>
+          How It Works
+        </h2>
+      </div>
 
-            {service.steps.map((step: any, index: number) => {
-              const isEven = index % 2 === 0;
-              return (
-                <Flex 
-                  key={index} 
-                  className={`${styles.stepRow} ${isEven ? styles.rowEven : styles.rowOdd}`}
-                  fillWidth
-                  align="center"
-                >
-                  {/* Content Side */}
-                  <Column className={styles.stepContent} gap="12">
-                    <Flex align="center" gap="12" className={styles.stepHeader}>
-                        <Text variant="label-strong-m" className={styles.stepNumber}>
-                            0{index + 1}
-                        </Text>
-                        <div className={styles.stepStatusLine} />
-                    </Flex>
-                    
-                    <Heading as="h3" variant="heading-strong-m">
-                      {step.title}
-                    </Heading>
-                    <Text onBackground="neutral-weak" variant="body-default-l" className={styles.stepDesc}>
-                      {step.description}
-                    </Text>
-                  </Column>
+      {/* Timeline */}
+      <div style={{ position: "relative" }}>
+        <div className={styles.timelineTrack} />
+        <div ref={lineRef} className={styles.timelineProgress} />
 
-                  {/* Center Dot Area */}
-                  <div className={styles.dotContainer}>
-                    <div className={styles.outerDot}>
-                        <div className={styles.innerDot} />
-                    </div>
-                  </div>
+        {service.steps.map((step: any, index: number) => {
+          const isEven = index % 2 === 0;
+          return (
+            <div key={index}
+              className={`${styles.stepRow} ${isEven ? styles.rowEven : styles.rowOdd}`}>
 
-                  {/* Empty spacer for alternating layout */}
-                  <div className={styles.spacer} />
-                </Flex>
-              );
-            })}
-          </Flex>
-        </Column>
-      )}
-    </>
+              {/* Content */}
+              <div className={styles.stepContent}>
+                <div className={styles.stepHeader}>
+                  <span className={styles.stepNumber}>0{index + 1}</span>
+                  <div className={styles.stepStatusLine} />
+                </div>
+                <h3 style={{ fontSize: "1.3rem", fontWeight: 800, color: "var(--text-primary)", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
+                  {step.title}
+                </h3>
+                <p className={styles.stepDesc}
+                  style={{ fontSize: 14, color: "var(--text-muted)", lineHeight: 1.7, margin: 0 }}>
+                  {step.description}
+                </p>
+              </div>
+
+              {/* Center dot */}
+              <div className={styles.dotContainer}>
+                <div className={styles.outerDot}>
+                  <div className={styles.innerDot} />
+                </div>
+              </div>
+
+              {/* Spacer */}
+              <div className={styles.spacer} />
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }

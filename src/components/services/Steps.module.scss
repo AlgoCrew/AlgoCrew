@@ -9,7 +9,7 @@
     transform: translateX(-50%);
     width: 2px;
     height: 100%;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--border-subtle);
     z-index: 1;
 }
 
@@ -19,7 +19,7 @@
     transform: translateX(-50%);
     width: 2px;
     height: 100%;
-    background: linear-gradient(to bottom, transparent, #00ccccf0, #00ccccf0);
+    background: linear-gradient(to bottom, transparent, #06c8e8, #06c8e8);
     z-index: 2;
     transform-origin: top;
 }
@@ -50,7 +50,7 @@
 }
 
 .stepNumber {
-    color: #00ccccf0;
+    color: #06c8e8;
     font-family: var(--font-family-code);
 }
 
@@ -71,7 +71,7 @@
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: var(--page-background);
+    background: var(--bg-page, var(--page-background));
     border: 2px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
@@ -91,11 +91,11 @@
 // Highlight the dot when the row becomes active via GSAP
 .stepRow:hover, :global(.active-step) {
     .outerDot {
-        border-color: #00ccccf0;
+        border-color: #06c8e8;
         box-shadow: 0 0 20px rgba(0, 204, 204, 0.4);
     }
     .innerDot {
-        background: #00ccccf0;
+        background: #06c8e8;
         transform: scale(1.2);
     }
 }
