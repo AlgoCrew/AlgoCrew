@@ -4,6 +4,7 @@ import '@/resources/custom.css'
 import './global.scss'
 
 
+import Script from "next/script";
 import { Background, Column, Flex, Meta, opacity, SpacingToken } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from '@/components';
 import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
@@ -218,11 +219,16 @@ export default async function RootLayout({
           }}
         />
 
-        <script
-          async
+        <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-WPN816FH63"
+          strategy="afterInteractive"
         />
-        <script id="ga" dangerouslySetInnerHTML={{ __html: "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WPN816FH63');" }} />
+        <Script id="ga" strategy="afterInteractive">{`
+          window.dataLayer=window.dataLayer||[];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js',new Date());
+          gtag('config','G-WPN816FH63');
+        `}</Script>
 
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/images/icon.png" sizes="any" />
