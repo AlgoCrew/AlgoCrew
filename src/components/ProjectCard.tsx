@@ -1,5 +1,6 @@
 "use client";
 import { useRef } from "react";
+import Image from "next/image";
 import { Column, Heading, Text, Flex } from "@once-ui-system/core";
 import gsap from "gsap";
 import styles from "./ProjectCard.module.scss";
@@ -44,7 +45,7 @@ export const ProjectCard = ({ image, title, description, tags }: any) => {
       onMouseLeave={handleMouseLeave}
     >
       <div className={styles.imageWrapper}>
-        <img src={image} alt={title} className={styles.image} />
+        <Image src={image} alt={title} fill className={styles.image} sizes="(max-width: 768px) 100vw, 50vw" />
         <div className={styles.overlay}>
            <Flex gap="8" wrap>
              {tags.map((tag: string) => (

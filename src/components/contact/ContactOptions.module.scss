@@ -64,6 +64,10 @@
   display: flex;
   flex-direction: column;
   padding: 36px 32px;
+
+  @media (max-width: 560px) {
+    padding: 28px 20px;
+  }
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: 20px;

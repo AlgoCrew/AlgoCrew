@@ -107,7 +107,14 @@
   border: 1px solid rgba(var(--neutral-border-rgb), 0.1);
   padding: 6px;
   width: fit-content;
+  max-width: 100%;
+  flex-wrap: wrap !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 480px) {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .toggleButton {

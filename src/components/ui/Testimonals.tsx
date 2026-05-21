@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import styles from './Testimonials.module.scss';
 
@@ -66,9 +67,12 @@ export const Testimonials = ({ testimonials }: { testimonials: any[] }) => {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            <img
+            <Image
               src={testimonials[active].src}
               alt={testimonials[active].name}
+              fill
+              sizes="(max-width: 768px) 100vw, 400px"
+              style={{ objectFit: 'cover' }}
             />
             <div className={styles.imageOverlay} />
             <div className={styles.glare} />

@@ -3,7 +3,6 @@ import '@once-ui-system/core/css/tokens.css';
 import '@/resources/custom.css'
 import './global.scss'
 
-import classNames from "classnames";
 
 import { Background, Column, Flex, Meta, opacity, SpacingToken } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from '@/components';
@@ -101,18 +100,16 @@ export default async function RootLayout({
       data-surface="translucent"
       data-transition="all"
       data-scaling="100"
-      className={classNames(
+      className={[
         fonts.heading.variable,
         fonts.body.variable,
         fonts.label.variable,
         fonts.code.variable,
         'body-overflow-overlay'
-      )}
+      ].join(' ')}
     >
       <head>
-        {/* -- Preconnect for performance -- */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Fonts are self-hosted via next/font/google — no Google Fonts CDN requests needed */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 

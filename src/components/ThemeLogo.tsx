@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useTheme } from '@once-ui-system/core'; // Import useTheme
-
-import { Flex } from '@once-ui-system/core'; // Assuming Flex is available from your library
+import Image from 'next/image';
+import { useTheme, Flex } from '@once-ui-system/core';
 
 export const ThemeLogo: React.FC = () => {
   const { theme } = useTheme();
@@ -46,11 +45,13 @@ export const ThemeLogo: React.FC = () => {
 
   return (
     <Flex vertical="center" zIndex={10} gap="s" >
-      <img
+      <Image
         src={logoSrc}
         alt={logoAlt}
-        height="40px"
+        width={120}
+        height={40}
         style={{ display: 'block' }}
+        priority
       />
     </Flex>
   );

@@ -2,11 +2,11 @@
 
 import { Column, Flex, Button } from "@once-ui-system/core";
 import styles from "@/components/about/about.module.scss";
+import formStyles from "@/components/contact/formToggler.module.scss";
 import HireDeveloperForm from "@/components/contact/HireDeveloperForm";
 import ContactForm from "@/components/contact/ContactForm";
 import JobApplicationForm from "@/components/contact/JobApplicationForm";
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useRef, useEffect } from 'react';
 
 type ActiveForm = 'hireDeveloper' | 'generalInquiry' | 'jobApplication';
 
@@ -18,6 +18,15 @@ const TABS: { id: ActiveForm; label: string }[] = [
 
 export default function FormTogger() {
   const [activeForm, setActiveForm] = useState<ActiveForm>('hireDeveloper');
+  const [animKey, setAnimKey] = useState(0);
+  const prevForm = useRef<ActiveForm>(activeForm);
+
+  function handleTab(id: ActiveForm) {
+    if (id === activeForm) return;
+    prevForm.current = activeForm;
+    setActiveForm(id);
+    setAnimKey(k => k + 1);
+  }
 
   return (
     <Column fillWidth gap="xl" horizontal="center" paddingTop="m">
@@ -31,7 +40,7 @@ export default function FormTogger() {
         {TABS.map(tab => (
           <Button
             key={tab.id}
-            onClick={() => setActiveForm(tab.id)}
+            onClick={() => handleTab(tab.id)}
             className={styles.toggleButton}
             data-active={activeForm === tab.id}
             variant="tertiary"
@@ -43,25 +52,15 @@ export default function FormTogger() {
         ))}
       </Flex>
 
-      {/* Animated Content Transition */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeForm}
-          initial={{ opacity: 0, y: 10, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          exit={{ opacity: 0, y: -10, filter: "blur(10px)" }}
-          transition={{ duration: 0.4, ease: "circOut" }}
-          style={{ width: '100%' }}
-        >
-          <Flex fillWidth horizontal="center">
-            <Column className={styles.blockAlign} fillWidth>
-              {activeForm === 'hireDeveloper'  && <HireDeveloperForm />}
-              {activeForm === 'generalInquiry' && <ContactForm />}
-              {activeForm === 'jobApplication' && <JobApplicationForm />}
-            </Column>
-          </Flex>
-        </motion.div>
-      </AnimatePresence>
+      <div key={animKey} className={formStyles.formPanel} style={{ width: '100%' }}>
+        <Flex fillWidth horizontal="center">
+          <Column className={styles.blockAlign} fillWidth>
+            {activeForm === 'hireDeveloper'  && <HireDeveloperForm />}
+            {activeForm === 'generalInquiry' && <ContactForm />}
+            {activeForm === 'jobApplication' && <JobApplicationForm />}
+          </Column>
+        </Flex>
+      </div>
     </Column>
   );
 }

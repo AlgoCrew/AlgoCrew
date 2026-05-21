@@ -3,6 +3,7 @@ export const dynamic = "force-static";
 import { Column, Flex, Meta, Schema } from "@once-ui-system/core";
 import { baseURL, contact, aboutUs, person } from "@/resources";
 import styles from "@/components/about/about.module.scss";
+import pageStyles from "@/app/contact/contact-page.module.scss";
 import React from "react";
 import FormTogger from "@/components/contact/FormToggler";
 import { ContactHero } from "@/components/contact/ContactHero";
@@ -39,8 +40,8 @@ export default function Contact() {
       {/* Hero — improved */}
       <ContactHero />
 
-      {/* Forms toggle — unchanged */}
-      <section style={{ padding: "0 60px 80px", maxWidth: "1200px", margin: "0 auto" }}>
+      {/* Forms toggle */}
+      <section className={pageStyles.formSection}>
         <Column maxWidth="m" gap="xl" horizontal="center" style={{ margin: "0 auto", maxWidth: "100%" }}>
           <Flex fillWidth mobileDirection="column" horizontal="center">
             <Column className={styles.blockAlign} flex={12} fillWidth>

@@ -8,7 +8,11 @@
 .container {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0 0px;
+  padding: 0 60px;
+
+  @media (max-width: 768px) {
+    padding: 0 24px;
+  }
 }
 
 .preTitle {

@@ -1,0 +1,75 @@
+/* Responsive layout classes for the About page */
+
+.section {
+  padding: 80px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    padding: 60px 24px;
+  }
+}
+
+.heroSection {
+  padding: 80px 60px 120px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    padding: 48px 24px 80px;
+  }
+}
+
+/* 2-column grid → 1-column on mobile */
+.grid2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* 4-column stats grid → 2×2 → 1 column */
+.grid4col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* Stat card — responsive padding */
+.statCard {
+  padding: 40px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  background: var(--bg-card);
+
+  @media (max-width: 768px) {
+    padding: 28px 20px;
+  }
+}
+
+/* Mission value list col — remove top offset on mobile */
+.missionRight {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 40px;
+
+  @media (max-width: 900px) {
+    padding-top: 0;
+  }
+}

@@ -89,6 +89,11 @@
   max-width: 520px;
   line-height: 1.7;
   margin: 0 0 56px;
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    margin: 0 0 40px;
+  }
 }
 
 /* Trust row */
@@ -117,6 +122,14 @@
     border-bottom: 1px solid var(--border-subtle);
     margin-right: 0;
     width: 50%;
+
+    &:nth-child(odd) {
+      padding-right: 16px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    width: 100%;
   }
 }
 
