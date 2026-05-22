@@ -237,7 +237,7 @@ export default async function RootLayout({
       </head>
 
       <Providers>
-        <Column as="body" background="page" style={{
+        <Column suppressHydrationWarning as="body" background="page" style={{
             minHeight: '100vh',
             margin: '0',
             padding: '0',
@@ -261,6 +261,20 @@ export default async function RootLayout({
               </Flex>
             </Flex>
             <Footer/>
+
+            {/* Tawk.to live chat widget */}
+            <Script id="tawkto" strategy="lazyOnload">{`
+              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+              (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/6a103fe562b0761c3d8d5803/1jp7nj6c4';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+              })();
+            `}</Script>
+
           </Column>
         </Providers>
       </Flex>
