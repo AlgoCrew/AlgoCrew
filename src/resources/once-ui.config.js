@@ -16,6 +16,8 @@ const routes = {
   "/pricing": true,
   "/privacy-policy": true,
   "/terms": true,
+  "/faq": true,
+  "/locations": true,
 };
 
 const display = {

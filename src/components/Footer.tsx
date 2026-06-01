@@ -13,21 +13,25 @@ const stats = [
 ];
 
 const services = [
-  { href: "/services/web-app-development", label: "Product Engineering"  },
-  { href: "/services/cloud-devops",        label: "Cloud & DevOps"       },
-  { href: "/services/data-automation",     label: "Data & AI"            },
-  { href: "/services/team-services",       label: "Strategic Staffing"   },
-  { href: "/services/e-commerce",          label: "E-Commerce"           },
-  { href: "/services/emerging-tech",       label: "Emerging Tech"        },
+  { href: "/services/web-app-development",           label: "Product Engineering"  },
+  { href: "/services/cloud-devops",                  label: "Cloud & DevOps"       },
+  { href: "/services/data-automation",               label: "Data & AI"            },
+  { href: "/services/team-services",                 label: "Strategic Staffing"   },
+  { href: "/services/fintech-software-development",  label: "Fintech Development"  },
+  { href: "/services/saas-development",              label: "SaaS Development"     },
+  { href: "/services/startup-mvp-development",       label: "MVP Development"      },
+  { href: "/services/ecommerce-development",         label: "E-Commerce"           },
 ];
 
 const company = [
-  { href: "/about",    label: "About Us"     },
-  { href: "/work",     label: "Case Studies" },
-  { href: "/pricing",  label: "Pricing"      },
-  { href: "/careers",  label: "Careers", badge: true },
-  { href: "/blog",     label: "Blog"         },
-  { href: "/contact",  label: "Contact"      },
+  { href: "/about",     label: "About Us"     },
+  { href: "/work",      label: "Case Studies" },
+  { href: "/pricing",   label: "Pricing"      },
+  { href: "/careers",   label: "Careers", badge: true },
+  { href: "/blog",      label: "Blog"         },
+  { href: "/faq",       label: "FAQ"          },
+  { href: "/locations", label: "Locations"    },
+  { href: "/contact",   label: "Contact"      },
 ];
 
 const socials = [

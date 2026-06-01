@@ -155,10 +155,41 @@ export function ProjectDetail({ project, accent, prev, next }: Props) {
               <p className={styles.blockText}>{project.solution}</p>
             </div>
 
-            {/* Tech deep-dive */}
+            {/* Results */}
+            {project.results && (
+              <div className={`${styles.block} ${styles.reveal}`}>
+                <div className={styles.blockLabel} style={{ color: accent }}>
+                  <span className={styles.blockNum}>03</span>
+                  Results
+                </div>
+                <div className={styles.blockDivider} style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }} />
+                <div className={styles.resultsGrid}>
+                  {project.results.map((r: { metric: string; label: string }, i: number) => (
+                    <div key={i} className={styles.resultCard} style={{ "--accent": accent } as React.CSSProperties}>
+                      <span className={styles.resultMetric} style={{ color: accent }}>{r.metric}</span>
+                      <span className={styles.resultLabel}>{r.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Outcomes */}
+            {project.outcomes && (
+              <div className={`${styles.block} ${styles.reveal}`}>
+                <div className={styles.blockLabel} style={{ color: accent }}>
+                  <span className={styles.blockNum}>{project.results ? "04" : "03"}</span>
+                  Outcome
+                </div>
+                <div className={styles.blockDivider} style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }} />
+                <p className={styles.blockText}>{project.outcomes}</p>
+              </div>
+            )}
+
+            {/* Tech stack */}
             <div className={`${styles.block} ${styles.reveal}`}>
               <div className={styles.blockLabel} style={{ color: accent }}>
-                <span className={styles.blockNum}>03</span>
+                <span className={styles.blockNum}>{project.results ? "05" : project.outcomes ? "04" : "03"}</span>
                 Tech Stack
               </div>
               <div className={styles.blockDivider} style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }} />
@@ -167,10 +198,7 @@ export function ProjectDetail({ project, accent, prev, next }: Props) {
                   <span
                     key={t}
                     className={styles.techPill}
-                    style={{
-                      "--accent": accent,
-                      animationDelay: `${i * 50}ms`,
-                    } as React.CSSProperties}
+                    style={{ "--accent": accent, animationDelay: `${i * 50}ms` } as React.CSSProperties}
                   >
                     {t}
                   </span>

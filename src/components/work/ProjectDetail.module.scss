@@ -368,3 +368,38 @@
 .navClient {
   font-size: 11px; color: var(--text-muted);
 }
+
+/* ── Results grid ── */
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.resultCard {
+  padding: 24px 20px;
+  background: color-mix(in srgb, var(--accent, #06c8e8) 5%, var(--bg-card));
+  border: 1px solid color-mix(in srgb, var(--accent, #06c8e8) 20%, transparent);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultMetric {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.resultLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  line-height: 1.4;
+}

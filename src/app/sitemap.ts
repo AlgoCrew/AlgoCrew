@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { baseURL, categorizedServices } from "@/resources";
 import { ourProjects } from "@/resources/ourProjects";
 import { blogPosts } from "@/resources/blog";
+import { locations } from "@/resources/locations";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString();
@@ -15,6 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseURL}/about`,         lastModified: now, changeFrequency: "monthly", priority: 0.8  },
     { url: `${baseURL}/careers`,       lastModified: now, changeFrequency: "weekly",  priority: 0.8  },
     { url: `${baseURL}/blog`,          lastModified: now, changeFrequency: "daily",   priority: 0.9  },
+    { url: `${baseURL}/faq`,           lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseURL}/locations`,     lastModified: now, changeFrequency: "monthly", priority: 0.8  },
     { url: `${baseURL}/contact`,       lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${baseURL}/privacy-policy`,lastModified: now, changeFrequency: "yearly",  priority: 0.3  },
     { url: `${baseURL}/terms`,         lastModified: now, changeFrequency: "yearly",  priority: 0.3  },
@@ -46,5 +49,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: p.img ? [`${baseURL}${p.img}`] : [],
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...blogRoutes, ...workRoutes];
+  /* ── Location pages ── */
+  const locationRoutes: MetadataRoute.Sitemap = locations.map((l) => ({
+    url: `${baseURL}/locations/${l.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...blogRoutes, ...workRoutes, ...locationRoutes];
 }
