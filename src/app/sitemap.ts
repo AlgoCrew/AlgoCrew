@@ -34,14 +34,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(p.date).toISOString(),
     changeFrequency: "monthly",
     priority: 0.7,
+    images: [`${baseURL}/images/og/home.jpg`],
   }));
 
-  /* ── Work / case study pages ── */
+  /* ── Work / case study pages (with images for Google image search) ── */
   const workRoutes: MetadataRoute.Sitemap = ourProjects.map((p) => ({
     url: `${baseURL}/work/${p.slug}`,
     lastModified: now,
     changeFrequency: "monthly",
     priority: 0.7,
+    images: p.img ? [`${baseURL}${p.img}`] : [],
   }));
 
   return [...staticRoutes, ...serviceRoutes, ...blogRoutes, ...workRoutes];
