@@ -67,9 +67,8 @@ export async function generateMetadata() {
     icons: {
       icon: [
         { url: "/favicon.svg", type: "image/svg+xml" },
-        { url: "/images/icon.png", sizes: "any" },
       ],
-      apple: "/images/icon.png",
+      apple: { url: "/favicon.svg", type: "image/svg+xml" },
     },
     manifest: "/manifest.json",
     verification: {
@@ -230,11 +229,8 @@ export default async function RootLayout({
           gtag('config','G-WPN816FH63');
         `}</Script>
 
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="icon" href="/images/icon.png" sizes="192x192" type="image/png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/images/icon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
         <meta name="keywords" content="software company, software agency, custom software development, web development, custom software, cloud solution, mobile app development, Next.js, React, Node.js, AWS, software solutions, IT consulting, Algocrew" />
       </head>
 
