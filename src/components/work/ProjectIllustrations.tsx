@@ -6,7 +6,7 @@
 export function FintechIllustration() {
   return (
     <svg viewBox="0 0 640 800" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
-      style={{ display: "block", background: "#040c14" }}>
+      style={{ display: "block", background: "#0B1120" }}>
       <defs>
         <linearGradient id="fi-area" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#00d4aa" stopOpacity="0.25"/>
@@ -134,7 +134,7 @@ export function HealthIllustration() {
   const rings = [60, 110, 160, 210, 255];
   return (
     <svg viewBox="0 0 640 800" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
-      style={{ display: "block", background: "#03100d" }}>
+      style={{ display: "block", background: "#0B1120" }}>
       <defs>
         <linearGradient id="ht-ecg" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#34d399" stopOpacity="0"/>
@@ -252,7 +252,7 @@ export function CloudIllustration() {
   ];
   return (
     <svg viewBox="0 0 640 800" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
-      style={{ display: "block", background: "#050814" }}>
+      style={{ display: "block", background: "#0B1120" }}>
       <defs>
         <radialGradient id="cl-hub" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="#6366f1" stopOpacity="0.4"/>
@@ -310,7 +310,7 @@ export function CloudIllustration() {
         {nodes.map((n, i) => (
           <g key={i}>
             <circle cx={n.x} cy={n.y} r={n.r + 10} fill={n.color} opacity="0.06"/>
-            <circle cx={n.x} cy={n.y} r={n.r} fill="rgba(5,8,20,0.8)"
+            <circle cx={n.x} cy={n.y} r={n.r} fill="rgba(11,17,32,0.9)"
               stroke={n.color} strokeWidth={i===0 ? 2 : 1.5} filter={i===0 ? "url(#cl-glow)" : undefined}/>
             {i === 0 ? (
               <>
@@ -368,7 +368,7 @@ export function SupplyChainIllustration() {
   ];
   return (
     <svg viewBox="0 0 640 800" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
-      style={{ display: "block", background: "#0a050f" }}>
+      style={{ display: "block", background: "#0B1120" }}>
       <defs>
         <linearGradient id="sc-flow" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#c084fc" stopOpacity="0.6"/>
@@ -424,7 +424,7 @@ export function SupplyChainIllustration() {
           layer.nodes.map((node, ni) => (
             <g key={`n-${li}-${ni}`}>
               <circle cx={layer.x} cy={node.y} r="12"
-                fill="rgba(10,5,15,0.8)" stroke={layer.color} strokeWidth="1.5"
+                fill="rgba(11,17,32,0.9)" stroke={layer.color} strokeWidth="1.5"
                 filter="url(#sc-glow)"/>
               <circle cx={layer.x} cy={node.y} r="4" fill={layer.color} opacity="0.8">
                 <animate attributeName="opacity" values="0.8;0.3;0.8"

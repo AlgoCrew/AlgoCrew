@@ -33,22 +33,25 @@ export function WorkGrid() {
     const track   = trackRef.current;
     if (!wrapper || !track || isMobile) return;
 
+    const getScrollAmt = () => track.scrollWidth - window.innerWidth;
+
     const updateHeight = () => {
-      const scrollAmt = track.scrollWidth - window.innerWidth;
+      const scrollAmt = getScrollAmt();
       if (scrollAmt > 0) wrapper.style.height = `${scrollAmt + window.innerHeight}px`;
     };
     updateHeight();
 
     const ctx = gsap.context(() => {
       gsap.to(track, {
-        x: () => -(track.scrollWidth - window.innerWidth),
+        x: () => -getScrollAmt(),
         ease: "none",
         scrollTrigger: {
           trigger: wrapper,
           start: "top top",
-          end: () => `+=${track.scrollWidth - window.innerWidth}`,
-          scrub: 1,
+          end: () => `+=${getScrollAmt()}`,
+          scrub: 0.3,          // tight spring — feels 1:1 without being jerky
           invalidateOnRefresh: true,
+          anticipatePin: 1,
         },
       });
     });

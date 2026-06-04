@@ -98,8 +98,10 @@ export function Projects() {
     const track = trackRef.current;
     if (!wrapper || !track || isMobile) return;
 
+    const getScrollAmt = () => track.scrollWidth - window.innerWidth;
+
     const updateHeight = () => {
-      const scrollAmount = track.scrollWidth - window.innerWidth;
+      const scrollAmount = getScrollAmt();
       if (scrollAmount > 0) {
         wrapper.style.height = `${scrollAmount + window.innerHeight}px`;
       }
@@ -108,14 +110,15 @@ export function Projects() {
 
     const ctx = gsap.context(() => {
       gsap.to(track, {
-        x: () => -(track.scrollWidth - window.innerWidth),
+        x: () => -getScrollAmt(),
         ease: "none",
         scrollTrigger: {
           trigger: wrapper,
           start: "top top",
-          end: () => `+=${track.scrollWidth - window.innerWidth}`,
-          scrub: 1,
+          end: () => `+=${getScrollAmt()}`,
+          scrub: 0.3,
           invalidateOnRefresh: true,
+          anticipatePin: 1,
         },
       });
     });

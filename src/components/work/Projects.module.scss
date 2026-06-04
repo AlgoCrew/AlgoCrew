@@ -4,7 +4,7 @@
 
 /* ---- DESKTOP ---- */
 .wrapper {
-  height: calc(300vw + 100vh);
+  /* height is set precisely in JS based on actual track.scrollWidth */
   position: relative;
   background: var(--bg-page);
   z-index: 1;
