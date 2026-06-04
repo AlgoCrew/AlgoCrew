@@ -12,33 +12,33 @@
   --brand-gradient: linear-gradient(135deg, #06c8e8 0%, #2563eb 100%);
   --brand-gradient-text: linear-gradient(135deg, #06c8e8 0%, #6366f1 100%);
 
-  /* Page backgrounds */
-  --bg-page: #030609;
-  --bg-elevated: #0a0e1a;
-  --bg-card: rgba(255, 255, 255, 0.025);
-  --bg-card-hover: rgba(255, 255, 255, 0.05);
-  --bg-glass: rgba(8, 8, 12, 0.75);
-  --bg-glass-strong: rgba(8, 8, 12, 0.92);
-  --bg-glass-light: rgba(255, 255, 255, 0.04);
+  /* Page backgrounds — premium slate/navy palette */
+  --bg-page: #0B1120;
+  --bg-elevated: #111827;
+  --bg-card: rgba(255, 255, 255, 0.032);
+  --bg-card-hover: rgba(255, 255, 255, 0.062);
+  --bg-glass: rgba(11, 17, 32, 0.78);
+  --bg-glass-strong: rgba(11, 17, 32, 0.94);
+  --bg-glass-light: rgba(255, 255, 255, 0.045);
 
   /* Text */
-  --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.55);
-  --text-muted: rgba(255, 255, 255, 0.35);
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
   --text-faint: rgba(255, 255, 255, 0.15);
   --text-accent: #06c8e8;
 
   /* Borders */
-  --border-subtle: rgba(255, 255, 255, 0.05);
-  --border-muted: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.15);
-  --border-accent: rgba(6, 200, 232, 0.22);
+  --border-subtle: rgba(255, 255, 255, 0.055);
+  --border-muted: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-accent: rgba(6, 200, 232, 0.24);
 
   /* Shadows / glows */
-  --shadow-sm: 0 4px 24px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 12px 60px rgba(0, 0, 0, 0.6);
-  --glow-cyan: 0 0 40px rgba(6, 200, 232, 0.14);
-  --glow-cyan-strong: 0 0 60px rgba(6, 200, 232, 0.28);
+  --shadow-sm: 0 4px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.65);
+  --glow-cyan: 0 0 48px rgba(6, 200, 232, 0.15);
+  --glow-cyan-strong: 0 0 80px rgba(6, 200, 232, 0.3);
 
   /* Legacy aliases (kept for components not yet migrated) */
   --surface-page: var(--bg-page);
@@ -73,8 +73,8 @@
   --clr-purple-light: #a78bfa;
   --clr-blue: #3b82f6;
   --clr-blue-light: #60a5fa;
-  --clr-bg-deep: #030609;
-  --clr-bg-mid: #060d14;
+  --clr-bg-deep: #0B1120;
+  --clr-bg-mid: #111827;
   --clr-bg-surface: rgba(255,255,255,0.03);
   --clr-border: rgba(255,255,255,0.08);
   --clr-border-hover: rgba(6, 200, 232, 0.35);

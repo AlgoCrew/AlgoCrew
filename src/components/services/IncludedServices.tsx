@@ -31,7 +31,7 @@ export default function IncludedServices({ service }: { service: any }) {
 
   return (
     <div ref={containerRef} className={styles.sectionWrapper}
-      style={{ maxWidth: 1100, margin: "0 auto", padding: "0 60px" }}>
+      style={{ maxWidth: 1100, margin: "0 auto", padding: "0 clamp(20px, 5vw, 60px)" }}>
 
       {/* Header */}
       <div style={{ textAlign: "center", marginBottom: 56 }}>

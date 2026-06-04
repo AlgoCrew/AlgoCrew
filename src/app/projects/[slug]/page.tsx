@@ -1,76 +1,70 @@
 import { notFound } from "next/navigation";
-import { Meta, Schema, AvatarGroup, Button, Column, Flex, Heading, Media, Text } from "@once-ui-system/core";
-import { baseURL, about, person, work, ourProjects } from "@/resources"; // Import ourProjects
-import { formatDate } from "@/utils/formatDate"; // Keep if you add publishedAt back
-import { ScrollToHash, CustomMDX } from "@/components"; // Keep if you use CustomMDX for markdown content
-import { Metadata } from "next"; // Import Metadata type
-import ProjectCard from "@/components/projects/ProjectCard";
+import { Meta, Schema } from "@once-ui-system/core";
+import { baseURL, about, person } from "@/resources";
+import { ourProjects } from "@/resources";
+import { Metadata } from "next";
+import { ProjectDetail } from "@/components/work/ProjectDetail";
+import { SendUsEmail } from "@/components/home/SendUsEmail";
 
-// Generate static paths for all projects based on their slugs
-export async function generateStaticParams() {
-  // Map over your imported ourProjects array to get slugs
-  return ourProjects.map((project) => ({
-    slug: project.slug,
-  }));
+const catColors: Record<string, string> = {
+  "Web application":   "#06c8e8",
+  "Cloud application": "#a78bfa",
+  "SaaS Platform":     "#34d399",
+};
+
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  return (ourProjects as any[]).map((p: any) => ({ slug: p.slug }));
 }
 
-// Generate metadata for each project page
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string | string[] }>;
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const routeParams = await params;
-  const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
-
-  let project = ourProjects.find((p) => p.slug === slugPath);
-
-  if (!project) return { }; // Return empty metadata if project not found
-
+  const { slug } = await params;
+  const project = (ourProjects as any[]).find((p: any) => p.slug === slug);
+  if (!project) return {};
   return Meta.generate({
-    title: project.title,       // Use project.title
-    description: project.description, // Use project.description
-    baseURL: baseURL,
-    image: project.img || 'images/og/about.jpg', // Use project.img
-    path: project.path,
+    title: `${project.title} — AlgoCrew`,
+    description: project.description,
+    baseURL,
+    image: project.img,
+    path: `/projects/${slug}`,
   });
 }
 
-// Main Project component
-export default async function Project({
+export default async function ProjectPage({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }) {
-  const routeParams = await params
-  const slugPath = Array.isArray(routeParams.slug) ? routeParams.slug.join('/') : routeParams.slug || '';
-  
-  let project = ourProjects.find((p) => p.slug === slugPath);
+  const { slug } = await params;
+  const project = (ourProjects as any[]).find((p: any) => p.slug === slug);
+  if (!project) notFound();
 
-  if (!project?.name) {
-    notFound(); // Display 404 page if project not found
-  }
+  const accent = catColors[project.category] ?? "#06c8e8";
+  const all    = ourProjects as any[];
+  const idx    = all.findIndex((p: any) => p.slug === slug);
+  const prev   = idx > 0 ? all[idx - 1] : null;
+  const next   = idx < all.length - 1 ? all[idx + 1] : null;
 
   return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="l" paddingTop="48" className="px-6 px-lg-0">
+    <main style={{ width: "100%", overflowX: "clip", background: "var(--bg-page)" }}>
       <Schema
-        as="blogPosting" // Consider if 'blogPosting' is appropriate for a project; 'article' might be better
+        as="webPage"
         baseURL={baseURL}
-        path={`${project.path}`}
-        title={project.title}       // Use project.title
-        description={project.description} // Use project.description
-        image={project.img || `/api/og/generate?title=${encodeURIComponent(project.title)}`} // Use project.img
+        path={`/projects/${slug}`}
+        title={`${project.title} — AlgoCrew`}
+        description={project.description}
+        image={project.img}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
           image: `${baseURL}${person.avatar}`,
         }}
       />
-
-      <>
-        <ProjectCard project={project}/>
-        <ScrollToHash />
-      </>
-    </Column>
+      <ProjectDetail project={project} accent={accent} prev={prev} next={next} />
+      <SendUsEmail />
+    </main>
   );
 }

@@ -86,8 +86,18 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .mainGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .mainGrid {
+    grid-template-columns: 1fr !important;
+  }
+
   .sectionWrapper {
-    padding-top: 64px;
+    padding: 0 20px !important;
   }
 }

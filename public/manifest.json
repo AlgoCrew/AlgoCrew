@@ -4,7 +4,7 @@
   "description": "Top-tier custom software development, web, mobile, cloud & AI solutions.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#030609",
+  "background_color": "#0B1120",
   "theme_color": "#06c8e8",
   "icons": [
     { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any maskable" }

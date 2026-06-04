@@ -237,7 +237,7 @@ const categorizedServices = [
     "slug": "team-services",
     "path": "services/team-services",
     "title": "Staff Augmentation & Support | Extend Your Team with Experts",
-    "image": "/images/services/team.jpg",
+    "image": "/images/services/team.png",
     "side_image": "/images/services/team.png",
     "includes": [
       { "name": "Augmentation", "description": "Skilled pros to integrate with your team.", "slug": "staff-augmentation" },
