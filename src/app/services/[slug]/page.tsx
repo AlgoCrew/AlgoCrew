@@ -22,13 +22,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = (categorizedServices as any[]).find((s: any) => s.slug === slug);
   if (!service) return {};
-  return Meta.generate({
-    title: service.title,
-    description: service.description,
-    baseURL,
-    image: service.image || `/api/og/generate?title=${encodeURIComponent(service.title)}`,
-    path: `/services/${service.slug}`,
-  });
+  return {
+    ...Meta.generate({
+      title: service.title,
+      description: service.description,
+      baseURL,
+      image: service.image || `/api/og/generate?title=${encodeURIComponent(service.title)}`,
+      path: `/services/${service.slug}`,
+    }),
+    alternates: { canonical: `/services/${service.slug}` },
+  };
 }
 
 export default async function ServicePage({

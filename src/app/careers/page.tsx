@@ -9,13 +9,16 @@ import { PerksSection, ProcessSection } from "./CareersSections";
 import { SendUsEmail } from "@/components/home/SendUsEmail";
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: "Careers — AlgoCrew",
-    description: "Join a team of elite engineers building the future of software. Remote-first, async-friendly, top 1% talent only.",
-    baseURL,
-    path: "/careers",
-    image: "/images/og/careers.jpg",
-  });
+  return {
+    ...Meta.generate({
+      title: "Careers — AlgoCrew",
+      description: "Join a team of elite engineers building the future of software. Remote-first, async-friendly, top 1% talent only.",
+      baseURL,
+      path: "/careers",
+      image: "/images/og/careers.jpg",
+    }),
+    alternates: { canonical: "/careers" },
+  };
 }
 
 const teamQuotes = [

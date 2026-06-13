@@ -24,13 +24,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = (ourProjects as any[]).find((p: any) => p.slug === slug);
   if (!project) return {};
-  return Meta.generate({
-    title: `${project.title} — AlgoCrew`,
-    description: project.description,
-    baseURL,
-    image: project.img,
-    path: `${work.path}/${slug}`,
-  });
+  return {
+    ...Meta.generate({
+      title: `${project.title} — AlgoCrew`,
+      description: project.description,
+      baseURL,
+      image: project.img,
+      path: `${work.path}/${slug}`,
+    }),
+    alternates: { canonical: `${work.path}/${slug}` },
+  };
 }
 
 export default async function ProjectPage({

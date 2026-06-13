@@ -3,12 +3,15 @@ import { baseURL } from "@/resources";
 import styles from "./legal.module.scss";
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: "Privacy Policy — AlgoCrew",
-    description: "How AlgoCrew collects, uses, and protects your personal data.",
-    baseURL,
-    path: "/privacy-policy",
-  });
+  return {
+    ...Meta.generate({
+      title: "Privacy Policy — AlgoCrew",
+      description: "How AlgoCrew collects, uses, and protects your personal data.",
+      baseURL,
+      path: "/privacy-policy",
+    }),
+    alternates: { canonical: "/privacy-policy" },
+  };
 }
 
 export default function PrivacyPolicyPage() {

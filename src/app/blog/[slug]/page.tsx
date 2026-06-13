@@ -15,13 +15,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
-  return Meta.generate({
-    title: `${post.title} — AlgoCrew Blog`,
-    description: post.excerpt,
-    baseURL,
-    path: `/blog/${slug}`,
-    image: "/images/og/home.jpg",
-  });
+  return {
+    ...Meta.generate({
+      title: `${post.title} — AlgoCrew Blog`,
+      description: post.excerpt,
+      baseURL,
+      path: `/blog/${slug}`,
+      image: "/images/og/home.jpg",
+    }),
+    alternates: { canonical: `/blog/${slug}` },
+  };
 }
 
 function formatDate(d: string) {

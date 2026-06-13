@@ -9,13 +9,16 @@ import { SendUsEmail } from "@/components/home/SendUsEmail";
 import styles from "./about-page.module.scss";
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: "About — AlgoCrew",
-    description: "AlgoCrew is a software company headquartered in Canada, delivering elite engineering solutions globally.",
-    baseURL,
-    path: "/about",
-    image: "/images/og/about.jpg",
-  });
+  return {
+    ...Meta.generate({
+      title: "About — AlgoCrew",
+      description: "AlgoCrew is a software company headquartered in Canada, delivering elite engineering solutions globally.",
+      baseURL,
+      path: "/about",
+      image: "/images/og/about.jpg",
+    }),
+    alternates: { canonical: "/about" },
+  };
 }
 
 function StatCard({ num, label, desc }: { num: string; label: string; desc: string }) {

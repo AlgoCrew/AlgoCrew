@@ -10,13 +10,16 @@ import React from "react";
 import FormTogger from "@/components/contact/FormToggler";
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: hire.title,
-    description: hire.description,
-    baseURL: baseURL,
-    image: `images/og/home.jpg`,
-    path: hire.path,
-  });
+  return {
+    ...Meta.generate({
+      title: hire.title,
+      description: hire.description,
+      baseURL: baseURL,
+      image: `images/og/home.jpg`,
+      path: hire.path,
+    }),
+    alternates: { canonical: hire.path },
+  };
 }
 
 export default function Contact() {

@@ -5,13 +5,16 @@ import { WorkGrid } from "@/components/work/WorkGrid";
 import { SendUsEmail } from "@/components/home/SendUsEmail";
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: work.title,
-    description: work.description,
-    baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent(work.title)}`,
-    path: work.path,
-  });
+  return {
+    ...Meta.generate({
+      title: work.title,
+      description: work.description,
+      baseURL: baseURL,
+      image: `/api/og/generate?title=${encodeURIComponent(work.title)}`,
+      path: work.path,
+    }),
+    alternates: { canonical: work.path },
+  };
 }
 
 export default function Work() {

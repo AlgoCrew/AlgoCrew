@@ -11,13 +11,16 @@ import { ContactOptions } from "@/components/contact/ContactOptions";
 import { SendUsEmail } from "@/components/home/SendUsEmail";
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: contact.title,
-    description: contact.description,
-    baseURL: baseURL,
-    image: `images/og/home.jpg`,
-    path: contact.path,
-  });
+  return {
+    ...Meta.generate({
+      title: contact.title,
+      description: contact.description,
+      baseURL: baseURL,
+      image: `images/og/home.jpg`,
+      path: contact.path,
+    }),
+    alternates: { canonical: contact.path },
+  };
 }
 
 export default function Contact() {

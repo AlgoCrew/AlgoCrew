@@ -3,12 +3,15 @@ import { baseURL } from "@/resources";
 import styles from "../privacy-policy/legal.module.scss";
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: "Terms of Service — AlgoCrew",
-    description: "Terms governing use of AlgoCrew's website and services.",
-    baseURL,
-    path: "/terms",
-  });
+  return {
+    ...Meta.generate({
+      title: "Terms of Service — AlgoCrew",
+      description: "Terms governing use of AlgoCrew's website and services.",
+      baseURL,
+      path: "/terms",
+    }),
+    alternates: { canonical: "/terms" },
+  };
 }
 
 export default function TermsPage() {

@@ -11,13 +11,16 @@ import { FAQ } from "@/components/home/FAQ";
 import { SendUsEmail } from "@/components/home/SendUsEmail";
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: "Services — AlgoCrew",
-    description: "From staff augmentation to AI solutions — explore our full range of digital services.",
-    baseURL,
-    path: "/services",
-    image: "/images/og/services.jpg",
-  });
+  return {
+    ...Meta.generate({
+      title: "Services — AlgoCrew",
+      description: "From staff augmentation to AI solutions — explore our full range of digital services.",
+      baseURL,
+      path: "/services",
+      image: "/images/og/services.jpg",
+    }),
+    alternates: { canonical: "/services" },
+  };
 }
 
 const accentColors: Record<string, string> = {
