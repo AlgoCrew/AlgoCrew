@@ -17,7 +17,7 @@ export async function generateMetadata() {
       description: "From staff augmentation to AI solutions — explore our full range of digital services.",
       baseURL,
       path: "/services",
-      image: "/images/og/services.jpg",
+      image: `/api/og/generate?title=${encodeURIComponent("Services — AlgoCrew")}`,
     }),
     alternates: { canonical: "/services" },
   };

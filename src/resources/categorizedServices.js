@@ -12,7 +12,7 @@ const categorizedServices = [
     "slug": "web-app-development",
     "path": "services/web-app-development",
     "title": "Web & App Development Services | Build Your Digital Future",
-    "image": "/images/services/webapp.jpg",
+    "image": "/api/og/generate?title=Web%20%26%20App%20Development%20Services%20%7C%20Build%20Your%20Digital%20Future",
     "side_image": "/images/services/developer1.png",
     "includes": [
       { "name": "Web Development", "description": "Creating responsive, high-performance websites.", "slug": "web-development" },
@@ -48,7 +48,7 @@ const categorizedServices = [
     "slug": "cloud-devops",
     "path": "services/cloud-devops",
     "title": "Cloud & DevOps Solutions | Scalable Infrastructure & Automation",
-    "image": "/images/services/cloud.jpg",
+    "image": "/api/og/generate?title=Cloud%20%26%20DevOps%20Solutions%20%7C%20Scalable%20Infrastructure%20%26%20Automation",
     "side_image": "/images/services/devops.png",
     "includes": [
       { "name": "Cloud App Dev", "description": "Cloud-native apps for maximum efficiency.", "slug": "cloud-application" },
@@ -82,7 +82,7 @@ const categorizedServices = [
     "slug": "e-commerce",
     "path": "services/e-commerce",
     "title": "E-commerce Solutions | Design, Develop & Optimize Online Stores",
-    "image": "/images/services/ecommerce.jpg",
+    "image": "/api/og/generate?title=E-commerce%20Solutions%20%7C%20Design%2C%20Develop%20%26%20Optimize%20Online%20Stores",
     "side_image": "/images/services/commerce.png",
     "includes": [
       { "name": "Store Dev", "description": "Visually appealing stores to maximize sales.", "slug": "ecommerce-design-development" },
@@ -113,7 +113,7 @@ const categorizedServices = [
     "slug": "security-quality",
     "path": "services/security-quality",
     "title": "Cybersecurity & Quality Assurance | Protect & Perfect Your Systems",
-    "image": "/images/services/quality.jpg",
+    "image": "/api/og/generate?title=Cybersecurity%20%26%20Quality%20Assurance%20%7C%20Protect%20%26%20Perfect%20Your%20Systems",
     "side_image": "/images/services/quality.png",
     "includes": [
       { "name": "Manual Testing", "description": "Identifying usability issues and bugs.", "slug": "manual-testing" },
@@ -144,7 +144,7 @@ const categorizedServices = [
     "slug": "data-automation",
     "path": "services/data-automation",
     "title": "Data, AI & Automation Services | Smart Solutions for Business Growth",
-    "image": "/images/services/automation.jpg",
+    "image": "/api/og/generate?title=Data%2C%20AI%20%26%20Automation%20Services%20%7C%20Smart%20Solutions%20for%20Business%20Growth",
     "side_image": "/images/services/automation.png",
     "includes": [
       { "name": "Data & AI", "description": "Building intelligent learning models.", "slug": "data-ai" },
@@ -175,7 +175,7 @@ const categorizedServices = [
     "slug": "microsoft-solutions",
     "path": "services/microsoft-solutions",
     "title": "Microsoft Solutions | D365 ERP, CRM & Power Apps Expertise",
-    "image": "/images/services/microsoft.jpg",
+    "image": "/api/og/generate?title=Microsoft%20Solutions%20%7C%20D365%20ERP%2C%20CRM%20%26%20Power%20Apps%20Expertise",
     "side_image": "/images/services/microsoft.png",
     "includes": [
       { "name": "D365 ERP", "description": "Customizing D365 for resource planning.", "slug": "d365-erp" },
@@ -265,7 +265,7 @@ const categorizedServices = [
     "slug": "emerging-tech",
     "path": "services/emerging-tech",
     "title": "Emerging Tech Solutions | Metaverse, AR, Blockchain & AI Innovation",
-    "image": "/images/services/emerging.jpg",
+    "image": "/api/og/generate?title=Emerging%20Tech%20Solutions%20%7C%20Metaverse%2C%20AR%2C%20Blockchain%20%26%20AI%20Innovation",
     "side_image": "/images/services/emerging.png",
     "includes": [
       { "name": "Metaverse", "description": "Immersive virtual worlds for enterprise.", "slug": "metaverse" },
@@ -294,7 +294,7 @@ const categorizedServices = [
     "slug": "gaming",
     "path": "services/gaming",
     "title": "Gaming Development Services | Art, Web3 & XR Gaming",
-    "image": "/images/services/gaming.jpg",
+    "image": "/api/og/generate?title=Gaming%20Development%20Services%20%7C%20Art%2C%20Web3%20%26%20XR%20Gaming",
     "side_image": "/images/services/gaming.png",
     "includes": [
       { "name": "Art & Design", "description": "Stunning visuals and gameplay mechanics.", "slug": "gaming-art-design" },

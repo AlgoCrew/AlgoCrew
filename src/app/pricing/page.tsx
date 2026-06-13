@@ -16,7 +16,7 @@ export async function generateMetadata() {
       description: "Transparent, milestone-based pricing for teams that want senior engineering without the guesswork.",
       baseURL,
       path: "/pricing",
-      image: "/images/og/pricing.jpg",
+      image: `/api/og/generate?title=${encodeURIComponent("Pricing — AlgoCrew")}`,
     }),
     alternates: { canonical: "/pricing" },
   };
