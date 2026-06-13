@@ -10,56 +10,57 @@ interface RouteGuardProps {
 	children: React.ReactNode;
 }
 
+/** Synchronous, SSR-safe route-enabled check (no async, no effect). */
+function isRouteEnabled(pathname: string | null): boolean {
+  if (!pathname) return false;
+  if (pathname in routes) {
+    return routes[pathname as keyof typeof routes];
+  }
+  const dynamicRoutes = ["/blog", "/work", "/projects", "/services", "/locations", "/faq"] as const;
+  for (const route of dynamicRoutes) {
+    if (pathname.startsWith(route) && routes[route as keyof typeof routes]) {
+      return true;
+    }
+  }
+  return false;
+}
+
 const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   const pathname = usePathname();
-  const [isRouteEnabled, setIsRouteEnabled] = useState(false);
-  const [isPasswordRequired, setIsPasswordRequired] = useState(false);
-  const [password, setPassword] = useState("");
+
+  // Computed synchronously so the server render and the first client render
+  // agree — public routes render their children on the server (no spinner),
+  // which is what crawlers and Core Web Vitals need.
+  const enabled = isRouteEnabled(pathname);
+  const isProtected = !!protectedRoutes[pathname as keyof typeof protectedRoutes];
+
+  // Only protected routes do async auth work; everything else is "checked".
+  const [authChecked, setAuthChecked] = useState(!isProtected);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | undefined>(undefined);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const performChecks = async () => {
-      setLoading(true);
-      setIsRouteEnabled(false);
-      setIsPasswordRequired(false);
-      setIsAuthenticated(false);
-
-      const checkRouteEnabled = () => {
-        if (!pathname) return false;
-
-        if (pathname in routes) {
-          return routes[pathname as keyof typeof routes];
-        }
-
-        const dynamicRoutes = ["/blog", "/work", "/projects", "/services", "/locations", "/faq"] as const;
-        for (const route of dynamicRoutes) {
-          if (pathname?.startsWith(route) && routes[route as keyof typeof routes]) {
-            return true;
-          }
-        }
-
-        return false;
-      };
-
-      const routeEnabled = checkRouteEnabled();
-      setIsRouteEnabled(routeEnabled);
-
-      if (protectedRoutes[pathname as keyof typeof protectedRoutes]) {
-        setIsPasswordRequired(true);
-
-        const response = await fetch("/api/check-auth");
-        if (response.ok) {
-          setIsAuthenticated(true);
-        }
-      }
-
-      setLoading(false);
+    if (!isProtected) {
+      setAuthChecked(true);
+      return;
+    }
+    let active = true;
+    setAuthChecked(false);
+    setIsAuthenticated(false);
+    fetch("/api/check-auth")
+      .then((res) => {
+        if (!active) return;
+        setIsAuthenticated(res.ok);
+      })
+      .catch(() => {})
+      .finally(() => {
+        if (active) setAuthChecked(true);
+      });
+    return () => {
+      active = false;
     };
-
-    performChecks();
-  }, [pathname]);
+  }, [pathname, isProtected]);
 
   const handlePasswordSubmit = async () => {
     const response = await fetch("/api/authenticate", {
@@ -76,36 +77,38 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
     }
   };
 
-  if (loading) {
-    return (
-      <Flex fillWidth paddingY="128" horizontal="center">
-        <Spinner />
-      </Flex>
-    );
+  if (!enabled) {
+    return <NotFound />;
   }
 
-  if (!isRouteEnabled) {
-		return <NotFound />;
-	}
-
-  if (isPasswordRequired && !isAuthenticated) {
-    return (
-      <Column paddingY="128" maxWidth={24} gap="24" center>
-        <Heading align="center" wrap="balance">
-          This page is password protected
-        </Heading>
-        <Column fillWidth gap="8" horizontal="center">
-          <PasswordInput
-            id="password"
-            label="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            errorMessage={error}
-          />
-          <Button onClick={handlePasswordSubmit}>Submit</Button>
+  // Spinner + password gate apply ONLY to protected routes.
+  if (isProtected) {
+    if (!authChecked) {
+      return (
+        <Flex fillWidth paddingY="128" horizontal="center">
+          <Spinner />
+        </Flex>
+      );
+    }
+    if (!isAuthenticated) {
+      return (
+        <Column paddingY="128" maxWidth={24} gap="24" center>
+          <Heading align="center" wrap="balance">
+            This page is password protected
+          </Heading>
+          <Column fillWidth gap="8" horizontal="center">
+            <PasswordInput
+              id="password"
+              label="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              errorMessage={error}
+            />
+            <Button onClick={handlePasswordSubmit}>Submit</Button>
+          </Column>
         </Column>
-      </Column>
-    );
+      );
+    }
   }
 
   return <>{children}</>;
