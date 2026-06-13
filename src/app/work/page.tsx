@@ -1,5 +1,5 @@
 import { Meta, Schema } from "@once-ui-system/core";
-import { baseURL, about, person, work } from "@/resources";
+import { baseURL, work } from "@/resources";
 import { WorkHero } from "@/components/work/WorkHero";
 import { WorkGrid } from "@/components/work/WorkGrid";
 import { SendUsEmail } from "@/components/home/SendUsEmail";
@@ -24,11 +24,6 @@ export default function Work() {
         title={work.title}
         description={work.description}
         image={`/api/og/generate?title=${encodeURIComponent(work.title)}`}
-        author={{
-          name: person.name,
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
-        }}
       />
 
       {/* Hero */}

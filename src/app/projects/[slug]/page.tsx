@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { Meta, Schema } from "@once-ui-system/core";
-import { baseURL, about, person } from "@/resources";
+import { baseURL } from "@/resources";
 import { ourProjects } from "@/resources";
 import { Metadata } from "next";
 import { ProjectDetail } from "@/components/work/ProjectDetail";
@@ -57,11 +57,6 @@ export default async function ProjectPage({
         title={`${project.title} — AlgoCrew`}
         description={project.description}
         image={project.img}
-        author={{
-          name: person.name,
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
-        }}
       />
       <ProjectDetail project={project} accent={accent} prev={prev} next={next} />
       <SendUsEmail />

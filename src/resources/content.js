@@ -256,9 +256,9 @@ const aboutUs = {
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  // Escaped apostrophes
-  description: `Read what ${person.name} has been up to recently`, // Used template literal for dynamic content
+  title: "AlgoCrew Blog — Engineering & Product Insights",
+  description:
+    "Engineering insights, product thinking, and lessons from building software with AlgoCrew's senior-only teams.",
 };
 
 const contact = {
@@ -278,9 +278,9 @@ const hire = {
 const work = {
   path: "/work",
   label: "Work",
-  // Escaped apostrophes
-  title: `Projects – ${person.name}`, // Used template literal for dynamic content
-  description: `Design and dev projects by ${person.name}`, // Used template literal for dynamic content
+  title: "Our Work — Case Studies & Client Projects",
+  description:
+    "Explore AlgoCrew's portfolio of web, mobile, and cloud projects — real case studies showing how our senior engineers ship production software for clients worldwide.",
 };
 
 const services = {
