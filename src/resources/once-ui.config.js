@@ -1,7 +1,8 @@
 import { home } from "./content";
 
-// IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://algocrew.io";
+// IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema.
+// Canonical host is the www apex; the host/DNS layer must 301 non-www -> www (see deploy notes).
+const baseURL = "https://www.algocrew.io";
 
 const routes = {
   "/": true,
