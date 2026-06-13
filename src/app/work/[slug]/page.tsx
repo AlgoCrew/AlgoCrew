@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { Meta, Schema } from "@once-ui-system/core";
-import { baseURL, about, person, work } from "@/resources";
+import { baseURL, work } from "@/resources";
 import { ourProjects } from "@/resources";
 import { Metadata } from "next";
 import { ProjectDetail } from "@/components/work/ProjectDetail";
@@ -24,13 +24,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = (ourProjects as any[]).find((p: any) => p.slug === slug);
   if (!project) return {};
-  return Meta.generate({
-    title: `${project.title} — AlgoCrew`,
-    description: project.description,
-    baseURL,
-    image: project.img,
-    path: `${work.path}/${slug}`,
-  });
+  return {
+    ...Meta.generate({
+      title: `${project.title} — AlgoCrew`,
+      description: project.description,
+      baseURL,
+      image: project.img,
+      path: `${work.path}/${slug}`,
+    }),
+    alternates: { canonical: `${work.path}/${slug}` },
+  };
 }
 
 export default async function ProjectPage({
@@ -57,11 +60,6 @@ export default async function ProjectPage({
         title={`${project.title} — AlgoCrew`}
         description={project.description}
         image={project.img}
-        author={{
-          name: person.name,
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
-        }}
       />
       <ProjectDetail project={project} accent={accent} prev={prev} next={next} />
       <SendUsEmail />

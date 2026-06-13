@@ -127,6 +127,7 @@ export default async function RootLayout({
                   "@type": "Organization",
                   "@id": baseURL + "/#organization",
                   name: "AlgoCrew",
+                  alternateName: ["AlgoCrew Inc.", "Algo Crew", "AlgoCrews"],
                   url: baseURL,
                   logo: {
                     "@type": "ImageObject",
@@ -135,17 +136,27 @@ export default async function RootLayout({
                     height: 60,
                   },
                   description: "Top-tier software agency delivering custom software development, cloud solutions, and mobile apps across North America.",
-                  email: "info@algocrew.io",
+                  email: "query@algocrew.io",
+                  telephone: "+1-437-450-9656",
                   foundingDate: "2020",
                   areaServed: ["CA", "US", "GB"],
+                  address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Brampton",
+                    addressRegion: "ON",
+                    postalCode: "L6V 2E7",
+                    addressCountry: "CA",
+                  },
                   sameAs: [
-                    "https://www.linkedin.com/company/algocrew/",
-                    "https://github.com/AlgoCrew",
+                    "https://www.linkedin.com/company/algocrew",
+                    "https://github.com/algocrew",
+                    "https://x.com/algocrew",
                   ],
                   contactPoint: {
                     "@type": "ContactPoint",
                     contactType: "customer support",
-                    email: "info@algocrew.io",
+                    email: "query@algocrew.io",
+                    telephone: "+1-437-450-9656",
                     availableLanguage: ["English"],
                   },
                 },
@@ -248,9 +259,14 @@ export default async function RootLayout({
           }}
           className="body-overflow-overlay"
           fillWidth margin="0" padding="0" horizontal="center">
+            {/* WCAG 2.4.1 (A) — skip repeated nav, jump to main content */}
+            <a href="#main-content" className="skip-link">Skip to main content</a>
+
             <Header />
 
             <Flex
+              id="main-content"
+              tabIndex={-1}
               zIndex={0}
               fillWidth
               paddingTop="0"
@@ -266,16 +282,34 @@ export default async function RootLayout({
             </Flex>
             <Footer/>
 
-            {/* Tawk.to live chat widget */}
+            {/* Tawk.to live chat — deferred to first user interaction.
+                Loading it eagerly injected an about:blank iframe into the
+                body flow that caused a ~0.176 layout shift (the dominant
+                contributor to CLS 0.684). Gating on first interaction (or a
+                fallback idle timeout) keeps it out of the initial-load CLS
+                window while still loading it before anyone tries to chat. */}
             <Script id="tawkto" strategy="lazyOnload">{`
-              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
               (function(){
-                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-                s1.async=true;
-                s1.src='https://embed.tawk.to/6a103fe562b0761c3d8d5803/1jp7nj6c4';
-                s1.charset='UTF-8';
-                s1.setAttribute('crossorigin','*');
-                s0.parentNode.insertBefore(s1,s0);
+                var loaded=false;
+                function loadTawk(){
+                  if(loaded) return; loaded=true;
+                  window.Tawk_API=window.Tawk_API||{}; window.Tawk_LoadStart=new Date();
+                  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                  s1.async=true;
+                  s1.src='https://embed.tawk.to/6a103fe562b0761c3d8d5803/1jp7nj6c4';
+                  s1.charset='UTF-8';
+                  s1.setAttribute('crossorigin','*');
+                  s0.parentNode.insertBefore(s1,s0);
+                  ['scroll','pointerdown','keydown','touchstart'].forEach(function(e){
+                    window.removeEventListener(e,loadTawk);
+                  });
+                }
+                ['scroll','pointerdown','keydown','touchstart'].forEach(function(e){
+                  window.addEventListener(e,loadTawk,{passive:true,once:false});
+                });
+                // Loads on the first real interaction (scroll/click/key/touch).
+                // No idle fallback on purpose: an auto-load fires during the
+                // page-load window and reintroduces the layout shift.
               })();
             `}</Script>
 

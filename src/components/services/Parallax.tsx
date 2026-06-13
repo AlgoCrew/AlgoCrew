@@ -39,7 +39,7 @@ export default function ServiceDetailHero({ service }: { service: any }) {
       {/* Parallax image */}
       <div className={styles.heroImgWrap}>
         <Image
-          src={service.image || "/images/services/webapp.jpg"}
+          src={service.image || `/api/og/generate?title=${encodeURIComponent(service.name || "AlgoCrew")}`}
           alt={service.name}
           fill
           priority

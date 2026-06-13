@@ -7,13 +7,16 @@ import { SendUsEmail } from "@/components/home/SendUsEmail";
 import styles from "./blog.module.scss";
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: "Blog — AlgoCrew",
-    description: "Engineering insights, product thinking, and lessons from shipping software at scale with senior-only teams.",
-    baseURL,
-    path: "/blog",
-    image: "/images/og/home.jpg",
-  });
+  return {
+    ...Meta.generate({
+      title: "Blog — AlgoCrew",
+      description: "Engineering insights, product thinking, and lessons from shipping software at scale with senior-only teams.",
+      baseURL,
+      path: "/blog",
+      image: "/images/og/home.jpg",
+    }),
+    alternates: { canonical: "/blog" },
+  };
 }
 
 const blogListingSchema = {

@@ -3,12 +3,15 @@ import { baseURL } from "@/resources";
 import styles from "./legal.module.scss";
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: "Privacy Policy — AlgoCrew",
-    description: "How AlgoCrew collects, uses, and protects your personal data.",
-    baseURL,
-    path: "/privacy-policy",
-  });
+  return {
+    ...Meta.generate({
+      title: "Privacy Policy — AlgoCrew",
+      description: "How AlgoCrew collects, uses, and protects your personal data.",
+      baseURL,
+      path: "/privacy-policy",
+    }),
+    alternates: { canonical: "/privacy-policy" },
+  };
 }
 
 export default function PrivacyPolicyPage() {
@@ -23,7 +26,7 @@ export default function PrivacyPolicyPage() {
 
         <div className={styles.body}>
           <Section title="1. Who We Are">
-            AlgoCrew Ltd. (&ldquo;AlgoCrew&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) is a software engineering and consulting agency. Our website is algocrew.io. For privacy enquiries contact us at <a href="mailto:info@algocrew.io">info@algocrew.io</a>.
+            AlgoCrew Ltd. (&ldquo;AlgoCrew&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) is a software engineering and consulting agency. Our website is algocrew.io. For privacy enquiries contact us at <a href="mailto:query@algocrew.io">query@algocrew.io</a>.
           </Section>
 
           <Section title="2. Information We Collect">
@@ -85,7 +88,7 @@ export default function PrivacyPolicyPage() {
               <li>Data portability.</li>
               <li>Withdraw consent at any time (where consent is the basis).</li>
             </ul>
-            <p>To exercise any of these rights, email <a href="mailto:info@algocrew.io">info@algocrew.io</a>. We will respond within 30 days.</p>
+            <p>To exercise any of these rights, email <a href="mailto:query@algocrew.io">query@algocrew.io</a>. We will respond within 30 days.</p>
           </Section>
 
           <Section title="8. Cookies">
@@ -101,7 +104,7 @@ export default function PrivacyPolicyPage() {
           </Section>
 
           <Section title="11. Contact">
-            For privacy-related questions: <a href="mailto:info@algocrew.io">info@algocrew.io</a>
+            For privacy-related questions: <a href="mailto:query@algocrew.io">query@algocrew.io</a>
           </Section>
         </div>
       </div>

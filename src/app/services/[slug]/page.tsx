@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
-import { Meta, Schema } from "@once-ui-system/core";
-import { baseURL, about, person, categorizedServices } from "@/resources";
+import { Meta } from "@once-ui-system/core";
+import { baseURL, categorizedServices } from "@/resources";
 import { Metadata } from "next";
+import { ServiceSchema } from "@/components/seo/ServiceSchema";
 import Parallax from "@/components/services/Parallax";
 import IncludedServices from "@/components/services/IncludedServices";
 import Steps from "@/components/services/Steps";
@@ -21,13 +22,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = (categorizedServices as any[]).find((s: any) => s.slug === slug);
   if (!service) return {};
-  return Meta.generate({
-    title: service.title,
-    description: service.description,
-    baseURL,
-    image: service.image || `/api/og/generate?title=${encodeURIComponent(service.title)}`,
-    path: `/services/${service.slug}`,
-  });
+  return {
+    ...Meta.generate({
+      title: service.title,
+      description: service.description,
+      baseURL,
+      image: service.image || `/api/og/generate?title=${encodeURIComponent(service.title)}`,
+      path: `/services/${service.slug}`,
+    }),
+    alternates: { canonical: `/services/${service.slug}` },
+  };
 }
 
 export default async function ServicePage({
@@ -41,18 +45,10 @@ export default async function ServicePage({
 
   return (
     <main style={{ width: "100%", overflowX: "clip", background: "var(--bg-page)" }}>
-      <Schema
-        as="article"
-        baseURL={baseURL}
-        path={`/services/${service.slug}`}
-        title={service.title}
+      <ServiceSchema
+        name={service.name}
         description={service.description}
-        image={service.image || `/api/og/generate?title=${encodeURIComponent(service.title)}`}
-        author={{
-          name: person.name,
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
-        }}
+        slug={service.slug}
       />
 
       {/* Full-bleed parallax hero */}

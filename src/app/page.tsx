@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, Schema } from "@once-ui-system/core";
-import { home, about, person, baseURL } from "@/resources";
+import { home, baseURL } from "@/resources";
 import { Hero } from "@/components/home/Hero";
 import { Services } from "@/components/services/Services";
 import { ProcessSteps } from "@/components/home/ProcessStep";
@@ -40,11 +40,6 @@ export default function Home() {
         title={home.title}
         description={home.description}
         image={encodeURIComponent(home.image)}
-        author={{
-          name: "Arqam",
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
-        }}
       />
 
       <div style={wrap}><Hero /></div>

@@ -4,19 +4,22 @@ import {
   Meta,
   Schema
 } from "@once-ui-system/core";
-import { baseURL, hire, aboutUs, person } from "@/resources";
+import { baseURL, hire } from "@/resources";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 import FormTogger from "@/components/contact/FormToggler";
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: hire.title,
-    description: hire.description,
-    baseURL: baseURL,
-    image: `images/og/home.jpg`,
-    path: hire.path,
-  });
+  return {
+    ...Meta.generate({
+      title: hire.title,
+      description: hire.description,
+      baseURL: baseURL,
+      image: `images/og/home.jpg`,
+      path: hire.path,
+    }),
+    alternates: { canonical: hire.path },
+  };
 }
 
 export default function Contact() {
@@ -26,15 +29,10 @@ export default function Contact() {
       <Schema
         as="webPage"
         baseURL={baseURL}
-        title={aboutUs.title}
-        description={aboutUs.metaDescription}
-        path={aboutUs.path}
-        image="/images/og/about.jpg"
-        author={{
-          name: person.name,
-          url: `${baseURL}${aboutUs.path}`,
-          image: `${baseURL}${person.avatar}`,
-        }}
+        title={hire.title}
+        description={hire.description}
+        path={hire.path}
+        image="/images/og/home.jpg"
       />
  
       <Flex fillWidth mobileDirection="column" horizontal="center">

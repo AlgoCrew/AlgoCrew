@@ -10,13 +10,16 @@ import {
 } from "react-icons/tb";
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: "Pricing — AlgoCrew",
-    description: "Transparent, milestone-based pricing for teams that want senior engineering without the guesswork.",
-    baseURL,
-    path: "/pricing",
-    image: "/images/og/pricing.jpg",
-  });
+  return {
+    ...Meta.generate({
+      title: "Pricing — AlgoCrew",
+      description: "Transparent, milestone-based pricing for teams that want senior engineering without the guesswork.",
+      baseURL,
+      path: "/pricing",
+      image: `/api/og/generate?title=${encodeURIComponent("Pricing — AlgoCrew")}`,
+    }),
+    alternates: { canonical: "/pricing" },
+  };
 }
 
 const plans = [
