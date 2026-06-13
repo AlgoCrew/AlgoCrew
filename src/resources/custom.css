@@ -24,7 +24,7 @@
   /* Text */
   --text-primary: #F1F5F9;
   --text-secondary: #94A3B8;
-  --text-muted: #64748B;
+  --text-muted: #8B97A8; /* WCAG AA: 6.36:1 on --bg-page #0B1120 (was #64748B = 3.96:1, failed) */
   --text-faint: rgba(255, 255, 255, 0.15);
   --text-accent: #06c8e8;
 
@@ -101,7 +101,7 @@
 
   --text-primary: #080c14;
   --text-secondary: rgba(8, 12, 20, 0.62);
-  --text-muted: rgba(8, 12, 20, 0.42);
+  --text-muted: rgba(8, 12, 20, 0.6); /* WCAG AA: 5.03:1 on light --bg-page #f4f6fb (was 0.42 = 2.81:1, failed) */
   --text-faint: rgba(8, 12, 20, 0.2);
   --text-accent: #007799;
 
