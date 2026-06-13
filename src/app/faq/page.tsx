@@ -22,7 +22,7 @@ const faqs = [
     items: [
       {
         q: "How do I start a project with AlgoCrew?",
-        a: "Fill out the contact form at algocrew.io/contact or email info@algocrew.io. We respond within 48 hours to schedule a free 30-minute discovery call. On that call we discuss your goals, scope, and recommend a delivery model. No pitch — just conversation.",
+        a: "Fill out the contact form at algocrew.io/contact or email query@algocrew.io. We respond within 48 hours to schedule a free 30-minute discovery call. On that call we discuss your goals, scope, and recommend a delivery model. No pitch — just conversation.",
       },
       {
         q: "Do you sign an NDA before the discovery call?",

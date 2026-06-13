@@ -47,7 +47,7 @@ const social = [
   {
     name: "Email",
     icon: "email",
-    link: "mailto:info@algocrew.io", // Added quotes around mailto link
+    link: "mailto:query@algocrew.io", // Added quotes around mailto link
   },
 ];
 

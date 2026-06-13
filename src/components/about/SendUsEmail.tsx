@@ -134,7 +134,7 @@ export const SendUsEmail = () => {
 
             <Button
               prefixIcon="email"
-              href="mailto:info@algocrew.io"
+              href="mailto:query@algocrew.io"
               variant="secondary"
               size="l"
               className={styles.ctaButton}

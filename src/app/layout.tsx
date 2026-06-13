@@ -135,7 +135,7 @@ export default async function RootLayout({
                     height: 60,
                   },
                   description: "Top-tier software agency delivering custom software development, cloud solutions, and mobile apps across North America.",
-                  email: "info@algocrew.io",
+                  email: "query@algocrew.io",
                   foundingDate: "2020",
                   areaServed: ["CA", "US", "GB"],
                   sameAs: [
@@ -145,7 +145,7 @@ export default async function RootLayout({
                   contactPoint: {
                     "@type": "ContactPoint",
                     contactType: "customer support",
-                    email: "info@algocrew.io",
+                    email: "query@algocrew.io",
                     availableLanguage: ["English"],
                   },
                 },
