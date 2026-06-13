@@ -1,7 +1,7 @@
 export const dynamic = "force-static";
 
-import { Column, Flex, Meta, Schema } from "@once-ui-system/core";
-import { baseURL, contact, aboutUs, person } from "@/resources";
+import { Column, Flex, Meta } from "@once-ui-system/core";
+import { baseURL, contact } from "@/resources";
 import styles from "@/components/about/about.module.scss";
 import pageStyles from "@/app/contact/contact-page.module.scss";
 import React from "react";
@@ -23,17 +23,31 @@ export async function generateMetadata() {
 export default function Contact() {
   return (
     <main style={{ minHeight: "100vh", background: "var(--bg-page)" }}>
-      <Schema
-        as="webPage"
-        baseURL={baseURL}
-        title={aboutUs.title}
-        description={aboutUs.metaDescription}
-        path={aboutUs.path}
-        image={`/api/og/generate?title=${encodeURIComponent(aboutUs.title)}`}
-        author={{
-          name: person.name,
-          url: `${baseURL}${aboutUs.path}`,
-          image: `${baseURL}${person.avatar}`,
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            name: contact.title,
+            description: contact.description,
+            url: `${baseURL}${contact.path}`,
+            mainEntity: {
+              "@type": "Organization",
+              "@id": `${baseURL}/#organization`,
+              name: "AlgoCrew",
+              email: "query@algocrew.io",
+              telephone: "+1-437-450-9656",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Brampton, Ontario L6V 2E7",
+                addressLocality: "Brampton",
+                addressRegion: "ON",
+                postalCode: "L6V 2E7",
+                addressCountry: "CA",
+              },
+            },
+          }),
         }}
       />
 
