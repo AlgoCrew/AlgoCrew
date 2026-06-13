@@ -1,6 +1,31 @@
 @import "tailwindcss";
 
 /* ================================================================
+   SKIP LINK (WCAG 2.4.1) — visually hidden until keyboard-focused
+   ================================================================ */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -48px;
+  z-index: 1000;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #06c8e8;
+  color: #0B1120;
+  font-weight: 700;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 8px;
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+#main-content:focus {
+  outline: none;
+}
+
+/* ================================================================
    DARK THEME OVERRIDES
    ================================================================ */
 [data-theme=dark] {

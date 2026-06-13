@@ -248,9 +248,14 @@ export default async function RootLayout({
           }}
           className="body-overflow-overlay"
           fillWidth margin="0" padding="0" horizontal="center">
+            {/* WCAG 2.4.1 (A) — skip repeated nav, jump to main content */}
+            <a href="#main-content" className="skip-link">Skip to main content</a>
+
             <Header />
 
             <Flex
+              id="main-content"
+              tabIndex={-1}
               zIndex={0}
               fillWidth
               paddingTop="0"
