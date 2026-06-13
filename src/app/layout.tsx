@@ -271,16 +271,34 @@ export default async function RootLayout({
             </Flex>
             <Footer/>
 
-            {/* Tawk.to live chat widget */}
+            {/* Tawk.to live chat — deferred to first user interaction.
+                Loading it eagerly injected an about:blank iframe into the
+                body flow that caused a ~0.176 layout shift (the dominant
+                contributor to CLS 0.684). Gating on first interaction (or a
+                fallback idle timeout) keeps it out of the initial-load CLS
+                window while still loading it before anyone tries to chat. */}
             <Script id="tawkto" strategy="lazyOnload">{`
-              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
               (function(){
-                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-                s1.async=true;
-                s1.src='https://embed.tawk.to/6a103fe562b0761c3d8d5803/1jp7nj6c4';
-                s1.charset='UTF-8';
-                s1.setAttribute('crossorigin','*');
-                s0.parentNode.insertBefore(s1,s0);
+                var loaded=false;
+                function loadTawk(){
+                  if(loaded) return; loaded=true;
+                  window.Tawk_API=window.Tawk_API||{}; window.Tawk_LoadStart=new Date();
+                  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                  s1.async=true;
+                  s1.src='https://embed.tawk.to/6a103fe562b0761c3d8d5803/1jp7nj6c4';
+                  s1.charset='UTF-8';
+                  s1.setAttribute('crossorigin','*');
+                  s0.parentNode.insertBefore(s1,s0);
+                  ['scroll','pointerdown','keydown','touchstart'].forEach(function(e){
+                    window.removeEventListener(e,loadTawk);
+                  });
+                }
+                ['scroll','pointerdown','keydown','touchstart'].forEach(function(e){
+                  window.addEventListener(e,loadTawk,{passive:true,once:false});
+                });
+                // Loads on the first real interaction (scroll/click/key/touch).
+                // No idle fallback on purpose: an auto-load fires during the
+                // page-load window and reintroduces the layout shift.
               })();
             `}</Script>
 
