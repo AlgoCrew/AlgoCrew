@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return {};
   return {
     ...Meta.generate({
-      title: `${post.title} — AlgoCrew Blog`,
-      description: post.excerpt,
+      title: post.metaTitle ?? `${post.title}, AlgoCrew Blog`,
+      description: post.metaDescription ?? post.excerpt,
       baseURL,
       path: `/blog/${slug}`,
       image: "/images/og/home.jpg",
@@ -52,7 +52,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     headline: post.title,
     description: post.excerpt,
     datePublished: new Date(post.date).toISOString(),
-    dateModified: new Date(post.date).toISOString(),
+    dateModified: new Date(post.updated ?? post.date).toISOString(),
     author: {
       "@type": "Person",
       name: post.author.name,

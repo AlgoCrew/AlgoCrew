@@ -7,7 +7,7 @@ const values = [
   {
     Icon: FaHandshake,
     name: "Integrity",
-    description: "We are honest and truthful in every interaction — with clients, teammates, and ourselves. No spin, no shortcuts.",
+    description: "We are honest and truthful in every interaction, with clients, teammates, and ourselves. No spin, no shortcuts.",
     accent: "#06c8e8",
   },
   {
@@ -19,7 +19,7 @@ const values = [
   {
     Icon: FaUserTie,
     name: "Ownership",
-    description: "We don't wait for follow-ups. Every engineer owns their domain — quality, timelines, and client outcomes.",
+    description: "We don't wait for follow-ups. Every engineer owns their domain, quality, timelines, and client outcomes.",
     accent: "#fbbf24",
   },
   {
@@ -31,13 +31,13 @@ const values = [
   {
     Icon: FaPeopleCarry,
     name: "Collaboration",
-    description: "Software is a team sport. We hold peers to high standards while lifting them up — no one is left behind on a deadline.",
+    description: "Software is a team sport. We hold peers to high standards while lifting them up, no one is left behind on a deadline.",
     accent: "#34d399",
   },
   {
     Icon: FaLightbulb,
     name: "Initiative",
-    description: "We don't wait to be assigned a problem worth solving. We see it, own it, and drive it — trailblazers by default.",
+    description: "We don't wait to be assigned a problem worth solving. We see it, own it, and drive it, trailblazers by default.",
     accent: "#06c8e8",
   },
 ];

@@ -38,7 +38,7 @@ export function WorkHero() {
           <span className={styles.accent}>move industries.</span>
         </h1>
         <p className={`${styles.sub} ${styles.reveal}`}>
-          From fintech infrastructure to AI-driven platforms — every engagement is
+          From fintech infrastructure to AI-driven platforms, every engagement is
           a long-term commitment to quality, security, and outcomes that compound.
         </p>
 

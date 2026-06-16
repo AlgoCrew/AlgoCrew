@@ -126,7 +126,7 @@ export function Footer() {
           <div className={styles.ctaCol}>
             <p className={styles.colHeading}>Let&apos;s build together</p>
             <p className={styles.ctaText}>
-              From first commit to production — senior team, no lock-in, 100% your IP.
+              From first commit to production, senior team, no lock-in, 100% your IP.
             </p>
             <Link href="/contact" className={styles.ctaBtn}>
               Start a Project <TbArrowUpRight size={14} />

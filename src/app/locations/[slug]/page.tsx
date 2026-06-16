@@ -106,7 +106,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
               { title: "Senior engineers only", desc: "8+ years average experience. No juniors on your project, ever. Your codebase stays clean." },
               { title: "No lock-in contracts", desc: "30-day rolling exit. If we're not delivering, you can leave without penalty. That keeps us accountable." },
               { title: "100% IP transfer", desc: "Everything we build is yours. Full source code, documentation, and deployment scripts transferred at completion." },
-              { title: "48h response guarantee", desc: "We respond to all client messages within 48 hours — usually much faster. No ghosting, ever." },
+              { title: "48h response guarantee", desc: "We respond to all client messages within 48 hours, usually much faster. No ghosting, ever." },
               { title: "Milestone billing", desc: "You pay when milestones are delivered and approved. No open-ended retainers or surprise invoices." },
               { title: "NDA on day one", desc: "We sign a mutual NDA before any discovery call. Your ideas are protected from the first conversation." },
             ].map((item) => (

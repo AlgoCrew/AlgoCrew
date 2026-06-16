@@ -92,9 +92,19 @@
 /* ── Desktop nav links ── */
 .navLinks {
   display: flex;
+  align-items: center;
   gap: 2px;
   list-style: none;
   margin: 0; padding: 0;
+
+  /* Zero any inherited list-item margin so links sit on the island's
+     vertical centre instead of floating up (flex centres the margin-box). */
+  li {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
 
   @media (max-width: 768px) { display: none; }
 }
@@ -113,6 +123,7 @@
   transition: color 0.2s, background 0.2s;
   white-space: nowrap;
   letter-spacing: -0.01em;
+  margin-bottom: 0 !important;
 
   &:hover {
     color: var(--text-primary);

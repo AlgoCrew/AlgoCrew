@@ -180,7 +180,7 @@ export function Header() {
               style={{ transitionDelay: menuOpen ? "420ms" : "0ms" }}
             >
               <span className={styles.mobileCtaGhostDot} />
-              We&apos;re hiring — View open roles
+              We&apos;re hiring, View open roles
             </Link>
           </div>
         </div>

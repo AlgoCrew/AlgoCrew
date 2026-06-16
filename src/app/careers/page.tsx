@@ -11,19 +11,19 @@ import { SendUsEmail } from "@/components/home/SendUsEmail";
 export async function generateMetadata() {
   return {
     ...Meta.generate({
-      title: "Careers — AlgoCrew",
+      title: "Careers - AlgoCrew",
       description: "Join a team of elite engineers building the future of software. Remote-first, async-friendly, top 1% talent only.",
       baseURL,
       path: "/careers",
-      image: `/api/og/generate?title=${encodeURIComponent("Careers — AlgoCrew")}`,
+      image: `/api/og/generate?title=${encodeURIComponent("Careers - AlgoCrew")}`,
     }),
     alternates: { canonical: "/careers" },
   };
 }
 
 const teamQuotes = [
-  { quote: "I've worked at big tech and agencies — AlgoCrew is the only place where I'm trusted to make architectural decisions from day one. No committees, no red tape.", name: "Huzaifa K.", role: "Senior Full-Stack Engineer", initials: "HK", color: "#06c8e8" },
-  { quote: "The async-first culture is real. I do my best work between 10pm and 2am — nobody cares, as long as the sprint ships. That freedom is worth more than any perk.", name: "Irfan N.", role: "DevOps Engineer", initials: "IN", color: "#a78bfa" },
+  { quote: "I've worked at big tech and agencies, AlgoCrew is the only place where I'm trusted to make architectural decisions from day one. No committees, no red tape.", name: "Huzaifa K.", role: "Senior Full-Stack Engineer", initials: "HK", color: "#06c8e8" },
+  { quote: "The async-first culture is real. I do my best work between 10pm and 2am, nobody cares, as long as the sprint ships. That freedom is worth more than any perk.", name: "Irfan N.", role: "DevOps Engineer", initials: "IN", color: "#a78bfa" },
   { quote: "What sold me was the calibre of the clients. I'm solving infrastructure problems at a scale most engineers only read about in SRE books.", name: "Muhammad A.", role: "Full-Stack Engineer", initials: "MA", color: "#34d399" },
 ];
 
@@ -41,7 +41,7 @@ const careersSchema = {
       "@type": "WebPage",
       "@id": `${baseURL}/careers`,
       url: `${baseURL}/careers`,
-      name: "Careers — AlgoCrew",
+      name: "Careers, AlgoCrew",
       description: "Join a team of elite engineers building the future of software. Remote-first, async-friendly, top 1% talent only.",
       breadcrumb: {
         "@type": "BreadcrumbList",
@@ -99,7 +99,7 @@ export default function CareersPage() {
             <p className={styles.heroSub}>
               A remote-first crew of senior engineers, designers, and strategists.
               We work on ambitious products with clients who trust us fully.
-              If you&apos;re in the top 1% of your craft — we need to talk.
+              If you&apos;re in the top 1% of your craft, we need to talk.
             </p>
             <div className={styles.heroCtas}>
               <a href="#roles" className={styles.heroPrimary}>See open roles →</a>
@@ -186,7 +186,7 @@ export default function CareersPage() {
             <span className={styles.accent}>starts here.</span>
           </h2>
           <p className={styles.ctaSub}>
-            We review every application personally. You&apos;ll hear back within 48 hours — always.
+            We review every application personally. You&apos;ll hear back within 48 hours, always.
           </p>
           <div className={styles.ctaBtns}>
             <Link href="/contact" className={styles.ctaPrimary}>Apply now →</Link>

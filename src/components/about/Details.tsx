@@ -5,9 +5,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./details.module.scss";
 
 const stats = [
-  { num: 98, suffix: "%", label: "Client Retention Rate",        desc: "Clients stay — because results compound over time." },
+  { num: 98, suffix: "%", label: "Client Retention Rate",        desc: "Clients stay, because results compound over time." },
   { num: 8,  suffix: " yrs", label: "Avg. Engineer Experience",  desc: "Senior-only bench. No juniors on production code." },
-  { num: 0,  suffix: "",     label: "Critical Incidents in Prod", desc: "SOC 2–aligned, secure-by-design. Zero P0s ever." },
+  { num: 0,  suffix: "",     label: "Critical Incidents in Prod", desc: "SOC 2-aligned, secure-by-design. Zero P0s ever." },
   { num: 120, suffix: "+",   label: "Production Deployments",    desc: "Shipped, scaled, and battle-tested globally." },
 ];
 

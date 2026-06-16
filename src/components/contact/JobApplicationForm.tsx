@@ -25,7 +25,7 @@ const ROLES = [
   "QA Engineer",
   "UI/UX Designer",
   "Product Manager",
-  "Open Application — Other",
+  "Open Application, Other",
 ];
 
 const EXPERIENCE_LEVELS = ["3–5 years", "5–8 years", "8–12 years", "12+ years"];
@@ -113,7 +113,7 @@ export default function JobApplicationForm() {
       from_phone: form.phone || "—",
       to_email:   ADMIN_EMAIL,
       time:       new Date().toLocaleString(),
-      subject:    `Job Application — ${form.role}`,
+      subject:    `Job Application, ${form.role}`,
       message:
 `ROLE APPLIED FOR : ${form.role}
 EXPERIENCE       : ${form.experience}
@@ -172,11 +172,11 @@ ${form.coverLetter || "Not provided."}`,
 
           <Column gap="m" marginTop="xl">
             {[
-              { icon: "check", text: "Senior-only team — no juniors" },
+              { icon: "check", text: "Senior-only team, no juniors" },
               { icon: "check", text: "100% remote, async-first culture" },
               { icon: "check", text: "Equity options for senior engineers" },
               { icon: "check", text: "$1,500 / year learning budget" },
-              { icon: "check", text: "30-day rolling exit — no lock-in" },
+              { icon: "check", text: "30-day rolling exit, no lock-in" },
               { icon: "check", text: "Fintech, AI, SaaS, DevOps projects" },
             ].map((item, i) => (
               <Flex key={i} gap="s" align="center">
@@ -279,7 +279,7 @@ ${form.coverLetter || "Not provided."}`,
             {/* CV Upload */}
             <Column gap="8">
               <Text variant="label-strong-xs" onBackground="neutral-medium">
-                CV / Resume * — PDF, DOC, or DOCX (max 5 MB)
+                CV / Resume *, PDF, DOC, or DOCX (max 5 MB)
               </Text>
 
               {!cv ? (
@@ -305,7 +305,7 @@ ${form.coverLetter || "Not provided."}`,
                     Drag &amp; drop your CV here
                   </Text>
                   <Text variant="body-default-xs" onBackground="neutral-weak" style={{ marginTop: 4 }}>
-                    or click to browse — PDF, DOC, DOCX only
+                    or click to browse, PDF, DOC, DOCX only
                   </Text>
                 </div>
               ) : (

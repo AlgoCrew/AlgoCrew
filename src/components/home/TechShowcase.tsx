@@ -82,7 +82,7 @@ export function TechShowcase() {
             technology.
           </h2>
           <p className={styles.desc}>
-            We use the right tool for the job — modern, battle-tested, and
+            We use the right tool for the job, modern, battle-tested, and
             chosen for performance and longevity.
           </p>
 

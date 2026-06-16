@@ -19,6 +19,8 @@ export async function generateMetadata() {
       path: hire.path,
     }),
     alternates: { canonical: hire.path },
+    // /hire is a thin lead-gen page: crawlable (not robots-blocked) but kept out of the index.
+    robots: { index: false, follow: true },
   };
 }
 

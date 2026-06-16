@@ -9,7 +9,7 @@ import styles from "./blog.module.scss";
 export async function generateMetadata() {
   return {
     ...Meta.generate({
-      title: "Blog — AlgoCrew",
+      title: "Blog - AlgoCrew",
       description: "Engineering insights, product thinking, and lessons from shipping software at scale with senior-only teams.",
       baseURL,
       path: "/blog",
@@ -51,7 +51,7 @@ export default function BlogPage() {
             <span className={styles.accent}>Perspectives.</span>
           </h1>
           <p className={styles.heroSub}>
-            Lessons from shipping production software with senior-only teams —
+            Lessons from shipping production software with senior-only teams,
             architecture, culture, AI, and everything in between.
           </p>
         </div>

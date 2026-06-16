@@ -10,7 +10,7 @@ const reasons = [
   {
     Icon: TbBrain,
     title: "Senior-only bench",
-    body: "Every engineer on your project has 6+ years of production experience. No juniors learning on your dime — ever.",
+    body: "Every engineer on your project has 6+ years of production experience. No juniors learning on your dime, ever.",
     accent: "#06c8e8",
   },
   {
@@ -22,7 +22,7 @@ const reasons = [
   {
     Icon: TbCode,
     title: "AI-first by default",
-    body: "We don't bolt AI on — we architect for intelligence from day one. Every system is designed to learn and compound.",
+    body: "We don't bolt AI on, we architect for intelligence from day one. Every system is designed to learn and compound.",
     accent: "#a78bfa",
   },
   {
@@ -34,13 +34,13 @@ const reasons = [
   {
     Icon: TbHeartHandshake,
     title: "100% IP transfer",
-    body: "Everything we build is yours. Full source code, all credentials, zero lock-in. NDA on day one — no exceptions.",
+    body: "Everything we build is yours. Full source code, all credentials, zero lock-in. NDA on day one, no exceptions.",
     accent: "#fb923c",
   },
   {
     Icon: TbUsers,
     title: "Embedded, not outsourced",
-    body: "We operate as your engineering team — daily standups, Slack, sprint demos. You lead; we execute with full ownership.",
+    body: "We operate as your engineering team, daily standups, Slack, sprint demos. You lead; we execute with full ownership.",
     accent: "#06c8e8",
   },
 ];

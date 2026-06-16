@@ -5,7 +5,7 @@ import { SendUsEmail } from "@/components/home/SendUsEmail";
 
 export async function generateMetadata() {
   return {
-    title: "Locations — AlgoCrew Software Agency",
+    title: "Locations, AlgoCrew Software Agency",
     description: "AlgoCrew serves clients in Canada, United States, United Kingdom, Australia, and Europe. Senior-only software development agency with no lock-in.",
     alternates: { canonical: baseURL + "/locations" },
   };

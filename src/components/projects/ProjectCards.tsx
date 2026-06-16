@@ -70,7 +70,7 @@ export default function ProjectCards() {
                         {project.name}
                     </Heading>
                     <Text variant="body-default-m" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                        Digital Solution — 2024
+                        Digital Solution, 2024
                     </Text>
                   </Column>
 

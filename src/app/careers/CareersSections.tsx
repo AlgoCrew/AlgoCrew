@@ -111,7 +111,7 @@ export function PerksSection() {
               <div className={styles.bentoCard}>
                 <div className={styles.bentoIconWrap}><TbBolt size={18} /></div>
                 <h3 className={styles.bentoTitle}>Async-First</h3>
-                <p className={styles.bentoDesc}>Deep work over meetings. Slack, Notion, Loom — not a 9am standup culture.</p>
+                <p className={styles.bentoDesc}>Deep work over meetings. Slack, Notion, Loom, not a 9am standup culture.</p>
               </div>
 
               {/* Elite Projects — tall feature card */}
@@ -121,7 +121,7 @@ export function PerksSection() {
                   <TbRocket size={18} />
                 </div>
                 <h3 className={styles.bentoFeatureTitle}>Elite<br />Projects</h3>
-                <p className={styles.bentoFeatureDesc}>Funded startups, enterprise infra, AI-first platforms — not CRUD apps.</p>
+                <p className={styles.bentoFeatureDesc}>Funded startups, enterprise infra, AI-first platforms, not CRUD apps.</p>
                 <div className={styles.bentoFeatureTags}>
                   {["Fintech", "AI", "SaaS", "DevOps", "HealthTech"].map(t => (
                     <span key={t} className={styles.bentoFeatureTag}>{t}</span>
@@ -162,7 +162,7 @@ export function PerksSection() {
 const process = [
   { Icon: TbFileDescription, n: "01", title: "Apply",            desc: "Send your CV and a short note on the best thing you've shipped. Links beat buzzwords every time." },
   { Icon: TbCode,            n: "02", title: "Async challenge",   desc: "A real-world task in your primary stack. 48–72 hours window, no artificial time pressure." },
-  { Icon: TbTargetArrow,     n: "03", title: "Live interview",    desc: "60 minutes with a senior engineer — system design, craft conversation, and culture fit." },
+  { Icon: TbTargetArrow,     n: "03", title: "Live interview",    desc: "60 minutes with a senior engineer, system design, craft conversation, and culture fit." },
   { Icon: TbPlayerPlay,      n: "04", title: "Paid trial sprint", desc: "One week on a real project, fully compensated. If it clicks, you're officially in the crew." },
 ];
 

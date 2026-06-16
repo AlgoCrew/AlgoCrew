@@ -13,11 +13,11 @@ import { SendUsEmail } from "@/components/home/SendUsEmail";
 export async function generateMetadata() {
   return {
     ...Meta.generate({
-      title: "Services — AlgoCrew",
-      description: "From staff augmentation to AI solutions — explore our full range of digital services.",
+      title: "Services - AlgoCrew",
+      description: "From staff augmentation to AI solutions, explore our full range of digital services.",
       baseURL,
       path: "/services",
-      image: `/api/og/generate?title=${encodeURIComponent("Services — AlgoCrew")}`,
+      image: `/api/og/generate?title=${encodeURIComponent("Services - AlgoCrew")}`,
     }),
     alternates: { canonical: "/services" },
   };

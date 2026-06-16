@@ -50,14 +50,14 @@ export function Hero() {
 
         <p className={`${styles.sub} ${styles.animIn2}`}>
           We craft high-performance digital products for startups and enterprises.
-          From concept to launch — fast, precise, cinematic.
+          From concept to launch, fast, precise, cinematic.
         </p>
 
         <div className={`${styles.actions} ${styles.animIn3}`}>
           <Link href="/contact" className={styles.btnPrimary}>
             Launch Your Product →
           </Link>
-          <Link href="/projects" className={styles.btnGhost}>
+          <Link href="/work" className={styles.btnGhost}>
             See Case Studies
           </Link>
         </div>

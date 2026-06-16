@@ -5,7 +5,7 @@ import styles from "../privacy-policy/legal.module.scss";
 export async function generateMetadata() {
   return {
     ...Meta.generate({
-      title: "Terms of Service — AlgoCrew",
+      title: "Terms of Service - AlgoCrew",
       description: "Terms governing use of AlgoCrew's website and services.",
       baseURL,
       path: "/terms",
@@ -79,7 +79,7 @@ export default function TermsPage() {
           </Section>
 
           <Section title="9. Warranties">
-            AlgoCrew warrants that work will be performed in a professional manner consistent with industry standards. We do not warrant that deliverables will be error-free or meet all business objectives — the client is responsible for validating that deliverables meet their requirements.
+            AlgoCrew warrants that work will be performed in a professional manner consistent with industry standards. We do not warrant that deliverables will be error-free or meet all business objectives, the client is responsible for validating that deliverables meet their requirements.
           </Section>
 
           <Section title="10. Governing Law">

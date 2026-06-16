@@ -7,7 +7,7 @@ const options = [
   {
     Icon: TbCalendar,
     title: "Book a strategy call",
-    desc: "30-minute discovery call with our solutions team. No pitch — just a real conversation about your needs.",
+    desc: "30-minute discovery call with our solutions team. No pitch, just a real conversation about your needs.",
     cta: "Schedule now →",
     href: "https://cal.com/info-algocrew/30min",
     accent: "#06c8e8",
@@ -39,7 +39,7 @@ const options = [
   {
     Icon: TbMapPin,
     title: "Our office",
-    desc: "Brampton, Ontario, Canada — L6V 2E7. Drop by or send us mail.",
+    desc: "Brampton, Ontario, Canada, L6V 2E7. Drop by or send us mail.",
     cta: "View on maps →",
     href: "https://maps.google.com/?q=Brampton+Ontario+L6V2E7",
     accent: "#fb923c",

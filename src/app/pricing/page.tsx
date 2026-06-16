@@ -12,11 +12,11 @@ import {
 export async function generateMetadata() {
   return {
     ...Meta.generate({
-      title: "Pricing — AlgoCrew",
+      title: "Pricing - AlgoCrew",
       description: "Transparent, milestone-based pricing for teams that want senior engineering without the guesswork.",
       baseURL,
       path: "/pricing",
-      image: `/api/og/generate?title=${encodeURIComponent("Pricing — AlgoCrew")}`,
+      image: `/api/og/generate?title=${encodeURIComponent("Pricing - AlgoCrew")}`,
     }),
     alternates: { canonical: "/pricing" },
   };
@@ -51,7 +51,7 @@ const plans = [
     unit: "/ month",
     color: "#06c8e8",
     gradient: "linear-gradient(135deg, #06c8e8 0%, #2563eb 100%)",
-    desc: "A dedicated product team embedded in your workflow. Agile sprints, weekly demos, 30-day exit — no lock-in.",
+    desc: "A dedicated product team embedded in your workflow. Agile sprints, weekly demos, 30-day exit, no lock-in.",
     features: [
       "2–3 senior engineers + PM",
       "Agile sprints (2-week cycles)",
@@ -72,7 +72,7 @@ const plans = [
     unit: "",
     color: "#a78bfa",
     gradient: "linear-gradient(135deg, #a78bfa 0%, #2563eb 100%)",
-    desc: "A full engineering division — staffing, infrastructure, AI strategy, and long-term partnership.",
+    desc: "A full engineering division, staffing, infrastructure, AI strategy, and long-term partnership.",
     features: [
       "4–12 engineers across disciplines",
       "Dedicated account manager",
@@ -101,7 +101,7 @@ const pricingSchema = {
       "@type": "WebPage",
       "@id": `${baseURL}/pricing`,
       url: `${baseURL}/pricing`,
-      name: "Pricing — AlgoCrew",
+      name: "Pricing, AlgoCrew",
       description: "Transparent, milestone-based pricing for software development. No hidden fees, no lock-in.",
       breadcrumb: {
         "@type": "BreadcrumbList",
@@ -144,7 +144,7 @@ export default function PricingPage() {
           </h1>
           <p className={styles.heroSub}>
             Senior-only engineering with milestone-based billing and 30-day rolling exits.
-            Pick the model that fits your stage — or talk to us and we&apos;ll recommend one.
+            Pick the model that fits your stage, or talk to us and we&apos;ll recommend one.
           </p>
 
           {/* Trust strip */}
@@ -246,7 +246,7 @@ export default function PricingPage() {
               <div>
                 <h3 className={styles.calloutTitle}>Not sure which plan fits?</h3>
                 <p className={styles.calloutText}>
-                  Book a free 30-minute strategy call. We&apos;ll scope your project, recommend a model, and give you a written estimate — no pressure, no pitch.
+                  Book a free 30-minute strategy call. We&apos;ll scope your project, recommend a model, and give you a written estimate, no pressure, no pitch.
                 </p>
               </div>
             </div>

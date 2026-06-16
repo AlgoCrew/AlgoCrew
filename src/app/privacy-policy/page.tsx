@@ -5,7 +5,7 @@ import styles from "./legal.module.scss";
 export async function generateMetadata() {
   return {
     ...Meta.generate({
-      title: "Privacy Policy — AlgoCrew",
+      title: "Privacy Policy - AlgoCrew",
       description: "How AlgoCrew collects, uses, and protects your personal data.",
       baseURL,
       path: "/privacy-policy",
@@ -32,14 +32,14 @@ export default function PrivacyPolicyPage() {
           <Section title="2. Information We Collect">
             <p>We collect information you provide directly:</p>
             <ul>
-              <li><strong>Contact forms</strong> — name, email address, company name, and your message.</li>
-              <li><strong>Calendar bookings</strong> — name, email, and any details you add when booking a call via Cal.com.</li>
-              <li><strong>Email correspondence</strong> — any information included in emails you send to us.</li>
+              <li><strong>Contact forms</strong>, name, email address, company name, and your message.</li>
+              <li><strong>Calendar bookings</strong>, name, email, and any details you add when booking a call via Cal.com.</li>
+              <li><strong>Email correspondence</strong>, any information included in emails you send to us.</li>
             </ul>
             <p>We also collect information automatically when you visit our site:</p>
             <ul>
-              <li><strong>Log data</strong> — IP address, browser type, pages visited, time spent.</li>
-              <li><strong>Analytics</strong> — via privacy-respecting, cookie-free analytics (Plausible). No personal data is stored.</li>
+              <li><strong>Log data</strong>, IP address, browser type, pages visited, time spent.</li>
+              <li><strong>Analytics</strong>, via privacy-respecting, cookie-free analytics (Plausible). No personal data is stored.</li>
             </ul>
           </Section>
 
@@ -57,9 +57,9 @@ export default function PrivacyPolicyPage() {
           <Section title="4. Legal Basis for Processing (GDPR)">
             <p>If you are in the EEA or UK, we process your data under these lawful bases:</p>
             <ul>
-              <li><strong>Contract</strong> — to fulfil our obligations to you as a client.</li>
-              <li><strong>Legitimate interest</strong> — to respond to enquiries and improve our services.</li>
-              <li><strong>Consent</strong> — where you have explicitly opted in (e.g. marketing emails).</li>
+              <li><strong>Contract</strong>, to fulfil our obligations to you as a client.</li>
+              <li><strong>Legitimate interest</strong>, to respond to enquiries and improve our services.</li>
+              <li><strong>Consent</strong>, where you have explicitly opted in (e.g. marketing emails).</li>
             </ul>
           </Section>
 
@@ -70,10 +70,10 @@ export default function PrivacyPolicyPage() {
           <Section title="6. Third-Party Services">
             <p>We use the following sub-processors:</p>
             <ul>
-              <li><strong>Vercel</strong> — website hosting (US/EU)</li>
-              <li><strong>Cal.com</strong> — meeting scheduling</li>
-              <li><strong>Plausible Analytics</strong> — privacy-first analytics (EU-hosted)</li>
-              <li><strong>Slack</strong> — internal communication</li>
+              <li><strong>Vercel</strong>, website hosting (US/EU)</li>
+              <li><strong>Cal.com</strong>, meeting scheduling</li>
+              <li><strong>Plausible Analytics</strong>, privacy-first analytics (EU-hosted)</li>
+              <li><strong>Slack</strong>, internal communication</li>
             </ul>
             <p>Each is bound by their own privacy policies and GDPR-compliant data processing agreements.</p>
           </Section>
@@ -92,7 +92,7 @@ export default function PrivacyPolicyPage() {
           </Section>
 
           <Section title="8. Cookies">
-            Our website uses no tracking or advertising cookies. We use a single session cookie required for the website to function. You can disable cookies in your browser settings — this will not affect your ability to browse the site.
+            Our website uses no tracking or advertising cookies. We use a single session cookie required for the website to function. You can disable cookies in your browser settings, this will not affect your ability to browse the site.
           </Section>
 
           <Section title="9. Security">

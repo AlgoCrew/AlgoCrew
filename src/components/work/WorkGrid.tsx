@@ -117,7 +117,7 @@ export function WorkGrid() {
             </h2>
             <p className={styles.introDesc}>
               {projects.length} real-world projects across {Object.keys(catColors).length} verticals
-              and 8+ countries — from fintech to cloud infrastructure.
+              and 8+ countries, from fintech to cloud infrastructure.
             </p>
             {/* colour legend */}
             <div className={styles.legend}>

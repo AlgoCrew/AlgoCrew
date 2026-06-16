@@ -7,7 +7,7 @@ const features = [
   { title: "Speed to Market",  tag: "48hr Matching",      desc: "Deploy world-class talent in days, not months. From brief to kickoff in 48 hours." },
   { title: "Top 1% Talent",    tag: "Vetted Quality",     desc: "A rigorous 5-stage vetting process for both technical mastery and soft skills." },
   { title: "AI-First",         tag: "Future-Proof",       desc: "Integrating LLMs and modern cloud infrastructure into every workflow." },
-  { title: "Security First",   tag: "Enterprise-Grade",   desc: "Built with SOC 2–aligned practices and secure-by-design architecture." },
+  { title: "Security First",   tag: "Enterprise-Grade",   desc: "Built with SOC 2-aligned practices and secure-by-design architecture." },
 ];
 
 export function WhyChooseUs() {

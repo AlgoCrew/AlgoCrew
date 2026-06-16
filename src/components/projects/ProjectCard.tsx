@@ -106,7 +106,7 @@
 
 //           <Column className={styles.metaItem} style={{ border: 'none' }}>
 //              <Button 
-//                 href="/projects" 
+//                 href="/work" 
 //                 variant="secondary" 
 //                 fillWidth 
 //                 suffixIcon="arrowRight"
@@ -161,7 +161,7 @@ export default function ProjectCard({ project }: CardsProp) {
       {/* HEADER SECTION */}
       <Flex direction="column" gap="16" className="reveal-title">
         <Text variant="label-strong-s" style={{ color: "#00ccccf0", letterSpacing: '0.3em' }}>
-            {project.category.toUpperCase()} — {project.year}
+            {project.category.toUpperCase()}, {project.year}
         </Text>
         <Heading variant="display-strong-l">
             {project.title}
@@ -226,7 +226,7 @@ export default function ProjectCard({ project }: CardsProp) {
             </div>
           </Column>
 
-          <Button href="/projects" variant="tertiary" fillWidth prefixIcon="chevronLeft" style={{ marginTop: '24px' }}>
+          <Button href="/work" variant="tertiary" fillWidth prefixIcon="chevronLeft" style={{ marginTop: '24px' }}>
             Back to Portfolio
           </Button>
         </aside>

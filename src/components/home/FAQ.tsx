@@ -6,7 +6,7 @@ import styles from "./FAQ.module.scss";
 const faqs = [
   {
     q: "How quickly can you onboard engineering talent?",
-    a: "From signed brief to first standup in 48 hours. Our pre-vetted bench means we match you with engineers who have already passed our 5-stage screening — technical assessment, system design, culture fit, security clearance check, and reference verification. No cold sourcing, no delays.",
+    a: "From signed brief to first standup in 48 hours. Our pre-vetted bench means we match you with engineers who have already passed our 5-stage screening, technical assessment, system design, culture fit, security clearance check, and reference verification. No cold sourcing, no delays.",
     tag: "Onboarding",
   },
   {
@@ -26,17 +26,17 @@ const faqs = [
   },
   {
     q: "What does 'AI-First' delivery mean in practice?",
-    a: "Every project we ship is evaluated for LLM-augmentation opportunities — whether that's embedding a co-pilot feature, building an internal RAG pipeline for your ops team, or instrumenting observability so your models stay healthy in production. We don't bolt AI on; we architect for it from day one.",
+    a: "Every project we ship is evaluated for LLM-augmentation opportunities, whether that's embedding a co-pilot feature, building an internal RAG pipeline for your ops team, or instrumenting observability so your models stay healthy in production. We don't bolt AI on; we architect for it from day one.",
     tag: "AI",
   },
   {
     q: "How do you handle NDA, IP ownership, and data security?",
-    a: "IP transfers 100% to you on payment — no license back, no residual claims. NDAs are signed before any discovery call. All engineers operate under strict confidentiality agreements. For enterprise clients we support SOC 2–aligned workflows, zero-trust access patterns, and your preferred secret-management toolchain.",
+    a: "IP transfers 100% to you on payment, no license back, no residual claims. NDAs are signed before any discovery call. All engineers operate under strict confidentiality agreements. For enterprise clients we support SOC 2-aligned workflows, zero-trust access patterns, and your preferred secret-management toolchain.",
     tag: "Legal",
   },
   {
     q: "Can you integrate with our existing team?",
-    a: "Yes — and that's how most engagements start. Our engineers slot into your Slack, stand-ups, sprint ceremonies, and code-review culture. We've worked inside monorepos at 200-person scale and as the entire technical team for seed-stage startups. We adapt, not the other way around.",
+    a: "Yes, and that's how most engagements start. Our engineers slot into your Slack, stand-ups, sprint ceremonies, and code-review culture. We've worked inside monorepos at 200-person scale and as the entire technical team for seed-stage startups. We adapt, not the other way around.",
     tag: "Process",
   },
 ];

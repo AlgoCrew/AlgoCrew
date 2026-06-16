@@ -62,7 +62,7 @@ const home = {
   featured: {
     display: true,
     title: <>Our Recent Projects <strong className="ml-4"></strong></>,
-    href: "/projects",
+    href: "/work",
   },
   subline: (
     <>
@@ -102,7 +102,7 @@ const about = {
   path: "/about",
   label: "About",
   // Escaped apostrophes
-  title: "About – AlgoCrew",
+  title: "About | AlgoCrew",
   image: "/images/og/about.jpg",
   description: "We are committed to driving innovation and excellence in the world of IT.",
   tableOfContent: {
@@ -194,7 +194,7 @@ const aboutUs = {
 
         <p className="trial-text">
           Build with total confidence. Experience our synergy firsthand with a 
-          <strong className="highlight"> 7-day risk-free trial</strong>—because 
+          <strong className="highlight"> 7-day risk-free trial</strong>, because 
           your trust should be earned, not just requested.
         </p>
 
@@ -256,7 +256,7 @@ const aboutUs = {
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "AlgoCrew Blog — Engineering & Product Insights",
+  title: "AlgoCrew Blog - Engineering & Product Insights",
   description:
     "Engineering insights, product thinking, and lessons from building software with AlgoCrew's senior-only teams.",
 };
@@ -278,9 +278,9 @@ const hire = {
 const work = {
   path: "/work",
   label: "Work",
-  title: "Our Work — Case Studies & Client Projects",
+  title: "Our Work - Case Studies & Client Projects",
   description:
-    "Explore AlgoCrew's portfolio of web, mobile, and cloud projects — real case studies showing how our senior engineers ship production software for clients worldwide.",
+    "Explore AlgoCrew's portfolio of web, mobile, and cloud projects, real case studies showing how our senior engineers ship production software for clients worldwide.",
 };
 
 const services = {
@@ -296,9 +296,9 @@ const services = {
 
 
 const projects = {
-  path: "/projects",
+  path: "/work",
   label: "Showcase",
-  title: "Projects – AlgoCrew",
+  title: "Projects | AlgoCrew",
   metaDescription: "A photo collection of our projects",
   description: (
     <>

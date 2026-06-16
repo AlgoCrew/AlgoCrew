@@ -67,13 +67,13 @@ export function CompareTable() {
 
 /* ── FAQ accordion ── */
 const faqs = [
-  { q: "Do you offer fixed-price projects?",          a: "Yes — the Sprint plan is always fixed price with a defined scope and delivery date. For Studio and Enterprise we use milestone-based billing with a monthly retainer." },
+  { q: "Do you offer fixed-price projects?",          a: "Yes, the Sprint plan is always fixed price with a defined scope and delivery date. For Studio and Enterprise we use milestone-based billing with a monthly retainer." },
   { q: "What's included in post-launch support?",     a: "Bug fixes, performance monitoring, minor feature tweaks, and deployment support for 30 days (Sprint) or ongoing (Studio/Enterprise). New feature development requires a new sprint or scope extension." },
   { q: "Can I scale the team mid-project?",           a: "Yes. Studio clients can add or remove engineers with 2-week notice. Enterprise clients have dedicated capacity planning and dedicated account management." },
-  { q: "Who owns the code and IP?",                   a: "You do — 100%. All IP transfers fully on final payment. No licence back, no residual claims, no strings attached." },
+  { q: "Who owns the code and IP?",                   a: "You do, 100%. All IP transfers fully on final payment. No licence back, no residual claims, no strings attached." },
   { q: "Is there a minimum commitment?",              a: "Sprint: no minimum beyond the agreed scope. Studio: 1-month minimum, then 30-day rolling. Enterprise: negotiated per engagement based on scope." },
   { q: "How do milestone payments work?",             a: "We break each engagement into 2–3 milestones tied to concrete deliverables. You pay on milestone completion, not on time. If we miss a milestone, you don't pay until we do." },
-  { q: "Do you sign NDAs before discovery?",          a: "Yes — NDAs are signed before any discovery call, requirements discussion, or code review. Confidentiality is default, not optional." },
+  { q: "Do you sign NDAs before discovery?",          a: "Yes, NDAs are signed before any discovery call, requirements discussion, or code review. Confidentiality is default, not optional." },
 ];
 
 export function FaqAccordion() {

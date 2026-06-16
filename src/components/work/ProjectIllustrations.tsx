@@ -1,6 +1,6 @@
 /* ================================================================
    PROJECT CARD SVG ILLUSTRATIONS
-   One per project — dark, animated, editorial
+   One per project, dark, animated, editorial
    ================================================================ */
 
 export function FintechIllustration() {

@@ -26,7 +26,7 @@ export async function generateMetadata({
   if (!project) return {};
   return {
     ...Meta.generate({
-      title: `${project.title} — AlgoCrew`,
+      title: `${project.title} - AlgoCrew`,
       description: project.description,
       baseURL,
       image: project.img,
@@ -57,7 +57,7 @@ export default async function ProjectPage({
         as="webPage"
         baseURL={baseURL}
         path={`${work.path}/${slug}`}
-        title={`${project.title} — AlgoCrew`}
+        title={`${project.title}, AlgoCrew`}
         description={project.description}
         image={project.img}
       />

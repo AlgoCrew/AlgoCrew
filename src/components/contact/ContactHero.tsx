@@ -41,7 +41,7 @@ export function ContactHero() {
 
         <p className={`${styles.sub} ${styles.reveal}`}>
           Whether you need a dedicated engineering team, a single specialist, or strategic
-          advice — we&apos;ll find the right fit fast.
+          advice, we&apos;ll find the right fit fast.
         </p>
 
         {/* Quick trust row */}

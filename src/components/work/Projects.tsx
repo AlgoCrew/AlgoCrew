@@ -164,7 +164,7 @@ export function Projects() {
           ))}
         </div>
         <div className={styles.mobileFooter}>
-          <Link href="/projects" className={styles.viewAll}>View All Work →</Link>
+          <Link href="/work" className={styles.viewAll}>View All Work →</Link>
         </div>
       </div>
     );
@@ -226,7 +226,7 @@ export function Projects() {
             <div className={styles.ctaContent}>
               <p className={styles.ctaEyebrow}>Ready to build?</p>
               <p className={styles.ctaHeading}>Your vertical.<br />Our expertise.</p>
-              <Link href="/projects" className={styles.ctaBtn}>
+              <Link href="/work" className={styles.ctaBtn}>
                 View All Work
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7"/>

@@ -4,7 +4,7 @@ import styles from "./Testimonals.module.scss";
 
 const testimonials = [
   {
-    quote: "AlgoCrew didn't just build our product — they transformed how we think about software. The team felt like a genuine extension of our company from day one.",
+    quote: "AlgoCrew didn't just build our product, they transformed how we think about software. The team felt like a genuine extension of our company from day one.",
     highlight: "transformed how we think about software.",
     author: "Sarah Chen",
     role: "CTO",
@@ -28,7 +28,7 @@ const testimonials = [
     metricLabel: "conversion lift",
   },
   {
-    quote: "The AI integration they built for us cut our ops time by 60%. They don't just code — they solve business problems at the root level.",
+    quote: "The AI integration they built for us cut our ops time by 60%. They don't just code, they solve business problems at the root level.",
     highlight: "cut our ops time by 60%.",
     author: "Priya Sharma",
     role: "VP Engineering",

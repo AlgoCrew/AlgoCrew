@@ -11,7 +11,7 @@ import styles from "./about-page.module.scss";
 export async function generateMetadata() {
   return {
     ...Meta.generate({
-      title: "About — AlgoCrew",
+      title: "About - AlgoCrew",
       description: "AlgoCrew is a software company headquartered in Canada, delivering elite engineering solutions globally.",
       baseURL,
       path: "/about",
@@ -84,7 +84,7 @@ export default function AboutPage() {
               Engineering digital products that change industries.
             </h2>
             <p style={{ fontSize: "1rem", color: "var(--text-muted)", lineHeight: 1.75, margin: 0 }}>
-              At AlgoCrew, we&apos;re not just developers — we&apos;re architects of the digital future. We specialize in delivering top-tier solutions tailored to the high-stakes needs of modern enterprise. Our approach combines deep technical expertise with strategic business thinking to create products that don&apos;t just work — they win.
+              At AlgoCrew, we&apos;re not just developers, we&apos;re architects of the digital future. We specialize in delivering top-tier solutions tailored to the high-stakes needs of modern enterprise. Our approach combines deep technical expertise with strategic business thinking to create products that don&apos;t just work, they win.
             </p>
           </div>
           <div className={styles.missionRight}>

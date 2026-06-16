@@ -1,8 +1,8 @@
 import { home } from "./content";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema.
-// Canonical host is the www apex; the host/DNS layer must 301 non-www -> www (see deploy notes).
-const baseURL = "https://www.algocrew.io";
+// Canonical host is the bare apex; middleware 301s www and *.vercel.app -> apex.
+const baseURL = "https://algocrew.io";
 
 const routes = {
   "/": true,
@@ -10,7 +10,6 @@ const routes = {
   "/about": true,
   "/work": true,
   "/blog": true,
-  "/projects": true,
   "/contact": true,
   "/hire": true,
   "/careers": true,

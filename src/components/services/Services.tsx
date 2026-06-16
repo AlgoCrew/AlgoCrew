@@ -21,7 +21,7 @@ const services = [
     num: "02",
     title: "Product Engineering",
     tagline: "MVP to Enterprise Scale",
-    desc: "Bespoke digital solutions engineered for performance and market dominance. Web, mobile, SaaS — built to last.",
+    desc: "Bespoke digital solutions engineered for performance and market dominance. Web, mobile, SaaS, built to last.",
     tags: ["Web & Mobile", "SaaS Platforms", "E-commerce"],
     color: "#0077ff",
     icon: "⬡",

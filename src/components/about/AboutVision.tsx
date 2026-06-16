@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import styles from "./AboutVision.module.scss";
 
 const milestones = [
-  { year: "2019", event: "Founded in Canada", detail: "Two engineers, one mission — elite software without the agency overhead." },
+  { year: "2019", event: "Founded in Canada", detail: "Two engineers, one mission, elite software without the agency overhead." },
   { year: "2021", event: "First enterprise client", detail: "Scaled to a 6-figure fintech engagement. Zero critical incidents." },
   { year: "2022", event: "Went global", detail: "Expanded to EU and APAC. Follow-the-sun delivery across 18+ countries." },
   { year: "2023", event: "AI-first pivot", detail: "Restructured every practice around LLM integration and intelligence-native architecture." },
@@ -56,7 +56,7 @@ export function AboutVision() {
               <span className={styles.visionQuote}>&ldquo;</span>
               <p className={styles.visionText}>
                 To be the most trusted engineering partner for companies
-                that are building the future — from first commit to global scale.
+                that are building the future, from first commit to global scale.
               </p>
             </div>
           </div>
