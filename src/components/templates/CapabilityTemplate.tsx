@@ -3,7 +3,7 @@ import { JumpLinks } from "@/components/layout";
 import { JsonLd, serviceSchema } from "@/components/seo/JsonLd";
 import { GlanceRow, PageHero } from "@/components/sections";
 import {
-  Button, ButtonRow, Card, Checklist, CtaBlock, DataTable, Faq, Grid, Ledger, LedgerRow, Page, Section, SectionHead, Split, Steps,
+  Button, ButtonRow, Card, Checklist, CtaBlock, DataTable, Faq, Inset, Grid, Ledger, LedgerRow, Page, Section, SectionHead, Split, Steps,
 } from "@/components/ui";
 import type { Framework } from "@/resources/frameworks";
 import { type Service, servicePath } from "@/resources/pillars";
@@ -86,8 +86,8 @@ export function CapabilityTemplate({
         <Section id="who">
           <SectionHead eyebrow="Who it's for" title="Teams that recognize at least one of these." />
           <Grid cols={3}>
-            {c.problems.map((problem) => (
-              <Card key={problem} title={problem} as="h3" />
+            {c.problems.map((problem, i) => (
+              <Card key={problem} label={`0${i + 1}`} title={problem} as="h3" />
             ))}
           </Grid>
         </Section>
@@ -118,11 +118,13 @@ export function CapabilityTemplate({
       )}
 
       {c.deliverables.length > 0 && (
-        <Section tone="soft" id="deliverables">
-          <Split>
-            <SectionHead eyebrow="What you get" title="Artifacts you can maintain." />
-            <Checklist items={c.deliverables} />
-          </Split>
+        <Section id="deliverables">
+          <Inset>
+            <Split>
+              <SectionHead eyebrow="What you get" title="Artifacts you can maintain." />
+              <Checklist items={c.deliverables} />
+            </Split>
+          </Inset>
         </Section>
       )}
 

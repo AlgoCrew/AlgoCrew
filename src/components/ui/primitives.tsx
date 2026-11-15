@@ -60,6 +60,11 @@ export function Split({ children }: { children: ReactNode }) {
   return <div className={s.split}>{children}</div>;
 }
 
+/** A tinted, rounded panel inside a section, to break a run of plain bands (design refresh, 17). */
+export function Inset({ children }: { children: ReactNode }) {
+  return <div className={s.inset}>{children}</div>;
+}
+
 /* ---------- Type ---------- */
 
 export function Heading({
@@ -280,7 +285,7 @@ export function Steps({
 }) {
   return (
     <div data-reveal="">
-      <ol className={cx(s.steps, band && s.stepsBanded)} style={{ "--steps": items.length } as CSSProperties}>
+      <ol className={s.steps} style={{ "--steps": items.length } as CSSProperties}>
         {items.map((item) => (
           <li key={item.title}>
             <Heading as="h3" size="h3">
@@ -315,20 +320,19 @@ export function LedgerRow({
   tools?: readonly string[];
   children: ReactNode;
 }) {
+  const hasTools = !!tools && tools.length > 0;
   return (
-    <div className={s.ledgerRow} id={id} data-reveal="">
+    <div className={cx(s.ledgerRow, !hasTools && s.ledgerRowWide)} id={id} data-reveal="">
       <Heading as={as} size="h3">
         {title}
       </Heading>
       <div>{children}</div>
-      {tools && tools.length > 0 ? (
+      {hasTools && (
         <ul className={s.ledgerTools} aria-label="Tools">
-          {tools.map((tool) => (
+          {tools!.map((tool) => (
             <li key={tool}>{tool}</li>
           ))}
         </ul>
-      ) : (
-        <span />
       )}
     </div>
   );

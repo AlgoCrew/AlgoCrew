@@ -4,7 +4,7 @@ import { JumpLinks } from "@/components/layout";
 import { JsonLd, canonical, serviceSchema } from "@/components/seo/JsonLd";
 import { FrameworkCards, FrameworkQuickLinks, PageHero } from "@/components/sections";
 import {
-  BoundaryStatement, Button, ButtonRow, Checklist, CtaBlock, Faq, Grid, Ledger, LedgerRow, Page, Section, SectionHead, Split,
+  BoundaryStatement, Button, ButtonRow, Checklist, CtaBlock, Faq, Inset, Grid, Ledger, LedgerRow, Page, Section, SectionHead, Split,
 } from "@/components/ui";
 import { liveFrameworks } from "@/resources/frameworks";
 import { livePlatformIds } from "@/resources/gating";
@@ -109,11 +109,13 @@ export default function CompliancePage() {
       </Section>
 
       {pillar.deliverables.length > 0 && (
-        <Section tone="soft" id="deliverables">
-          <Split>
-            <SectionHead eyebrow="What you get" title="Typical outputs." />
-            <Checklist items={pillar.deliverables} />
-          </Split>
+        <Section id="deliverables">
+          <Inset>
+            <Split>
+              <SectionHead eyebrow="What you get" title="Typical outputs." />
+              <Checklist items={pillar.deliverables} />
+            </Split>
+          </Inset>
         </Section>
       )}
 

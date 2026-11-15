@@ -322,3 +322,48 @@ Full report: `15-qa-report.md`.
 ### Build after this stage
 
 42 pages, 0 broken internal links, sitemap matches (33 URLs), 12 tests pass, token check passes, type check passes.
+
+## Workflow stage 7: Final review
+
+Full review: `16-final-review.md`. Two defects fixed:
+- the contact form now posts (personal data could reach the URL before hydration);
+- the root font stays 16px below 1024px, so mobile and tablet sizes match the prototypes.
+
+Eight open findings are ranked there, none blocking. Checks after the fixes: type check, 12 tests, 0 broken links, sitemap matches, token check passes, no horizontal overflow on 33 pages at 320/768/1024/1440 px.
+
+Follow-up fixes from the review: O1, plain form posts get a readable result page from `/api/contact`; O5, the 3D scene cannot mount twice. Verified with curl (9 cases), a scripted submit with JavaScript on, and a width change across 860 px during load.
+
+### Change after launch: lifecycle auto-advance (owner request, 2026-11-15)
+
+The homepage lifecycle now moves to the next stage every 6 seconds. This is a deliberate exception to 08 §8 ("no autoplaying carousels"), requested by the owner. It is built to meet WCAG 2.2.2 (Pause, Stop, Hide):
+- it runs only while the section is at least half on screen;
+- it pauses while the pointer is over it or focus is inside it;
+- it stops for good once the visitor selects a stage (click or keys);
+- it is off when reduced motion is set;
+- it never moves keyboard focus and does not announce changes.
+
+Verified on a production build: stage 01 → 02 → 03 at about 6-second steps while in view; no movement off screen; paused under hover and focus; stays on the clicked stage. Resume after the pointer leaves could not be confirmed in the hidden preview pane (it does not paint, so the on-screen check stalls); check it in a normal browser.
+
+## Design refresh: homepage (owner request, 2026-11-15)
+
+Design note: `17-design-refresh.md`. The homepage keeps its hero, scope strip, lifecycle and closing CTA. Changed or added:
+
+| Section | Change | Files |
+|---|---|---|
+| Capabilities | Mixed grid: one tall featured card with a drawing, four smaller cards | `sections/HomeSections.tsx` (`PracticeBento`) |
+| Compliance | Links as rows, beside a "requirement → control → check → evidence" flow | `ComplianceSplit` |
+| Method | Connected timeline (vertical on phones) | `MethodTimeline` |
+| Outputs | Inset tinted panel; each output has a drawn preview | `OutputArtifacts` |
+| Engagement models | New on the homepage | `EngagementPanels`, `resources/engagement.ts` |
+| Insights | One featured post and two rows | `InsightsFeature` |
+| FAQ | New on the homepage (no FAQ schema here; `/our-approach` keeps it) | `Faq`, `resources/engagement.ts` |
+
+Engagement and FAQ copy now lives in `src/resources/engagement.ts`, used by both pages. Not added, because the content rules forbid them until verified: a three-cloud band, an industries or frameworks grid, statistics, logos, testimonials.
+
+Verified on a production build: desktop (1440) and phone (375) screenshots of every changed section; no horizontal overflow at 320, 768, 1024 and 1440 px; 12 tests, links, tokens and type check pass; one H1. Not re-run: the axe scan (blocked in this session) and Lighthouse.
+
+## Design refresh: rollout to inner pages (2026-11-15)
+
+Details in `17-design-refresh.md` ("Rollout to the other pages"). The shared blocks `Steps`, `Ledger`, `Checklist` and `Card` were restyled and a new `Inset` panel added (`src/components/ui`), so every site-v2 page changed without page-by-page layouts. The homepage's own timeline and panel were removed in favour of the shared ones. About, Our Approach and the service template got one page-specific change each.
+
+Verified on a production build: screenshots of Services, a service page, a pillar page, Compliance, About, Our Approach and Careers at 1440 px, and a service page at 375 px; no horizontal overflow on 21 pages at 320, 768, 1024 and 1440 px (84 checks, including the design-system review pages and one post); 12 tests, links, sitemap, tokens and type check pass. Not re-run: axe and Lighthouse. Insights, posts and the legal pages are not restyled.

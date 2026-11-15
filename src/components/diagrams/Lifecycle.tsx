@@ -19,11 +19,33 @@ const LIFECYCLE = [
   { name: "Monitor", controls: ["Centralized, tamper-resistant logs", "Native threat detection, tuned and routed", "Alerts tied to an owner and a runbook", "Evidence retained for your assessor"] },
 ];
 
+const ADVANCE_MS = 6000;
+
 export function Lifecycle() {
   const [hydrated, setHydrated] = useState(false);
   const [selected, setSelected] = useState(0);
+  // Auto-advance (WCAG 2.2.2): only on screen, paused on hover or focus, off for good once
+  // the visitor picks a stage, never with reduced motion. It never moves focus.
+  const [auto, setAuto] = useState(true);
+  const [paused, setPaused] = useState(false);
+  const [inView, setInView] = useState(false);
+  const root = useRef<HTMLDivElement>(null);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   useEffect(() => setHydrated(true), []);
+
+  useEffect(() => {
+    if (!hydrated || !root.current) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return setAuto(false);
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.5 });
+    io.observe(root.current);
+    return () => io.disconnect();
+  }, [hydrated]);
+
+  useEffect(() => {
+    if (!auto || paused || !inView) return;
+    const t = setTimeout(() => setSelected((i) => (i + 1) % LIFECYCLE.length), ADVANCE_MS);
+    return () => clearTimeout(t);
+  }, [auto, paused, inView, selected]);
 
   const band = <p className={s.secBand}>Security controls and evidence across all seven stages</p>;
 
@@ -50,6 +72,7 @@ export function Lifecycle() {
   }
 
   const select = (i: number) => {
+    setAuto(false);
     setSelected(i);
     tabs.current[i]?.focus();
   };
@@ -63,7 +86,13 @@ export function Lifecycle() {
   const stage = LIFECYCLE[selected];
 
   return (
-    <div>
+    <div
+      ref={root}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={(e) => !e.currentTarget.contains(e.relatedTarget as Node) && setPaused(false)}
+    >
       <div className={s.tabs} role="tablist" aria-label="Delivery stages">
         {LIFECYCLE.map((st, i) => (
           <button
@@ -78,7 +107,10 @@ export function Lifecycle() {
             aria-selected={i === selected}
             aria-controls="life-panel"
             tabIndex={i === selected ? 0 : -1}
-            onClick={() => setSelected(i)}
+            onClick={() => {
+              setAuto(false);
+              setSelected(i);
+            }}
             onKeyDown={onKey(i)}
           >
             <span>{`0${i + 1}`}</span> {st.name}

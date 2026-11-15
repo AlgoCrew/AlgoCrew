@@ -6,7 +6,7 @@ import { JsonLd, serviceSchema } from "@/components/seo/JsonLd";
 import { FrameworkQuickLinks, PageHero, ProblemsList } from "@/components/sections";
 import sec from "@/components/sections/sections.module.scss";
 import {
-  Button, ButtonRow, Checklist, CtaBlock, Eyebrow, Faq, Heading, Ledger, LedgerRow, Page, Section, SectionHead, Split, TextLink,
+  Button, ButtonRow, Checklist, CtaBlock, Eyebrow, Faq, Inset, Heading, Ledger, LedgerRow, Page, Section, SectionHead, Split, TextLink,
 } from "@/components/ui";
 import type { Framework } from "@/resources/frameworks";
 import type { PlatformId } from "@/resources/gating";
@@ -132,11 +132,13 @@ export function PillarTemplate({
       )}
 
       {p.deliverables.length > 0 && (
-        <Section tone="soft" id="deliverables">
-          <Split>
-            <SectionHead eyebrow="What you get" title="Typical outputs." />
-            <Checklist items={p.deliverables} />
-          </Split>
+        <Section id="deliverables">
+          <Inset>
+            <Split>
+              <SectionHead eyebrow="What you get" title="Typical outputs." />
+              <Checklist items={p.deliverables} />
+            </Split>
+          </Inset>
         </Section>
       )}
 

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { JumpLinks } from "@/components/layout";
 import { canonical } from "@/components/seo/JsonLd";
-import { PageHero } from "@/components/sections";
+import { EngagementPanels, PageHero } from "@/components/sections";
 import {
   Button, ButtonRow, Card, CtaBlock, Faq, Grid, Ledger, LedgerRow, Page, Section, SectionHead, Split, Steps, Checklist,
 } from "@/components/ui";
+import { ENGAGEMENT_FAQ, ENGAGEMENT_MODELS } from "@/resources/engagement";
 
 /**
  * /our-approach (docs/website-transformation/07 §6.9; method section of prototypes/index.html).
@@ -110,14 +111,7 @@ export default function OurApproachPage() {
           title="Two ways to work with us."
           lead="Both start the same way: a conversation about your environment, then a proposal."
         />
-        <Grid cols={2}>
-          <Card label="Scoped project" title="A defined piece of work">
-            <p>A migration, a landing zone, a DevSecOps rollout or a compliance readiness program, with stated deliverables and an end.</p>
-          </Card>
-          <Card label="Managed service" title="Ongoing operation">
-            <p>We operate a platform within an agreed scope: what we watch, what we change and how we report.</p>
-          </Card>
-        </Grid>
+        <EngagementPanels items={ENGAGEMENT_MODELS} />
       </Section>
 
       <Section id="working-together">
@@ -138,24 +132,7 @@ export default function OurApproachPage() {
           <SectionHead eyebrow="FAQ" title="Questions about engagements." />
           <Faq
             schema
-            items={[
-              {
-                q: "How does an engagement start?",
-                a: "With a short call about your environment and what needs to change. We then send a proposal you can review with your team.",
-              },
-              {
-                q: "Do you publish prices?",
-                a: "No. Cloud work varies too much for a price list to be useful. Every proposal is priced for its scope.",
-              },
-              {
-                q: "Can we start small?",
-                a: "Yes. Many engagements start with an assessment or a single pilot workload.",
-              },
-              {
-                q: "Do you replace our team?",
-                a: "No. We work with your engineers and hand over what we build.",
-              },
-            ]}
+            items={ENGAGEMENT_FAQ}
           />
         </Split>
       </Section>

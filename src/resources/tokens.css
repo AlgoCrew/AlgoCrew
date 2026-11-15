@@ -76,3 +76,10 @@
   /* Faint grid behind tinted heroes and diagrams (brand at 5%) */
   --grid-line: rgba(29, 78, 216, 0.05);
 }
+
+/* Once UI shrinks the root font to 15px below 1024px; the prototypes keep 16px at every width,
+   so every rem size (headings, text, spacing) matches them on phones and tablets too. */
+html[data-scaling] {
+  --font-scaling-tablet: 16px;
+  --font-scaling-mobile: 16px;
+}

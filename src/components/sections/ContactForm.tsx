@@ -106,7 +106,8 @@ export function ContactForm() {
   }));
 
   return (
-    <form className={`${formClass} ${s.panel}`} onSubmit={onSubmit} noValidate aria-labelledby="cf-title">
+    // method="post": a submit before hydration (or without JS) must never put personal data in the URL.
+    <form method="post" action="/api/contact" className={`${formClass} ${s.panel}`} onSubmit={onSubmit} noValidate aria-labelledby="cf-title">
       <h2 id="cf-title" className={s.panelTitle}>
         Send us a message
       </h2>

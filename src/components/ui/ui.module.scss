@@ -189,25 +189,45 @@
 
 /* ---------- Card, chips, icon ---------- */
 .card {
+  position: relative;
+  overflow: hidden;
   display: grid;
   gap: 14px;
   align-content: start;
   padding: 28px;
   background: var(--bg);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   color: var(--ink);
   text-decoration: none;
 
   p { margin: 0; color: var(--ink-2); font-size: 0.9688rem; }
+  > * { position: relative; z-index: 1; }
 }
 .cardLink {
-  transition: border-color var(--dur-1), box-shadow var(--dur-1), transform var(--dur-1);
+  transition: border-color var(--dur-2), box-shadow var(--dur-2), transform var(--dur-2) var(--ease-out);
   @include focus;
+
+  /* Corner glow that fades in on hover (design refresh, 17). */
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: -40% -30% auto auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--brand) 14%, transparent), transparent);
+    opacity: 0;
+    transition: opacity var(--dur-3);
+    pointer-events: none;
+  }
   &:hover {
     border-color: var(--brand);
     box-shadow: var(--shadow);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    &::after { opacity: 1; }
+    .iconTile { background: var(--brand); color: var(--on-brand); }
   }
 }
 .dark .card {
@@ -248,13 +268,15 @@
 }
 
 .iconTile {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: var(--bg-tint);
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(140deg, var(--bg-tint), var(--brand-tint-hover));
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, transparent);
   color: var(--brand);
   display: grid;
   place-items: center;
+  transition: background var(--dur-2), color var(--dur-2);
 
   svg { width: 22px; height: 22px; }
 }
@@ -265,34 +287,56 @@
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 14px;
+  gap: 10px;
 
+  /* Each item is a row with a round tick badge. */
   li {
-    padding-left: 30px;
     position: relative;
+    padding: 16px 18px 16px 56px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: border-color var(--dur-2), transform var(--dur-2) var(--ease-out);
+    &:hover { border-color: color-mix(in srgb, var(--brand) 40%, var(--line)); transform: translateX(3px); }
   }
   li::before {
     content: "";
     position: absolute;
-    left: 0;
-    top: 0.35em;
-    width: 16px;
-    height: 9px;
+    left: 16px;
+    top: 15px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--bg-tint);
+    border: 1px solid color-mix(in srgb, var(--brand) 22%, transparent);
+  }
+  li::after {
+    content: "";
+    position: absolute;
+    left: 24px;
+    top: 23px;
+    width: 11px;
+    height: 6px;
     border-left: 2px solid var(--brand);
     border-bottom: 2px solid var(--brand);
-    transform: rotate(-45deg) scale(0.8);
-    transform-origin: left;
+    transform: rotate(-45deg);
   }
 }
-.dark .checklist li::before { border-color: var(--sky); }
-.dash li::before {
-  width: 14px;
+.dark .checklist {
+  li { background: var(--dark-2); border-color: var(--dark-line); }
+  li::before { background: color-mix(in srgb, var(--sky) 14%, transparent); border-color: var(--dark-line); }
+  li::after { border-color: var(--sky); }
+}
+.dash li::after {
+  left: 23px;
+  top: 27px;
+  width: 12px;
   height: 2px;
   border: 0;
   background: var(--ink-3);
   transform: none;
-  top: 0.75em;
 }
+.dash li::before { background: var(--bg-soft); border-color: var(--line); }
 
 .definitions {
   margin: 0;
@@ -327,74 +371,145 @@
   }
 }
 
-/* ---------- Steps ---------- */
+/* ---------- Steps: a connected timeline ---------- */
 .steps {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(var(--steps, 5), minmax(0, 1fr));
+  gap: 24px;
+  position: relative;
   counter-reset: step;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--bg);
 
+  /* The line the nodes sit on. */
+  &::before {
+    content: "";
+    position: absolute;
+    left: 22px;
+    /* Ends at the centre of the last node: one column's width, less half a node. */
+    right: calc((100% - (var(--steps, 5) - 1) * 24px) / var(--steps, 5) - 22px);
+    top: 22px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brand), var(--cyan));
+    opacity: 0.35;
+  }
   li {
     counter-increment: step;
-    padding: 28px 22px;
+    position: relative;
     display: grid;
     gap: 10px;
     align-content: start;
   }
-  li + li { border-left: 1px solid var(--line); }
   li::before {
     content: "0" counter(step);
-    @include mono(var(--text-label), 0.06em);
-    line-height: 1;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--brand);
     color: var(--brand);
+    @include mono(var(--text-label), 0.04em);
+    line-height: 1;
+    transition: background var(--dur-2), color var(--dur-2);
   }
-  p { margin: 0; font-size: 0.9063rem; color: var(--ink-2); }
+  li:hover::before { background: var(--brand); color: var(--on-brand); }
+  p { margin: 0; font-size: var(--text-small); color: var(--ink-2); }
 
   @include bp.down(lg) {
     grid-template-columns: minmax(0, 1fr);
-    li + li { border-left: 0; border-top: 1px solid var(--line); }
+    gap: 0;
+    &::before { left: 21px; right: auto; top: 22px; bottom: 22px; width: 2px; height: auto; }
+    li { grid-template-columns: 44px minmax(0, 1fr); column-gap: 20px; padding-bottom: 28px; }
+    li > * { grid-column: 2; }
+    li::before { grid-column: 1; grid-row: 1 / span 2; }
   }
 }
-.stepsBanded { border-radius: var(--radius) var(--radius) 0 0; }
 .band {
-  margin: 0;
-  padding: 14px 22px;
-  border-radius: 0 0 var(--radius) var(--radius);
-  background: var(--ink);
-  color: var(--bg);
-  @include mono;
+  margin: clamp(28px, 4vw, 44px) 0 0;
+  padding: 14px 20px;
+  border-radius: 999px;
   text-align: center;
+  color: var(--dark-ink);
+  background: linear-gradient(90deg, var(--dark), var(--brand-strong));
+  @include mono(var(--text-meta), 0.14em);
 }
 
-/* ---------- Ledger ---------- */
-.ledger { border-top: 1px solid var(--line); }
+/* ---------- Ledger: one card per row ---------- */
+.ledger { display: grid; gap: 12px; }
 .ledgerRow {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 6fr) minmax(0, 3fr);
   gap: 24px;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--line);
+  padding: 26px 28px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   align-items: start;
   scroll-margin-top: 140px;
+  transition: border-color var(--dur-2), box-shadow var(--dur-2);
 
+  /* Accent bar that grows in on hover or when the row is the link target. */
+  &::before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 18px;
+    bottom: 18px;
+    width: 3px;
+    border-radius: 3px;
+    background: var(--brand);
+    transform: scaleY(0);
+    transition: transform var(--dur-2) var(--ease-out);
+  }
+  &:hover, &:target {
+    border-color: color-mix(in srgb, var(--brand) 35%, var(--line));
+    box-shadow: var(--shadow);
+    &::before { transform: scaleY(1); }
+  }
   p { margin: 0; color: var(--ink-2); }
 
   @include bp.down(lg) {
     grid-template-columns: minmax(0, 1fr);
-    gap: 10px;
+    gap: 12px;
+    padding: 22px 20px;
   }
+}
+/* No tools column: the text takes the room. */
+.ledgerRowWide {
+  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+  @include bp.down(lg) { grid-template-columns: minmax(0, 1fr); }
 }
 .ledgerTools {
   list-style: none;
   margin: 0;
   padding: 0;
-  font: 500 var(--text-label)/1.7 var(--font-mono);
-  color: var(--ink-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  li {
+    font: 500 var(--text-label)/1 var(--font-mono);
+    padding: 7px 9px;
+    border-radius: 6px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+  }
+}
+
+/* ---------- Inset: a tinted panel inside a section ---------- */
+.inset {
+  padding: clamp(24px, 5vw, 64px);
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--brand) 14%, var(--line));
+  background:
+    radial-gradient(700px 360px at 100% 0%, color-mix(in srgb, var(--brand) 10%, transparent), transparent 70%),
+    var(--bg-tint);
 }
 
 /* ---------- Table ---------- */
@@ -492,7 +607,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn, .arrow, .cardLink { transition: none; }
+  .btn, .arrow, .cardLink, .cardLink::after, .iconTile, .checklist li, .ledgerRow, .ledgerRow::before, .steps li::before { transition: none; }
+  .cardLink:hover, .checklist li:hover { transform: none; }
 }
 
 /* ---------- Forms ---------- */

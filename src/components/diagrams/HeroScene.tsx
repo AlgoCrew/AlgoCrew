@@ -33,6 +33,7 @@ export function HeroScene({ fallback }: { fallback: ReactNode }) {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     let handle: { dispose: () => void } | undefined;
     let cancelled = false;
+    let starting = false; // a second start during the import would mount the scene twice
 
     const stop = () => {
       handle?.dispose();
@@ -40,11 +41,16 @@ export function HeroScene({ fallback }: { fallback: ReactNode }) {
       setReady(false);
     };
     const start = async () => {
-      if (handle || !wide.matches || reduced.matches || !webglAvailable()) return;
-      const { mountLayeredPlatform } = await import("./layeredPlatformScene");
-      if (cancelled || !canvas.current || !host.current || !wide.matches || reduced.matches) return;
-      handle = mountLayeredPlatform(canvas.current, host.current);
-      setReady(true);
+      if (handle || starting || !wide.matches || reduced.matches || !webglAvailable()) return;
+      starting = true;
+      try {
+        const { mountLayeredPlatform } = await import("./layeredPlatformScene");
+        if (cancelled || !canvas.current || !host.current || !wide.matches || reduced.matches) return;
+        handle = mountLayeredPlatform(canvas.current, host.current);
+        setReady(true);
+      } finally {
+        starting = false;
+      }
     };
     const sync = () => (wide.matches && !reduced.matches ? start() : stop());
 

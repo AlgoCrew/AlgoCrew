@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { canonical } from "@/components/seo/JsonLd";
-import { PageHero } from "@/components/sections";
+import { PageHero, PracticeBento } from "@/components/sections";
 import {
-  BoundaryStatement, Button, ButtonRow, Card, CtaBlock, DefinitionCard, Grid, LogoRow, Page, Section, SectionHead, Split, TextLink,
+  BoundaryStatement, Button, ButtonRow, CtaBlock, DefinitionCard, LogoRow, Page, Section, SectionHead, Split, TextLink,
 } from "@/components/ui";
 import { liveServices, pillars, servicePath } from "@/resources/pillars";
 import { site, showClientLogos } from "@/resources/site";
@@ -55,13 +55,7 @@ export default function AboutPage() {
 
       <Section id="what-we-do">
         <SectionHead eyebrow="What we do" title="Five practices, one accountable team." />
-        <Grid cols={3}>
-          {practices.map((p) => (
-            <Card key={p.slug} href={servicePath(p)} title={p.title} more="Explore">
-              <p>{p.line}</p>
-            </Card>
-          ))}
-        </Grid>
+        <PracticeBento practices={practices.map((p) => ({ slug: p.slug, href: servicePath(p), title: p.title, text: p.line }))} />
       </Section>
 
       <Section tone="soft" id="what-we-do-not">

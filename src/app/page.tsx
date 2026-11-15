@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Lifecycle } from "@/components/diagrams/Lifecycle";
 import { canonical } from "@/components/seo/JsonLd";
-import { FrameworkCards, HomeHero, PillarIcon, ScopeStrip, pillarsClass } from "@/components/sections";
 import {
-  BoundaryStatement, Button, ButtonRow, Card, CtaBlock, Grid, Page, Section, SectionHead, Split, Steps, TextLink,
+  ComplianceSplit, EngagementPanels, FrameworkCards, HomeHero, InsightsFeature, OutputArtifacts, PracticeBento,
+  ScopeStrip, homeStyles,
+} from "@/components/sections";
+import {
+  BoundaryStatement, Button, ButtonRow, Card, CtaBlock, Faq, Grid, Inset, Page, Section, SectionHead, Split, Steps, TextLink,
 } from "@/components/ui";
 import { blogPosts } from "@/resources/blog";
+import { ENGAGEMENT_FAQ, ENGAGEMENT_MODELS } from "@/resources/engagement";
 import { liveFrameworks } from "@/resources/frameworks";
 import { sentenceList } from "@/resources/gating";
 import { liveServices, pillars, servicePath } from "@/resources/pillars";
@@ -15,9 +18,10 @@ import { site } from "@/resources/site";
 
 /**
  * Homepage (roadmap T4.04; prototype: docs/website-transformation/prototypes/index.html).
- * Section order follows the prototype. Gated sections follow its launch states: with no
- * platform verified the platforms section is left out, and with no framework page published
- * the frameworks section is replaced by the governance section.
+ * Section layouts follow the design refresh (docs/website-transformation/17-design-refresh.md).
+ * Gated sections follow the launch states: with no platform verified the platforms section is
+ * left out, and with no framework page published the frameworks section is replaced by the
+ * governance section.
  */
 const TITLE = "AlgoCrew | Cloud Engineering, DevSecOps & Compliance";
 const DESCRIPTION =
@@ -95,20 +99,15 @@ export default function HomePage() {
           title="Five practices. One accountable team."
           lead="Each practice has its own method and its own list of deliverables."
         />
-        <div className={pillarsClass}>
-          {practices.map((p) => (
-            <Card
-              key={p.slug}
-              href={servicePath(p)}
-              icon={<PillarIcon slug={p.slug} />}
-              title={p.title}
-              chips={CHIPS[p.slug]}
-              more="Explore the practice"
-            >
-              <p>{CARD_LINES[p.slug] ?? p.line}</p>
-            </Card>
-          ))}
-        </div>
+        <PracticeBento
+          practices={practices.map((p) => ({
+            slug: p.slug,
+            href: servicePath(p),
+            title: p.title,
+            text: CARD_LINES[p.slug] ?? p.line,
+            chips: CHIPS[p.slug],
+          }))}
+        />
       </Section>
 
       {/* 4. Cloud platforms: only verified platforms */}
@@ -165,19 +164,15 @@ export default function HomePage() {
         </Section>
       ) : (
         <Section id="compliance">
-          <SectionHead eyebrow="Compliance & governance" title="Requirements turned into controls and evidence." />
-          <Grid cols={3}>
-            <Card href="/compliance#cloud-governance" title="Cloud governance" more="Explore">
-              <p>Account structure, guardrails and policies that apply to every workload.</p>
-            </Card>
-            <Card href="/compliance#policy-controls" title="Policy and control implementation" more="Explore">
-              <p>Controls written as code and checked continuously.</p>
-            </Card>
-            <Card href="/compliance#audit-readiness" title="Audit readiness" more="Explore">
-              <p>Organized, current evidence your assessor can use.</p>
-            </Card>
-          </Grid>
-          <BoundaryStatement />
+          <ComplianceSplit
+            head={<SectionHead eyebrow="Compliance & governance" title="Requirements turned into controls and evidence." />}
+            links={[
+              { href: "/compliance#cloud-governance", title: "Cloud governance", text: "Account structure, guardrails and policies that apply to every workload." },
+              { href: "/compliance#policy-controls", title: "Policy and control implementation", text: "Controls written as code and checked continuously." },
+              { href: "/compliance#audit-readiness", title: "Audit readiness", text: "Organized, current evidence your assessor can use." },
+            ]}
+            foot={<BoundaryStatement />}
+          />
         </Section>
       )}
 
@@ -200,8 +195,9 @@ export default function HomePage() {
       </Section>
 
       {/* 8. What you get */}
-      <Section id="outputs">
-        <Split>
+      <Section id="outputs" tight>
+        <Inset>
+          <div className={homeStyles.insetGrid}>
           <div>
             <SectionHead
               eyebrow="What you get"
@@ -212,37 +208,51 @@ export default function HomePage() {
               <TextLink href="/trust">Trust &amp; Security: how we handle access to your environment</TextLink>
             )}
           </div>
-          <Grid cols={2}>
-            <Card label="Design" title="Landing-zone design">
-              <p>Account or subscription structure, network, identity and guardrails, as diagrams and code.</p>
-            </Card>
-            <Card label="Controls" title="Control map">
-              <p>Framework requirements mapped to cloud configuration and the checks that enforce it.</p>
-            </Card>
-            <Card label="Evidence" title="Evidence index">
-              <p>Where each piece of audit evidence lives and how it is produced.</p>
-            </Card>
-            <Card label="Operations" title="Operations report">
-              <p>Incidents, changes, cost and posture, on an agreed schedule.</p>
-            </Card>
-          </Grid>
-        </Split>
+          <OutputArtifacts
+            items={[
+              { label: "Design", title: "Landing-zone design", text: "Account or subscription structure, network, identity and guardrails, as diagrams and code." },
+              { label: "Controls", title: "Control map", text: "Framework requirements mapped to cloud configuration and the checks that enforce it." },
+              { label: "Evidence", title: "Evidence index", text: "Where each piece of audit evidence lives and how it is produced." },
+              { label: "Operations", title: "Operations report", text: "Incidents, changes, cost and posture, on an agreed schedule." },
+            ]}
+          />
+          </div>
+        </Inset>
+      </Section>
+
+      {/* 8b. Engagement models (copy shared with /our-approach) */}
+      <Section tone="soft" id="engagement">
+        <SectionHead
+          eyebrow="Engagement models"
+          title="Two ways to work with us."
+          lead="Both start the same way: a conversation about your environment, then a proposal."
+        />
+        <EngagementPanels items={ENGAGEMENT_MODELS} />
+        <p>
+          <TextLink href="/our-approach#engagement-models">How engagements run</TextLink>
+        </p>
       </Section>
 
       {/* 9. Insights */}
       {posts.length > 0 && (
-        <Section tone="soft" id="insights">
+        <Section id="insights">
           <SectionHead eyebrow="Insights" title="Current technical thinking." />
-          <Grid cols={3}>
-            {posts.map((post) => (
-              <Card key={post.slug} href={`/blog/${post.slug}`} label={INSIGHT_CATEGORY[post.slug]} title={post.title} more="Read" />
-            ))}
-          </Grid>
+          <InsightsFeature
+            posts={posts.map((post) => ({ href: `/blog/${post.slug}`, category: INSIGHT_CATEGORY[post.slug], title: post.title }))}
+          />
           <p>
-            <Link href="/blog">All insights</Link>
+            <TextLink href="/blog">All insights</TextLink>
           </p>
         </Section>
       )}
+
+      {/* 9b. FAQ (copy shared with /our-approach, which carries the FAQ schema) */}
+      <Section tone="soft" id="faq" tight>
+        <Split>
+          <SectionHead eyebrow="FAQ" title="Questions about working with us." />
+          <Faq items={ENGAGEMENT_FAQ} />
+        </Split>
+      </Section>
 
       {/* 10. Final CTA */}
       <Section id="contact">
