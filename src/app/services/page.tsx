@@ -1,125 +1,111 @@
-export const dynamic = "force-static";
-
-import { Meta } from "@once-ui-system/core";
-import { baseURL } from "@/resources";
-import { categorizedServices } from "@/resources";
+import type { Metadata } from "next";
 import Link from "next/link";
-import styles from "./Services.module.scss";
-import AnimatedTestimonials from "@/components/home/Testimonals";
-import { ProcessSteps } from "@/components/home/ProcessStep";
-import { FAQ } from "@/components/home/FAQ";
-import { SendUsEmail } from "@/components/home/SendUsEmail";
+import { JsonLd, canonical, serviceSchema } from "@/components/seo/JsonLd";
+import { FrameworkQuickLinks, PageHero } from "@/components/sections";
+import sec from "@/components/sections/sections.module.scss";
+import { Button, ButtonRow, CtaBlock, Ledger, LedgerRow, Page, Section, SectionHead, Split } from "@/components/ui";
+import { liveFrameworks } from "@/resources/frameworks";
+import { liveServices, pillars, servicePath, services } from "@/resources/pillars";
+import { livePlatforms } from "@/resources/platforms";
 
-export async function generateMetadata() {
-  return {
-    ...Meta.generate({
-      title: "Services - AlgoCrew",
-      description: "From staff augmentation to AI solutions, explore our full range of digital services.",
-      baseURL,
-      path: "/services",
-      image: `/api/og/generate?title=${encodeURIComponent("Services - AlgoCrew")}`,
-    }),
-    alternates: { canonical: "/services" },
-  };
-}
+/**
+ * /services: the five practices on one page (docs/website-transformation/07 §6.1, 08 §12 wireframe).
+ * Lists live pillars only. Each pillar shows its menu capabilities, linking to a standalone
+ * page where one is live, otherwise to the anchor on the pillar page.
+ */
+const PATH = "/services";
+const TITLE = "Cloud Consulting, DevSecOps & Security Services";
+const DESCRIPTION =
+  "Cloud consulting and engineering, DevOps and DevSecOps, cloud security, compliance and managed cloud services, with security controls built into delivery.";
 
-const accentColors: Record<string, string> = {
-  "web-app-development":  "#06c8e8",
-  "cloud-devops":         "#a78bfa",
-  "e-commerce":           "#f472b6",
-  "security-quality":     "#ef4444",
-  "data-automation":      "#34d399",
-  "microsoft-solutions":  "#3b82f6",
-  "digital-marketing":    "#fb923c",
-  "team-services":        "#fbbf24",
-  "emerging-tech":        "#c084fc",
-  "gaming":               "#4ade80",
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: canonical(PATH) },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: canonical(PATH), type: "website" },
 };
 
-const services = categorizedServices as any[];
-
 export default function ServicesPage() {
+  const live = liveServices();
+  const livePillars = pillars().filter((p) => live.includes(p));
+  const platforms = livePlatforms();
+  const frameworks = liveFrameworks();
+
   return (
-    <main style={{ width: "100%", overflowX: "clip", background: "var(--bg-page)" }}>
+    <Page>
+      <JsonLd data={serviceSchema({ name: TITLE, description: DESCRIPTION, path: PATH })} />
+      <PageHero
+        trail={[{ label: "Services", href: PATH }]}
+        title="Cloud, DevSecOps, security and compliance services."
+        lead="Five practices, one accountable team. Each practice has its own method and its own list of deliverables."
+        actions={
+          <ButtonRow>
+            <Button href="/contact" arrow>
+              Discuss Your Cloud Strategy
+            </Button>
+          </ButtonRow>
+        }
+      />
 
-      {/* ── Hero ── */}
-      <section className={styles.hero}>
-        <span className={styles.heroLabel}>WHAT WE DO</span>
-        <h1 className={styles.heroTitle}>
-          Our{" "}
-          <span className={styles.heroAccent}>Capabilities</span>
-        </h1>
-        <p className={styles.heroSub}>
-          End-to-end digital solutions from a team of elite engineers.
-          {" "}10 practice areas. 30+ sub-services. One crew.
-        </p>
-        <div className={styles.heroStats}>
-          <div className={styles.heroStat}>
-            <span className={styles.heroStatNum}>10</span>
-            <span className={styles.heroStatLabel}>Service Areas</span>
-          </div>
-          <div className={styles.heroStat}>
-            <span className={styles.heroStatNum}>30+</span>
-            <span className={styles.heroStatLabel}>Sub-services</span>
-          </div>
-          <div className={styles.heroStat}>
-            <span className={styles.heroStatNum}>8+</span>
-            <span className={styles.heroStatLabel}>Countries Served</span>
-          </div>
-          <div className={styles.heroStat}>
-            <span className={styles.heroStatNum}>Top 1%</span>
-            <span className={styles.heroStatLabel}>Talent Only</span>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Services Grid ── */}
-      <section className={styles.gridSection}>
-        <span className={styles.sectionLabel}>ALL SERVICES</span>
-        <div className={styles.grid}>
-          {services.map((s) => {
-            const accent = accentColors[s.slug] ?? "#06c8e8";
-            const tags: string[] = (s.includes ?? []).slice(0, 3).map((i: any) => i.name);
+      <Section id="practices">
+        <SectionHead eyebrow="Practices" title="Find the practice that fits your problem." />
+        <Ledger>
+          {livePillars.map((pillar, i) => {
+            const links = pillar.capabilities
+              .filter((c) => c.inMenu && c.body)
+              .map((c) => {
+                const page = c.page ? services.find((s) => s.slug === c.page && live.includes(s)) : undefined;
+                return { label: c.title, href: page ? servicePath(page) : `${servicePath(pillar)}#${c.id}` };
+              });
             return (
-              <Link
-                key={s.slug}
-                href={`/services/${s.slug}`}
-                className={styles.card}
-                style={{ "--accent": accent } as React.CSSProperties}
-              >
-                <div className={styles.cardAccentLine} />
-                <div className={styles.cardHeader}>
-                  <span className={styles.cardCat}>{s.category}</span>
-                  <span className={styles.cardArrow}>↗</span>
-                </div>
-                <h2 className={styles.cardName}>{s.name}</h2>
-                <p className={styles.cardDesc}>{s.description}</p>
-                <div className={styles.cardTags}>
-                  {tags.map((t: string) => (
-                    <span key={t} className={styles.cardTag}>{t}</span>
+              <LedgerRow key={pillar.slug} id={pillar.slug} title={`0${i + 1} ${pillar.title}`}>
+                <p className={sec.pillarLine}>
+                  {pillar.line}{" "}
+                  <Link href={servicePath(pillar)}>
+                    {pillar.title}
+                    <span aria-hidden="true"> →</span>
+                  </Link>
+                </p>
+                <ul className={sec.linkList} aria-label={`${pillar.title} capabilities`}>
+                  {links.map((l) => (
+                    <li key={l.href}>
+                      <Link href={l.href}>{l.label}</Link>
+                    </li>
                   ))}
-                  {(s.includes?.length ?? 0) > 3 && (
-                    <span className={styles.cardTag}>+{s.includes.length - 3} more</span>
-                  )}
-                </div>
-              </Link>
+                </ul>
+              </LedgerRow>
             );
           })}
-        </div>
-      </section>
+        </Ledger>
+      </Section>
 
-      {/* ── How we work ── */}
-      <ProcessSteps />
+      {(platforms.length > 0 || frameworks.length > 0) && (
+        <Section tone="soft" tight>
+          <Split>
+            <SectionHead eyebrow="Platforms and frameworks" title="Delivered on your cloud, for the frameworks you answer to." />
+            <div>
+              {platforms.length > 0 && (
+                <ul className={sec.quick} aria-label="Platforms">
+                  {platforms.map((p) => (
+                    <li key={p.slug}>
+                      <Link href={`/cloud-platforms/${p.slug}`}>{p.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <FrameworkQuickLinks frameworks={frameworks} />
+            </div>
+          </Split>
+        </Section>
+      )}
 
-      {/* ── Testimonials ── */}
-      <AnimatedTestimonials />
-
-      {/* ── FAQ ── */}
-      <FAQ />
-
-      {/* ── SendUsEmail CTA ── */}
-      <SendUsEmail />
-
-    </main>
+      <Section>
+        <CtaBlock
+          title="Not sure where to start?"
+          text="Tell us what you run and what needs to change. We will suggest a first step."
+          primary={{ label: "Discuss Your Cloud Strategy", href: "/contact" }}
+        />
+      </Section>
+    </Page>
   );
 }

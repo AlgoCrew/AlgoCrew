@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { blogPosts, categories } from "@/resources/blog";
+import { categories, listedPosts } from "@/resources/blog";
 import styles from "./blog.module.scss";
 
 function formatDate(d: string) {
@@ -12,7 +12,8 @@ function formatDate(d: string) {
 export function BlogListing() {
   const [active, setActive] = useState("All");
 
-  const featured = blogPosts.find(p => p.featured)!;
+  const blogPosts = listedPosts();
+  const featured = blogPosts.find(p => p.featured) ?? blogPosts[0];
   const rest = blogPosts.filter(p =>
     !p.featured && (active === "All" || p.category === active)
   );

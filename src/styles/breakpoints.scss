@@ -1,0 +1,23 @@
+// The only breakpoints new modules may use (docs/website-transformation/08 §5).
+// Mobile-first: write the small layout as the default, then widen.
+//   @use "../../styles/breakpoints" as bp;   (path relative to the module)
+//   .grid { @include bp.up(md) { grid-template-columns: repeat(2, 1fr); } }
+// The legacy src/components/breakpoints.scss stays until the cleanup release.
+@use "sass:map";
+
+$breakpoints: (
+  md: 640px,   // two-column grids
+  lg: 1024px,  // desktop navigation
+  xl: 1280px,  // full layouts, five-column Services menu
+);
+
+// Content never grows wider than this.
+$content-cap: 1440px;
+
+@mixin up($name) {
+  @media (min-width: map.get($breakpoints, $name)) { @content; }
+}
+
+@mixin down($name) {
+  @media (max-width: (map.get($breakpoints, $name) - 1px)) { @content; }
+}

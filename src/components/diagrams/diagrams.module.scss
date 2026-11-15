@@ -1,0 +1,82 @@
+// site-v2 diagrams (docs/website-transformation/08 §10). Tokens only: `npm run check:tokens`.
+.map {
+  font: 500 10px/1 var(--font-mono);
+
+  text { fill: var(--ink); }
+}
+.mapHead { fill: var(--ink-3) !important; letter-spacing: 1px; }
+.mapLink {
+  fill: none;
+  stroke: var(--brand);
+  stroke-width: 1.5;
+  opacity: 0.55;
+}
+.mapLinkEvidence { stroke: var(--cyan); }
+.mapBox {
+  fill: var(--bg);
+  stroke: var(--line-strong);
+}
+.mapBoxControl { stroke: var(--brand); }
+.mapBoxEvidence { stroke: var(--cyan); }
+
+/* ---------- Pipeline with security gates (concept 2) ---------- */
+.pipe {
+  font: 500 10px/1 var(--font-mono);
+  text { fill: var(--ink-3); text-anchor: middle; }
+}
+.pipeTrack { stroke: var(--line-strong); stroke-width: 2; }
+.pipeFlow {
+  stroke: var(--brand);
+  stroke-width: 2;
+  stroke-dasharray: 6 10;
+  animation: flow 1.6s linear infinite;
+}
+@keyframes flow { to { stroke-dashoffset: -32; } }
+.pipeStage { fill: var(--bg); stroke: var(--brand); stroke-width: 2; }
+.pipeName { fill: var(--ink) !important; font: 600 13px/1 var(--font-sans); }
+.pipeGate { fill: var(--bg); stroke: var(--cyan); stroke-width: 1.5; }
+.pipeDrop { stroke: var(--cyan); stroke-width: 1; stroke-dasharray: 2 4; }
+.pipeBand { fill: var(--bg-tint); stroke: var(--brand); stroke-dasharray: 4 4; }
+.pipeBandText { fill: var(--brand-strong) !important; letter-spacing: 1px; }
+
+/* ---------- Defense in depth (concept 3) ---------- */
+.rings {
+  position: relative;
+  width: min(100%, 420px);
+  aspect-ratio: 1.25;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+
+  li {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    border: 1.5px solid var(--sky-strong);
+    border-radius: 22px;
+    background: color-mix(in srgb, var(--sky-strong) 5%, transparent);
+    font: 500 var(--text-meta)/1 var(--font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--dark-ink);
+    animation: ring 4s ease-in-out infinite;
+  }
+  li:nth-child(1) { inset: 0; }
+  li:nth-child(2) { inset: 12%; animation-delay: 0.3s; }
+  li:nth-child(3) { inset: 24%; animation-delay: 0.6s; }
+  li:nth-child(4) {
+    inset: 36%;
+    align-items: center;
+    padding: 0;
+    background: var(--sky-strong);
+    color: var(--dark);
+    font-weight: 600;
+    animation: none;
+  }
+}
+@keyframes ring { 50% { border-color: var(--sky); background: color-mix(in srgb, var(--sky-strong) 12%, transparent); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pipeFlow, .rings li { animation: none; }
+}

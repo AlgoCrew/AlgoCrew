@@ -1,0 +1,16 @@
+// Hero 3D host. Fixed height so swapping the CSS stack for the canvas never shifts layout (CLS).
+@use "../../styles/breakpoints" as bp;
+
+.host {
+  position: relative;
+  height: 340px;
+  @include bp.down(lg) { height: 280px; }
+}
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.hidden { display: none; }

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>DevSecOps Services prototype | AlgoCrew</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="proto.css?v=13">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="protobar">Stage 3–4 prototype · Capability template: DevSecOps · dashed boxes are placeholders awaiting business verification · <a href="index.html">Home</a> · <a href="service-devsecops.html">Service</a> · <a href="platform-azure.html">Platform</a> · <a href="pillar-cloud-security.html">Pillar</a> · <a href="compliance.html">Hub</a> · <a href="compliance-hipaa.html">Framework</a> · <a href="contact.html">Contact</a> · <a href="concept-3d.html">3D concepts</a></div>
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="AlgoCrew home">AlgoCrew<i></i></a>
+    <nav class="nav" aria-label="Primary">
+      <a class="has-menu" href="service-devsecops.html">Services</a>
+      <a class="has-menu" href="platform-azure.html">Cloud Platforms</a>
+      <a class="has-menu" href="compliance-hipaa.html">Compliance</a>
+      <a href="index.html#insights">Insights</a>
+      <a class="has-menu" href="index.html#approach">Company</a>
+    </nav>
+    <a class="btn primary sm cta-full" href="#contact">Discuss Your Cloud Strategy</a>
+    <a class="btn primary sm cta-short" href="#contact">Talk to us</a>
+    <details class="mnav">
+      <summary>Menu</summary>
+      <nav aria-label="Mobile">
+        <a href="service-devsecops.html">Services</a>
+        <a href="platform-azure.html">Cloud Platforms</a>
+        <a href="compliance-hipaa.html">Compliance</a>
+        <a href="index.html#insights">Insights</a>
+        <a href="index.html#approach">Company</a>
+        <a class="btn primary" href="#contact">Discuss Your Cloud Strategy</a>
+      </nav>
+    </details>
+  </div>
+</header>
+<main id="main">
+<section class="hero page cap">
+  <div class="wrap">
+    <div class="hero-copy">
+      <ol class="crumbs"><li><a href="index.html">Home</a></li><li><a href="#">Services</a></li><li><a href="#">DevOps &amp; DevSecOps</a></li><li aria-current="page">DevSecOps</li></ol>
+      <h1 class="h1">DevSecOps implementation services.</h1>
+      <p class="lead">We build security checks into each stage of your delivery pipeline, so releases stay fast and every control leaves evidence behind.</p>
+      <div class="btns"><a class="btn primary" href="contact.html">Discuss Your Cloud Strategy <span class="arr" aria-hidden="true">→</span></a><a class="btn ghost" href="#method">See the method</a></div>
+    </div>
+    <figure class="diagram">
+      <svg data-diagram="pipeline" role="img" aria-label="Seven delivery stages in a line: plan, develop, build, test, deploy, operate, monitor. A security gate sits between each pair of stages, and every gate feeds an evidence record."></svg>
+    </figure>
+    <dl class="glance">
+      <div><dt>Practice</dt><dd>DevOps &amp; DevSecOps</dd></div>
+      <div><dt>Delivered on</dt><dd><span data-list="platforms" data-short data-dot data-drop="div"></span></dd></div>
+      <div><dt>Supports programs for</dt><dd><span data-list="frameworks" data-dot data-drop="div"></span></dd></div>
+      <div><dt>Typical outputs</dt><dd>Pipelines, policy library, control map</dd></div>
+    </dl>
+  </div>
+</section>
+<nav class="jump" aria-label="On this page"><div class="wrap"><a href="#who">Who it's for</a><a href="#method">Method</a><a href="#tooling" data-when="platforms">Tooling</a><a href="#deliverables">What you get</a><a href="#engagement">Engagement</a><a href="#risks">Risks</a><a href="#faq">FAQ</a></div></nav>
+
+<section class="section" id="who">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Who it's for</p><h2 class="h2">Teams that ship often and answer to a security or audit function.</h2></div>
+    <div class="grid g3">
+      <div class="card"><h3 class="h3">Security reviews happen at the end</h3><p>Findings arrive after the work is done, so releases slip or ship with known issues.</p></div>
+      <div class="card"><h3 class="h3">Scanners exist, but nobody acts on them</h3><p>Tools were added to the pipeline without ownership, thresholds or a triage path.</p></div>
+      <div class="card"><h3 class="h3">Audit evidence is assembled by hand</h3><p>Proving a control ran means screenshots and spreadsheets each cycle.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section soft" id="method">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Method</p><h2 class="h2">Seven stages, with controls in each.</h2><p class="lead">We start from your existing pipeline and add controls in the order that removes the most risk.</p></div>
+    <div class="rows">
+      <div class="row"><h3 class="h3">01 Plan</h3><p>Threat modeling for new services, and security and compliance requirements written into the backlog.</p><p class="tools">Threat models · control mapping</p></div>
+      <div class="row"><h3 class="h3">02 Develop</h3><p>Secret scanning before commit, static analysis on pull requests, protected branches and required reviews.</p><p class="tools">SAST · secret scanning · branch policy</p></div>
+      <div class="row"><h3 class="h3">03 Build</h3><p>Dependency scanning, a software bill of materials per build, image scanning and signed artifacts.</p><p class="tools">SCA · SBOM · image scanning · signing</p></div>
+      <div class="row"><h3 class="h3">04 Test</h3><p>Infrastructure-as-code scanning, policy-as-code checks and dynamic testing of running services.</p><p class="tools">IaC scanning · policy as code · DAST</p></div>
+      <div class="row"><h3 class="h3">05 Deploy</h3><p>Short-lived, least-privilege deployment identities. Only signed artifacts are admitted. Approvals are stored with the change.</p><p class="tools">Workload identity · admission control</p></div>
+      <div class="row"><h3 class="h3">06 Operate</h3><p>Secrets in a managed vault, patching, posture management and restore tests.</p><p class="tools">Vault · posture management</p></div>
+      <div class="row"><h3 class="h3">07 Monitor</h3><p>Centralized logs, tuned native detection, alerts with an owner and a runbook, and retained evidence.</p><p class="tools">Logging · detection · evidence retention</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tooling" data-when="platforms">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Tooling</p><h2 class="h2">Native services first, on each cloud.</h2></div>
+    <div class="tablewrap"><table class="table" data-cols=",az,aws,gcp">
+      <thead><tr><th scope="col">Control area</th><th scope="col">Microsoft Azure</th><th scope="col">AWS</th><th scope="col">Google Cloud</th></tr></thead>
+      <tbody>
+        <tr><td>Pipelines</td><td>Azure Pipelines, GitHub Actions</td><td>CodePipeline, CodeBuild</td><td>Cloud Build, Cloud Deploy</td></tr>
+        <tr><td>Policy as code</td><td>Azure Policy</td><td>AWS Config, service control policies</td><td>Organization Policy</td></tr>
+        <tr><td>Secrets</td><td>Key Vault</td><td>Secrets Manager</td><td>Secret Manager</td></tr>
+        <tr><td>Image scanning</td><td>Defender for Containers</td><td>Amazon Inspector</td><td>Artifact Analysis</td></tr>
+        <tr><td>Posture and detection</td><td>Defender for Cloud, Microsoft Sentinel</td><td>Security Hub, GuardDuty</td><td>Security Command Center</td></tr>
+      </tbody>
+    </table></div>
+    <p class="ph" style="margin-top:16px">Third-party tools (for example Terraform, Argo CD) are named here only once the business confirms the team uses them (V-16).</p>
+  </div>
+</section>
+
+<section class="section soft" id="deliverables">
+  <div class="wrap split">
+    <div style="display:grid;gap:20px"><p class="eyebrow" style="margin:0">What you get</p><h2 class="h2">Artifacts you can maintain.</h2><p class="lead">The typical outputs of a DevSecOps engagement.</p></div>
+    <ul class="checks">
+      <li><strong>Pipeline definitions</strong> with security stages, thresholds and exception handling.</li>
+      <li><strong>Policy-as-code library</strong> matched to your guardrails and frameworks.</li>
+      <li><strong>Control map</strong> linking each pipeline check to the requirement it supports.</li>
+      <li><strong>Evidence index</strong> showing where each control's output is stored and for how long.</li>
+      <li><strong>Runbooks and handover sessions</strong> for the teams who will run it.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="engagement">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Engagement</p><h2 class="h2">Typical shape of the work.</h2></div>
+    <ol class="steps" style="grid-template-columns:repeat(4,minmax(0,1fr));border-radius:var(--radius)">
+      <li><h3 class="h3">Review</h3><p>Current pipelines, tools and findings backlog.</p></li>
+      <li><h3 class="h3">Design</h3><p>Target pipeline, thresholds and ownership model.</p></li>
+      <li><h3 class="h3">Build</h3><p>Controls added stage by stage on a pilot service.</p></li>
+      <li><h3 class="h3">Roll out</h3><p>Extend to remaining services and hand over.</p></li>
+    </ol>
+    <p class="ph" style="margin-top:16px">No durations shown until verified. Named practice lead (name, role, photo) appears here with consent (V-13).</p>
+  </div>
+</section>
+
+<section class="section soft" id="risks">
+  <div class="wrap split">
+    <div><p class="eyebrow">Risks we manage</p><h2 class="h2">What usually goes wrong, and how we handle it.</h2></div>
+    <ul class="checks">
+      <li><strong>Slower pipelines.</strong> Checks run in parallel and only block on agreed severities.</li>
+      <li><strong>Alert fatigue.</strong> Every finding type has an owner, a threshold and a route.</li>
+      <li><strong>Developer pushback.</strong> Controls are introduced on one service first, with the team involved.</li>
+      <li><strong>Tool sprawl.</strong> Native services are used before anything new is bought.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap split">
+    <div><p class="eyebrow">FAQ</p><h2 class="h2">Common questions.</h2></div>
+    <div>
+      <details class="faq"><summary>Do we need to replace our CI/CD tooling?</summary><p>No. We work with the pipelines you have and add controls to them.</p></details>
+      <details class="faq"><summary>How is this different from your DevOps service?</summary><p>DevOps covers pipelines, infrastructure as code and platforms. DevSecOps adds the security controls and evidence at each stage.</p></details>
+      <details class="faq"><summary>Does this make us compliant?</summary><p>No. It implements and evidences technical controls. Your auditor or assessor decides compliance.</p></details>
+      <details class="faq"><summary>Who owns the pipelines afterwards?</summary><p class="ph">Answer written once ownership and contract terms are verified (V-24).</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact" style="padding-top:0"><div class="wrap"><div class="cta dark"><div><h2 class="h1">Talk through your pipeline.</h2><p>Tell us what you ship, how often, and which controls you need to evidence.</p></div><div class="btns"><a class="btn primary" href="contact.html">Discuss Your Cloud Strategy <span class="arr" aria-hidden="true">→</span></a></div></div></div></section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="cols">
+      <div><a class="logo" href="index.html">AlgoCrew<i></i></a><p class="muted small" style="margin-top:14px;max-width:30ch">Specialist cloud engineering, DevSecOps, security and compliance.</p><p class="ph" style="margin-top:16px">Verified email, phone, city (V-10)</p></div>
+      <div><h4>Services</h4><ul><li><a href="#">Cloud Consulting &amp; Engineering</a></li><li><a href="#">Cloud Migration &amp; Modernization</a></li><li><a href="#">DevOps &amp; DevSecOps</a></li><li><a href="service-devsecops.html">DevSecOps</a></li><li><a href="pillar-cloud-security.html">Cloud Security &amp; Cybersecurity</a></li><li><a href="#">Managed Cloud Services</a></li></ul></div>
+      <div><h4>Cloud Platforms</h4><ul><li data-need="az"><a href="platform-azure.html">Microsoft Azure</a></li><li data-need="aws"><a href="#">Amazon Web Services</a></li><li data-need="gcp"><a href="#">Google Cloud</a></li><li><a href="#">Multi-cloud overview</a></li></ul></div>
+      <div><h4>Compliance</h4><ul><li><a href="compliance.html">Compliance &amp; Governance</a></li><li data-need="hipaa"><a href="compliance-hipaa.html">HIPAA</a></li><li data-need="gdpr"><a href="#">GDPR</a></li><li data-need="pci"><a href="#">PCI DSS</a></li><li data-need="pipeda"><a href="#">PIPEDA</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Our Approach</a></li><li><a href="#">Trust &amp; Security</a></li><li><a href="#">Insights</a></li><li><a href="#">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="bottom"><span>© 2026 AlgoCrew (verified legal entity name, V-06)</span><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie settings</a></div>
+  </div>
+</footer>
+<script src="ui.js?v=13"></script>
+<script src="diagrams.js?v=13"></script>
+</body>
+</html>

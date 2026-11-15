@@ -4,15 +4,14 @@ import styles from "./not-found.module.scss";
 export default function NotFound() {
   const links = [
     { href: "/",         label: "Home" },
-    { href: "/work",     label: "Our Work" },
     { href: "/services", label: "Services" },
     { href: "/about",    label: "About" },
     { href: "/contact",  label: "Contact" },
-    { href: "/pricing",  label: "Pricing" },
+    { href: "/compliance", label: "Compliance" },
   ];
 
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
       <div className={styles.glow} aria-hidden="true" />
 
       <div className={styles.inner}>
@@ -39,6 +38,6 @@ export default function NotFound() {
           ← Back to home
         </Link>
       </div>
-    </main>
+    </div>
   );
 }

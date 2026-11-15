@@ -1,11 +1,11 @@
 {
-  "name": "AlgoCrew — Elite Software Agency",
+  "name": "AlgoCrew | Cloud Engineering, DevSecOps & Compliance",
   "short_name": "AlgoCrew",
-  "description": "Top-tier custom software development, web, mobile, cloud & AI solutions.",
+  "description": "Specialist cloud engineering partner: cloud consulting and migration, DevOps and DevSecOps, cloud security, compliance readiness and managed cloud services.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0B1120",
-  "theme_color": "#06c8e8",
+  "background_color": "#ffffff",
+  "theme_color": "#1d4ed8",
   "icons": [
     { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any maskable" },
     { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any maskable" },

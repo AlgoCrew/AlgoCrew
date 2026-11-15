@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>3D and diagram concepts | AlgoCrew</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="proto.css?v=13">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="protobar">Stage 4 prototype · 3D and diagram concepts · <a href="index.html">Home</a> · <a href="service-devsecops.html">Service</a> · <a href="platform-azure.html">Platform</a> · <a href="pillar-cloud-security.html">Pillar</a> · <a href="compliance.html">Hub</a> · <a href="compliance-hipaa.html">Framework</a> · <a href="contact.html">Contact</a></div>
+<header class="header"><div class="wrap"><a class="logo" href="index.html">AlgoCrew<i></i></a><nav class="nav" aria-label="Primary"><a href="index.html">Home</a></nav></div></header>
+
+<main id="main">
+<section class="hero page" style="padding-bottom:32px">
+  <div class="wrap" style="grid-template-columns:minmax(0,1fr)">
+    <div class="hero-copy">
+      <p class="eyebrow" style="margin:0">Stage 4 · Visual storytelling</p>
+      <h1 class="h1">Four visuals, each explaining one capability.</h1>
+      <p class="lead">Only the homepage hero uses real-time 3D. The other three are SVG and CSS, which cost almost nothing to load and work without JavaScript.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="wrap">
+
+    <article class="concept">
+      <div class="viz" id="viz3d">
+        <canvas id="scene" aria-hidden="true"></canvas>
+        <figure class="stackviz" id="fallback" hidden><div class="stage" aria-hidden="true"><div class="stack"><div class="plane"><b></b><b></b><b></b></div><div class="plane"><b></b><b></b><b></b></div><div class="plane"><b></b><b></b><b></b></div></div></div></figure>
+      </div>
+      <div class="spec">
+        <span class="num" style="font:500 .75rem/1 var(--mono);color:var(--brand)">01 · Cloud infrastructure</span>
+        <h2 class="h3" style="font-size:1.5rem">Layered multi-cloud platform</h2>
+        <p class="muted">Three layers: cloud foundation, platform, workloads. Signals travel between layers, and every layer carries a security outline. Move the pointer to tilt it.</p>
+        <dl>
+          <div><dt>Where</dt><dd>Homepage hero only</dd></div>
+          <div><dt>Technology</dt><dd>Plain three.js with named imports, loaded after first paint (130 KB compressed in a test build)</dd></div>
+          <div><dt>Fallback</dt><dd>The CSS stack from the homepage prototype: phones, reduced motion, no WebGL</dd></div>
+          <div><dt>Budget</dt><dd>Under 150 draw calls, pixel ratio capped at 1.75, paused off screen</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="concept">
+      <div class="viz">
+        <svg data-diagram="pipeline" role="img" aria-label="Seven delivery stages connected in a line, with a security check between each stage" style="width:100%;max-width:640px"></svg>
+      </div>
+      <div class="spec">
+        <span class="num" style="font:500 .75rem/1 var(--mono);color:var(--brand)">02 · DevOps and DevSecOps</span>
+        <h2 class="h3" style="font-size:1.5rem">Pipeline with security gates</h2>
+        <p class="muted">Seven stages on one line with a gate between each. A change flows along the line, and each gate drops a record into the evidence band.</p>
+        <dl>
+          <div><dt>Where</dt><dd>Homepage lifecycle section, DevSecOps page method</dd></div>
+          <div><dt>Technology</dt><dd>Inline SVG with CSS animation; GSAP (already installed) for the scroll-linked version</dd></div>
+          <div><dt>Fallback</dt><dd>Static SVG, then the ordered list of stages</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="concept">
+      <div class="viz dark">
+        <div class="rings" role="img" aria-label="Four nested security layers: identity, network, workload and data at the centre">
+          <div>Identity</div><div>Network</div><div>Workload</div><div>Data</div>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="num" style="font:500 .75rem/1 var(--mono);color:var(--brand)">03 · Cloud security</span>
+        <h2 class="h3" style="font-size:1.5rem">Defence in depth</h2>
+        <p class="muted">Data sits at the centre. Identity, network and workload controls surround it. Selecting a layer lists the controls we implement there.</p>
+        <dl>
+          <div><dt>Where</dt><dd>Cloud Security page, as the one dark section</dd></div>
+          <div><dt>Technology</dt><dd>HTML and CSS only</dd></div>
+          <div><dt>Fallback</dt><dd>Already static; the pulse stops for reduced motion</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="concept">
+      <div class="viz">
+        <svg data-diagram="controlmap" data-all role="img" aria-label="Requirements from several frameworks map to shared controls, which map to evidence" style="width:100%;max-width:640px"></svg>
+      </div>
+      <div class="spec">
+        <span class="num" style="font:500 .75rem/1 var(--mono);color:var(--brand)">04 · Compliance</span>
+        <h2 class="h3" style="font-size:1.5rem">Control mapping</h2>
+        <p class="muted">Requirements from different frameworks connect to the same controls, and each control connects to its evidence. It shows why one control can serve several frameworks.</p>
+        <dl>
+          <div><dt>Where</dt><dd>Compliance hub and framework pages</dd></div>
+          <div><dt>Technology</dt><dd>Inline SVG; hover or focus highlights one path</dd></div>
+          <div><dt>Fallback</dt><dd>Static SVG, then the control-map table</dd></div>
+        </dl>
+      </div>
+    </article>
+
+  </div>
+</section>
+</main>
+
+<script type="module">
+// Concept 1: layered platform in three.js. Falls back to the CSS stack if WebGL or the module is unavailable.
+const canvas = document.getElementById('scene'), host = document.getElementById('viz3d');
+const fallback = () => { canvas.remove(); document.getElementById('fallback').hidden = false; };
+try {
+  const THREE = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+  const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
+  camera.position.set(7.5, 6.2, 7.5); camera.lookAt(0, 0.1, 0);
+  const rig = new THREE.Group(); scene.add(rig);
+  const BLUE = 0x1d4ed8, CYAN = 0x0891b2, GREY = 0xc9d1dc;
+  const layerY = [-1.5, 0, 1.5], nodes = [[], [], []];
+  const spots = [[[-1.2, -1], [0.2, 0.9], [1.3, -0.6]], [[-1.1, 0.8], [0.9, 1.1], [0.3, -1.1], [-0.6, -0.3]], [[-1, -1.1], [1.1, 0.2], [-0.2, 1], [0.9, -1.2]]];
+  layerY.forEach((y, i) => {
+    const slab = new THREE.Mesh(new THREE.BoxGeometry(4, 0.08, 4), new THREE.MeshBasicMaterial({ color: i === 2 ? 0xeef3fe : 0xffffff, transparent: true, opacity: 0.9 }));
+    slab.position.y = y; rig.add(slab);
+    const edge = new THREE.LineSegments(new THREE.EdgesGeometry(slab.geometry), new THREE.LineBasicMaterial({ color: i === 0 ? GREY : BLUE }));
+    edge.position.y = y; rig.add(edge);
+    const grid = new THREE.GridHelper(4, 10, BLUE, BLUE); grid.position.y = y + 0.045; grid.material.transparent = true; grid.material.opacity = 0.1; rig.add(grid);
+    // Security outline on every layer.
+    const ring = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(4.36, 0.02, 4.36)), new THREE.LineBasicMaterial({ color: CYAN, transparent: true, opacity: 0.55 }));
+    ring.position.y = y; rig.add(ring);
+    spots[i].forEach(([x, z], n) => {
+      const node = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.2, 0.34), new THREE.MeshBasicMaterial({ color: n === 1 ? CYAN : BLUE }));
+      node.position.set(x, y + 0.14, z); rig.add(node); nodes[i].push(node.position);
+    });
+  });
+  // Connections between layers, with a pulse travelling along each one.
+  const pulses = [];
+  [[0, 0, 1, 0], [0, 1, 1, 1], [0, 2, 1, 2], [1, 0, 2, 2], [1, 1, 2, 1], [1, 3, 2, 0]].forEach(([la, a, lb, b], n) => {
+    const from = nodes[la][a], to = nodes[lb][b];
+    rig.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([from, to]), new THREE.LineBasicMaterial({ color: BLUE, transparent: true, opacity: 0.35 })));
+    const dot = new THREE.Mesh(new THREE.SphereGeometry(0.06, 12, 12), new THREE.MeshBasicMaterial({ color: CYAN }));
+    rig.add(dot); pulses.push({ dot, from, to, offset: n / 6 });
+  });
+  const size = () => { const w = host.clientWidth, h = host.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); };
+  size(); new ResizeObserver(() => { size(); if (still) frame(0); }).observe(host);
+  let tx = 0, ty = 0, visible = true;
+  host.addEventListener('pointermove', e => { const r = host.getBoundingClientRect(); tx = ((e.clientX - r.left) / r.width - 0.5) * 0.5; ty = ((e.clientY - r.top) / r.height - 0.5) * 0.25; });
+  host.addEventListener('pointerleave', () => { tx = ty = 0; });
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(host);
+  function frame(t) {
+    const s = t / 1000;
+    rig.rotation.y += ((still ? 0 : Math.sin(s * 0.25) * 0.18) + tx - rig.rotation.y) * 0.06;
+    rig.rotation.x += (ty - rig.rotation.x) * 0.06;
+    pulses.forEach(p => p.dot.position.lerpVectors(p.from, p.to, still ? 0.5 : (s * 0.35 + p.offset) % 1));
+    renderer.render(scene, camera);
+  }
+  if (still) frame(0);
+  else renderer.setAnimationLoop(t => { if (visible) frame(t); });
+} catch (e) { fallback(); }
+</script>
+<script src="ui.js?v=13"></script>
+<script src="diagrams.js?v=13"></script>
+</body>
+</html>

@@ -6,6 +6,16 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./Hero.module.scss";
 
+/* WebGL never runs on the server, and the three/drei bundle stays out of the
+   initial payload — the hero text paints before the crystal arrives. */
+/* Disabled on site-v2 until roadmap T9.01: the crystal needs @react-three/fiber and
+   drei, which are not being added (docs/website-transformation/08 §10.2). The files
+   in ./three are kept and excluded from type-checking in tsconfig.json.
+const HeroCanvas = dynamic(
+  () => import("./three/HeroCanvas").then((m) => m.HeroCanvas),
+  { ssr: false }
+); */
+
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
 
@@ -36,6 +46,13 @@ export function Hero() {
       {/* Background layers */}
       <div className={styles.bg} />
       <div className={styles.grid} />
+
+      {/* Refractive crystal — sits between the grid and the grain, behind
+          the headline. Decorative only, so it stays out of the a11y tree. */}
+      <div className={styles.scene} aria-hidden="true">
+        {/* <HeroCanvas /> re-enabled in T9.01 */}
+      </div>
+
       <div className={styles.noise} />
 
       {/* Main content */}

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Compliance and Governance prototype | AlgoCrew</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="proto.css?v=13">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="protobar">Prototype · Compliance hub (pillar 4) · dashed boxes are placeholders awaiting business verification · <a href="index.html">Home</a> · <a href="service-devsecops.html">Service</a> · <a href="platform-azure.html">Platform</a> · <a href="pillar-cloud-security.html">Pillar</a> · <a href="compliance.html">Hub</a> · <a href="compliance-hipaa.html">Framework</a> · <a href="contact.html">Contact</a> · <a href="concept-3d.html">3D concepts</a></div>
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="AlgoCrew home">AlgoCrew<i></i></a>
+    <nav class="nav" aria-label="Primary">
+      <a class="has-menu" href="service-devsecops.html">Services</a>
+      <a class="has-menu" href="platform-azure.html">Cloud Platforms</a>
+      <a class="has-menu" href="compliance-hipaa.html">Compliance</a>
+      <a href="index.html#insights">Insights</a>
+      <a class="has-menu" href="index.html#approach">Company</a>
+    </nav>
+    <a class="btn primary sm cta-full" href="index.html#contact">Discuss Your Cloud Strategy</a>
+    <a class="btn primary sm cta-short" href="index.html#contact">Talk to us</a>
+    <details class="mnav">
+      <summary>Menu</summary>
+      <nav aria-label="Mobile">
+        <a href="service-devsecops.html">Services</a>
+        <a href="platform-azure.html">Cloud Platforms</a>
+        <a href="compliance-hipaa.html">Compliance</a>
+        <a href="index.html#insights">Insights</a>
+        <a href="index.html#approach">Company</a>
+        <a class="btn primary" href="index.html#contact">Discuss Your Cloud Strategy</a>
+      </nav>
+    </details>
+  </div>
+</header>
+<main id="main">
+<section class="hero page hub">
+  <div class="wrap">
+    <div class="hero-copy">
+      <ol class="crumbs"><li><a href="index.html">Home</a></li><li aria-current="page">Compliance</li></ol>
+      <h1 class="h1">Cloud compliance and governance: controls, evidence and audit readiness.</h1>
+      <p class="lead">We turn framework requirements into cloud configuration, check it continuously, and organize the evidence your assessor will ask for.</p>
+      <div class="quick" data-when="frameworks"><a href="compliance-hipaa.html" data-need="hipaa">HIPAA</a><a href="#" data-need="gdpr">GDPR</a><a href="#" data-need="pci">PCI DSS</a><a href="#" data-need="pipeda">PIPEDA</a></div>
+      <div class="btns"><a class="btn primary" href="contact.html?topic=compliance">Discuss Your Compliance Requirements <span class="arr" aria-hidden="true">→</span></a></div>
+    </div>
+    <p class="boundary" id="boundaries" style="max-width:none"><b>Our role</b>We implement and evidence technical controls. Certification, attestation and legal interpretation are the role of your auditor, assessor or counsel. We work alongside them.</p>
+  </div>
+</section>
+<nav class="jump" aria-label="On this page"><div class="wrap"><a href="#frameworks" data-when="frameworks">Frameworks</a><a href="#cloud-governance">Governance</a><a href="#policy-controls">Policy &amp; controls</a><a href="#risk-management">Risk</a><a href="#audit-readiness">Audit readiness</a><a href="#deliverables">What you get</a><a href="#faq">FAQ</a></div></nav>
+
+<section class="section" id="frameworks" data-when="frameworks">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Frameworks</p><h2 class="h2">Start from the framework you answer to.</h2></div>
+    <div class="grid fit">
+      <a class="fw" href="compliance-hipaa.html" data-need="hipaa"><span>United States · Health</span><strong>HIPAA</strong><p>Safeguards and evidence for health information in the cloud.</p></a>
+      <a class="fw" href="#" data-need="gdpr"><span>EU &amp; UK · Privacy</span><strong>GDPR</strong><p>Technical measures for EU and UK personal data.</p></a>
+      <a class="fw" href="#" data-need="pci"><span>Global · Payments</span><strong>PCI DSS</strong><p>Controls for cardholder-data environments.</p></a>
+      <a class="fw" href="#" data-need="pipeda"><span>Canada · Privacy</span><strong>PIPEDA</strong><p>Safeguards for Canadian personal information.</p></a>
+    </div>
+    <figure class="diagram" style="margin-top:40px">
+      <svg data-diagram="controlmap" role="img" aria-label="Requirements from the listed frameworks map to three shared controls: multi-factor authentication with least privilege, encryption, and central audit logging. Each control maps to an evidence record."></svg>
+      <figcaption>Map each control once. Show every requirement it supports.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section soft">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Governance &amp; readiness</p><h2 class="h2">Four services that apply to any framework.</h2></div>
+    <div class="rows">
+      <div class="row" id="cloud-governance"><h3 class="h3">Cloud governance</h3><p>Account or subscription hierarchy, guardrails and tagging standards, so every new workload starts inside the rules.</p><p class="tools"><span data-need="az">Management groups · Azure Policy<br></span><span data-need="aws">AWS Organizations · Control Tower<br></span><span data-need="gcp">Resource hierarchy · Organization Policy</span></p></div>
+      <div class="row" id="policy-controls"><h3 class="h3">Policy &amp; control implementation</h3><p>Controls written as code, enforced before deployment and checked continuously for drift.</p><p class="tools"><span data-need="az">Azure Policy initiatives<br></span><span data-need="aws">AWS Config rules · service control policies<br></span><span data-need="gcp">Organization Policy constraints</span></p></div>
+      <div class="row" id="risk-management"><h3 class="h3">Risk management</h3><p>A cloud risk register tied to real findings, with owners and treatment plans your leadership can review.</p><p class="tools">Risk register<br>Treatment plans</p></div>
+      <div class="row" id="audit-readiness"><h3 class="h3">Audit readiness</h3><p>An index of evidence: what each record proves, where it lives and how it is produced.</p><p class="tools">Control map<br>Evidence index</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="deliverables">
+  <div class="wrap split">
+    <div><p class="eyebrow">Boundaries</p><h2 class="h2">What we do, and what we do not.</h2></div>
+    <div class="grid g2">
+      <ul class="checks"><li>Map requirements to cloud configuration.</li><li>Implement and test technical controls.</li><li>Organize evidence for your assessor.</li><li>Work alongside your auditor and counsel.</li></ul>
+      <ul class="checks no"><li>Certify, attest or audit.</li><li>Give legal advice.</li><li>Guarantee an audit outcome.</li><li>Write your organizational policies for you.</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="section soft" id="faq">
+  <div class="wrap split">
+    <div><p class="eyebrow">FAQ</p><h2 class="h2">Common questions.</h2></div>
+    <div>
+      <details class="faq"><summary>Can you make us compliant?</summary><p>No one can promise that. We implement and evidence the technical controls. Your assessor decides compliance.</p></details>
+      <details class="faq"><summary>We answer to more than one framework. Do we do this twice?</summary><p>No. Many controls overlap. We map each control once and show every requirement it supports.</p></details>
+      <details class="faq"><summary>Do you work with our auditor?</summary><p>Yes. We prepare evidence in the form they ask for and answer technical questions about the environment.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section"><div class="wrap"><div class="cta dark"><div><h2 class="h1">Discuss your compliance requirements.</h2><p>Tell us which frameworks apply and where your regulated data lives.</p></div><div class="btns"><a class="btn primary" href="contact.html?topic=compliance">Discuss Your Compliance Requirements <span class="arr" aria-hidden="true">→</span></a></div></div></div></section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="cols">
+      <div><a class="logo" href="index.html">AlgoCrew<i></i></a><p class="muted small" style="margin-top:14px;max-width:30ch">Specialist cloud engineering, DevSecOps, security and compliance.</p><p class="ph" style="margin-top:16px">Verified email, phone, city (V-10)</p></div>
+      <div><h4>Services</h4><ul><li><a href="#">Cloud Consulting &amp; Engineering</a></li><li><a href="#">Cloud Migration &amp; Modernization</a></li><li><a href="#">DevOps &amp; DevSecOps</a></li><li><a href="service-devsecops.html">DevSecOps</a></li><li><a href="pillar-cloud-security.html">Cloud Security &amp; Cybersecurity</a></li><li><a href="#">Managed Cloud Services</a></li></ul></div>
+      <div><h4>Cloud Platforms</h4><ul><li data-need="az"><a href="platform-azure.html">Microsoft Azure</a></li><li data-need="aws"><a href="#">Amazon Web Services</a></li><li data-need="gcp"><a href="#">Google Cloud</a></li><li><a href="#">Multi-cloud overview</a></li></ul></div>
+      <div><h4>Compliance</h4><ul><li><a href="compliance.html">Compliance &amp; Governance</a></li><li data-need="hipaa"><a href="compliance-hipaa.html">HIPAA</a></li><li data-need="gdpr"><a href="#">GDPR</a></li><li data-need="pci"><a href="#">PCI DSS</a></li><li data-need="pipeda"><a href="#">PIPEDA</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Our Approach</a></li><li><a href="#">Trust &amp; Security</a></li><li><a href="#">Insights</a></li><li><a href="#">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="bottom"><span>© 2026 AlgoCrew (verified legal entity name, V-06)</span><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie settings</a></div>
+  </div>
+</footer>
+<script src="ui.js?v=13"></script>
+<script src="diagrams.js?v=13"></script>
+</body>
+</html>

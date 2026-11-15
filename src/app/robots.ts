@@ -6,13 +6,11 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
-        // Only block server/API internals. Real content (including /hire) is
-        // crawlable so Google can read its canonical tag and consolidate.
+        allow: ["/", "/api/og/"],
+        // Server internals only. Open Graph images under /api/og/ stay fetchable (05 §3).
         disallow: ["/api/"],
       },
     ],
     sitemap: `${baseURL}/sitemap.xml`,
-    host: baseURL,
   };
 }

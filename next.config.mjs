@@ -22,17 +22,8 @@ const nextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
   },
 
-  // ── Canonical route consolidation ──────────────────────────────────────
-  // /projects/* was a duplicate of /work/*. Permanently redirect the old
-  // tree to the canonical /work tree (single hop, path preserved). No host
-  // redirects live here — those are handled once in middleware.ts to avoid
-  // chains.
-  async redirects() {
-    return [
-      { source: "/projects", destination: "/work", permanent: true },
-      { source: "/projects/:slug", destination: "/work/:slug", permanent: true },
-    ];
-  },
+  // Redirects and "410 Gone" live in src/middleware.ts (data: src/resources/routeMigration.ts),
+  // together with the host redirect, so every old URL resolves in a single hop.
 
   // ── Security + performance headers ─────────────────────────────────────
   async headers() {

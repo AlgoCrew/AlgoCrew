@@ -1,0 +1,139 @@
+// DevSecOps lifecycle tabs (prototype: index.html section 5). Tokens only: `npm run check:tokens`.
+// Its own module: the client component must not share a CSS module with server-only homepage sections.
+@use "../../styles/breakpoints" as bp;
+
+@mixin mono($size: var(--text-meta), $tracking: 0.06em) {
+  font: 500 #{$size}/1 var(--font-mono);
+  letter-spacing: $tracking;
+  text-transform: uppercase;
+}
+
+/* ---------- Lifecycle (dark) ---------- */
+// Without JavaScript: a plain list of stages, each with its controls.
+.life {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+
+  > li {
+    border: 1px solid var(--dark-line);
+    border-radius: var(--radius);
+    background: var(--dark-2);
+    padding: 20px;
+  }
+}
+.stageName {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font: 600 1rem/1.3 var(--font-sans);
+  color: var(--dark-ink);
+
+  span { @include mono; color: var(--sky); }
+}
+.controls {
+  margin: 12px 0 0;
+  padding: 0 0 0 18px;
+  display: grid;
+  gap: 6px;
+  color: var(--dark-ink-2);
+  font-size: var(--text-small);
+}
+
+// With JavaScript: a row of tabs and one panel.
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  @include bp.down(lg) {
+    grid-template-columns: repeat(7, minmax(120px, 1fr));
+    overflow-x: auto;
+    padding-top: 8px;
+  }
+}
+.tab {
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px 14px 22px;
+  border-top: 2px solid var(--dark-line);
+  color: var(--dark-ink-2);
+  font: 600 1rem/1.2 var(--font-sans);
+
+  span { @include mono; color: var(--sky); }
+  &::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    margin-top: -27px;
+    border-radius: 50%;
+    border: 2px solid var(--dark-line);
+    background: var(--dark);
+  }
+  &[aria-selected="true"] {
+    color: var(--dark-ink);
+    border-top-color: var(--sky-strong);
+    &::before {
+      border-color: var(--sky-strong);
+      background: var(--sky-strong);
+      box-shadow: 0 0 0 5px color-mix(in srgb, var(--sky-strong) 18%, transparent);
+    }
+  }
+  &:focus-visible { outline: 3px solid var(--sky); outline-offset: -3px; }
+}
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: 32px;
+  margin-top: 28px;
+  padding: clamp(20px, 3vw, 36px);
+  border: 1px solid var(--dark-line);
+  border-radius: var(--radius);
+  background: var(--dark-2);
+  color: var(--dark-ink);
+
+  &:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
+  h3 { margin: 0; font: 600 2rem/1.1 var(--font-sans); letter-spacing: -0.02em; }
+  p { margin: 0 0 12px; @include mono(var(--text-label), 0.08em); color: var(--sky); }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 24px;
+    font-size: 0.9688rem;
+  }
+  li { position: relative; padding-left: 22px; }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 10px;
+    height: 2px;
+    background: var(--sky-strong);
+  }
+  @include bp.down(lg) {
+    grid-template-columns: minmax(0, 1fr);
+    ul { grid-template-columns: minmax(0, 1fr); }
+  }
+}
+.secBand {
+  margin: 20px 0 0;
+  padding: 10px 18px;
+  border: 1px dashed color-mix(in srgb, var(--sky) 35%, var(--dark));
+  border-radius: 999px;
+  @include mono(var(--text-label), 0.06em);
+  line-height: 1.5;
+  color: var(--sky);
+  text-align: center;
+}
+

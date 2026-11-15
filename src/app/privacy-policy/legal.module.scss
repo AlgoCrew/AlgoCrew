@@ -24,7 +24,7 @@
 .label {
   display: block;
   font-size: 10px; font-weight: 700; letter-spacing: 0.25em;
-  text-transform: uppercase; color: #06c8e8;
+  text-transform: uppercase; color: var(--brand);
   margin-bottom: 16px;
 }
 
@@ -68,7 +68,10 @@
   strong { color: var(--text-primary); font-weight: 700; }
 
   a {
-    color: #06c8e8; text-decoration: none;
+    color: var(--brand); text-decoration: none;
     &:hover { text-decoration: underline; }
   }
 }
+
+/* Links inside legal text are underlined, not identified by colour alone (WCAG 1.4.1). */
+.sectionBody a[href] { text-decoration: underline; text-underline-offset: 3px; }

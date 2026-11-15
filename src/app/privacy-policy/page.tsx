@@ -5,7 +5,7 @@ import styles from "./legal.module.scss";
 export async function generateMetadata() {
   return {
     ...Meta.generate({
-      title: "Privacy Policy - AlgoCrew",
+      title: "Privacy Policy",
       description: "How AlgoCrew collects, uses, and protects your personal data.",
       baseURL,
       path: "/privacy-policy",
@@ -16,7 +16,7 @@ export async function generateMetadata() {
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
       <div className={styles.inner}>
         <div className={styles.header}>
           <span className={styles.label}>LEGAL</span>
@@ -108,7 +108,7 @@ export default function PrivacyPolicyPage() {
           </Section>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
 

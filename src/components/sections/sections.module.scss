@@ -1,0 +1,351 @@
+// site-v2 page sections shared across templates (docs/website-transformation/08 §6).
+// Tokens only: `npm run check:tokens`.
+@use "../../styles/breakpoints" as bp;
+
+@mixin mono($size: var(--text-meta), $tracking: 0.06em) {
+  font: 500 #{$size}/1.4 var(--font-mono);
+  letter-spacing: $tracking;
+  text-transform: uppercase;
+}
+@mixin wrap {
+  width: 100%;
+  max-width: calc(var(--wrap) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* ---------- Page hero ---------- */
+.hero {
+  width: 100%;
+  padding: clamp(48px, 8vw, 104px) 0 clamp(40px, 6vw, 72px);
+  background: radial-gradient(900px 480px at 85% 0%, var(--bg-tint), transparent 70%), var(--bg);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font: 400 var(--text-body)/1.6 var(--font-sans);
+}
+// Platform pages: tinted band with a faint grid.
+.tinted {
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 32px 32px,
+    var(--bg-tint);
+}
+.heroInner {
+  @include wrap;
+  display: grid;
+  gap: 40px;
+}
+.withAside {
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  align-items: center;
+  gap: clamp(24px, 5vw, 64px);
+
+  @include bp.down(lg) { grid-template-columns: minmax(0, 1fr); }
+}
+.heroBelow {
+  margin-top: 40px;
+  > p { max-width: none; } // the boundary statement spans the hero, as in the prototype
+}
+.plain { background: var(--bg); }
+// Framework hero heading: the prototype's size, between H1 and Display.
+.bigTitle h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+.heroCopy {
+  display: grid;
+  gap: 24px;
+  max-width: 820px;
+  justify-items: start;
+}
+.tag {
+  @include mono(var(--text-label));
+  padding: 8px 12px;
+  border: 1px solid var(--brand);
+  border-radius: 6px;
+  color: var(--brand);
+}
+
+/* Fact row under a hero: the last cell can carry the role boundary */
+.facts {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg);
+
+  div {
+    padding: 20px 24px;
+    border-right: 1px solid var(--line);
+    margin-right: -1px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: -1px;
+  }
+  dt { @include mono; line-height: 1; color: var(--ink-3); margin-bottom: 6px; }
+  dd { margin: 0; font-size: var(--text-small); font-weight: 500; }
+}
+.factRole {
+  background: var(--bg-tint);
+  grid-column: span 2;
+  dt { color: var(--brand); }
+
+  @include bp.down(md) { grid-column: auto; }
+}
+
+/* Quick links: large chips to sibling pages */
+.quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid var(--line-control);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+    transition: border-color var(--dur-1), color var(--dur-1);
+
+    &:hover { border-color: var(--brand); color: var(--brand); }
+    &:focus-visible { outline: var(--focus-ring); outline-offset: 3px; }
+  }
+}
+
+/* ---------- Framework card ---------- */
+.fw {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  text-decoration: none;
+  transition: border-color var(--dur-1), box-shadow var(--dur-1);
+
+  &:hover { border-color: var(--brand); box-shadow: var(--shadow); }
+  &:focus-visible { outline: var(--focus-ring); outline-offset: 3px; }
+  span { @include mono; color: var(--ink-3); }
+  strong { font-size: 1.5rem; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
+  p { margin: 0; font-size: var(--text-small); color: var(--ink-2); }
+}
+
+/* ---------- Diagram frame ---------- */
+.diagram {
+  margin: 0;
+  padding: clamp(16px, 3vw, 36px);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--bg);
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  figcaption {
+    margin-top: 16px;
+    font-size: 0.875rem;
+    color: var(--ink-3);
+    text-align: center;
+  }
+  details {
+    margin-top: 16px;
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+    font-size: 0.875rem;
+  }
+  summary {
+    cursor: pointer;
+    color: var(--brand);
+    font-weight: 550;
+    &:focus-visible { outline: var(--focus-ring); outline-offset: 3px; border-radius: 4px; }
+  }
+
+  @include bp.down(lg) {
+    overflow-x: auto;
+    svg { min-width: 560px; }
+  }
+}
+
+/* ---------- Capability index (platform hero aside) ---------- */
+.index {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 8px 0;
+
+  p {
+    margin: 0;
+    padding: 14px 20px 10px;
+    @include mono(var(--text-meta), 0.08em);
+    line-height: 1;
+    color: var(--brand);
+  }
+  ol { list-style: none; margin: 0; padding: 0; counter-reset: i; }
+  li { counter-increment: i; border-top: 1px solid var(--line); }
+  a {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 12px 20px;
+    font-size: var(--text-small);
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+
+    &::before {
+      content: "0" counter(i);
+      font: 500 var(--text-meta)/1 var(--font-mono);
+      color: var(--ink-3);
+    }
+    &:hover { background: var(--bg-soft); color: var(--brand); }
+    &:focus-visible { outline: var(--focus-ring); outline-offset: -3px; }
+  }
+}
+
+.stack { display: grid; gap: 16px; }
+.prose {
+  display: grid;
+  gap: 16px;
+  p { margin: 0; color: var(--ink-2); max-width: 70ch; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fw, .quick a { transition: none; }
+}
+
+/* ---------- Problems list (pillar hero aside; prototype: pillar-cloud-security.html) ---------- */
+.problemsLabel {
+  margin: 0 0 12px;
+  @include mono(var(--text-meta), 0.08em);
+  line-height: 1;
+  color: var(--ink-3);
+}
+.problems {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: 2px solid var(--brand);
+
+  li {
+    padding: 14px 0 14px 20px;
+    font-size: 1rem;
+    color: var(--ink-2);
+  }
+  li + li { border-top: 1px solid var(--line); }
+}
+
+/* ---------- At-a-glance row (capability hero; prototype: service-devsecops.html) ---------- */
+.glance {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  border-top: 1px solid var(--line-strong);
+
+  div { padding: 16px 24px 0 0; }
+  dt { @include mono; line-height: 1; color: var(--ink-3); margin-bottom: 6px; }
+  dd { margin: 0; font-size: var(--text-small); font-weight: 500; }
+}
+
+/* ---------- Link list inside a ledger row (services hub) ---------- */
+.linkList {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px 24px;
+
+  @include bp.down(md) { grid-template-columns: minmax(0, 1fr); }
+  a {
+    display: inline-flex;
+    min-height: 32px;
+    align-items: center;
+    color: var(--brand);
+    font-weight: 550;
+    font-size: var(--text-small);
+    text-decoration: none;
+    &:hover { text-decoration: underline; text-underline-offset: 4px; }
+    &:focus-visible { outline: var(--focus-ring); outline-offset: 2px; border-radius: 4px; }
+  }
+}
+.pillarLine {
+  margin: 0;
+  color: var(--ink-2);
+  a { color: var(--brand); font-weight: 550; text-decoration: underline; text-underline-offset: 3px; }
+}
+
+/* ---------- Dark split with a diagram ---------- */
+.darkSplit {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 88px);
+  align-items: center;
+
+  @include bp.down(lg) { grid-template-columns: minmax(0, 1fr); }
+}
+.darkSplit > div:first-child { display: grid; gap: 20px; align-content: start; }
+
+/* ---------- Contact ---------- */
+.panel {
+  padding: clamp(20px, 3vw, 36px);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--bg);
+  &:focus-visible { outline: var(--focus-ring); outline-offset: 3px; }
+}
+.panelTitle { margin: 0; font: 600 1.5rem/1.2 var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.panelNote { margin: 0; font-size: 0.875rem; color: var(--ink-3); }
+.trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.consentError { margin: 6px 0 0 30px; font-size: 0.8125rem; font-weight: 500; color: var(--bad); }
+.next {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: n;
+  display: grid;
+  gap: 20px;
+
+  li {
+    counter-increment: n;
+    position: relative;
+    padding-left: 44px;
+    color: var(--ink-2);
+  }
+  li::before {
+    content: counter(n);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--brand);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font: 500 var(--text-label)/1 var(--font-mono);
+    color: var(--brand);
+  }
+  strong { display: block; color: var(--ink); }
+}
+.contactSplit {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 6vw, 88px);
+  align-items: start;
+
+  @include bp.down(lg) { grid-template-columns: minmax(0, 1fr); }
+  aside { display: grid; gap: 32px; align-content: start; }
+}

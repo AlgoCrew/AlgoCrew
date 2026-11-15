@@ -47,14 +47,13 @@
    HTML / BODY BASE
    ================================================================ */
 html {
-  scroll-behavior: smooth !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
 body {
-  background: var(--page-background, #0B1120);
+  background: var(--page-background, #ffffff);
 }
 
 /* ================================================================
@@ -96,24 +95,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* ================================================================
-   SMOOTH PAGE TRANSITIONS
-   ================================================================ */
-main {
-  animation: page-in 0.4s ease forwards;
-}
-
-@keyframes page-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ================================================================
-   SMOOTH THEME TRANSITION
-   ================================================================ */
-*, *::before, *::after {
-  transition: background-color 0.25s ease, border-color 0.25s ease;
-}
+/* The page-in animation on <main> and the global transition on every element were
+   removed for site-v2 (docs/website-transformation/08 §1, 09 §10). */
 
 /* ================================================================
    FOCUS STYLES

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>HIPAA prototype | AlgoCrew</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="proto.css?v=13">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="protobar">Stage 3–4 prototype · Framework template: HIPAA · dashed boxes are placeholders awaiting business verification · <a href="index.html">Home</a> · <a href="service-devsecops.html">Service</a> · <a href="platform-azure.html">Platform</a> · <a href="pillar-cloud-security.html">Pillar</a> · <a href="compliance.html">Hub</a> · <a href="compliance-hipaa.html">Framework</a> · <a href="contact.html">Contact</a> · <a href="concept-3d.html">3D concepts</a></div>
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="AlgoCrew home">AlgoCrew<i></i></a>
+    <nav class="nav" aria-label="Primary">
+      <a class="has-menu" href="service-devsecops.html">Services</a>
+      <a class="has-menu" href="platform-azure.html">Cloud Platforms</a>
+      <a class="has-menu" href="compliance-hipaa.html">Compliance</a>
+      <a href="index.html#insights">Insights</a>
+      <a class="has-menu" href="index.html#approach">Company</a>
+    </nav>
+    <a class="btn primary sm cta-full" href="#contact">Discuss Your Cloud Strategy</a>
+    <a class="btn primary sm cta-short" href="#contact">Talk to us</a>
+    <details class="mnav">
+      <summary>Menu</summary>
+      <nav aria-label="Mobile">
+        <a href="service-devsecops.html">Services</a>
+        <a href="platform-azure.html">Cloud Platforms</a>
+        <a href="compliance-hipaa.html">Compliance</a>
+        <a href="index.html#insights">Insights</a>
+        <a href="index.html#approach">Company</a>
+        <a class="btn primary" href="#contact">Discuss Your Cloud Strategy</a>
+      </nav>
+    </details>
+  </div>
+</header>
+<main id="main">
+<section class="hero page fwk">
+  <div class="wrap">
+    <div class="hero-copy">
+      <ol class="crumbs"><li><a href="index.html">Home</a></li><li><a href="compliance.html">Compliance</a></li><li aria-current="page">HIPAA</li></ol>
+      <p class="tag">HIPAA · Security Rule · 45 CFR Part 164, Subpart C</p>
+      <h1 class="h1">HIPAA cloud security and compliance readiness.</h1>
+      <p class="lead">We implement the technical safeguards HIPAA requires for electronic protected health information in your cloud environment, and prepare the evidence your assessor will ask for.</p>
+      <div class="btns"><a class="btn primary" href="contact.html">Discuss Your HIPAA Requirements <span class="arr" aria-hidden="true">→</span></a><a class="btn ghost" href="#controls">See the control map</a></div>
+    </div>
+    <dl class="facts">
+      <div><dt>What it protects</dt><dd>Electronic protected health information</dd></div>
+      <div><dt>Who it applies to</dt><dd>Covered entities and their business associates</dd></div>
+      <div class="role"><dt>Our role</dt><dd>We implement and evidence technical controls. We do not certify, audit or give legal advice.</dd></div>
+    </dl>
+  </div>
+</section>
+<nav class="jump" aria-label="On this page"><div class="wrap"><a href="#applies">Who it applies to</a><a href="#shared" data-when="platforms">Shared responsibility</a><a href="#controls">Control map</a><a href="#evidence">Evidence</a><a href="#boundaries">What we don't do</a><a href="#faq">FAQ</a></div></nav>
+
+<section class="section" id="applies">
+  <div class="wrap split">
+    <div><p class="eyebrow">Who it applies to</p><h2 class="h2">Organizations that handle health information.</h2></div>
+    <div style="display:grid;gap:16px">
+      <p class="lead">HIPAA applies to covered entities such as providers, health plans and clearinghouses, and to the business associates that handle protected health information for them.</p>
+      <p class="muted">If you are a covered entity, or a business associate that creates, receives, maintains or transmits electronic protected health information for one, the Security Rule applies to the systems that hold it. Your counsel decides whether that is you. This summary is not legal advice.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section soft" id="shared" data-when="platforms">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Shared responsibility</p><h2 class="h2">The provider secures the cloud. You secure what you run in it.</h2></div>
+    <div class="tablewrap"><table class="table">
+      <thead><tr><th scope="col">Platform</th><th scope="col">Provider agreement</th></tr></thead>
+      <tbody>
+        <tr data-need="az"><td>Microsoft Azure</td><td>Business Associate Agreement offered through Microsoft's product terms for in-scope services.</td></tr>
+        <tr data-need="aws"><td>AWS</td><td>Business Associate Addendum accepted through AWS Artifact, covering HIPAA-eligible services.</td></tr>
+        <tr data-need="gcp"><td>Google Cloud</td><td>Business Associate Agreement accepted with Google, covering listed services.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted" style="margin-top:20px;max-width:70ch"><strong>What stays with you:</strong> using only in-scope services, plus identity, network, encryption, logging and backup configuration.</p>
+    <p class="ph" style="margin-top:16px">Provider-agreement wording to be checked against each provider's current terms, and the whole page reviewed by a qualified person, before launch.</p>
+  </div>
+</section>
+
+<section class="section dark" id="controls">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Control map</p><h2 class="h2">Security Rule technical safeguards, as cloud configuration.</h2><p class="lead">Each safeguard maps to cloud settings and to the evidence those settings produce.</p></div>
+    <div class="grid g3">
+      <div class="card"><span class="num" style="color:#7dd3fc">§164.312(a)</span><h3 class="h3">Access control</h3><p>Unique identities, least-privilege roles, time-bound privileged access, encryption at rest with managed keys.</p><p class="small" style="color:#7dd3fc">Evidence: role assignments, access reviews</p></div>
+      <div class="card"><span class="num" style="color:#7dd3fc">§164.312(b)</span><h3 class="h3">Audit controls</h3><p>Activity and data-access logs collected centrally, protected from change and retained to your policy.</p><p class="small" style="color:#7dd3fc">Evidence: log configuration, retention settings</p></div>
+      <div class="card"><span class="num" style="color:#7dd3fc">§164.312(c)</span><h3 class="h3">Integrity</h3><p>Versioning, immutable backups, change control through pipelines and tested restores.</p><p class="small" style="color:#7dd3fc">Evidence: restore test records, change history</p></div>
+      <div class="card"><span class="num" style="color:#7dd3fc">§164.312(d)</span><h3 class="h3">Authentication</h3><p>Single sign-on, multi-factor authentication and workload identities in place of shared credentials.</p><p class="small" style="color:#7dd3fc">Evidence: authentication policies</p></div>
+      <div class="card"><span class="num" style="color:#7dd3fc">§164.312(e)</span><h3 class="h3">Transmission security</h3><p>TLS enforced in transit, private connectivity between services and segmented networks.</p><p class="small" style="color:#7dd3fc">Evidence: policy compliance state</p></div>
+      <div class="card"><span class="num" style="color:#7dd3fc">Continuous</span><h3 class="h3">Policy as code</h3><p>Guardrails that block non-conforming resources and report drift.</p><p class="small"><a class="link" href="service-devsecops.html">DevSecOps →</a></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="evidence">
+  <div class="wrap">
+    <figure class="diagram" style="margin-bottom:56px">
+      <svg data-diagram="controlmap" data-only="hipaa" role="img" aria-label="Four HIPAA technical safeguards map to three shared controls: multi-factor authentication with least privilege, encryption, and central audit logging. Each control maps to an evidence record."></svg>
+      <figcaption>One control can satisfy several safeguards, and each control produces its own evidence.</figcaption>
+    </figure>
+  </div>
+  <div class="wrap split">
+    <div><p class="eyebrow">Evidence</p><h2 class="h2">What we help you prepare.</h2></div>
+    <ul class="checks">
+      <li><strong>Control map</strong> from each safeguard to its configuration and check.</li>
+      <li><strong>Evidence index</strong> listing where each record lives and how it is produced.</li>
+      <li><strong>Architecture and data-flow diagrams</strong> showing where health information is stored and moves.</li>
+      <li><strong>Technical input to your risk analysis</strong>, for your team to own and complete.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section soft" id="boundaries">
+  <div class="wrap split">
+    <div><p class="eyebrow">Boundaries</p><h2 class="h2">What we do not do.</h2></div>
+    <ul class="checks no">
+      <li>We do not certify you. There is no official HIPAA certification.</li>
+      <li>We do not give legal advice or decide whether you are a covered entity or business associate.</li>
+      <li>We do not write your administrative policies or run workforce training.</li>
+      <li>We do not guarantee the outcome of an audit or investigation.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap split">
+    <div><p class="eyebrow">FAQ</p><h2 class="h2">HIPAA questions.</h2></div>
+    <div>
+      <details class="faq"><summary>Is Azure, AWS or Google Cloud "HIPAA compliant"?</summary><p>Providers offer services that are eligible for HIPAA workloads under their agreement. How you configure and use them is what your assessor looks at.</p></details>
+      <details class="faq"><summary>Will you sign a Business Associate Agreement with us?</summary><p class="ph">Answer depends on business confirmation (V-22). Until then: "Ask us about contractual terms."</p></details>
+      <details class="faq"><summary>We also need PIPEDA or GDPR. Can the same controls serve both?</summary><p>Many technical controls overlap. We map each control once and show which requirements it supports.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact" style="padding-top:0"><div class="wrap"><div class="cta dark"><div><h2 class="h1">Discuss your HIPAA requirements.</h2><p>Tell us where health information lives today and which cloud you run.</p></div><div class="btns"><a class="btn primary" href="contact.html">Discuss Your HIPAA Requirements <span class="arr" aria-hidden="true">→</span></a></div></div></div></section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="cols">
+      <div><a class="logo" href="index.html">AlgoCrew<i></i></a><p class="muted small" style="margin-top:14px;max-width:30ch">Specialist cloud engineering, DevSecOps, security and compliance.</p><p class="ph" style="margin-top:16px">Verified email, phone, city (V-10)</p></div>
+      <div><h4>Services</h4><ul><li><a href="#">Cloud Consulting &amp; Engineering</a></li><li><a href="#">Cloud Migration &amp; Modernization</a></li><li><a href="#">DevOps &amp; DevSecOps</a></li><li><a href="service-devsecops.html">DevSecOps</a></li><li><a href="pillar-cloud-security.html">Cloud Security &amp; Cybersecurity</a></li><li><a href="#">Managed Cloud Services</a></li></ul></div>
+      <div><h4>Cloud Platforms</h4><ul><li data-need="az"><a href="platform-azure.html">Microsoft Azure</a></li><li data-need="aws"><a href="#">Amazon Web Services</a></li><li data-need="gcp"><a href="#">Google Cloud</a></li><li><a href="#">Multi-cloud overview</a></li></ul></div>
+      <div><h4>Compliance</h4><ul><li><a href="compliance.html">Compliance &amp; Governance</a></li><li data-need="hipaa"><a href="compliance-hipaa.html">HIPAA</a></li><li data-need="gdpr"><a href="#">GDPR</a></li><li data-need="pci"><a href="#">PCI DSS</a></li><li data-need="pipeda"><a href="#">PIPEDA</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Our Approach</a></li><li><a href="#">Trust &amp; Security</a></li><li><a href="#">Insights</a></li><li><a href="#">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="bottom"><span>© 2026 AlgoCrew (verified legal entity name, V-06)</span><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie settings</a></div>
+  </div>
+</footer>
+<script src="ui.js?v=13"></script>
+<script src="diagrams.js?v=13"></script>
+</body>
+</html>

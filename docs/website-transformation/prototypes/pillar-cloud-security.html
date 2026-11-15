@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Cloud Security prototype | AlgoCrew</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="proto.css?v=13">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="protobar">Prototype · Pillar template: Cloud Security &amp; Cybersecurity · dashed boxes are placeholders awaiting business verification · <a href="index.html">Home</a> · <a href="service-devsecops.html">Service</a> · <a href="platform-azure.html">Platform</a> · <a href="pillar-cloud-security.html">Pillar</a> · <a href="compliance.html">Hub</a> · <a href="compliance-hipaa.html">Framework</a> · <a href="contact.html">Contact</a> · <a href="concept-3d.html">3D concepts</a></div>
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="AlgoCrew home">AlgoCrew<i></i></a>
+    <nav class="nav" aria-label="Primary">
+      <a class="has-menu" href="service-devsecops.html">Services</a>
+      <a class="has-menu" href="platform-azure.html">Cloud Platforms</a>
+      <a class="has-menu" href="compliance-hipaa.html">Compliance</a>
+      <a href="index.html#insights">Insights</a>
+      <a class="has-menu" href="index.html#approach">Company</a>
+    </nav>
+    <a class="btn primary sm cta-full" href="index.html#contact">Discuss Your Cloud Strategy</a>
+    <a class="btn primary sm cta-short" href="index.html#contact">Talk to us</a>
+    <details class="mnav">
+      <summary>Menu</summary>
+      <nav aria-label="Mobile">
+        <a href="service-devsecops.html">Services</a>
+        <a href="platform-azure.html">Cloud Platforms</a>
+        <a href="compliance-hipaa.html">Compliance</a>
+        <a href="index.html#insights">Insights</a>
+        <a href="index.html#approach">Company</a>
+        <a class="btn primary" href="index.html#contact">Discuss Your Cloud Strategy</a>
+      </nav>
+    </details>
+  </div>
+</header>
+<main id="main">
+<section class="hero page">
+  <div class="wrap" style="align-items:center">
+    <div class="hero-copy">
+      <ol class="crumbs"><li><a href="index.html">Home</a></li><li><a href="#">Services</a></li><li aria-current="page">Cloud Security &amp; Cybersecurity</li></ol>
+      <h1 class="h1">Cloud security services<span data-list="platforms" data-short data-prefix=" for "></span>.</h1>
+      <p class="lead">Controls that fit how your cloud actually works: identity first, segmented networks, tuned detection and a way to fix what is found.</p>
+      <div class="btns"><a class="btn primary" href="contact.html">Discuss Your Cloud Strategy <span class="arr" aria-hidden="true">→</span></a></div>
+    </div>
+    <div><p class="plabel">Problems we solve</p>
+    <ul class="problems">
+      <li>Too many people hold standing admin access.</li>
+      <li>Posture tools report thousands of findings and nothing gets fixed.</li>
+      <li>Alerts arrive, but nobody owns them.</li>
+      <li>Security was designed for the data center, not the cloud.</li>
+    </ul></div>
+  </div>
+</section>
+<nav class="jump" aria-label="On this page"><div class="wrap"><a href="#zero-trust">Architecture &amp; Zero Trust</a><a href="#iam">Identity</a><a href="#threat-detection">Detection</a><a href="#vulnerability-management">Vulnerabilities</a><a href="#assessments">Assessments</a><a href="#layers">Layers</a><a href="#deliverables">What you get</a><a href="#faq">FAQ</a></div></nav>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Capabilities</p><h2 class="h2">Five capabilities, one security practice.</h2></div>
+    <div class="rows">
+      <div class="row" id="zero-trust"><h3 class="h3">Security architecture &amp; Zero Trust</h3><p>Every request is authenticated and authorized. Networks are segmented so a compromise stays small. Designs are written as code and reviewed.</p><p class="tools"><span data-need="az">Entra Conditional Access · Azure Firewall<br></span><span data-need="aws">IAM Identity Center · Security groups, Network Firewall<br></span><span data-need="gcp">Cloud IAM · VPC Service Controls</span></p></div>
+      <div class="row" id="iam"><h3 class="h3">Identity &amp; access management</h3><p>Single sign-on, least-privilege roles, time-bound privileged access and workload identities in place of long-lived keys.</p><p class="tools"><span data-need="az">Microsoft Entra ID · Privileged Identity Management<br></span><span data-need="aws">IAM · IAM Identity Center<br></span><span data-need="gcp">Cloud IAM · Workload Identity Federation</span></p></div>
+      <div class="row" id="threat-detection"><h3 class="h3">Threat detection &amp; monitoring</h3><p>Native detection switched on across every account, tuned to cut noise, and routed to an owner with a runbook.</p><p class="tools"><span data-need="az">Defender for Cloud · Microsoft Sentinel<br></span><span data-need="aws">GuardDuty · Security Hub<br></span><span data-need="gcp">Security Command Center</span></p></div>
+      <div class="row" id="vulnerability-management"><h3 class="h3">Vulnerability management</h3><p>Findings ranked by exposure and impact, assigned to the team that can fix them, and tracked to closure.</p><p class="tools"><span data-need="az">Defender Vulnerability Management<br></span><span data-need="aws">Amazon Inspector<br></span><span data-need="gcp">Security Command Center</span></p></div>
+      <div class="row" id="assessments"><h3 class="h3">Security assessments</h3><p>A review of your current cloud security posture against a named benchmark, with prioritized findings.</p><p class="tools">Posture review<br>Prioritized findings</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="layers">
+  <div class="wrap split" style="align-items:center">
+    <div style="display:grid;gap:20px">
+      <p class="eyebrow" style="margin:0">Defense in depth</p>
+      <h2 class="h2">Data at the center. Controls at every layer around it.</h2>
+      <ul class="checks" style="color:var(--dark-ink-2)">
+        <li><strong style="color:#fff">Identity:</strong> who and what can act, and for how long.</li>
+        <li><strong style="color:#fff">Network:</strong> what can reach what.</li>
+        <li><strong style="color:#fff">Workload:</strong> hardened images, patched hosts, scanned code.</li>
+        <li><strong style="color:#fff">Data:</strong> encrypted, classified, backed up and logged.</li>
+      </ul>
+    </div>
+    <div style="display:grid;place-items:center"><div class="rings" role="img" aria-label="Four nested security layers: identity, network, workload and data at the center"><div>Identity</div><div>Network</div><div>Workload</div><div>Data</div></div></div>
+  </div>
+</section>
+
+<section class="section soft" id="deliverables">
+  <div class="wrap split">
+    <div style="display:grid;gap:20px"><p class="eyebrow" style="margin:0">What you get</p><h2 class="h2">Typical outputs.</h2></div>
+    <ul class="checks">
+      <li><strong>Security architecture</strong> as diagrams and code.</li>
+      <li><strong>Identity model</strong>: roles, groups, privileged-access rules.</li>
+      <li><strong>Detection coverage map</strong> with alert routes and runbooks.</li>
+      <li><strong>Findings register</strong> with owners and due dates.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section tight" data-when="frameworks">
+  <div class="wrap split">
+    <div><p class="eyebrow">Supports</p><h2 class="h3" style="font-size:1.5rem">These controls feed your compliance program.</h2></div>
+    <div class="quick"><a href="compliance-hipaa.html" data-need="hipaa">HIPAA</a><a href="#" data-need="gdpr">GDPR</a><a href="#" data-need="pci">PCI DSS</a><a href="#" data-need="pipeda">PIPEDA</a></div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap split">
+    <div style="display:grid;gap:20px"><p class="eyebrow" style="margin:0">FAQ</p><h2 class="h2">Common questions.</h2><p class="ph">Named practice lead (name, role, photo) appears here with consent (V-13). Until then: role title only.</p></div>
+    <div>
+      <details class="faq"><summary>Do you replace our security team?</summary><p>No. We design and build controls, and hand them to the team that will run them.</p></details>
+      <details class="faq"><summary>Do you run a security operations center?</summary><p class="ph">Answer depends on the verified managed-services scope (V-12).</p></details>
+      <details class="faq"><summary>Is this penetration testing?</summary><p>No. Assessments here review configuration and posture. They do not attempt to break in.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0"><div class="wrap"><div class="cta dark"><div><h2 class="h1">Talk through your security posture.</h2><p>Tell us which clouds you run and what worries you most.</p></div><div class="btns"><a class="btn primary" href="contact.html?topic=security">Discuss Your Cloud Strategy <span class="arr" aria-hidden="true">→</span></a></div></div></div></section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="cols">
+      <div><a class="logo" href="index.html">AlgoCrew<i></i></a><p class="muted small" style="margin-top:14px;max-width:30ch">Specialist cloud engineering, DevSecOps, security and compliance.</p><p class="ph" style="margin-top:16px">Verified email, phone, city (V-10)</p></div>
+      <div><h4>Services</h4><ul><li><a href="#">Cloud Consulting &amp; Engineering</a></li><li><a href="#">Cloud Migration &amp; Modernization</a></li><li><a href="#">DevOps &amp; DevSecOps</a></li><li><a href="service-devsecops.html">DevSecOps</a></li><li><a href="pillar-cloud-security.html">Cloud Security &amp; Cybersecurity</a></li><li><a href="#">Managed Cloud Services</a></li></ul></div>
+      <div><h4>Cloud Platforms</h4><ul><li data-need="az"><a href="platform-azure.html">Microsoft Azure</a></li><li data-need="aws"><a href="#">Amazon Web Services</a></li><li data-need="gcp"><a href="#">Google Cloud</a></li><li><a href="#">Multi-cloud overview</a></li></ul></div>
+      <div><h4>Compliance</h4><ul><li><a href="compliance.html">Compliance &amp; Governance</a></li><li data-need="hipaa"><a href="compliance-hipaa.html">HIPAA</a></li><li data-need="gdpr"><a href="#">GDPR</a></li><li data-need="pci"><a href="#">PCI DSS</a></li><li data-need="pipeda"><a href="#">PIPEDA</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Our Approach</a></li><li><a href="#">Trust &amp; Security</a></li><li><a href="#">Insights</a></li><li><a href="#">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="bottom"><span>© 2026 AlgoCrew (verified legal entity name, V-06)</span><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie settings</a></div>
+  </div>
+</footer>
+<script src="ui.js?v=13"></script>
+</body>
+</html>

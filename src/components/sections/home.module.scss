@@ -1,0 +1,166 @@
+// Homepage sections (prototype: docs/website-transformation/prototypes/index.html).
+// Tokens only: `npm run check:tokens`.
+@use "../../styles/breakpoints" as bp;
+
+@mixin mono($size: var(--text-meta), $tracking: 0.06em) {
+  font: 500 #{$size}/1 var(--font-mono);
+  letter-spacing: $tracking;
+  text-transform: uppercase;
+}
+@mixin wrap {
+  width: 100%;
+  max-width: calc(var(--wrap) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  width: 100%;
+  overflow: hidden;
+  padding: clamp(48px, 8vw, 104px) 0 clamp(48px, 7vw, 88px);
+  background: radial-gradient(900px 480px at 85% 0%, var(--bg-tint), transparent 70%), var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+.heroInner {
+  @include wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(24px, 5vw, 64px);
+  align-items: center;
+
+  @include bp.down(lg) { grid-template-columns: minmax(0, 1fr); }
+}
+.heroCopy {
+  display: grid;
+  gap: 28px;
+  justify-items: start;
+}
+
+/* Layered infrastructure: CSS 3D. Also the fallback for the WebGL scene (roadmap T4.03). */
+.visual { margin: 0; display: grid; gap: 24px; }
+.stage {
+  height: 340px;
+  perspective: 1400px;
+  display: grid;
+  place-items: center;
+  @include bp.down(lg) { height: 280px; }
+}
+.stack {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  transform-style: preserve-3d;
+  transform: rotateX(58deg) rotateZ(-45deg);
+  animation: float 9s ease-in-out infinite;
+  @include bp.down(md) { width: 180px; height: 180px; }
+}
+@keyframes float { 50% { transform: rotateX(58deg) rotateZ(-45deg) translateZ(14px); } }
+.plane {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  border: 1.5px solid var(--brand);
+  background:
+    linear-gradient(color-mix(in srgb, var(--brand) 10%, transparent) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, color-mix(in srgb, var(--brand) 10%, transparent) 1px, transparent 1px) 0 0 / 24px 24px,
+    color-mix(in srgb, var(--bg) 82%, transparent);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--cyan) 10%, transparent);
+
+  &:nth-child(1) {
+    transform: translateZ(-90px);
+    border-color: var(--line-strong);
+    box-shadow: 30px 30px 60px color-mix(in srgb, var(--ink) 12%, transparent);
+    @include bp.down(md) { transform: translateZ(-64px); }
+  }
+  &:nth-child(3) {
+    transform: translateZ(90px);
+    background-color: color-mix(in srgb, var(--bg-tint) 90%, transparent);
+    @include bp.down(md) { transform: translateZ(64px); }
+  }
+  b {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    background: var(--brand);
+  }
+  b:nth-child(1) { left: 22%; top: 24%; }
+  b:nth-child(2) { left: 64%; top: 30%; background: var(--cyan); }
+  b:nth-child(3) { left: 40%; top: 66%; }
+}
+.layers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+
+  li {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    padding: 12px 16px;
+    font-size: 0.875rem;
+  }
+  li + li { border-top: 1px solid var(--line); }
+  span { @include mono; color: var(--brand); min-width: 22px; }
+}
+.layerSecure {
+  background: var(--bg-tint);
+  color: var(--brand-strong);
+  font-weight: 550;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+/* ---------- Scope, method, role ---------- */
+.strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+
+  div { padding: 24px 28px; display: grid; gap: 8px; align-content: start; }
+  div + div { border-left: 1px solid var(--line); }
+  b { @include mono(var(--text-meta), 0.08em); color: var(--brand); }
+  p { margin: 0; font-size: var(--text-small); color: var(--ink-2); }
+
+  @include bp.down(lg) {
+    grid-template-columns: minmax(0, 1fr);
+    div + div { border-left: 0; border-top: 1px solid var(--line); }
+  }
+}
+
+/* ---------- Five pillars: first two wide ---------- */
+.pillars {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+
+  > * { grid-column: span 2; }
+  > *:nth-child(-n + 2) { grid-column: span 3; padding: 36px; }
+
+  @include bp.down(lg) {
+    > *, > *:nth-child(-n + 2) { grid-column: span 3; padding: 28px; }
+  }
+  @include bp.down(md) {
+    > *, > *:nth-child(-n + 2) { grid-column: span 6; }
+  }
+}
+.icon {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stack { animation: none; }
+}

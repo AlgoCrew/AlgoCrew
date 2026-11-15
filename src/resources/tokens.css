@@ -1,0 +1,78 @@
+/*
+ * Design tokens for the site-v2 design system (docs/website-transformation/08 §3–5, §8).
+ * The only token file new components may use. Loaded after Once UI and custom.css.
+ * Components never use raw colour values: `npm run check:tokens` enforces this for site-v2 modules.
+ * Contrast ratios (WCAG 2) are noted where a token carries text.
+ */
+:root {
+  /* Light surfaces */
+  --bg: #ffffff;
+  --bg-soft: #f5f7fa;
+  --bg-tint: #eef3fe;
+  --ink: #0b1220;          /* 18.7:1 on --bg */
+  --ink-2: #414b5d;        /* 8.8:1 */
+  --ink-3: #5d6779;        /* 5.7:1; 5.3:1 on --bg-soft */
+  --line: #e2e7ee;
+  --line-strong: #c9d1dc;
+  --line-control: #7c8799; /* 3.6:1: input and outline-control borders */
+  --brand: #1d4ed8;        /* 6.7:1; white on it 6.7:1 */
+  --brand-strong: #173fae; /* white on it 8.9:1 */
+  --brand-tint-hover: #e3ebfd;
+  --cyan: #0891b2;         /* 3.7:1: diagrams only, never text */
+  --on-brand: #ffffff;
+
+  /* Dark sections (not a theme): one per page plus the closing CTA */
+  --dark: #0b1120;
+  --dark-2: #121a2c;
+  --dark-line: #26314a;
+  --dark-ink: #e8edf6;     /* 16.0:1 on --dark */
+  --dark-ink-2: #a6b1c6;   /* 8.7:1 */
+  --sky: #7dd3fc;          /* 11.3:1 */
+  --sky-strong: #38bdf8;
+  --dark-glow: rgba(29, 78, 216, 0.45);
+
+  /* Status: forms only, always paired with text or an icon */
+  --ok: #15803d;
+  --ok-bg: #f0fdf4;
+  --ok-line: #86efac;
+  --ok-ink: #14532d;
+  --bad: #b91c1c;
+  --bad-bg: #fef2f2;
+  --bad-line: #fca5a5;
+  --bad-ink: #7f1d1d;
+
+  /* Type: Geist and Geist Mono are already loaded by next/font in once-ui.config.js */
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-code), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --text-display: clamp(2.5rem, 6.2vw, 4.75rem);
+  --text-h1: clamp(2.25rem, 5vw, 3.75rem);
+  --text-h2: clamp(1.75rem, 3.6vw, 2.75rem);
+  --text-h3: 1.25rem;
+  --text-lead: clamp(1.0625rem, 1.6vw, 1.3125rem);
+  --text-body: 1.0625rem;
+  --text-small: 0.9375rem;
+  --text-label: 0.75rem;
+  --text-meta: 0.6875rem;
+
+  /* Space and shape */
+  --wrap: 1200px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --section: clamp(64px, 9vw, 128px);
+  --section-tight: clamp(40px, 6vw, 72px);
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 24px;
+  --shadow: 0 1px 2px rgba(11, 18, 32, 0.04), 0 8px 24px rgba(11, 18, 32, 0.06);
+  --focus-ring: 3px solid var(--brand);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-1: 150ms;
+  --dur-2: 190ms;
+  --dur-3: 600ms;
+}
+
+:root {
+  /* Faint grid behind tinted heroes and diagrams (brand at 5%) */
+  --grid-line: rgba(29, 78, 216, 0.05);
+}

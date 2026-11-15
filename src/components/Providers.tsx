@@ -3,11 +3,11 @@
 import { BorderStyle, ChartMode, ChartVariant, DataThemeProvider, IconProvider, NeutralColor, ScalingSize, Schemes, SolidStyle, SolidType, SurfaceStyle, ThemeProvider, ToastProvider, TransitionStyle } from "@once-ui-system/core";
 import { style, dataStyle } from "../resources";
 import { iconLibrary } from "../resources/icons";
-import { SmoothScroll } from "./SmoothScroll";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider
+      theme="light"
       brand={style.brand as Schemes}
       accent={style.accent as Schemes}
       neutral={style.neutral as NeutralColor}
@@ -33,9 +33,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         >
         <ToastProvider>
           <IconProvider icons={iconLibrary}>
-            <SmoothScroll>
               {children}
-            </SmoothScroll>
           </IconProvider>
         </ToastProvider>
       </DataThemeProvider>

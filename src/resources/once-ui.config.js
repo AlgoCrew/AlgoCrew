@@ -4,20 +4,19 @@ import { home } from "./content";
 // Canonical host is the bare apex; middleware 301s www and *.vercel.app -> apex.
 const baseURL = "https://algocrew.io";
 
+// Routes the site publishes (roadmap T10.10). Kept for Once UI; RouteGuard is no longer used.
 const routes = {
   "/": true,
   "/services": true,
+  "/cloud-platforms": true,
+  "/compliance": true,
+  "/our-approach": true,
   "/about": true,
-  "/work": true,
-  "/blog": true,
   "/contact": true,
-  "/hire": true,
   "/careers": true,
-  "/pricing": true,
+  "/blog": true,
   "/privacy-policy": true,
   "/terms": true,
-  "/faq": true,
-  "/locations": true,
 };
 
 const display = {
@@ -28,9 +27,8 @@ const display = {
 
 // Enable password protection on selected routes
 // Set password in the .env file, refer to .env.example
-const protectedRoutes = {
-  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
-};
+// The only protected page was a /work case study, now retired (410).
+const protectedRoutes = {};
 
 // Import and set font for each variant
 import { Geist } from "next/font/google";

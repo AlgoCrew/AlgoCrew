@@ -7,6 +7,7 @@
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
+    "allowImportingTsExtensions": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
@@ -25,5 +26,6 @@
     "target": "ES2017"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  // src/components/home/three is the pre-site-v2 WIP hero; re-included when T9.01 rewrites it on plain three.js
+  "exclude": ["node_modules", "docs", "src/components/home/three"]
 }

@@ -1,3 +1,5 @@
+import { isListedPost } from "./routeMigration";
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -25,7 +27,7 @@ export const blogPosts: BlogPost[] = [
     title: "Why Senior-Only Teams Ship 3× Faster Than Mixed Teams",
     excerpt:
       "Most agencies hide juniors behind senior faces. We don't hire juniors at all, here's the compounding effect that creates on delivery speed, code quality, and client trust.",
-    metaTitle: "Why Senior-Only Teams Ship 3x Faster Than Mixed Teams",
+    metaTitle: "Why Senior-Only Teams Ship Faster",
     metaDescription: "Senior-only engineering teams cut review overhead, rework, and ramp-up time. See the compounding effect on delivery speed, code quality, and cost.",
     updated: "2026-06-16",
     category: "Engineering Culture",
@@ -33,7 +35,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-05-12",
     readTime: 7,
     featured: true,
-    author: { name: "Arqam Malik", role: "Founder & CTO", initials: "AM", color: "#06c8e8" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#06c8e8" },
     coverGradient: "linear-gradient(135deg, #0a1628 0%, #06c8e8 100%)",
     accent: "#06c8e8",
     body: `
@@ -49,19 +51,19 @@ export const blogPosts: BlogPost[] = [
       <p>That restraint compounds. Clean architecture makes the next feature cheaper to build rather than more expensive. Clients who come to us after a mixed-model engagement are often surprised that their new codebase is actually readable. That should not be a differentiator, but it is, and it is a direct result of who is writing the code.</p>
 
       <h2>The 48-hour first commit</h2>
-      <p>We commit working code within 48 hours of kickoff. That is only possible because there is no ramp-up week. A senior engineer reads the codebase, asks three sharp questions, and ships something real on day two. New work does not stall behind onboarding sessions or a junior slowly building context. This is the same discipline that powers our <a href="/services/startup-mvp-development">MVP development service</a>, where the gap between a signed contract and a deployed prototype is measured in days, not sprints.</p>
+      <p>We commit working code within 48 hours of kickoff. That is only possible because there is no ramp-up week. A senior engineer reads the codebase, asks three sharp questions, and ships something real on day two. New work does not stall behind onboarding sessions or a junior slowly building context. This is the same discipline that powers our MVP development service, where the gap between a signed contract and a deployed prototype is measured in days, not sprints.</p>
 
       <h2>What this looks like on a real project</h2>
-      <p>When we rebuilt the cloud infrastructure behind <a href="/work/localised">a global designer marketplace</a>, the entire engagement ran with a small senior team. There was no layer of juniors translating requirements into half-finished tickets. The engineers who designed the high-availability architecture were the same engineers who wrote it, tested it, and put it into production. The result was 99.99 percent uptime and zero post-launch downtime incidents, outcomes that are hard to reach when ownership is fragmented across experience levels.</p>
+      <p>When we rebuilt the cloud infrastructure behind a global designer marketplace, the entire engagement ran with a small senior team. There was no layer of juniors translating requirements into half-finished tickets. The engineers who designed the high-availability architecture were the same engineers who wrote it, tested it, and put it into production. The result was 99.99 percent uptime and zero post-launch downtime incidents, outcomes that are hard to reach when ownership is fragmented across experience levels.</p>
 
       <h2>Quality control when everyone is senior</h2>
       <p>People assume juniors exist to absorb the unglamorous work: writing tests, fixing flaky pipelines, triaging bugs. On our teams that work does not vanish, it gets automated or owned. Senior engineers write tests as they build because they have been burned by skipping them. They invest a day in continuous integration so the pipeline catches regressions instead of a person catching them in review. The unglamorous work still happens. It just happens once and stays fixed, rather than being delegated, done poorly, and revisited.</p>
 
       <h2>How senior-only changes the economics</h2>
-      <p>Clients often assume a senior-only team must cost more. Per hour, yes. Per shipped feature, almost never. When a senior solves in two hours what a junior would take a day to attempt and a senior would then have to fix, the cheaper line item produces the more expensive outcome. This is also why we refuse to bill by the hour at all. Our <a href="/blog/milestone-billing-vs-hourly">milestone billing model</a> ties every invoice to a delivered, verifiable result, so speed works in your favour instead of ours.</p>
+      <p>Clients often assume a senior-only team must cost more. Per hour, yes. Per shipped feature, almost never. When a senior solves in two hours what a junior would take a day to attempt and a senior would then have to fix, the cheaper line item produces the more expensive outcome. This is also why we refuse to bill by the hour at all. Our milestone billing model ties every invoice to a delivered, verifiable result, so speed works in your favour instead of ours.</p>
 
       <h2>The trade-offs we accept</h2>
-      <p>Senior-only is not free of downsides, and it would be dishonest to pretend otherwise. We hire slowly because the bar is high, which means we cannot spin up a 30-person team overnight. We say no to engagements where the work is genuinely junior in nature and a senior would be bored and overpriced. And we invest heavily in written documentation and an <a href="/blog/async-first-engineering-culture">async-first culture</a> so that a lean team is never a single point of failure. These are deliberate constraints, and they are the price of the speed and quality our clients actually hire us for.</p>
+      <p>Senior-only is not free of downsides, and it would be dishonest to pretend otherwise. We hire slowly because the bar is high, which means we cannot spin up a 30-person team overnight. We say no to engagements where the work is genuinely junior in nature and a senior would be bored and overpriced. And we invest heavily in written documentation and an async-first culture so that a lean team is never a single point of failure. These are deliberate constraints, and they are the price of the speed and quality our clients actually hire us for.</p>
 
       <h2>The one question to ask any agency</h2>
       <p>If you are evaluating engineering partners, ask them a single question: what is the ratio of senior to junior engineers who will touch my project, and who specifically will review the code? If the answer is vague, or if it turns out the polished people in the sales call are not the people writing your software, you have learned what you need to know.</p>
@@ -73,18 +75,18 @@ export const blogPosts: BlogPost[] = [
     title: "Async-First Engineering: How We Work Across 8 Time Zones Without Meetings",
     excerpt:
       "Daily standups are a 1970s management invention. We run an async-first engineering culture across 8 countries, and ship faster because of it.",
-    metaTitle: "Async-First Engineering Across 8 Time Zones | AlgoCrew",
+    metaTitle: "Async-First Engineering Across Time Zones",
     metaDescription: "How we run an async-first engineering culture across 8 time zones with almost no meetings, and ship production software every single week.",
     updated: "2026-06-16",
     category: "Engineering Culture",
     tags: ["Async", "Remote", "Culture", "Productivity"],
     date: "2025-04-28",
     readTime: 6,
-    author: { name: "Arqam Malik", role: "Founder & CTO", initials: "AM", color: "#06c8e8" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#06c8e8" },
     coverGradient: "linear-gradient(135deg, #0d0d1a 0%, #2563eb 100%)",
     accent: "#2563eb",
     body: `
-      <p>We have engineers in Canada, Pakistan, Ukraine, Nigeria, Brazil, India, the Philippines, and Germany. Our timezone spread is thirteen hours. We ship every week, and we do it with two recurring meetings on the entire calendar. This is not an accident or a perk. Async-first is a deliberate operating system, and it is one of the main reasons a small <a href="/blog/why-senior-only-teams-ship-faster">senior-only team</a> can outpace agencies several times our size.</p>
+      <p>We have engineers in Canada, Pakistan, Ukraine, Nigeria, Brazil, India, the Philippines, and Germany. Our timezone spread is thirteen hours. We ship every week, and we do it with two recurring meetings on the entire calendar. This is not an accident or a perk. Async-first is a deliberate operating system, and it is one of the main reasons a small senior-only team can outpace agencies several times our size.</p>
 
       <h2>The meeting tax</h2>
       <p>Every sixty-minute meeting with five people costs five engineer-hours. That is half a day of productive output gone before anyone writes a line of code. Multiply that across daily standups, weekly syncs, planning sessions, and the endless ad-hoc calls that fill a calendar, and most teams that call themselves agile are spending 20 to 30 percent of their working hours talking about work instead of doing it.</p>
@@ -107,10 +109,10 @@ export const blogPosts: BlogPost[] = [
       <p>We keep exactly two recurring meetings. The first is a weekly thirty-minute demo with the client, recorded so anyone who could not attend can watch it later. The second is a fortnightly retrospective. Everything else is asynchronous. When a real-time conversation is genuinely the fastest path, we have it, record it, and transcribe it automatically so the outcome rejoins the written record.</p>
 
       <h2>Why clients feel the difference</h2>
-      <p>For a client, async-first shows up as a progress update every morning regardless of where their team sits. The engineers building <a href="/work/boxo">a microservices analytics platform</a> in Singapore did not need a daily call with stakeholders to stay aligned, because the written trail did that job continuously. You see commits, deployed previews, and a short written summary of what moved and what is next. That visibility is usually better than what an in-house team provides, precisely because we are forced to make our work legible.</p>
+      <p>For a client, async-first shows up as a progress update every morning regardless of where their team sits. The engineers building a microservices analytics platform in Singapore did not need a daily call with stakeholders to stay aligned, because the written trail did that job continuously. You see commits, deployed previews, and a short written summary of what moved and what is next. That visibility is usually better than what an in-house team provides, precisely because we are forced to make our work legible.</p>
 
       <h2>It also keeps us honest on billing</h2>
-      <p>Async-first pairs naturally with how we charge. Because the work is visible and the deliverables are written down, there is no ambiguity about what was done. That is the foundation of our <a href="/blog/milestone-billing-vs-hourly">milestone-based pricing</a>: you can see the shipped result before you pay for it, instead of trusting a timesheet.</p>
+      <p>Async-first pairs naturally with how we charge. Because the work is visible and the deliverables are written down, there is no ambiguity about what was done. That is the foundation of our milestone-based pricing: you can see the shipped result before you pay for it, instead of trusting a timesheet.</p>
 
       <h2>The failure mode to avoid</h2>
       <p>Async-first has one classic way of going wrong: writing that nobody reads, or status updates that exist to perform activity rather than to inform. The fix is not more documentation, it is better-targeted documentation. A good async update answers three things in a few lines: what shipped, what is blocked, and what is next. Anything longer usually means the writer has not done the thinking yet. We coach engineers to write the summary first and the detail underneath, so a busy reader gets the signal in ten seconds and the depth only if they need it. Async only saves time if the reading is faster than the meeting it replaced.</p>
@@ -124,14 +126,14 @@ export const blogPosts: BlogPost[] = [
     title: "Milestone Billing vs. Hourly: Why We Never Bill by the Hour",
     excerpt:
       "Hourly billing creates misaligned incentives. The longer a project takes, the more the agency earns. We fixed this by tying every invoice to a shipped deliverable.",
-    metaTitle: "Milestone Billing vs Hourly Software Pricing | AlgoCrew",
+    metaTitle: "Milestone Billing vs Hourly Pricing",
     metaDescription: "Hourly billing rewards slowness. See how milestone-based software pricing aligns an agency's incentives with your shipped product, plus a 30-day exit.",
     updated: "2026-06-16",
     category: "Business",
     tags: ["Pricing", "Billing", "Transparency", "Client"],
     date: "2025-04-14",
     readTime: 5,
-    author: { name: "Arqam Malik", role: "Founder & CTO", initials: "AM", color: "#06c8e8" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#06c8e8" },
     coverGradient: "linear-gradient(135deg, #0a0a0a 0%, #a78bfa 100%)",
     accent: "#a78bfa",
     body: `
@@ -139,7 +141,7 @@ export const blogPosts: BlogPost[] = [
 
       <h2>The hourly trap</h2>
       <p>Imagine hiring a plumber who charges by the hour. Would they rush to fix your pipe, or take their time? Hourly billing makes slowness profitable and penalises efficiency. It also creates a corrosive dynamic where the client ends up watching the clock and auditing timesheets instead of focusing on the product they are trying to launch.</p>
-      <p>In software the distortion is even sharper. A senior engineer who solves a problem in two hours earns half as much as a junior who fumbles through it in four. The pricing model literally rewards the slower, lower-quality path. That is backwards, and it is one more reason we staff projects with <a href="/blog/why-senior-only-teams-ship-faster">senior engineers only</a>: under hourly billing, their speed would be a financial liability instead of the entire point.</p>
+      <p>In software the distortion is even sharper. A senior engineer who solves a problem in two hours earns half as much as a junior who fumbles through it in four. The pricing model literally rewards the slower, lower-quality path. That is backwards, and it is one more reason we staff projects with senior engineers only: under hourly billing, their speed would be a financial liability instead of the entire point.</p>
 
       <h2>How milestone billing works</h2>
       <p>Every engagement is broken into two to four milestones, each tied to a concrete, verifiable deliverable. You pay when we ship the milestone, not before. If we miss a milestone, you do not pay until we deliver it. The structure is simple, but the effect on behaviour is profound: we are now financially motivated to ship fast and ship well, because shipping is how we get paid and move to the next milestone.</p>
@@ -150,19 +152,19 @@ export const blogPosts: BlogPost[] = [
         <li><strong>Milestone 2:</strong> the core user flows complete, tested, and deployed to staging with QA sign-off.</li>
         <li><strong>Milestone 3:</strong> production deployment, monitoring and alerting in place, and handover documentation.</li>
       </ul>
-      <p>Each milestone is something you can see, test, and judge. There is no abstract pile of hours to interpret, just working software at the end of every stage. You can review our full <a href="/pricing">pricing and engagement models</a> to see how these milestones map to fixed-scope sprints and rolling studio work.</p>
+      <p>Each milestone is something you can see, test, and judge. There is no abstract pile of hours to interpret, just working software at the end of every stage. You can review our full <a href="/our-approach#engagement-models">pricing and engagement models</a> to see how these milestones map to fixed-scope sprints and rolling studio work.</p>
 
       <h2>Why this protects you</h2>
       <p>Milestone billing transfers the risk of slowness from you to us. Under hourly billing, an underestimate is your problem: the meter just keeps running. Under milestone billing, an underestimate is our problem, because the price of the deliverable was agreed up front. That single shift changes how carefully we scope, how honestly we estimate, and how hard we push to avoid the kind of gold-plating that inflates hours without adding value.</p>
 
       <h2>It starts with honest scoping</h2>
-      <p>Fixed milestones only work if the scope is defined well, which is why we put real effort into scoping before a contract is signed. A vague brief produces vague milestones and disappointed everyone. A sharp brief produces deliverables both sides can measure. If you are at the start of that process, our guide on <a href="/blog/how-to-scope-an-mvp-correctly">how to scope an MVP that actually ships</a> walks through the exact exercise we run with new clients.</p>
+      <p>Fixed milestones only work if the scope is defined well, which is why we put real effort into scoping before a contract is signed. A vague brief produces vague milestones and disappointed everyone. A sharp brief produces deliverables both sides can measure. If you are at the start of that process, our guide on how to scope an MVP that actually ships walks through the exact exercise we run with new clients.</p>
 
       <h2>The 30-day exit clause</h2>
       <p>For ongoing studio engagements we add a 30-day rolling exit. Either party can end the relationship with thirty days of notice, with no lock-in and no penalties. People sometimes ask why we would give clients an easy way to leave. The answer is that it keeps us accountable every month. We have to earn the next milestone and the next month of work through results, not through a contract that traps you. In practice, clients rarely use the exit, precisely because they never feel they need to.</p>
 
       <h2>What about change requests?</h2>
-      <p>The honest objection to milestone billing is change: real products evolve mid-build. We handle this by treating a change that alters a milestone's scope as its own small, priced deliverable rather than pretending it is free or letting it silently expand the original estimate. You see the cost before you approve it, so there are no surprise invoices and no padding. When we built the vendor transaction system behind <a href="/work/cashcloud">a fintech billing platform</a>, requirements shifted as the finance team learned what they actually needed, and the milestone structure absorbed those changes cleanly because each one was scoped and agreed on its own terms.</p>
+      <p>The honest objection to milestone billing is change: real products evolve mid-build. We handle this by treating a change that alters a milestone's scope as its own small, priced deliverable rather than pretending it is free or letting it silently expand the original estimate. You see the cost before you approve it, so there are no surprise invoices and no padding. When we built the vendor transaction system behind a fintech billing platform, requirements shifted as the finance team learned what they actually needed, and the milestone structure absorbed those changes cleanly because each one was scoped and agreed on its own terms.</p>
 
       <h2>The bottom line</h2>
       <p>Hourly billing optimises for hours. Milestone billing optimises for shipped product. We know which one we would want if we were the client, so it is the only model we offer. If you would rather pay for outcomes than for time, <a href="/contact">tell us what you are building</a> and we will scope it into milestones you can hold us to.</p>
@@ -180,14 +182,14 @@ export const blogPosts: BlogPost[] = [
     tags: ["Next.js", "React", "Performance", "Production"],
     date: "2025-03-30",
     readTime: 10,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#34d399" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#34d399" },
     coverGradient: "linear-gradient(135deg, #000 0%, #34d399 100%)",
     accent: "#34d399",
     body: `
-      <p>The Next.js App Router is a genuine step forward, but moving real applications onto it surfaces lessons the documentation does not emphasise. The mental model is different enough from the older approach that teams trip over the same things. Here is what we have learned shipping production applications on it, the kind we build through our <a href="/services/web-app-development">web engineering work</a>.</p>
+      <p>The Next.js App Router is a genuine step forward, but moving real applications onto it surfaces lessons the documentation does not emphasise. The mental model is different enough from the older approach that teams trip over the same things. Here is what we have learned shipping production applications on it, the kind we build through our web engineering work.</p>
 
       <h2>Server components are the default for a reason</h2>
-      <p>In the App Router, components render on the server unless you opt out. Embracing this rather than fighting it is the biggest mindset shift. Keep data fetching and heavy logic on the server, and reach for client components only where you genuinely need interactivity. Teams that mark everything as a client component throw away most of the benefit and ship far more JavaScript than they need, which hurts <a href="/blog/web-performance-core-web-vitals-2025">Core Web Vitals</a>.</p>
+      <p>In the App Router, components render on the server unless you opt out. Embracing this rather than fighting it is the biggest mindset shift. Keep data fetching and heavy logic on the server, and reach for client components only where you genuinely need interactivity. Teams that mark everything as a client component throw away most of the benefit and ship far more JavaScript than they need, which hurts Core Web Vitals.</p>
 
       <h2>Caching is powerful and surprising</h2>
       <p>The framework caches aggressively at several layers, and the single most common source of confusion is data that seems stale because it was cached more eagerly than expected. The fix is not to disable caching everywhere but to understand the layers and to be explicit about what should revalidate and when. Treat caching as something you configure deliberately, not something that should be invisible.</p>
@@ -196,7 +198,7 @@ export const blogPosts: BlogPost[] = [
       <p>The App Router can stream a page in pieces, showing a meaningful shell immediately while slower data loads behind a boundary. Used well, this makes pages feel dramatically faster because users see structure right away. The lesson is to place loading boundaries thoughtfully around genuinely slow sections rather than wrapping everything or nothing.</p>
 
       <h2>Keep the server and client boundary clean</h2>
-      <p>The line between server and client code is real, and crossing it carelessly causes confusing errors. Be intentional about what runs where, keep secrets and heavy dependencies strictly on the server, and pass only serialisable data across the boundary. Strong typing, in the spirit of our <a href="/blog/typescript-advanced-patterns-2025">TypeScript patterns</a>, makes this boundary much safer to work with.</p>
+      <p>The line between server and client code is real, and crossing it carelessly causes confusing errors. Be intentional about what runs where, keep secrets and heavy dependencies strictly on the server, and pass only serialisable data across the boundary. Strong typing, in the spirit of our TypeScript patterns, makes this boundary much safer to work with.</p>
 
       <h2>Server actions are useful, not magic</h2>
       <p>Server actions simplify mutations by letting you call server code directly, but they are still endpoints. They need the same authentication, authorisation, and input validation as any API, because the convenience of the syntax does not change the security model. Treat them with the same caution you would any server entry point.</p>
@@ -205,7 +207,7 @@ export const blogPosts: BlogPost[] = [
       <p>Two patterns cause most of the pain when teams move an existing application across. The first is porting old data-fetching habits directly, wrapping everything in client-side effects instead of letting server components fetch data where it renders. The result is an app that technically uses the new router while keeping all the downsides of the old one. The second is treating every shared layout as static when parts of it genuinely need per-request data, which leads to confusing stale content. The fix in both cases is to start from the server, decide deliberately what must be dynamic, and push interactivity to the smallest possible client islands. Migrating incrementally, one route at a time, beats a big-bang rewrite, because it lets the team build an accurate mental model on low-risk pages before touching the critical ones.</p>
 
       <h2>Adopt it deliberately</h2>
-      <p>The App Router rewards teams who learn its model and frustrates teams who treat it as a drop-in replacement for the old one. Invest the time to understand server components, caching, and streaming before committing a large application, and the payoff in performance and structure is real. If you want it adopted properly on a production application, our <a href="/services/web-app-development">web engineering team</a> has done it repeatedly.</p>
+      <p>The App Router rewards teams who learn its model and frustrates teams who treat it as a drop-in replacement for the old one. Invest the time to understand server components, caching, and streaming before committing a large application, and the payoff in performance and structure is real. If you want it adopted properly on a production application, our web engineering team has done it repeatedly.</p>
     `,
   },
   {
@@ -220,7 +222,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["AI", "LLM", "Architecture", "Production", "OpenAI"],
     date: "2025-03-15",
     readTime: 9,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#c084fc" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#c084fc" },
     coverGradient: "linear-gradient(135deg, #0d0020 0%, #c084fc 100%)",
     accent: "#c084fc",
     body: `
@@ -242,10 +244,10 @@ export const blogPosts: BlogPost[] = [
       <p>You cannot improve what you cannot measure, and "it seems better" is not a measurement. Assemble a set of real input cases with known good outputs and run every prompt or model change against them. This turns prompt engineering from superstition into a repeatable process, and it is the only way to safely change a model version without regressing behaviour your users depend on.</p>
 
       <h2>Keep a human in the loop where stakes are high</h2>
-      <p>For anything that touches money, health, legal text, or irreversible actions, the model should draft and a human should approve. This is not a failure of ambition. It is how you ship useful AI in regulated and high-trust domains without betting the company on a hallucination. The intentional, scoped shortcut here is exactly the kind of deliberate trade-off we describe in our piece on <a href="/blog/technical-debt-is-not-always-bad">when technical debt is worth taking</a>.</p>
+      <p>For anything that touches money, health, legal text, or irreversible actions, the model should draft and a human should approve. This is not a failure of ambition. It is how you ship useful AI in regulated and high-trust domains without betting the company on a hallucination. The intentional, scoped shortcut here is exactly the kind of deliberate trade-off we describe in our piece on when technical debt is worth taking.</p>
 
       <h2>Where this fits</h2>
-      <p>Reliable AI features are an engineering problem first and a model problem second. The work of schema validation, caching, evaluation, and graceful fallback is what separates a demo from a product. If you are adding AI to a real application and want it built with that discipline, our <a href="/services/data-automation">data and AI engineering team</a> does exactly this, and you can <a href="/contact">tell us what you are building</a>.</p>
+      <p>Reliable AI features are an engineering problem first and a model problem second. The work of schema validation, caching, evaluation, and graceful fallback is what separates a demo from a product. If you are adding AI to a real application and want it built with that discipline, our data and AI engineering team does exactly this, and you can <a href="/contact">tell us what you are building</a>.</p>
     `,
   },
   {
@@ -260,7 +262,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Kubernetes", "AWS", "ECS", "DevOps", "Infrastructure"],
     date: "2025-02-28",
     readTime: 8,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#38bdf8" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#38bdf8" },
     coverGradient: "linear-gradient(135deg, #001122 0%, #38bdf8 100%)",
     accent: "#38bdf8",
     body: `
@@ -285,7 +287,7 @@ export const blogPosts: BlogPost[] = [
       <p>Strip away the ecosystem noise and the decision comes down to a few honest questions. Do you have, or can you fund, an engineer who will own the cluster as part of their job? Are you committed to a single cloud, or do you have a real multi-cloud requirement rather than a hypothetical one? How many services are you running, and do they need sophisticated, differentiated deployment policies? If the answers point to a small team on one cloud running a modest number of standard services, ECS or an equivalent managed option will serve you better and cost less in human time. If you have genuine scale, portability needs, and platform ownership, Kubernetes pays for its complexity. The mistake is choosing the powerful option for the prestige and then discovering the operational bill months later.</p>
 
       <h2>Our default</h2>
-      <p>Start with the simplest thing that meets your needs, usually managed containers on ECS or a comparable service, and move to Kubernetes only when a concrete constraint forces the upgrade. This keeps your operational burden proportional to your actual scale. If you want that decision made and run by people who operate both daily, our <a href="/services/cloud-devops">cloud and DevOps team</a> can help.</p>
+      <p>Start with the simplest thing that meets your needs, usually managed containers on ECS or a comparable service, and move to Kubernetes only when a concrete constraint forces the upgrade. This keeps your operational burden proportional to your actual scale. If you want that decision made and run by people who operate both daily, our <a href="/services/devops">cloud and DevOps team</a> can help.</p>
     `,
   },
   {
@@ -300,7 +302,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["React Native", "Flutter", "Mobile", "Cross-platform"],
     date: "2025-02-10",
     readTime: 7,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#fb923c" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#fb923c" },
     coverGradient: "linear-gradient(135deg, #1a0800 0%, #fb923c 100%)",
     accent: "#fb923c",
     body: `
@@ -310,7 +312,7 @@ export const blogPosts: BlogPost[] = [
       <p>React Native uses JavaScript and the React model, rendering through native platform components. Flutter uses the Dart language and draws its own UI with a high-performance rendering engine. That distinction drives most of the trade-offs: React Native leans on an ecosystem and skills you may already have, while Flutter offers tight visual consistency and control at the cost of a less common language.</p>
 
       <h2>Developer experience and ecosystem</h2>
-      <p>If your team already writes React for the web, React Native is a short hop. The mental model, the component approach, and much of the tooling carry over, and the same <a href="/blog/typescript-advanced-patterns-2025">TypeScript patterns</a> apply. Flutter offers an extremely polished development experience of its own, with fast iteration and strong tooling, but it asks the team to adopt Dart, which few engineers know coming in.</p>
+      <p>If your team already writes React for the web, React Native is a short hop. The mental model, the component approach, and much of the tooling carry over, and the same TypeScript patterns apply. Flutter offers an extremely polished development experience of its own, with fast iteration and strong tooling, but it asks the team to adopt Dart, which few engineers know coming in.</p>
 
       <h2>Hiring is a real constraint</h2>
       <p>The pool of JavaScript and React engineers is enormous, which makes staffing a React Native project straightforward and is often the deciding factor for a growing company. Flutter talent is rarer, though motivated, and many teams successfully retrain existing engineers because Dart is approachable. Be honest about whether you can hire and retain for your choice, because the best technical fit is worthless if you cannot staff it.</p>
@@ -319,13 +321,13 @@ export const blogPosts: BlogPost[] = [
       <p>Because Flutter draws everything itself, your app looks identical across platforms and you have pixel-level control, which designers love. React Native renders real native components, so it can feel more at home on each platform but may require more per-platform attention to look perfect. Neither is better in the abstract; it depends on whether brand consistency or native familiarity matters more to your product.</p>
 
       <h2>Sharing logic with the web</h2>
-      <p>If a web application is part of your plan, React Native lets you share concepts, patterns, and sometimes code with a React web frontend, which is a meaningful efficiency for a small team. Our perspective on the web side is covered in our <a href="/blog/nextjs-15-app-router-production-lessons">Next.js production lessons</a>, and that shared foundation often tips the decision toward React Native.</p>
+      <p>If a web application is part of your plan, React Native lets you share concepts, patterns, and sometimes code with a React web frontend, which is a meaningful efficiency for a small team. Our perspective on the web side is covered in our Next.js production lessons, and that shared foundation often tips the decision toward React Native.</p>
 
       <h2>Performance is rarely the deciding factor</h2>
       <p>Teams spend a surprising amount of energy comparing rendering performance, when for the vast majority of applications both frameworks are comfortably fast enough. Unless you are building something with unusually demanding animation or real-time graphics, the user will not perceive a difference attributable to the framework. What users do perceive is whether the app is well built: thoughtful navigation, responsive interactions, and the absence of jank caused by doing heavy work on the wrong thread. Both frameworks let you build excellent apps and both let you build sluggish ones. The performance ceiling is high enough in each that your engineering discipline matters far more than the logo on the framework. Choose for the human factors, team skills, hiring, and code sharing, and treat raw benchmark numbers as the tiebreaker they almost never need to be.</p>
 
       <h2>A pragmatic recommendation</h2>
-      <p>For teams with existing React or JavaScript strength, or a web product to share with, React Native is usually the lower-friction choice. For teams that prioritise pixel-perfect cross-platform consistency and are happy to invest in Dart, Flutter is excellent. Both are safe bets in 2025. If you want help choosing and building for a specific product, our <a href="/services/web-app-development">application engineering team</a> ships in both.</p>
+      <p>For teams with existing React or JavaScript strength, or a web product to share with, React Native is usually the lower-friction choice. For teams that prioritise pixel-perfect cross-platform consistency and are happy to invest in Dart, Flutter is excellent. Both are safe bets in 2025. If you want help choosing and building for a specific product, our application engineering team ships in both.</p>
     `,
   },
   {
@@ -340,7 +342,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Technical Debt", "Architecture", "Engineering", "Product"],
     date: "2025-01-25",
     readTime: 6,
-    author: { name: "Arqam Malik", role: "Founder & CTO", initials: "AM", color: "#06c8e8" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#06c8e8" },
     coverGradient: "linear-gradient(135deg, #0a0a00 0%, #fbbf24 100%)",
     accent: "#fbbf24",
     body: `
@@ -353,10 +355,10 @@ export const blogPosts: BlogPost[] = [
       <p>Deliberate debt has three properties. It is intentional: someone decided the trade-off out loud. It is isolated: the shortcut lives behind a clear boundary so it does not spread through the codebase. And it is documented: a comment or ticket records why it exists and what would trigger paying it back. Debt with those properties is a tool. Debt without them is a liability waiting to surface during an incident.</p>
 
       <h2>When embracing debt is the right call</h2>
-      <p>Take the shortcut when you are still proving a hypothesis. An <a href="/blog/how-to-scope-an-mvp-correctly">early-stage MVP</a> does not need a perfectly normalised schema or a fully abstracted payment layer. It needs to find out whether anyone wants the thing. Hardcoding a value, faking a workflow manually, or skipping an optimisation that only matters at scale are all reasonable when the alternative is spending weeks polishing something that may never ship.</p>
+      <p>Take the shortcut when you are still proving a hypothesis. An early-stage MVP does not need a perfectly normalised schema or a fully abstracted payment layer. It needs to find out whether anyone wants the thing. Hardcoding a value, faking a workflow manually, or skipping an optimisation that only matters at scale are all reasonable when the alternative is spending weeks polishing something that may never ship.</p>
 
       <h2>When debt will quietly destroy you</h2>
-      <p>Avoid debt in the foundations: authentication, data integrity, and the core domain model. A shortcut in your security boundary is not debt, it is a vulnerability. A shortcut in how you store core business data tends to metastasise, because every later feature builds on that shape and inherits its flaws. These are the areas where senior engineers refuse to cut corners, which is one reason a strong <a href="/blog/code-review-culture-that-ships">code review culture</a> matters most around foundational code.</p>
+      <p>Avoid debt in the foundations: authentication, data integrity, and the core domain model. A shortcut in your security boundary is not debt, it is a vulnerability. A shortcut in how you store core business data tends to metastasise, because every later feature builds on that shape and inherits its flaws. These are the areas where senior engineers refuse to cut corners, which is one reason a strong code review culture matters most around foundational code.</p>
 
       <h2>Make repayment visible</h2>
       <p>Debt you cannot see is debt you will never repay. Track it where the team already looks: a labelled backlog, a section in the architecture doc, comments that link to the ticket. The goal is not to eliminate all debt, which is impossible, but to keep it on a balance sheet you actually read. When a shortcut starts charging interest in the form of slow features or recurring bugs, that visibility is what lets you justify the time to fix it.</p>
@@ -365,7 +367,7 @@ export const blogPosts: BlogPost[] = [
       <p>The most useful habit a team can build is a shared, unemotional vocabulary for debt. When someone proposes a shortcut, ask three questions out loud: what are we trading away, what would trigger us to pay this back, and where will we record it. If the answers are clear, the shortcut is a legitimate engineering decision and everyone can move on without guilt. If the answers are vague, that is the signal that you are about to create the bad kind of debt. This small ritual turns debt from an accusation into a design conversation, and it keeps the team honest about which shortcuts are investments and which are just mess. Over time it also builds an accurate map of where the bodies are buried, which is exactly what you want when planning the next quarter's work.</p>
 
       <h2>The cultural part</h2>
-      <p>Healthy teams talk about debt without blame. A shortcut taken last quarter under real pressure was probably the right decision with the information available then. The point of revisiting it is not to assign fault but to decide whether the trade still makes sense. That blameless, pragmatic posture is the same one that makes our <a href="/services/startup-mvp-development">MVP engagements</a> move fast without leaving clients buried in a mess they cannot maintain.</p>
+      <p>Healthy teams talk about debt without blame. A shortcut taken last quarter under real pressure was probably the right decision with the information available then. The point of revisiting it is not to assign fault but to decide whether the trade still makes sense. That blameless, pragmatic posture is the same one that makes our MVP engagements move fast without leaving clients buried in a mess they cannot maintain.</p>
     `,
   },
   {
@@ -380,7 +382,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["MVP", "Product", "Scoping", "Startups"],
     date: "2025-01-12",
     readTime: 7,
-    author: { name: "Arqam Malik", role: "Founder & CTO", initials: "AM", color: "#06c8e8" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#06c8e8" },
     coverGradient: "linear-gradient(135deg, #001a00 0%, #4ade80 100%)",
     accent: "#4ade80",
     body: `
@@ -406,13 +408,13 @@ export const blogPosts: BlogPost[] = [
       <p>One of the most useful scoping tricks is to fake the hard parts with human effort first. If your product promises automated matching, do the matching by hand for the first ten customers. If it promises a complex report, generate it manually overnight. This lets you launch in weeks instead of months and learn whether anyone actually wants the outcome before you invest in automating it. Once demand is proven, automation becomes a funded, well-understood project instead of an expensive guess.</p>
 
       <h2>How this connects to delivery</h2>
-      <p>Tight scope is also what makes fixed-price delivery possible. When the Must Have column is genuinely minimal, we can break it into clear stages and tie payment to each one. That is the foundation of our <a href="/blog/milestone-billing-vs-hourly">milestone billing model</a>, and it is why scoping and pricing are really the same conversation. A disciplined scope produces an MVP we can ship in roughly six weeks through our <a href="/services/startup-mvp-development">MVP development service</a>, with each milestone landing as working software you can put in front of real users.</p>
+      <p>Tight scope is also what makes fixed-price delivery possible. When the Must Have column is genuinely minimal, we can break it into clear stages and tie payment to each one. That is the foundation of our milestone billing model, and it is why scoping and pricing are really the same conversation. A disciplined scope produces an MVP we can ship in roughly six weeks through our MVP development service, with each milestone landing as working software you can put in front of real users.</p>
 
       <h2>A scoping checklist you can steal</h2>
       <p>Before you commit to building anything, run the idea through five questions. Can you describe it in one sentence? Does the Must Have column feel uncomfortably small? Is every dependency in it a genuine requirement rather than future-proofing? Can the hard parts be faked manually for the first handful of users? And is there a single, measurable outcome that tells you whether the experiment worked? If you cannot answer all five cleanly, you are not ready to build yet, and an extra afternoon of scoping will save you weeks of wasted engineering. This is the exact checklist we walk through before quoting any new product engagement.</p>
 
       <h2>What good scoping buys you</h2>
-      <p>A well-scoped MVP gives you the one thing early-stage products are always short of: time to learn. You launch sooner, you get real signal from real users, and you make your next decisions with evidence instead of opinion. We have seen this play out across our <a href="/work">client work</a>, where the products that scaled were almost always the ones that started narrow and earned the right to grow. If you are sitting on a 48-page requirements document and a launch date that keeps slipping, <a href="/contact">let us help you cut it down to something that ships</a>.</p>
+      <p>A well-scoped MVP gives you the one thing early-stage products are always short of: time to learn. You launch sooner, you get real signal from real users, and you make your next decisions with evidence instead of opinion. We have seen this play out across our client work, where the products that scaled were almost always the ones that started narrow and earned the right to grow. If you are sitting on a 48-page requirements document and a launch date that keeps slipping, <a href="/contact">let us help you cut it down to something that ships</a>.</p>
     `,
   },
   {
@@ -427,7 +429,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["PostgreSQL", "MongoDB", "Database", "Architecture"],
     date: "2024-12-20",
     readTime: 8,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#34d399" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#34d399" },
     coverGradient: "linear-gradient(135deg, #000a08 0%, #34d399 100%)",
     accent: "#34d399",
     body: `
@@ -446,13 +448,13 @@ export const blogPosts: BlogPost[] = [
       <p>If your domain involves money, inventory, or anything where two updates must succeed or fail together, multi-document transactional guarantees matter enormously. PostgreSQL gives you these naturally. MongoDB supports multi-document transactions too, but if you find yourself relying on them constantly, that is a strong signal your data was relational all along and you chose the wrong tool.</p>
 
       <h2>Performance is mostly about the same things</h2>
-      <p>Whichever you choose, the performance fundamentals are shared: appropriate indexes, queries that use them, and avoiding the patterns that force full scans. A poorly indexed PostgreSQL database and a poorly indexed MongoDB database are both slow. Our guide to <a href="/blog/database-performance-optimisation">database query optimisation</a> applies regardless of which engine you land on, and most teams pair either database with <a href="/blog/redis-patterns-production">Redis</a> for caching and hot-path reads.</p>
+      <p>Whichever you choose, the performance fundamentals are shared: appropriate indexes, queries that use them, and avoiding the patterns that force full scans. A poorly indexed PostgreSQL database and a poorly indexed MongoDB database are both slow. Our guide to database query optimisation applies regardless of which engine you land on, and most teams pair either database with Redis for caching and hot-path reads.</p>
 
       <h2>You can change your mind, at a cost</h2>
       <p>The database choice feels permanent, which is why it generates so much anxiety, but it is not irreversible. What makes a migration painful later is not the database itself, it is application code that has leaked database-specific assumptions everywhere. If you keep your data access behind a clear boundary rather than scattering raw queries through the codebase, switching engines becomes a contained project rather than a rewrite. That same discipline also lets you introduce a second store for a specific job, such as a document store for one content-heavy feature alongside a relational core, without tangling the two. The lesson is to make the choice thoughtfully but to protect yourself by keeping data access well isolated, so that being wrong is recoverable instead of catastrophic.</p>
 
       <h2>A simple recommendation</h2>
-      <p>Start with PostgreSQL unless you have a specific, well-articulated reason the document model fits better. It is the lower-regret default because it handles relational and document data competently, while a document store that meets a relational problem ages badly. If you want this decision made for a specific product alongside the rest of the data architecture, our <a href="/services/saas-development">SaaS engineering team</a> does it routinely.</p>
+      <p>Start with PostgreSQL unless you have a specific, well-articulated reason the document model fits better. It is the lower-regret default because it handles relational and document data competently, while a document store that meets a relational problem ages badly. If you want this decision made for a specific product alongside the rest of the data architecture, our SaaS engineering team does it routinely.</p>
     `,
   },
   {
@@ -467,7 +469,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["CI/CD", "GitHub Actions", "DevOps", "Automation"],
     date: "2024-12-05",
     readTime: 7,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#38bdf8" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#38bdf8" },
     coverGradient: "linear-gradient(135deg, #000d1a 0%, #38bdf8 100%)",
     accent: "#38bdf8",
     body: `
@@ -480,7 +482,7 @@ export const blogPosts: BlogPost[] = [
       <p>Order your pipeline so the quickest checks fail fastest. Linting and type checking run in seconds and catch a lot, so they go first. Then unit tests, then slower integration tests. Developers get feedback on common mistakes almost immediately instead of waiting for a long suite to reveal a typo.</p>
 
       <h2>Make the pipeline the single source of truth for quality</h2>
-      <p>Everything that defines "good" should run automatically: formatting, linting, type checks, tests, and security scans. This is what frees human <a href="/blog/code-review-culture-that-ships">code review</a> to focus on design rather than style, and it means standards are applied consistently regardless of who is reviewing.</p>
+      <p>Everything that defines "good" should run automatically: formatting, linting, type checks, tests, and security scans. This is what frees human code review to focus on design rather than style, and it means standards are applied consistently regardless of who is reviewing.</p>
 
       <h2>Keep builds fast and reproducible</h2>
       <p>A slow pipeline is one people learn to bypass. Cache dependencies, parallelise independent steps, and keep build times low enough that waiting for the pipeline is not a reason to batch up large risky changes. Reproducibility matters too: the same commit should always produce the same artifact.</p>
@@ -495,7 +497,7 @@ export const blogPosts: BlogPost[] = [
       <p>The single biggest cultural payoff of a good pipeline is that it makes small, frequent deployments safe, and small frequent deployments are the foundation of reliable software. When you ship a large batch of changes at once, any failure is hard to diagnose because dozens of things changed together. When you ship one small change at a time, a problem is obvious and the fix is a fast rollback. Teams that deploy rarely tend to deploy nervously, which makes each release a larger event, which makes them deploy even less often, a doom loop the pipeline is meant to break. Aim for deployments that are boring: automated, frequent, individually small, and trivially reversible. The goal is a state where shipping to production is the least dramatic part of an engineer's day rather than something the team braces for.</p>
 
       <h2>Automate deployment and make rollback trivial</h2>
-      <p>Manual deployment steps are where human error lives. Automate the path to production and, just as importantly, make rollback a single fast action. The confidence to ship often comes directly from knowing you can undo a bad release in seconds. If you want a pipeline like this built for your team, our <a href="/services/cloud-devops">DevOps service</a> sets one up, and pairs it with the <a href="/blog/docker-production-best-practices">container practices</a> that make it reliable.</p>
+      <p>Manual deployment steps are where human error lives. Automate the path to production and, just as importantly, make rollback a single fast action. The confidence to ship often comes directly from knowing you can undo a bad release in seconds. If you want a pipeline like this built for your team, our <a href="/services/devops">DevOps service</a> sets one up, and pairs it with the <a href="/blog/docker-production-best-practices">container practices</a> that make it reliable.</p>
     `,
   },
   {
@@ -510,7 +512,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Code Review", "Process", "Team", "GitHub"],
     date: "2024-11-18",
     readTime: 5,
-    author: { name: "Arqam Malik", role: "Founder & CTO", initials: "AM", color: "#06c8e8" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#06c8e8" },
     coverGradient: "linear-gradient(135deg, #0a0012 0%, #e879f9 100%)",
     accent: "#e879f9",
     body: `
@@ -520,10 +522,10 @@ export const blogPosts: BlogPost[] = [
       <p>The biggest lever on review speed is review size. A 60-line change gets a thoughtful review in fifteen minutes. A 1,500-line change gets a rubber stamp, because no reviewer can hold that much in their head, so they skim it and approve. Smaller PRs are reviewed faster, reviewed better, and revert more cleanly when something goes wrong. Teaching engineers to decompose work into small, independently shippable changes does more for quality than any checklist.</p>
 
       <h2>The author does the reviewer's work first</h2>
-      <p>A pull request should arrive ready to review. That means a clear description of what changed and why, screenshots or a short recording for anything visual, a note on how it was tested, and inline comments on the non-obvious decisions. When the author front-loads this context, the reviewer spends their time on judgement rather than archaeology. This is the same written-first discipline that powers <a href="/blog/async-first-engineering-culture">async engineering across time zones</a>.</p>
+      <p>A pull request should arrive ready to review. That means a clear description of what changed and why, screenshots or a short recording for anything visual, a note on how it was tested, and inline comments on the non-obvious decisions. When the author front-loads this context, the reviewer spends their time on judgement rather than archaeology. This is the same written-first discipline that powers async engineering across time zones.</p>
 
       <h2>Review is for design, not for linting</h2>
-      <p>Humans should never be arguing about whitespace, import order, or quote style. Automate all of it: formatters, linters, type checks, and tests run in <a href="/blog/ci-cd-pipeline-best-practices-2025">continuous integration</a> before a human looks at the change. That frees the reviewer to focus on the things only a human can catch: is this the right approach, does it handle the edge cases, will it be maintainable, does it introduce a subtle <a href="/blog/technical-debt-is-not-always-bad">debt</a> we should name on purpose.</p>
+      <p>Humans should never be arguing about whitespace, import order, or quote style. Automate all of it: formatters, linters, type checks, and tests run in <a href="/blog/ci-cd-pipeline-best-practices-2025">continuous integration</a> before a human looks at the change. That frees the reviewer to focus on the things only a human can catch: is this the right approach, does it handle the edge cases, will it be maintainable, does it introduce a subtle debt we should name on purpose.</p>
 
       <h2>Set an explicit response expectation</h2>
       <p>Make the turnaround a stated norm, not a hope. Our expectation is that an open pull request gets a first response within a few hours of the reviewer's working day. The response does not have to be an approval. It can be questions or a request for changes. What matters is that the author is never left wondering whether anyone has looked, because that uncertainty is what kills momentum.</p>
@@ -535,7 +537,7 @@ export const blogPosts: BlogPost[] = [
       <p>Even good teams hit periods where pull requests pile up, usually because everyone is heads-down on their own work and review feels like an interruption. The fix is to make review a visible, shared responsibility rather than an individual favour. Some teams rotate a daily review owner whose first job each morning is to clear the open queue. Others set a simple agreement that review takes priority over starting new work, on the logic that finishing something already built beats starting something new. What does not work is hoping people will get to it. Whatever mechanism you choose, the principle is that an unreviewed pull request is blocked work, and unblocking a teammate is more valuable than making private progress. Treat the review queue as a team-level metric, not a personal preference.</p>
 
       <h2>The payoff</h2>
-      <p>Fast, respectful, design-focused review is not a process overhead. It is how knowledge spreads through a team, how standards stay consistent, and how a <a href="/blog/why-senior-only-teams-ship-faster">senior team</a> keeps shipping without a quality regression. If you want an engineering team that already operates this way, our <a href="/services/team-services">team services</a> are built around it.</p>
+      <p>Fast, respectful, design-focused review is not a process overhead. It is how knowledge spreads through a team, how standards stay consistent, and how a senior team keeps shipping without a quality regression. If you want an engineering team that already operates this way, our <a href="/our-approach#engagement-models">team services</a> are built around it.</p>
     `,
   },
 ];
@@ -553,7 +555,7 @@ const extraPosts: BlogPost[] = [
     tags: ["Zero Trust", "Security", "Architecture", "DevSecOps"],
     date: "2025-05-01",
     readTime: 11,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#ef4444" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#ef4444" },
     coverGradient: "linear-gradient(135deg, #1a0000 0%, #ef4444 100%)",
     accent: "#ef4444",
     body: `
@@ -578,7 +580,7 @@ const extraPosts: BlogPost[] = [
       <p>The fastest way to make zero trust fail is to implement it so clumsily that engineers route around it. Security controls that add constant friction without visible benefit train people to find workarounds, which leaves you less secure than before. The goal is verification that is rigorous but mostly invisible: strong authentication that uses single sign-on rather than a dozen separate logins, short-lived access that renews automatically rather than forcing constant re-authentication, and policies that demand extra friction only for genuinely sensitive actions. Done well, zero trust should feel to a legitimate user like the system simply works, while quietly making an attacker's job dramatically harder. Security and usability are not opposites here; a design that ignores the human experience will be undermined by the very people it is meant to protect.</p>
 
       <h2>Implement it incrementally</h2>
-      <p>The mistake teams make is trying to boil the ocean and grinding delivery to a halt. Zero trust is a direction, not a single project. Start with strong authentication everywhere, then tighten authorisation to least privilege, then segment the highest-value systems first. Each step reduces risk on its own. If you want a pragmatic, staged rollout that does not paralyse your team, our <a href="/services/security-quality">security and QA team</a> plans and implements it.</p>
+      <p>The mistake teams make is trying to boil the ocean and grinding delivery to a halt. Zero trust is a direction, not a single project. Start with strong authentication everywhere, then tighten authorisation to least privilege, then segment the highest-value systems first. Each step reduces risk on its own. If you want a pragmatic, staged rollout that does not paralyse your team, our <a href="/services/cloud-security">security and QA team</a> plans and implements it.</p>
     `,
   },
   {
@@ -593,7 +595,7 @@ const extraPosts: BlogPost[] = [
     tags: ["OWASP", "Security", "Web", "Node.js", "Vulnerabilities"],
     date: "2025-04-20",
     readTime: 13,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#ef4444" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#ef4444" },
     coverGradient: "linear-gradient(135deg, #0d0000 0%, #dc2626 100%)",
     accent: "#dc2626",
     body: `
@@ -606,7 +608,7 @@ const extraPosts: BlogPost[] = [
       <p>Sensitive data exposed through weak or missing encryption. Use TLS everywhere, hash passwords with a strong adaptive algorithm, encrypt sensitive data at rest, and never invent your own cryptography. Most failures here are about using the wrong tool, not a broken algorithm.</p>
 
       <h2>Injection</h2>
-      <p>Untrusted input interpreted as a command, classically SQL injection. Use parameterised queries everywhere and never concatenate user input into a query string. Validate and sanitise input, and apply the same caution to NoSQL, command, and template injection. This is also why we treat the N+1 and raw-query temptations in our <a href="/blog/database-performance-optimisation">database guide</a> with care.</p>
+      <p>Untrusted input interpreted as a command, classically SQL injection. Use parameterised queries everywhere and never concatenate user input into a query string. Validate and sanitise input, and apply the same caution to NoSQL, command, and template injection. This is also why we treat the N+1 and raw-query temptations in our database guide with care.</p>
 
       <h2>Insecure design</h2>
       <p>Flaws baked into the architecture rather than the code. Threat-model features before building them, and design controls like rate limiting and segregation of duties from the start. You cannot patch your way out of a fundamentally insecure design, which is the whole premise of <a href="/blog/zero-trust-security-architecture-guide">zero trust</a>.</p>
@@ -621,7 +623,7 @@ const extraPosts: BlogPost[] = [
       <p>The teams that consistently avoid these vulnerabilities are not the ones that run a security audit once a year. They are the ones who have folded the defences into everyday development so the secure path is the easy path. Parameterised queries are the default because the data layer makes them so. Authorisation checks are a standard part of every endpoint template. Dependency scanning runs on every change without anyone thinking about it. When prevention lives in tooling, conventions, and review rather than in a checklist someone remembers under deadline pressure, the whole class of risk shrinks. Treat the OWASP list not as an exam to pass at release time but as a set of habits to encode into how the team writes code every day, so that doing the right thing requires no extra discipline.</p>
 
       <h2>The rest, briefly</h2>
-      <p>Round out your defences against the remaining categories: enforce strong authentication and session management to prevent identification failures; verify the integrity of code and data in your pipeline; log and monitor security events so breaches are detected, not discovered months later; and validate any server-side request that uses a user-supplied URL to prevent SSRF. None of these are exotic. They are disciplines applied consistently, which is exactly what our <a href="/services/security-quality">security and QA team</a> builds into client systems before launch.</p>
+      <p>Round out your defences against the remaining categories: enforce strong authentication and session management to prevent identification failures; verify the integrity of code and data in your pipeline; log and monitor security events so breaches are detected, not discovered months later; and validate any server-side request that uses a user-supplied URL to prevent SSRF. None of these are exotic. They are disciplines applied consistently, which is exactly what our <a href="/services/cloud-security">security and QA team</a> builds into client systems before launch.</p>
     `,
   },
   {
@@ -636,7 +638,7 @@ const extraPosts: BlogPost[] = [
     tags: ["Docker", "Containers", "DevOps", "Production", "Security"],
     date: "2025-04-05",
     readTime: 9,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#38bdf8" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#38bdf8" },
     coverGradient: "linear-gradient(135deg, #00080f 0%, #0369a1 100%)",
     accent: "#0369a1",
     body: `
@@ -679,7 +681,7 @@ const extraPosts: BlogPost[] = [
       <p>It is tempting to treat image size as a vanity metric, but in production it compounds across everything. Smaller images pull faster, which means quicker deployments, faster autoscaling when traffic spikes, and less time to recover when a node fails and workloads must be rescheduled. They also have a smaller attack surface, because every tool and library you did not include is one that cannot harbour a vulnerability. A bloated image carrying a full operating system and a build toolchain is slower, more expensive to store and transfer, and riskier, all at once. The discipline of multi-stage builds and minimal bases is not aesthetic housekeeping; it directly improves how quickly and safely your system responds to the events that matter most, which are exactly the moments when you cannot afford a slow pull.</p>
 
       <h2>12. Set resource limits</h2>
-      <p>Constrain CPU and memory so one container cannot starve its neighbours. Limits are both a reliability and a security control. If you want your containerisation reviewed against this list, our <a href="/services/cloud-devops">cloud and DevOps team</a> does it routinely.</p>
+      <p>Constrain CPU and memory so one container cannot starve its neighbours. Limits are both a reliability and a security control. If you want your containerisation reviewed against this list, our <a href="/services/devops">cloud and DevOps team</a> does it routinely.</p>
     `,
   },
   {
@@ -688,13 +690,13 @@ const extraPosts: BlogPost[] = [
     excerpt:
       "Terraform is easy to start with and hard to scale. Here are the module patterns, state management strategies, and team workflows that keep large infrastructure codebases maintainable.",
     metaTitle: "Terraform at Scale: Patterns That Hold Up",
-    metaDescription: "Terraform is easy to start and hard to scale. The module patterns, state strategies, and team workflows that keep large infrastructure codebases maintainable.",
+    metaDescription: "Terraform is easy to start and hard to scale. Module patterns, state strategies and team workflows that keep large codebases maintainable.",
     updated: "2026-06-16",
     category: "DevOps",
     tags: ["Terraform", "IaC", "AWS", "Infrastructure", "DevOps"],
     date: "2025-03-22",
     readTime: 10,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#a78bfa" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#a78bfa" },
     coverGradient: "linear-gradient(135deg, #0a0014 0%, #7c3aed 100%)",
     accent: "#7c3aed",
     body: `
@@ -722,7 +724,7 @@ const extraPosts: BlogPost[] = [
       <p>Beyond any specific pattern, the habit that separates maintainable infrastructure code from a liability is treating it exactly like application code. It gets reviewed before it merges, it has a single controlled path to production, and nobody changes production by hand outside of it. The moment people start making quick manual changes in the cloud console to fix something urgent, the code stops describing reality and every future change becomes a gamble. Detecting and reconciling that drift is tedious, so the better answer is a culture where the console is read-only for humans and all changes flow through the reviewed pipeline. This is unglamorous, and it is the difference between infrastructure you can reason about and a configuration that technically exists in version control while production has quietly diverged from it.</p>
 
       <h2>Watch for drift and cost</h2>
-      <p>Detect drift when reality diverges from the code, because manual console changes erode the guarantees infrastructure-as-code is supposed to provide. And review what your configuration actually costs, since it is easy to provision generously in code, which ties directly into our <a href="/blog/aws-cost-optimisation-engineering-guide">cloud cost work</a>. If you want infrastructure built this way from the start, our <a href="/services/cloud-devops">cloud and DevOps team</a> does it.</p>
+      <p>Detect drift when reality diverges from the code, because manual console changes erode the guarantees infrastructure-as-code is supposed to provide. And review what your configuration actually costs, since it is easy to provision generously in code, which ties directly into our <a href="/blog/aws-cost-optimisation-engineering-guide">cloud cost work</a>. If you want infrastructure built this way from the start, our <a href="/services/devops">cloud and DevOps team</a> does it.</p>
     `,
   },
   {
@@ -737,7 +739,7 @@ const extraPosts: BlogPost[] = [
     tags: ["API", "Security", "Authentication", "REST", "OAuth"],
     date: "2025-03-08",
     readTime: 10,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#ef4444" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#ef4444" },
     coverGradient: "linear-gradient(135deg, #110000 0%, #b91c1c 100%)",
     accent: "#b91c1c",
     body: `
@@ -753,7 +755,7 @@ const extraPosts: BlogPost[] = [
       <p>Treat all incoming data as hostile. Validate types, ranges, and formats against a strict schema and reject anything that does not conform. This single discipline closes off injection, malformed-data crashes, and a long tail of abuse. Validation belongs at the boundary, before the data touches any business logic.</p>
 
       <h2>Rate limit and throttle</h2>
-      <p>Without rate limiting, a single client can overwhelm your service or brute-force credentials. Apply sensible limits per client and stricter limits on sensitive operations like login. A shared, atomic store makes this reliable across instances, which is one of the <a href="/blog/redis-patterns-production">production Redis patterns</a> we rely on.</p>
+      <p>Without rate limiting, a single client can overwhelm your service or brute-force credentials. Apply sensible limits per client and stricter limits on sensitive operations like login. A shared, atomic store makes this reliable across instances, which is one of the production Redis patterns we rely on.</p>
 
       <h2>Do not leak information</h2>
       <p>Error responses should help legitimate developers without handing attackers a map. Keep production errors generic, never return stack traces or internal identifiers, and be careful that timing and response differences do not reveal whether an account exists. Verbose errors are a quiet but real vulnerability.</p>
@@ -765,7 +767,7 @@ const extraPosts: BlogPost[] = [
       <p>A checklist applied at design time is necessary but not sufficient, because the gap between intended behaviour and actual behaviour is where breaches live. The complement is to probe your own API the way an attacker would: try to access another user's records by changing an id, send malformed and oversized payloads, hammer an endpoint to see whether rate limiting actually engages, and call privileged operations with an under-privileged token. Much of this can be automated and run continuously, so a regression in an authorisation check is caught the same way a failing unit test would be. Security that is only verified by reading the code on the day it was written decays as the code changes around it. Treat these abuse cases as first-class tests that run on every change, and the checklist becomes a guarantee rather than an intention.</p>
 
       <h2>Log, monitor, and assume breach</h2>
-      <p>Record security-relevant events so you can detect and investigate abuse, and alert on the patterns that indicate an attack in progress. Combined with a <a href="/blog/zero-trust-security-architecture-guide">zero trust posture</a>, this is what turns a breach from a silent catastrophe into a contained incident. If you want this checklist enforced on your APIs by specialists, our <a href="/services/security-quality">security and QA service</a> does exactly that.</p>
+      <p>Record security-relevant events so you can detect and investigate abuse, and alert on the patterns that indicate an attack in progress. Combined with a <a href="/blog/zero-trust-security-architecture-guide">zero trust posture</a>, this is what turns a breach from a silent catastrophe into a contained incident. If you want this checklist enforced on your APIs by specialists, our <a href="/services/cloud-security">security and QA service</a> does exactly that.</p>
     `,
   },
   {
@@ -774,13 +776,13 @@ const extraPosts: BlogPost[] = [
     excerpt:
       "Monitoring tells you when something is broken. Observability tells you why. Here's how we implement the three pillars, metrics, logs, and traces, to achieve true system understanding.",
     metaTitle: "Observability vs Monitoring: The Real Difference",
-    metaDescription: "Monitoring tells you when something broke. Observability tells you why. How to implement the three pillars, metrics, logs, and traces, for real understanding.",
+    metaDescription: "Monitoring tells you when something broke. Observability tells you why. How to use metrics, logs and traces for real understanding.",
     updated: "2026-06-16",
     category: "DevOps",
     tags: ["Observability", "Monitoring", "OpenTelemetry", "Prometheus", "Grafana"],
     date: "2025-02-18",
     readTime: 9,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#34d399" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#34d399" },
     coverGradient: "linear-gradient(135deg, #001a0f 0%, #059669 100%)",
     accent: "#059669",
     body: `
@@ -805,7 +807,7 @@ const extraPosts: BlogPost[] = [
       <p>Observability has a failure mode that is the opposite of too little data: collecting so much that it is both expensive and useless. Logging everything at full detail and retaining it forever produces enormous bills and a haystack in which the important signal is impossible to find. The skill is deciding what is worth keeping and for how long. High-cardinality detail is invaluable while investigating an incident and largely worthless a month later, so sampling, sensible retention, and aggregation matter. The aim is not maximum data, it is the ability to answer the questions you actually ask during an incident, at a cost you can sustain. A lean, well-structured set of signals you trust beats an exhaustive firehose nobody can afford to query, and it keeps the team looking at telemetry instead of ignoring it.</p>
 
       <h2>Make it actionable</h2>
-      <p>Telemetry is only valuable if it drives action. Alert on symptoms that matter to users rather than on every fluctuation, so people trust the alerts instead of muting them. Tie what you collect to the questions you actually ask during an incident. Often the path from a slow trace leads straight to a <a href="/blog/database-performance-optimisation">database query</a> that needs work. If you want observability built into your systems properly, our <a href="/services/cloud-devops">cloud and DevOps team</a> implements all three pillars.</p>
+      <p>Telemetry is only valuable if it drives action. Alert on symptoms that matter to users rather than on every fluctuation, so people trust the alerts instead of muting them. Tie what you collect to the questions you actually ask during an incident. Often the path from a slow trace leads straight to a database query that needs work. If you want observability built into your systems properly, our <a href="/services/devops">cloud and DevOps team</a> implements all three pillars.</p>
     `,
   },
   {
@@ -820,7 +822,7 @@ const extraPosts: BlogPost[] = [
     tags: ["AWS", "Cost Optimisation", "Cloud", "FinOps"],
     date: "2025-01-30",
     readTime: 8,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#fbbf24" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#fbbf24" },
     coverGradient: "linear-gradient(135deg, #0d0a00 0%, #d97706 100%)",
     accent: "#d97706",
     body: `
@@ -857,7 +859,7 @@ const extraPosts: BlogPost[] = [
       <p>The reason cloud bills balloon is that, for most teams, spending money is frictionless and nobody owns the total. An engineer can provision a generous instance in seconds and never see the monthly consequence. The durable fix is cultural as much as technical: give teams visibility into what their own services cost, fold a quick cost glance into the same reviews that already look at performance and security, and treat a surprising bill as a bug to investigate rather than a fact of life. None of the individual levers here are difficult, and that is precisely the problem, because easy savings that nobody is responsible for simply do not happen. When cost becomes a normal engineering signal that owners watch alongside latency and error rate, efficiency stops being a periodic cleanup and becomes a steady state.</p>
 
       <h2>10. Review regularly</h2>
-      <p>Cost optimisation is not a one-time cleanup. Usage drifts, new resources appear, and savings erode. A short recurring review keeps the account efficient over time. If you want this run as an ongoing discipline rather than a panic, our <a href="/services/cloud-devops">cloud and DevOps team</a> manages it.</p>
+      <p>Cost optimisation is not a one-time cleanup. Usage drifts, new resources appear, and savings erode. A short recurring review keeps the account efficient over time. If you want this run as an ongoing discipline rather than a panic, our <a href="/services/devops">cloud and DevOps team</a> manages it.</p>
     `,
   },
   {
@@ -866,13 +868,13 @@ const extraPosts: BlogPost[] = [
     excerpt:
       "JWTs are widely used and widely misunderstood. These 8 implementation mistakes have caused real-world breaches, here's how to identify and fix them in your application.",
     metaTitle: "JWT Security: 8 Mistakes That Get You Breached",
-    metaDescription: "JWTs are widely used and widely misunderstood. Eight implementation mistakes behind real breaches, and how to identify and fix each one in your application.",
+    metaDescription: "JWTs are widely used and widely misunderstood. Eight implementation mistakes behind real breaches, and how to find and fix each one.",
     updated: "2026-06-16",
     category: "Security",
     tags: ["JWT", "Security", "Authentication", "API", "Node.js"],
     date: "2025-01-18",
     readTime: 7,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#ef4444" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#ef4444" },
     coverGradient: "linear-gradient(135deg, #0f0000 0%, #991b1b 100%)",
     accent: "#991b1b",
     body: `
@@ -903,7 +905,7 @@ const extraPosts: BlogPost[] = [
       <p>Look across these eight errors and a single theme emerges: trouble comes from treating a token as inherently trustworthy rather than as a claim to be verified rigorously every time. The algorithm, the issuer, the audience, the expiry, the storage location, and the signing key are each a place where misplaced trust opens a door. A useful mental exercise is to assume an attacker has seen your token and can craft their own, then ask what stops a forged or stolen one from working. If the honest answer is a long random key kept secret, strict server-side verification of every claim, short lifetimes, and safe storage, you are in good shape. If any of those is weak, that is your vulnerability. The token format is sound; the security lives entirely in the discipline of how you issue, store, and verify.</p>
 
       <h2>8. Using JWTs where a session would be simpler</h2>
-      <p>JWTs shine for stateless, cross-service authentication. For a single traditional web application, a server session is often simpler and easier to revoke. Choosing the token because it is fashionable, rather than because it fits, is its own mistake. If you want your authentication reviewed against these pitfalls, our <a href="/services/security-quality">security team</a> audits exactly this.</p>
+      <p>JWTs shine for stateless, cross-service authentication. For a single traditional web application, a server session is often simpler and easier to revoke. Choosing the token because it is fashionable, rather than because it fits, is its own mistake. If you want your authentication reviewed against these pitfalls, our <a href="/services/cloud-security">security team</a> audits exactly this.</p>
     `,
   },
   {
@@ -918,14 +920,14 @@ const extraPosts: BlogPost[] = [
     tags: ["Microservices", "Architecture", "Monolith", "System Design"],
     date: "2025-01-05",
     readTime: 9,
-    author: { name: "Arqam Malik", role: "Founder & CTO", initials: "AM", color: "#06c8e8" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#06c8e8" },
     coverGradient: "linear-gradient(135deg, #000d1a 0%, #1d4ed8 100%)",
     accent: "#1d4ed8",
     body: `
       <p>The microservices conversation generates more heat than light. One camp treats services as the only serious way to build software, the other treats the monolith as a badge of pragmatism. Both positions skip the only question that matters: what does your team size, traffic, and domain complexity actually require right now? Architecture is a response to constraints, not an identity.</p>
 
       <h2>Start with the modular monolith</h2>
-      <p>For almost every new product, the right starting point is a single deployable application with clean internal module boundaries. You get one codebase to reason about, one deployment, local function calls instead of network hops, and transactions that just work. A well-structured monolith is not technical debt. It is the architecture that lets a small team move fast while the domain is still being discovered. Premature service decomposition is one of the most expensive <a href="/blog/technical-debt-is-not-always-bad">mistakes dressed up as best practice</a>.</p>
+      <p>For almost every new product, the right starting point is a single deployable application with clean internal module boundaries. You get one codebase to reason about, one deployment, local function calls instead of network hops, and transactions that just work. A well-structured monolith is not technical debt. It is the architecture that lets a small team move fast while the domain is still being discovered. Premature service decomposition is one of the most expensive mistakes dressed up as best practice.</p>
 
       <h2>What microservices actually cost</h2>
       <p>Splitting into services trades in-process simplicity for distributed-systems complexity. Now a single user action may cross several network boundaries, each of which can fail, retry, or time out. You inherit eventual consistency, distributed tracing, service discovery, and a deployment surface that multiplies. These are solvable problems, but solving them consumes engineering capacity that a small team usually needs for the product itself.</p>
@@ -943,7 +945,7 @@ const extraPosts: BlogPost[] = [
       <p>When a team does outgrow its monolith, the failure mode is trying to rewrite the whole thing into services at once, which stalls feature work for months and frequently collapses under its own ambition. The path that works is incremental. Keep the monolith running, identify the one capability under the most pressure, and extract just that into a service while everything else stays put. Each extraction teaches you something about your real boundaries and delivers value on its own, so the effort is never an all-or-nothing bet. This is only feasible if the monolith had clean internal modules to begin with, which is the strongest argument for investing in those seams early even when you have no immediate plan to split. A well-structured monolith is not the opposite of microservices; it is the on-ramp to them.</p>
 
       <h2>A pragmatic default</h2>
-      <p>Begin with a modular monolith, keep the module seams clean so extraction is cheap later, and split a service out only when a real constraint demands it. This path keeps you fast early and gives you a clear, low-drama route to services when you have earned the need. If you want help designing that evolution, our <a href="/services/cloud-devops">cloud and DevOps team</a> does this regularly, and you can compare it with our take on <a href="/blog/serverless-vs-containers-2025">serverless versus containers</a> for the runtime decision.</p>
+      <p>Begin with a modular monolith, keep the module seams clean so extraction is cheap later, and split a service out only when a real constraint demands it. This path keeps you fast early and gives you a clear, low-drama route to services when you have earned the need. If you want help designing that evolution, our <a href="/services/devops">cloud and DevOps team</a> does this regularly, and you can compare it with our take on <a href="/blog/serverless-vs-containers-2025">serverless versus containers</a> for the runtime decision.</p>
     `,
   },
   {
@@ -958,14 +960,14 @@ const extraPosts: BlogPost[] = [
     tags: ["Redis", "Caching", "Performance", "Architecture", "Node.js"],
     date: "2024-11-30",
     readTime: 8,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#ef4444" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#ef4444" },
     coverGradient: "linear-gradient(135deg, #1a0000 0%, #dc2626 100%)",
     accent: "#dc2626",
     body: `
       <p>Most teams reach for Redis as a simple key-value cache and never look further, which leaves a remarkable amount of capability on the table. Redis is a fast, versatile data structure server, and several problems that teams solve by building bespoke infrastructure are better handled by a Redis pattern they already have running. Here are seven that earn their place in production.</p>
 
       <h2>1. Caching, done deliberately</h2>
-      <p>Caching is the obvious use, but doing it well takes thought. Decide on sensible expiry, choose between lazy-loading on miss and writing through on update, and plan for the thundering herd when a popular key expires and every request stampedes the database at once. Done right, a cache is the cheapest <a href="/blog/database-performance-optimisation">database performance</a> win available.</p>
+      <p>Caching is the obvious use, but doing it well takes thought. Decide on sensible expiry, choose between lazy-loading on miss and writing through on update, and plan for the thundering herd when a popular key expires and every request stampedes the database at once. Done right, a cache is the cheapest database performance win available.</p>
 
       <h2>2. Rate limiting</h2>
       <p>Redis is ideal for rate limiting because counters are atomic and expiry is built in. A sliding-window or token-bucket limiter backed by Redis protects your APIs from abuse and accidental overload with a few operations, and it works across many application instances because the state lives in one shared place. This is a core building block of the controls in our <a href="/blog/api-security-best-practices-2025">API security checklist</a>.</p>
@@ -986,7 +988,7 @@ const extraPosts: BlogPost[] = [
       <p>The flip side of Redis being useful for so many things is the temptation to use it for everything, including jobs it is wrong for. It is an in-memory store, so the working set is bounded by memory and is more expensive per gigabyte than disk. It is not a durable primary database, and treating it as your only copy of important data is asking to lose it during a restart or eviction. For anything that must survive and be the source of truth, Redis complements a primary database rather than replacing it. The right mental model is a fast, versatile layer in front of and alongside your real datastore, handling hot reads, coordination, and ephemeral state, while the durable record of truth lives somewhere built for durability. Used within those limits it is superb; pushed beyond them it becomes a liability.</p>
 
       <h2>7. Real-time leaderboards and counters</h2>
-      <p>Sorted sets make ranking and leaderboards trivial and fast, and atomic increments make accurate high-throughput counters easy. These are awkward and slow to do in a relational database under load, and a natural fit for Redis. If you want help deciding which of these patterns fit your system and wiring them up safely, our <a href="/services/cloud-devops">cloud and DevOps team</a> uses them in production regularly.</p>
+      <p>Sorted sets make ranking and leaderboards trivial and fast, and atomic increments make accurate high-throughput counters easy. These are awkward and slow to do in a relational database under load, and a natural fit for Redis. If you want help deciding which of these patterns fit your system and wiring them up safely, our <a href="/services/devops">cloud and DevOps team</a> uses them in production regularly.</p>
     `,
   },
   {
@@ -1001,11 +1003,11 @@ const extraPosts: BlogPost[] = [
     tags: ["TypeScript", "Patterns", "Type Safety", "JavaScript"],
     date: "2024-11-10",
     readTime: 8,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#38bdf8" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#38bdf8" },
     coverGradient: "linear-gradient(135deg, #00080a 0%, #0891b2 100%)",
     accent: "#0891b2",
     body: `
-      <p>Most teams use TypeScript as JavaScript with a few annotations, which leaves most of its value untapped. Used well, the type system eliminates entire categories of runtime bugs at compile time and makes a large codebase safe to change. These are the patterns that deliver the most maintainability, and they pay off most in the kind of long-lived applications we build through our <a href="/services/web-app-development">web engineering work</a>.</p>
+      <p>Most teams use TypeScript as JavaScript with a few annotations, which leaves most of its value untapped. Used well, the type system eliminates entire categories of runtime bugs at compile time and makes a large codebase safe to change. These are the patterns that deliver the most maintainability, and they pay off most in the kind of long-lived applications we build through our web engineering work.</p>
 
       <h2>Discriminated unions for state</h2>
       <p>Application state is full of cases that should be mutually exclusive: loading, loaded, error. Modelling these as a discriminated union, where a shared tag field distinguishes each case, lets the compiler force you to handle every possibility and prevents impossible states like loaded-but-also-error. This single pattern removes a huge class of "cannot read property of undefined" bugs by making the bad states unrepresentable.</p>
@@ -1026,7 +1028,7 @@ const extraPosts: BlogPost[] = [
       <p>Beyond catching bugs, the underrated benefit of using the type system well is that the types become living documentation. A function signature that precisely describes what it accepts and returns tells the next engineer exactly how to use it, and unlike a comment it can never drift out of sync with the code, because the compiler enforces it. A discriminated union that enumerates every state of a feature is a clearer specification of that feature than any wiki page. This is why investing in good types pays off most on long-lived codebases and larger teams, where the people changing the code are often not the people who wrote it. The types carry the intent forward. Comments lie eventually; well-designed types cannot, which makes them the most reliable form of documentation a codebase can have.</p>
 
       <h2>Use the strictest configuration</h2>
-      <p>Enable strict mode and resist the urge to reach for escape hatches. Every use of the any type or a non-null assertion is a hole in the guarantees you are paying for. The discipline of keeping the codebase genuinely strict is what makes the type system trustworthy, and it is the kind of standard a strong <a href="/blog/code-review-culture-that-ships">code review culture</a> enforces. These patterns also shine in a <a href="/blog/nextjs-15-app-router-production-lessons">Next.js application</a>, where types flow across the server and client boundary.</p>
+      <p>Enable strict mode and resist the urge to reach for escape hatches. Every use of the any type or a non-null assertion is a hole in the guarantees you are paying for. The discipline of keeping the codebase genuinely strict is what makes the type system trustworthy, and it is the kind of standard a strong code review culture enforces. These patterns also shine in a Next.js application, where types flow across the server and client boundary.</p>
     `,
   },
   {
@@ -1041,11 +1043,11 @@ const extraPosts: BlogPost[] = [
     tags: ["Performance", "Core Web Vitals", "Next.js", "SEO", "Web"],
     date: "2024-10-28",
     readTime: 9,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#4ade80" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#4ade80" },
     coverGradient: "linear-gradient(135deg, #001a05 0%, #16a34a 100%)",
     accent: "#16a34a",
     body: `
-      <p>Core Web Vitals are Google's measurable proxies for how a page feels to a real user, and they influence both search ranking and how many visitors stay. Getting a simple page into the green is easy. Doing it for a complex, data-heavy application takes a deliberate process. Here is the approach we use, and it connects directly to the <a href="/blog/database-performance-optimisation">backend performance</a> work that often turns out to be the real bottleneck.</p>
+      <p>Core Web Vitals are Google's measurable proxies for how a page feels to a real user, and they influence both search ranking and how many visitors stay. Getting a simple page into the green is easy. Doing it for a complex, data-heavy application takes a deliberate process. Here is the approach we use, and it connects directly to the backend performance work that often turns out to be the real bottleneck.</p>
 
       <h2>Understand the three metrics</h2>
       <p>The vitals measure three different feelings. One captures how quickly the main content appears, one captures how responsive the page is to interaction, and one captures how much the layout jumps around as it loads. They are distinct problems with distinct fixes, so the first step is always to find out which one you are actually failing.</p>
@@ -1054,7 +1056,7 @@ const extraPosts: BlogPost[] = [
       <p>Your development machine on fast internet is not representative. Use field data from real users on real devices and networks alongside lab tests. Optimising against a lab score while real users on mid-range phones suffer is a common and wasteful mistake. Measure first, then fix the metric that is actually failing for real people.</p>
 
       <h2>Make content appear faster</h2>
-      <p>The largest content element appearing quickly is mostly about getting critical resources to the browser fast: efficient server responses, sensible caching, optimised and properly sized images, and not blocking the initial render on non-essential work. Server-rendering the meaningful content, as a framework like <a href="/blog/nextjs-15-app-router-production-lessons">Next.js</a> does, helps a great deal here.</p>
+      <p>The largest content element appearing quickly is mostly about getting critical resources to the browser fast: efficient server responses, sensible caching, optimised and properly sized images, and not blocking the initial render on non-essential work. Server-rendering the meaningful content, as a framework like Next.js does, helps a great deal here.</p>
 
       <h2>Keep interactions responsive</h2>
       <p>Responsiveness suffers when the main thread is busy running too much JavaScript when the user tries to interact. Ship less script, break up long tasks, and defer non-critical work. A page that looks ready but freezes when tapped is failing the user even if it rendered quickly.</p>
@@ -1066,7 +1068,7 @@ const extraPosts: BlogPost[] = [
       <p>The teams that keep their vitals green treat performance as an ongoing product concern rather than a task they do once before launch and forget. The reason is simple: applications get slower by default. Every new feature adds code, every new image adds weight, and every well-meaning addition nudges the numbers in the wrong direction until one day the page feels sluggish and nobody can point to the change that did it. The antidote is to make performance visible and owned, with a budget enforced automatically so a regression is caught at the moment it is introduced rather than discovered weeks later by frustrated users. Framed this way, performance stops being a heroic optimisation project and becomes a quiet standard the team maintains, which is far cheaper and far more effective than periodic rescue missions.</p>
 
       <h2>Treat performance as a budget</h2>
-      <p>Performance regresses one reasonable-looking change at a time unless you defend it. Set a performance budget and enforce it in your <a href="/blog/ci-cd-pipeline-best-practices-2025">pipeline</a>, so a change that blows the budget is caught in review rather than discovered in production weeks later. Performance is not a one-time push but an ongoing standard. If you want a complex application brought into the green and kept there, our <a href="/services/web-app-development">web engineering team</a> does this work.</p>
+      <p>Performance regresses one reasonable-looking change at a time unless you defend it. Set a performance budget and enforce it in your <a href="/blog/ci-cd-pipeline-best-practices-2025">pipeline</a>, so a change that blows the budget is caught in review rather than discovered in production weeks later. Performance is not a one-time push but an ongoing standard. If you want a complex application brought into the green and kept there, our web engineering team does this work.</p>
     `,
   },
   {
@@ -1081,7 +1083,7 @@ const extraPosts: BlogPost[] = [
     tags: ["Database", "PostgreSQL", "Performance", "SQL", "Optimisation"],
     date: "2024-10-12",
     readTime: 9,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#34d399" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#34d399" },
     coverGradient: "linear-gradient(135deg, #001a12 0%, #0d9488 100%)",
     accent: "#0d9488",
     body: `
@@ -1097,7 +1099,7 @@ const extraPosts: BlogPost[] = [
       <p>The most common cause of a slow query is a missing or unused index. Index the columns you filter and join on, and use composite indexes when you consistently query several columns together. But indexes are not free: each one adds write overhead and storage, so an over-indexed table is its own problem. The goal is the right indexes for your real query patterns, not an index on everything.</p>
 
       <h2>Kill the N+1 problem</h2>
-      <p>The N+1 query problem is the most common performance bug in applications using an ORM. You fetch a list of items, then the code quietly issues one more query per item to load a relation, turning one screen into hundreds of round trips. Eager-load the relations you know you need in a single query instead. This pattern hides especially well behind <a href="/blog/graphql-vs-rest-2025">GraphQL resolvers</a>, where each field can trigger its own query unless you batch.</p>
+      <p>The N+1 query problem is the most common performance bug in applications using an ORM. You fetch a list of items, then the code quietly issues one more query per item to load a relation, turning one screen into hundreds of round trips. Eager-load the relations you know you need in a single query instead. This pattern hides especially well behind GraphQL resolvers, where each field can trigger its own query unless you batch.</p>
 
       <h2>Select only what you need</h2>
       <p>Fetching every column when you need three wastes bandwidth, memory, and cache space, and can prevent the database from satisfying a query entirely from an index. Selecting only the required columns is a small change that compounds across every request. The same goes for pulling back thousands of rows to count or paginate them in application code instead of letting the database do it.</p>
@@ -1106,7 +1108,7 @@ const extraPosts: BlogPost[] = [
       <p>When a query is slow, there is always a tempting shortcut: cache the result, add a read replica, or throw more hardware at it. Sometimes that is the right answer, but reaching for it first often hides a problem that will resurface and grow. A missing index, an N+1 pattern, or a query pulling far more data than it needs is a cause; caching over it treats the symptom and adds a new layer of complexity and potential staleness on top. The disciplined sequence is to understand why the query is slow by reading its plan, fix the underlying issue if there is one, and only then add caching or capacity for the load that genuinely remains. Caching a query that should simply have been indexed is one of the most common ways teams accumulate complexity while leaving the real problem in place.</p>
 
       <h2>When the query is already optimal</h2>
-      <p>Sometimes the query is as fast as it can be and the data is simply hot. That is where a cache earns its place: put frequently read, infrequently changed results in <a href="/blog/redis-patterns-production">Redis</a> and serve them without touching the database at all. Knowing whether you have a query problem or a caching problem is the difference between hours and days of work, and it connects directly to your overall <a href="/blog/web-performance-core-web-vitals-2025">application performance</a>. If you want a stubborn performance issue diagnosed properly, our <a href="/services/cloud-devops">engineering team</a> can help.</p>
+      <p>Sometimes the query is as fast as it can be and the data is simply hot. That is where a cache earns its place: put frequently read, infrequently changed results in Redis and serve them without touching the database at all. Knowing whether you have a query problem or a caching problem is the difference between hours and days of work, and it connects directly to your overall application performance. If you want a stubborn performance issue diagnosed properly, our <a href="/services/devops">engineering team</a> can help.</p>
     `,
   },
   {
@@ -1114,14 +1116,14 @@ const extraPosts: BlogPost[] = [
     title: "Kubernetes Security Hardening: 10 Controls Every Cluster Needs",
     excerpt:
       "Default Kubernetes configurations are optimised for developer convenience, not security. Here are the 10 security controls we implement on every production cluster before going live.",
-    metaTitle: "Kubernetes Security: 10 Controls Every Cluster Needs",
+    metaTitle: "Kubernetes Security: 10 Essential Controls",
     metaDescription: "Default Kubernetes settings favour convenience over safety. Ten security controls we apply to every production cluster before it goes live.",
     updated: "2026-06-16",
     category: "Security",
     tags: ["Kubernetes", "Security", "DevSecOps", "Containers", "K8s"],
     date: "2024-09-28",
     readTime: 10,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#f87171" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#f87171" },
     coverGradient: "linear-gradient(135deg, #110005 0%, #be123c 100%)",
     accent: "#be123c",
     body: `
@@ -1158,7 +1160,7 @@ const extraPosts: BlogPost[] = [
       <p>No single control on this list is sufficient on its own, and that is the point. Security in a cluster works because the controls overlap, so that bypassing one still leaves an attacker facing several more. Tight access control limits what a stolen credential can do; network policies limit where a compromised pod can reach; non-root containers and dropped capabilities limit what an attacker gains from a container escape; and audit logging means that even a successful intrusion is visible rather than silent. Treating any one of these as the answer is the mistake, because a determined attacker will find the gap. The goal is layers, each independently reducing the blast radius, so that the failure of one is contained by the others. Harden the cluster as a system, not as a checklist of isolated boxes to tick.</p>
 
       <h2>10. Audit logging and monitoring</h2>
-      <p>Enable audit logs so you can see who did what, and monitor for suspicious activity. Detection is the difference between a contained incident and a breach you learn about from someone else. For the orchestration choice that sits underneath all of this, see our take on <a href="/blog/kubernetes-vs-ecs-2025">Kubernetes versus ECS</a>, and if you want a cluster hardened by specialists, our <a href="/services/security-quality">security team</a> does it.</p>
+      <p>Enable audit logs so you can see who did what, and monitor for suspicious activity. Detection is the difference between a contained incident and a breach you learn about from someone else. For the orchestration choice that sits underneath all of this, see our take on <a href="/blog/kubernetes-vs-ecs-2025">Kubernetes versus ECS</a>, and if you want a cluster hardened by specialists, our <a href="/services/cloud-security">security team</a> does it.</p>
     `,
   },
   {
@@ -1173,7 +1175,7 @@ const extraPosts: BlogPost[] = [
     tags: ["SRE", "Reliability", "Incident Response", "SLO", "DevOps"],
     date: "2024-09-10",
     readTime: 8,
-    author: { name: "Arqam Malik", role: "Founder & CTO", initials: "AM", color: "#06c8e8" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#06c8e8" },
     coverGradient: "linear-gradient(135deg, #000a1a 0%, #2563eb 100%)",
     accent: "#2563eb",
     body: `
@@ -1186,7 +1188,7 @@ const extraPosts: BlogPost[] = [
       <p>If your objective is not perfection, and it never should be, then the gap between your target and perfection is an error budget: the amount of unreliability you can afford. This reframes a tired argument. When the budget is healthy, ship features fast. When you have burned through it, slow down and invest in stability. The budget replaces opinion with a shared rule both product and engineering can accept.</p>
 
       <h2>Run blameless postmortems</h2>
-      <p>When something breaks, write up what happened, why, and what will prevent a recurrence, without assigning blame to individuals. The goal is to fix the system, not to punish a person, because a culture that hunts for someone to blame teaches people to hide problems. This blameless posture is the same one that makes <a href="/blog/code-review-culture-that-ships">healthy code review</a> work.</p>
+      <p>When something breaks, write up what happened, why, and what will prevent a recurrence, without assigning blame to individuals. The goal is to fix the system, not to punish a person, because a culture that hunts for someone to blame teaches people to hide problems. This blameless posture is the same one that makes healthy code review work.</p>
 
       <h2>Reduce toil deliberately</h2>
       <p>Toil is the repetitive manual operational work that scales with usage and produces no lasting value: restarting things by hand, manual deployments, copy-paste fixes. SRE treats reducing toil as real engineering work, because every hour automated away is an hour returned to building, and a startup cannot afford to drown its small team in operations.</p>
@@ -1198,7 +1200,7 @@ const extraPosts: BlogPost[] = [
       <p>The deepest idea SRE offers a small team is that reliability is not a purely technical target to be maximised but a product trade-off to be chosen. Perfect uptime is impossibly expensive and almost never what users actually need, so the real question is how reliable a given service should be given what it does and what your users tolerate. A payment flow and a marketing page do not deserve the same reliability investment, and pretending they do wastes effort on one while neglecting the other. Framing reliability as a deliberate level you pick, backed by an objective and an error budget, lets a startup spend its limited engineering time where it matters and ship boldly everywhere else. That clarity, more than any specific tool, is what makes these practices worth adopting before you are forced to.</p>
 
       <h2>Start small</h2>
-      <p>You do not need a dedicated reliability team to adopt SRE thinking. Pick one critical service, set one SLO, and run one blameless postmortem after the next incident. Each practice delivers value on its own, and together they build a reliability culture that scales with you instead of being bolted on in crisis. If you want help putting these foundations in place, our <a href="/services/cloud-devops">cloud and DevOps team</a> does it for growing teams.</p>
+      <p>You do not need a dedicated reliability team to adopt SRE thinking. Pick one critical service, set one SLO, and run one blameless postmortem after the next incident. Each practice delivers value on its own, and together they build a reliability culture that scales with you instead of being bolted on in crisis. If you want help putting these foundations in place, our <a href="/services/devops">cloud and DevOps team</a> does it for growing teams.</p>
     `,
   },
   {
@@ -1206,14 +1208,14 @@ const extraPosts: BlogPost[] = [
     title: "Event-Driven Architecture: Patterns, Trade-offs, and When Not to Use It",
     excerpt:
       "Event-driven architecture decouples services and enables async workflows, but it adds significant complexity. Here's when to reach for it, which patterns work, and the pitfalls that will hurt you.",
-    metaTitle: "Event-Driven Architecture: Patterns and Trade-offs",
+    metaTitle: "Event-Driven Architecture: Trade-offs",
     metaDescription: "Event-driven architecture decouples services but adds real complexity. When to use it, which patterns work, and the pitfalls that will hurt you.",
     updated: "2026-06-16",
     category: "Engineering",
     tags: ["Event-Driven", "Architecture", "Kafka", "RabbitMQ", "Async"],
     date: "2024-08-25",
     readTime: 10,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#c084fc" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#c084fc" },
     coverGradient: "linear-gradient(135deg, #0a001a 0%, #9333ea 100%)",
     accent: "#9333ea",
     body: `
@@ -1238,7 +1240,7 @@ const extraPosts: BlogPost[] = [
       <p>For all its strengths, event-driven architecture is the wrong default for a simple system, and reaching for it too early is a common and expensive mistake. If a single service can do the job with direct calls and a straightforward database, the indirection of events buys you complexity you do not need: harder debugging, eventual consistency to reason about, and infrastructure to operate. The patterns earn their cost when you have genuine decoupling needs, independent scaling requirements, or asynchronous workflows that would otherwise block users. Until then, a clear synchronous design is easier to build, understand, and change. The mature instinct is to keep things as simple as the problem allows and introduce events when a concrete pressure makes the trade worthwhile, rather than adopting them as an architectural fashion and discovering the operational tax afterwards.</p>
 
       <h2>Practical foundations</h2>
-      <p>If you adopt these patterns, invest early in idempotent consumers, a dead-letter strategy for events that cannot be processed, and tracing that follows an event across every hop. A reliable broker matters too, and many teams find <a href="/blog/redis-patterns-production">Redis</a> or a dedicated message system covers most needs. If you want this designed properly from the start, our <a href="/services/cloud-devops">cloud and DevOps team</a> builds event-driven systems that stay debuggable.</p>
+      <p>If you adopt these patterns, invest early in idempotent consumers, a dead-letter strategy for events that cannot be processed, and tracing that follows an event across every hop. A reliable broker matters too, and many teams find Redis or a dedicated message system covers most needs. If you want this designed properly from the start, our <a href="/services/devops">cloud and DevOps team</a> builds event-driven systems that stay debuggable.</p>
     `,
   },
   {
@@ -1247,13 +1249,13 @@ const extraPosts: BlogPost[] = [
     excerpt:
       "The SolarWinds and XZ Utils attacks proved that the build pipeline is the attack surface most teams ignore. Here's how to secure yours against dependency confusion, malicious packages, and CI/CD attacks.",
     metaTitle: "Software Supply Chain Security: Secure Your Build",
-    metaDescription: "The SolarWinds and XZ Utils attacks proved the build pipeline is the ignored attack surface. How to secure yours against malicious packages and CI/CD attacks.",
+    metaDescription: "SolarWinds and XZ Utils proved the build pipeline is an ignored attack surface. How to secure yours against malicious packages and CI/CD attacks.",
     updated: "2026-06-16",
     category: "Security",
     tags: ["Supply Chain", "Security", "SBOM", "CI/CD", "DevSecOps"],
     date: "2024-08-10",
     readTime: 8,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#f59e0b" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#f59e0b" },
     coverGradient: "linear-gradient(135deg, #0f0a00 0%, #b45309 100%)",
     accent: "#b45309",
     body: `
@@ -1281,7 +1283,7 @@ const extraPosts: BlogPost[] = [
       <p>Sign the artifacts your pipeline produces and verify those signatures before deployment, so only artifacts that came from your trusted build process can reach production. This closes the loop: even if an attacker can place a file where deployment looks for it, an unsigned or wrongly signed artifact is rejected.</p>
 
       <h2>Make it a standing practice</h2>
-      <p>Supply chain security is not a project you finish but a posture you maintain, because the dependency tree and the threat landscape both change constantly. Inventory, pin, scan, least-privilege your pipeline, and sign your builds, and revisit all of it regularly. If you want your build pipeline and dependencies secured and monitored by specialists, our <a href="/services/security-quality">security and QA team</a> does exactly that, and you can <a href="/contact">talk to us about a review</a>.</p>
+      <p>Supply chain security is not a project you finish but a posture you maintain, because the dependency tree and the threat landscape both change constantly. Inventory, pin, scan, least-privilege your pipeline, and sign your builds, and revisit all of it regularly. If you want your build pipeline and dependencies secured and monitored by specialists, our <a href="/services/cloud-security">security and QA team</a> does exactly that, and you can <a href="/contact">talk to us about a review</a>.</p>
     `,
   },
   {
@@ -1296,7 +1298,7 @@ const extraPosts: BlogPost[] = [
     tags: ["Serverless", "Lambda", "Containers", "AWS", "Architecture"],
     date: "2024-07-22",
     readTime: 7,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#38bdf8" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#38bdf8" },
     coverGradient: "linear-gradient(135deg, #00050f 0%, #1e40af 100%)",
     accent: "#1e40af",
     body: `
@@ -1321,7 +1323,7 @@ const extraPosts: BlogPost[] = [
       <p>Teams often treat this choice as a fork in the road that locks them in for years, and that anxiety leads to over-analysis. In practice, if you keep your business logic cleanly separated from the specifics of how it is deployed, moving a workload between serverless and containers later is a contained piece of work rather than a rewrite. The logic that processes an order does not care whether it was invoked by a function trigger or an always-on server, provided you did not entangle it with the runtime. That separation gives you the freedom to start with whichever model fits your current scale and revisit it as traffic and cost change. Pick the option that matches where you are today, protect the boundary between your code and its runtime, and let the decision evolve with the workload instead of trying to predict years ahead.</p>
 
       <h2>If you land on containers</h2>
-      <p>Once you commit to containers, the next decision is orchestration, which is its own trade-off between control and operational burden. Our guide on <a href="/blog/kubernetes-vs-ecs-2025">Kubernetes versus ECS</a> covers that in detail. If you would rather hand the whole runtime decision to people who do it daily, our <a href="/services/cloud-devops">cloud and DevOps service</a> can design and run it for you.</p>
+      <p>Once you commit to containers, the next decision is orchestration, which is its own trade-off between control and operational burden. Our guide on <a href="/blog/kubernetes-vs-ecs-2025">Kubernetes versus ECS</a> covers that in detail. If you would rather hand the whole runtime decision to people who do it daily, our <a href="/services/devops">cloud and DevOps service</a> can design and run it for you.</p>
     `,
   },
   {
@@ -1330,29 +1332,29 @@ const extraPosts: BlogPost[] = [
     excerpt:
       "Hiring senior engineers remotely at AlgoCrew. Our 4-step process, async challenge, architecture interview, paid trial, and how we maintain a senior-only bar across 8+ countries.",
     metaTitle: "How We Hire Senior Engineers Remotely",
-    metaDescription: "Our exact 4-step remote process for hiring senior engineers: async challenge, architecture interview, paid trial, and how we hold a senior-only bar globally.",
+    metaDescription: "Our 4-step remote process for hiring senior engineers: async challenge, architecture interview, paid trial, and how we keep the bar high.",
     updated: "2026-06-16",
     category: "Engineering Culture",
     tags: ["Hiring", "Remote", "Senior Engineers", "Culture", "Process"],
     date: "2024-07-05",
     readTime: 6,
-    author: { name: "Arqam Malik", role: "Founder & CTO", initials: "AM", color: "#06c8e8" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#06c8e8" },
     coverGradient: "linear-gradient(135deg, #000a10 0%, #0e7490 100%)",
     accent: "#0e7490",
     body: `
-      <p>Hiring senior engineers remotely is a different problem from hiring locally. You cannot rely on a shared timezone, a whiteboard, or the casual signals of an office. What you can do is design a process that measures the things that actually predict senior performance: judgement, communication, and the ability to ship without supervision. This is the exact process we use to maintain a <a href="/blog/why-senior-only-teams-ship-faster">senior-only team</a> across many countries.</p>
+      <p>Hiring senior engineers remotely is a different problem from hiring locally. You cannot rely on a shared timezone, a whiteboard, or the casual signals of an office. What you can do is design a process that measures the things that actually predict senior performance: judgement, communication, and the ability to ship without supervision. This is the exact process we use to maintain a senior-only team across many countries.</p>
 
       <h2>Why the usual interview fails for senior roles</h2>
       <p>The timed algorithm puzzle measures anxiety tolerance and recent practice, not engineering ability. A genuinely senior engineer who has spent ten years building systems may stumble on a contrived puzzle they would never face in real work, while a junior who drilled the pattern last week sails through. For senior hiring you want to observe judgement on realistic problems, not performance under artificial pressure.</p>
 
       <h2>Step 1: a sharp written screen</h2>
-      <p>The first filter is written, because writing is the core skill of <a href="/blog/async-first-engineering-culture">async-first work</a>. A few pointed questions about real trade-offs reveal more than a CV ever will. A senior engineer explains why they chose an approach and what they would do differently at a different scale. Vague, buzzword-heavy answers are a reliable negative signal.</p>
+      <p>The first filter is written, because writing is the core skill of async-first work. A few pointed questions about real trade-offs reveal more than a CV ever will. A senior engineer explains why they chose an approach and what they would do differently at a different scale. Vague, buzzword-heavy answers are a reliable negative signal.</p>
 
       <h2>Step 2: an async take-home challenge</h2>
       <p>Instead of a timed test, we send a small, realistic task to be done in the candidate's own environment with their own tools, over a couple of days. Design a data model for this scenario, implement this feature with tests, or diagnose this performance problem. Senior engineers produce clean, well-reasoned work when given realistic conditions. We pay for substantial take-homes, because asking experienced people to work for free is both unfair and a bad filter.</p>
 
       <h2>Step 3: an architecture conversation</h2>
-      <p>Next is a live discussion built around the take-home and a broader design problem. We are not looking for one right answer. We are listening for how the candidate reasons about trade-offs, how they handle being challenged, and whether they can explain a complex decision clearly to someone who disagrees. The same instincts that surface here are the ones that make a good reviewer in our <a href="/blog/code-review-culture-that-ships">code review culture</a>.</p>
+      <p>Next is a live discussion built around the take-home and a broader design problem. We are not looking for one right answer. We are listening for how the candidate reasons about trade-offs, how they handle being challenged, and whether they can explain a complex decision clearly to someone who disagrees. The same instincts that surface here are the ones that make a good reviewer in our code review culture.</p>
 
       <h2>Step 4: a paid trial</h2>
       <p>The final step is real, paid work on a real task with the team. Nothing predicts how someone will perform like watching them actually perform. A trial reveals collaboration, communication cadence, and whether the polished interview persona matches the day-to-day engineer. It also respects the candidate's time by being concrete and compensated.</p>
@@ -1361,7 +1363,7 @@ const extraPosts: BlogPost[] = [
       <p>An often-missed truth of senior hiring is that the best candidates are evaluating you at least as hard as you are evaluating them. Experienced engineers have options and are wary of process that disrespects their time or signals a chaotic organisation. A respectful, well-run hiring process is therefore not just a filter, it is your strongest pitch: clear communication, prompt responses, paid and realistic exercises, and interviewers who can talk credibly about the technical work all demonstrate the kind of place you are to work. Treating candidates as people whose time matters, rather than as supplicants to be tested, is what convinces a strong senior engineer to choose you over a competing offer. The same care that makes the process a good filter makes it a good advertisement, and at the senior level you need it to be both.</p>
 
       <h2>Holding the bar as you scale</h2>
-      <p>The hardest part of senior-only hiring is keeping the bar high when you are busy and a role has been open too long. The discipline is to accept slower hiring rather than lowering the standard, because one mis-hire on a small senior team costs far more than an unfilled seat. This is the staffing philosophy behind our <a href="/services/team-services">team and staffing services</a>, and if you want senior engineers held to that bar, <a href="/contact">get in touch</a>.</p>
+      <p>The hardest part of senior-only hiring is keeping the bar high when you are busy and a role has been open too long. The discipline is to accept slower hiring rather than lowering the standard, because one mis-hire on a small senior team costs far more than an unfilled seat. This is the staffing philosophy behind our <a href="/our-approach#engagement-models">team and staffing services</a>, and if you want senior engineers held to that bar, <a href="/contact">get in touch</a>.</p>
     `,
   },
   {
@@ -1376,7 +1378,7 @@ const extraPosts: BlogPost[] = [
     tags: ["GraphQL", "REST", "API", "Architecture", "Backend"],
     date: "2024-06-18",
     readTime: 7,
-    author: { name: "Dev Team", role: "Engineering", initials: "DT", color: "#f472b6" },
+    author: { name: "AlgoCrew engineering", role: "Cloud, DevOps and security team", initials: "AC", color: "#f472b6" },
     coverGradient: "linear-gradient(135deg, #14001a 0%, #be185d 100%)",
     accent: "#be185d",
     body: `
@@ -1389,7 +1391,7 @@ const extraPosts: BlogPost[] = [
       <p>GraphQL shines when clients need flexible, precise access to a connected graph of data. A mobile app that wants exactly three fields and a web dashboard that wants twenty can each ask for precisely what they need from the same endpoint, avoiding the over-fetching and under-fetching that plague rigid REST endpoints. A strongly typed schema also gives you excellent tooling and a self-documenting contract between frontend and backend.</p>
 
       <h2>The problems each creates</h2>
-      <p>REST's weakness is round trips and payload fit: complex screens end up making many calls or receiving bloated responses, and teams sprout ad-hoc custom endpoints to compensate. GraphQL's weaknesses are the flip side of its power. HTTP caching no longer works automatically. A single malicious or careless query can be expensive, so you need depth limiting, cost analysis, and rate controls. And the infamous N+1 query problem will wreck your <a href="/blog/database-performance-optimisation">database performance</a> unless you batch loads deliberately.</p>
+      <p>REST's weakness is round trips and payload fit: complex screens end up making many calls or receiving bloated responses, and teams sprout ad-hoc custom endpoints to compensate. GraphQL's weaknesses are the flip side of its power. HTTP caching no longer works automatically. A single malicious or careless query can be expensive, so you need depth limiting, cost analysis, and rate controls. And the infamous N+1 query problem will wreck your database performance unless you batch loads deliberately.</p>
 
       <h2>Security cuts both ways</h2>
       <p>Whichever you choose, the fundamentals from our <a href="/blog/api-security-best-practices-2025">API security checklist</a> still apply: authentication, authorisation on every field or resource, input validation, and rate limiting. GraphQL adds a few specific concerns around query cost and introspection exposure, while REST's flatter surface is easier to reason about. Neither is secure by default.</p>
@@ -1401,7 +1403,7 @@ const extraPosts: BlogPost[] = [
       <p>Step back from the protocol argument and a larger truth appears: most of the difficulty teams blame on REST or GraphQL actually comes from an unclear underlying data model. A well-designed domain with clean boundaries is pleasant to expose through either style, while a tangled model is awkward through both, sprouting special-case endpoints in REST or convoluted resolvers in GraphQL. Before agonising over the API style, it is usually more valuable to get the entities, their relationships, and their access patterns right. Once that foundation is solid, the choice between REST and GraphQL becomes the relatively minor, reversible decision it should be, driven by client needs rather than by hope that the protocol will paper over a confused design. Fix the model first, and the API layer tends to fall into place whichever style you pick.</p>
 
       <h2>The honest bottom line</h2>
-      <p>Most teams overestimate how much the API style matters compared to getting the data model and boundaries right. Choose the one your team can build and operate well, apply the security basics, and move on to the product. If you want help making that call for a specific application, our <a href="/services/web-app-development">web application engineering team</a> makes it every week.</p>
+      <p>Most teams overestimate how much the API style matters compared to getting the data model and boundaries right. Choose the one your team can build and operate well, apply the security basics, and move on to the product. If you want help making that call for a specific application, our web application engineering team makes it every week.</p>
     `,
   },
 ];
@@ -1414,10 +1416,13 @@ export function getPost(slug: string) {
   return blogPosts.find(p => p.slug === slug) ?? null;
 }
 
+/** Posts that are listed, indexed and in the sitemap (retired and hidden posts excluded, 05#59–74). */
+export const listedPosts = () => blogPosts.filter((p) => isListedPost(p.slug));
+
 export function getRelated(slug: string, limit = 3) {
   const post = getPost(slug);
   if (!post) return [];
-  return blogPosts
+  return listedPosts()
     .filter(p => p.slug !== slug && p.category === post.category)
     .slice(0, limit);
 }

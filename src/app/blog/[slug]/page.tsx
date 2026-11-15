@@ -3,12 +3,16 @@ import { Meta } from "@once-ui-system/core";
 import Link from "next/link";
 import { baseURL } from "@/resources";
 import { blogPosts, getPost, getRelated } from "@/resources/blog";
-import { SendUsEmail } from "@/components/home/SendUsEmail";
+import { isHiddenPost, isRetiredPost } from "@/resources/routeMigration";
+import { CtaBlock, Section } from "@/components/ui";
 import { ShareButton } from "./ShareButton";
 import styles from "../blog.module.scss";
 
+// Retired posts are answered 410 by the middleware; hidden posts are built but noindex.
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
-  return blogPosts.map(p => ({ slug: p.slug }));
+  return blogPosts.filter(p => !isRetiredPost(p.slug)).map(p => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -17,13 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return {};
   return {
     ...Meta.generate({
-      title: post.metaTitle ?? `${post.title}, AlgoCrew Blog`,
+      title: post.metaTitle ?? post.title,
       description: post.metaDescription ?? post.excerpt,
       baseURL,
       path: `/blog/${slug}`,
       image: "/images/og/home.jpg",
     }),
     alternates: { canonical: `/blog/${slug}` },
+    ...(isHiddenPost(slug) ? { robots: { index: false, follow: true } } : {}),
   };
 }
 
@@ -83,7 +88,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   };
 
   return (
-    <main style={{ width: "100%", overflowX: "clip", background: "var(--bg-page)" }}>
+    <div style={{ width: "100%", overflowX: "clip", background: "var(--bg-page)" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
@@ -171,9 +176,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
 
           <div className={styles.sideCard}>
-            <p className={styles.sideCardTitle}>Work with us</p>
+            <p className={styles.sideCardTitle}>Talk to the team</p>
             <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.65, margin: "0 0 14px" }}>
-              Senior engineers, no lock-in, milestone billing.
+              Cloud engineering, DevSecOps, security and compliance.
             </p>
             <Link href="/contact" style={{
               display: "block", textAlign: "center",
@@ -182,7 +187,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               color: "#04121a", WebkitTextFillColor: "#04121a",
               fontSize: 13, fontWeight: 800, textDecoration: "none",
             }}>
-              Start a Project →
+              Discuss Your Cloud Strategy →
             </Link>
           </div>
 
@@ -213,7 +218,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </section>
       )}
 
-      <SendUsEmail />
-    </main>
+      <Section>
+        <CtaBlock title="Talk to the team behind this article." text="Tell us what you run and where you are stuck." primary={{ label: "Discuss Your Cloud Strategy", href: "/contact" }} />
+      </Section>
+    </div>
   );
 }

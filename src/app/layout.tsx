@@ -1,31 +1,35 @@
 import '@once-ui-system/core/css/styles.css';
 import '@once-ui-system/core/css/tokens.css';
 import '@/resources/custom.css'
+import '@/resources/tokens.css'
+import '@/styles/motion.css'
 import './global.scss'
 
 
-import Script from "next/script";
 import { Background, Column, Flex, Meta, opacity, SpacingToken } from "@once-ui-system/core";
-import { Footer, Header, RouteGuard, Providers } from '@/components';
+import { Providers } from '@/components';
+import { JsonLd, organizationSchema } from '@/components/seo/JsonLd';
+// site-v2 shell (roadmap T3.11). The old Header/Footer stay in the repo until the cleanup release.
+import { ConsentBanner, Footer, Header, MotionScope } from '@/components/layout';
 import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
 
+
+// Site-wide defaults. Every page sets its own title and description; these apply only where one is missing.
+const SITE_TITLE = "AlgoCrew | Cloud Engineering, DevSecOps & Compliance";
+const SITE_DESCRIPTION =
+  "Specialist cloud engineering partner: cloud consulting and migration, DevOps and DevSecOps, cloud security, compliance readiness and managed cloud services.";
 
 export async function generateMetadata() {
   return {
     title: {
-      default: home.title,
+      default: SITE_TITLE,
       template: "%s | AlgoCrew",
     },
-    description: home.description,
+    description: SITE_DESCRIPTION,
     metadataBase: new URL(baseURL),
     alternates: {
       canonical: `${baseURL}${home.path}`,
     },
-    keywords: [
-      "software agency", "custom software development", "web development",
-      "mobile app development", "Next.js", "React", "Node.js", "AWS",
-      "cloud solutions", "IT consulting", "AlgoCrew",
-    ],
     authors: [{ name: "AlgoCrew", url: baseURL }],
     creator: "AlgoCrew",
     publisher: "AlgoCrew",
@@ -33,15 +37,15 @@ export async function generateMetadata() {
       type: "website",
       locale: "en_US",
       siteName: "AlgoCrew",
-      title: home.title,
-      description: home.description,
+      title: SITE_TITLE,
+      description: SITE_DESCRIPTION,
       url: `${baseURL}${home.path}`,
       images: [
         {
           url: `${baseURL}${home.image}`,
           width: 1200,
           height: 630,
-          alt: home.title,
+          alt: SITE_TITLE,
         },
       ],
     },
@@ -49,8 +53,8 @@ export async function generateMetadata() {
       card: "summary_large_image",
       site: "@algocrew",
       creator: "@algocrew",
-      title: home.title,
-      description: home.description,
+      title: SITE_TITLE,
+      description: SITE_DESCRIPTION,
       images: [`${baseURL}${home.image}`],
     },
     robots: {
@@ -93,7 +97,7 @@ export default async function RootLayout({
       as="html"
       lang="en"
       fillWidth
-      data-theme="dark"
+      data-theme="light"
       data-brand="custom"
       data-accent="custom"
       data-neutral="slate"
@@ -113,63 +117,17 @@ export default async function RootLayout({
     >
       <head>
         {/* Fonts are self-hosted via next/font/google — no Google Fonts CDN requests needed */}
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
-        {/* -- Organization + WebSite schema -- */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "Organization",
-                  "@id": baseURL + "/#organization",
-                  name: "AlgoCrew",
-                  alternateName: ["AlgoCrew Inc.", "Algo Crew", "AlgoCrews"],
-                  url: baseURL,
-                  logo: {
-                    "@type": "ImageObject",
-                    url: baseURL + "/images/LogoDark.png",
-                    width: 200,
-                    height: 60,
-                  },
-                  description: "Top-tier software agency delivering custom software development, cloud solutions, and mobile apps across North America.",
-                  email: "query@algocrew.io",
-                  telephone: "+1-437-450-9656",
-                  foundingDate: "2020",
-                  areaServed: ["CA", "US", "GB"],
-                  address: {
-                    "@type": "PostalAddress",
-                    addressLocality: "Brampton",
-                    addressRegion: "ON",
-                    postalCode: "L6V 2E7",
-                    addressCountry: "CA",
-                  },
-                  sameAs: [
-                    "https://www.linkedin.com/company/algocrew",
-                    "https://github.com/algocrew",
-                    "https://x.com/algocrew",
-                  ],
-                  contactPoint: {
-                    "@type": "ContactPoint",
-                    contactType: "customer support",
-                    email: "query@algocrew.io",
-                    telephone: "+1-437-450-9656",
-                    availableLanguage: ["English"],
-                  },
-                },
-                {
-                  "@type": "WebSite",
-                  "@id": baseURL + "/#website",
-                  url: baseURL,
-                  name: "AlgoCrew",
-                  description: "Custom software development agency for web, mobile, cloud and AI.",
-                  publisher: { "@id": baseURL + "/#organization" },
-                },
-              ],
-            }),
+        {/* Organization (verified facts only, src/resources/site.ts) and WebSite */}
+        <JsonLd data={organizationSchema()} />
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "@id": baseURL + "/#website",
+            url: baseURL,
+            name: "AlgoCrew",
+            publisher: { "@id": baseURL + "/#organization" },
           }}
         />
 
@@ -180,8 +138,7 @@ export default async function RootLayout({
               (function() {
                 try {
                   const root = document.documentElement;
-                  const defaultTheme = 'dark';
-                  
+                                    
                   // Set defaults from config
                   const config = ${JSON.stringify({
                     brand: style.brand,
@@ -201,20 +158,11 @@ export default async function RootLayout({
                     root.setAttribute('data-' + key, value);
                   });
                   
-                  // Resolve theme
-                  const resolveTheme = (themeValue) => {
-                    if (!themeValue) return 'dark';
-                    if (themeValue === 'system') {
-                      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                    }
-                    return themeValue;
-                  };
-                  
-                  // Apply saved theme
-                  const savedTheme = localStorage.getItem('data-theme');
-                  const resolvedTheme = resolveTheme(savedTheme);
-                  root.setAttribute('data-theme', resolvedTheme);
-                  
+                  // Light only in release 1 (docs/website-transformation/08 §2, D-01).
+                  // Drop any theme saved by the old toggle so nobody is stuck on dark.
+                  localStorage.removeItem('data-theme');
+                  root.setAttribute('data-theme', 'light');
+
                   // Apply any saved style overrides
                   const styleKeys = Object.keys(config);
                   styleKeys.forEach(key => {
@@ -225,30 +173,19 @@ export default async function RootLayout({
                   });
                 } catch (e) {
                   console.error('Failed to initialize theme:', e);
-                  document.documentElement.setAttribute('data-theme', 'dark');
+                  document.documentElement.setAttribute('data-theme', 'light');
                 }
               })();
             `,
           }}
         />
 
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-WPN816FH63"
-          strategy="afterInteractive"
-        />
-        <Script id="ga" strategy="afterInteractive">{`
-          window.dataLayer=window.dataLayer||[];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js',new Date());
-          gtag('config','G-WPN816FH63');
-        `}</Script>
 
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <meta name="keywords" content="software company, software agency, custom software development, web development, custom software, cloud solution, mobile app development, Next.js, React, Node.js, AWS, software solutions, IT consulting, Algocrew" />
       </head>
 
       <Providers>
@@ -265,6 +202,7 @@ export default async function RootLayout({
             <Header />
 
             <Flex
+              as="main"
               id="main-content"
               tabIndex={-1}
               zIndex={0}
@@ -275,43 +213,14 @@ export default async function RootLayout({
               flex={1}
             >
               <Flex horizontal="center" fillWidth minHeight="0">
-                <RouteGuard>
-                  {children}
-                </RouteGuard>
+                {children}
               </Flex>
             </Flex>
             <Footer/>
 
-            {/* Tawk.to live chat — deferred to first user interaction.
-                Loading it eagerly injected an about:blank iframe into the
-                body flow that caused a ~0.176 layout shift (the dominant
-                contributor to CLS 0.684). Gating on first interaction (or a
-                fallback idle timeout) keeps it out of the initial-load CLS
-                window while still loading it before anyone tries to chat. */}
-            <Script id="tawkto" strategy="lazyOnload">{`
-              (function(){
-                var loaded=false;
-                function loadTawk(){
-                  if(loaded) return; loaded=true;
-                  window.Tawk_API=window.Tawk_API||{}; window.Tawk_LoadStart=new Date();
-                  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-                  s1.async=true;
-                  s1.src='https://embed.tawk.to/6a103fe562b0761c3d8d5803/1jp7nj6c4';
-                  s1.charset='UTF-8';
-                  s1.setAttribute('crossorigin','*');
-                  s0.parentNode.insertBefore(s1,s0);
-                  ['scroll','pointerdown','keydown','touchstart'].forEach(function(e){
-                    window.removeEventListener(e,loadTawk);
-                  });
-                }
-                ['scroll','pointerdown','keydown','touchstart'].forEach(function(e){
-                  window.addEventListener(e,loadTawk,{passive:true,once:false});
-                });
-                // Loads on the first real interaction (scroll/click/key/touch).
-                // No idle fallback on purpose: an auto-load fires during the
-                // page-load window and reintroduces the layout shift.
-              })();
-            `}</Script>
+            {/* Google Analytics and Tawk.to load only after consent (roadmap T3.08). */}
+            <ConsentBanner />
+            <MotionScope />
 
           </Column>
         </Providers>

@@ -1,129 +1,117 @@
-export const dynamic = "force-static";
+import type { Metadata } from "next";
+import { canonical } from "@/components/seo/JsonLd";
+import { PageHero } from "@/components/sections";
+import {
+  BoundaryStatement, Button, ButtonRow, Card, CtaBlock, DefinitionCard, Grid, LogoRow, Page, Section, SectionHead, Split, TextLink,
+} from "@/components/ui";
+import { liveServices, pillars, servicePath } from "@/resources/pillars";
+import { site, showClientLogos } from "@/resources/site";
 
-import { Meta } from "@once-ui-system/core";
-import { baseURL } from "@/resources";
-import { AboutWhyUs } from "@/components/about/AboutWhyUs";
-import { AboutValues } from "@/components/about/AboutValues";
-import { AboutVision } from "@/components/about/AboutVision";
-import { SendUsEmail } from "@/components/home/SendUsEmail";
-import styles from "./about-page.module.scss";
+/**
+ * /about (docs/website-transformation/07 §6.8, 08 §12 wireframe).
+ * Leadership, credentials and company facts render only once verified (V-05, V-06, V-08, V-09, V-10).
+ * #clients always exists, because 04 §8.6 and menus may point at it; the logo row inside it
+ * renders only with three or more approved logos (V-02), and so does its heading.
+ */
+const PATH = "/about";
+const TITLE = "About Us | Specialist Cloud Engineering Partner";
+const DESCRIPTION =
+  "A specialist partner for cloud engineering, DevOps and DevSecOps, cloud security and compliance. What we do, what we do not do, and how we work.";
 
-export async function generateMetadata() {
-  return {
-    ...Meta.generate({
-      title: "About - AlgoCrew",
-      description: "AlgoCrew is a software company headquartered in Canada, delivering elite engineering solutions globally.",
-      baseURL,
-      path: "/about",
-      image: "/images/og/about.jpg",
-    }),
-    alternates: { canonical: "/about" },
-  };
-}
-
-function StatCard({ num, label, desc }: { num: string; label: string; desc: string }) {
-  return (
-    <div className={styles.statCard}>
-      <div style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 900, letterSpacing: "-0.04em", color: "var(--text-primary)", marginBottom: "8px" }}>
-        {num}
-      </div>
-      <p style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-primary)", margin: "0 0 6px" }}>{label}</p>
-      <p style={{ fontSize: "13px", color: "var(--text-muted)", margin: 0, lineHeight: 1.5 }}>{desc}</p>
-    </div>
-  );
-}
-
-const aboutSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "AboutPage",
-      "@id": `${baseURL}/about`,
-      url: `${baseURL}/about`,
-      name: "About AlgoCrew",
-      description: "AlgoCrew is a software company headquartered in Canada, delivering elite engineering solutions globally.",
-      breadcrumb: {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: baseURL },
-          { "@type": "ListItem", position: 2, name: "About", item: `${baseURL}/about` },
-        ],
-      },
-      mainEntity: { "@id": `${baseURL}/#organization` },
-    },
-  ],
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: canonical(PATH) },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: canonical(PATH), type: "website" },
 };
 
 export default function AboutPage() {
+  const live = liveServices();
+  const practices = pillars().filter((p) => live.includes(p));
+  const facts = [
+    { term: "Legal name", value: site.legalName },
+    { term: "Founded", value: site.foundingYear },
+    { term: "Based in", value: site.city },
+    { term: "Contact", value: site.email },
+  ];
+
   return (
-    <main style={{ minHeight: "100vh", background: "var(--bg-page)", paddingTop: "100px" }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }} />
+    <Page>
+      <PageHero
+        trail={[{ label: "About", href: PATH }]}
+        title="A specialist cloud engineering partner."
+        lead="We work only on cloud engineering, DevOps and DevSecOps, cloud security, and compliance and governance. Nothing else."
+        actions={
+          <ButtonRow>
+            <Button href="/contact" arrow>
+              Discuss Your Cloud Strategy
+            </Button>
+            <Button href="/our-approach" variant="outline">
+              How we work
+            </Button>
+          </ButtonRow>
+        }
+      />
 
-      {/* Hero */}
-      <section className={styles.heroSection}>
-        <span style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "var(--text-muted)", display: "block", marginBottom: "20px" }}>
-          ABOUT ALGOCREW
-        </span>
-        <h1 style={{ fontSize: "clamp(3rem, 8vw, 7rem)", fontWeight: 900, letterSpacing: "-0.04em", color: "var(--text-primary)", margin: "0 0 32px", lineHeight: 0.95 }}>
-          We are<br />
-          <span style={{ background: "linear-gradient(135deg, #06c8e8, #2563eb)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            AlgoCrew.
-          </span>
-        </h1>
-        <p style={{ fontSize: "1.15rem", color: "var(--text-muted)", maxWidth: "560px", lineHeight: 1.7, margin: 0 }}>
-          A software company headquartered in Canada, delivering elite engineering solutions for startups and enterprises across North America and Europe.
-        </p>
-      </section>
+      <Section id="what-we-do">
+        <SectionHead eyebrow="What we do" title="Five practices, one accountable team." />
+        <Grid cols={3}>
+          {practices.map((p) => (
+            <Card key={p.slug} href={servicePath(p)} title={p.title} more="Explore">
+              <p>{p.line}</p>
+            </Card>
+          ))}
+        </Grid>
+      </Section>
 
-      {/* Mission */}
-      <section className={styles.section} style={{ borderTop: "1px solid var(--border-subtle)" }}>
-        <div className={styles.grid2col}>
+      <Section tone="soft" id="what-we-do-not">
+        <Split>
+          <SectionHead eyebrow="What we do not do" title="Clear boundaries." />
           <div>
-            <span style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#06c8e8", display: "block", marginBottom: "20px" }}>OUR MISSION</span>
-            <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 900, letterSpacing: "-0.04em", color: "var(--text-primary)", margin: "0 0 24px", lineHeight: 1 }}>
-              Engineering digital products that change industries.
-            </h2>
-            <p style={{ fontSize: "1rem", color: "var(--text-muted)", lineHeight: 1.75, margin: 0 }}>
-              At AlgoCrew, we&apos;re not just developers, we&apos;re architects of the digital future. We specialize in delivering top-tier solutions tailored to the high-stakes needs of modern enterprise. Our approach combines deep technical expertise with strategic business thinking to create products that don&apos;t just work, they win.
+            <p>
+              We do not build general websites, mobile apps or games, and we do not supply contract developers. We do not
+              certify, audit or give legal advice.
             </p>
+            <BoundaryStatement />
           </div>
-          <div className={styles.missionRight}>
-            {[
-              "AI-first engineering approach",
-              "Transparent communication at every step",
-              "Security and performance by default",
-              "Long-term partnerships, not one-off projects",
-            ].map(v => (
-              <div key={v} style={{ display: "flex", alignItems: "center", gap: "12px", padding: "16px 0", borderBottom: "1px solid var(--border-subtle)" }}>
-                <span style={{ color: "#06c8e8", fontSize: "12px" }}>→</span>
-                <span style={{ fontSize: "14px", color: "var(--text-muted)", fontWeight: 500 }}>{v}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </Split>
+      </Section>
 
-      {/* Stats */}
-      <section className={styles.section} style={{ borderTop: "1px solid var(--border-subtle)" }}>
-        <div className={styles.grid4col}>
-          <StatCard num="50+" label="Projects Delivered" desc="Across 12+ industry verticals" />
-          <StatCard num="30+" label="Happy Clients" desc="From startups to global enterprises" />
-          <StatCard num="5+" label="Years of Mastery" desc="Deep technical expertise" />
-          <StatCard num="98%" label="Satisfaction Rate" desc="Measured by NPS and retention" />
-        </div>
-      </section>
+      <Section id="clients">
+        {showClientLogos() && (
+          <>
+            <SectionHead eyebrow="Clients" title="Teams we've worked with" />
+            <LogoRow logos={site.clientLogos} />
+            <p>We have delivered work for or alongside these organizations.</p>
+          </>
+        )}
+        {!showClientLogos() && (
+          <Split>
+            <SectionHead eyebrow="How we work" title="A method you can picture before you sign." />
+            <p>
+              Assess, architect, implement, manage and optimize, with security applied at every step.{" "}
+              <TextLink href="/our-approach">Our Approach</TextLink>
+            </p>
+          </Split>
+        )}
+      </Section>
 
-      {/* Why AlgoCrew */}
-      <AboutWhyUs />
+      {facts.some((f) => f.value) && (
+      <Section tone="soft" id="company">
+        <Split>
+          <SectionHead eyebrow="Company" title="Company facts." />
+          <DefinitionCard items={facts} />
+        </Split>
+      </Section>
+      )}
 
-      {/* Our Values */}
-      <AboutValues />
-
-      {/* Vision + Timeline */}
-      <AboutVision />
-
-      {/* CTA */}
-      <SendUsEmail />
-    </main>
+      <Section>
+        <CtaBlock
+          title="Tell us about your environment."
+          text="Share which clouds you run, what you need to secure and which frameworks apply."
+          primary={{ label: "Discuss Your Cloud Strategy", href: "/contact" }}
+        />
+      </Section>
+    </Page>
   );
 }

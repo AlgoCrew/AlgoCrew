@@ -1,61 +1,42 @@
 import type { MetadataRoute } from "next";
-import { baseURL, categorizedServices } from "@/resources";
-import { ourProjects } from "@/resources/ourProjects";
-import { blogPosts } from "@/resources/blog";
-import { locations } from "@/resources/locations";
+import { baseURL } from "@/resources";
+import { listedPosts } from "@/resources/blog";
+import { liveFrameworks } from "@/resources/frameworks";
+import { liveServices, servicePath } from "@/resources/pillars";
+import { livePlatforms } from "@/resources/platforms";
+import { site } from "@/resources/site";
+
+/**
+ * Sitemap built from the same gated data as the pages and menus (roadmap T10.03).
+ * Only indexable pages: no retired or hidden posts, no gated pages, no redirect sources.
+ * `npm run check:sitemap` fails the build if this and the built pages ever disagree.
+ */
+type Entry = MetadataRoute.Sitemap[number];
+const page = (path: string, priority: number, changeFrequency: Entry["changeFrequency"] = "monthly"): Entry => ({
+  url: path === "/" ? baseURL : `${baseURL}${path}`,
+  changeFrequency,
+  priority,
+});
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date().toISOString();
-
-  /* ── Static routes ── */
-  const staticRoutes: MetadataRoute.Sitemap = [
-    { url: baseURL,                    lastModified: now, changeFrequency: "weekly",  priority: 1.0  },
-    { url: `${baseURL}/services`,      lastModified: now, changeFrequency: "weekly",  priority: 0.9  },
-    { url: `${baseURL}/work`,          lastModified: now, changeFrequency: "monthly", priority: 0.85 },
-    { url: `${baseURL}/pricing`,       lastModified: now, changeFrequency: "monthly", priority: 0.85 },
-    { url: `${baseURL}/about`,         lastModified: now, changeFrequency: "monthly", priority: 0.8  },
-    { url: `${baseURL}/careers`,       lastModified: now, changeFrequency: "weekly",  priority: 0.8  },
-    { url: `${baseURL}/blog`,          lastModified: now, changeFrequency: "daily",   priority: 0.9  },
-    { url: `${baseURL}/faq`,           lastModified: now, changeFrequency: "monthly", priority: 0.85 },
-    { url: `${baseURL}/locations`,     lastModified: now, changeFrequency: "monthly", priority: 0.8  },
-    { url: `${baseURL}/contact`,       lastModified: now, changeFrequency: "monthly", priority: 0.75 },
-    { url: `${baseURL}/privacy-policy`,lastModified: now, changeFrequency: "yearly",  priority: 0.3  },
-    { url: `${baseURL}/terms`,         lastModified: now, changeFrequency: "yearly",  priority: 0.3  },
+  return [
+    page("/", 1, "weekly"),
+    page("/services", 0.9),
+    ...liveServices().map((s) => page(servicePath(s), s.kind === "pillar" ? 0.9 : 0.8)),
+    page("/cloud-platforms", 0.8),
+    ...livePlatforms().map((p) => page(`/cloud-platforms/${p.slug}`, 0.8)),
+    ...liveFrameworks().map((f) => page(`/compliance/${f.slug}`, 0.8)),
+    page("/our-approach", 0.7),
+    page("/about", 0.7),
+    ...(site.trustPageVerified ? [page("/trust", 0.6)] : []),
+    page("/contact", 0.7),
+    page("/careers", 0.5),
+    page("/blog", 0.8, "weekly"),
+    ...listedPosts().map((p) => ({
+      ...page(`/blog/${p.slug}`, 0.6),
+      lastModified: new Date(p.updated ?? p.date).toISOString(),
+    })),
+    page("/privacy-policy", 0.2, "yearly"),
+    page("/terms", 0.2, "yearly"),
   ];
-
-  /* ── Service detail pages ── */
-  const serviceRoutes: MetadataRoute.Sitemap = categorizedServices.map((s) => ({
-    url: `${baseURL}/services/${s.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
-
-  /* ── Blog posts ── */
-  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((p) => ({
-    url: `${baseURL}/blog/${p.slug}`,
-    lastModified: new Date(p.date).toISOString(),
-    changeFrequency: "monthly",
-    priority: 0.7,
-    images: [`${baseURL}/images/og/home.jpg`],
-  }));
-
-  /* ── Work / case study pages (with images for Google image search) ── */
-  const workRoutes: MetadataRoute.Sitemap = ourProjects.map((p) => ({
-    url: `${baseURL}/work/${p.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly",
-    priority: 0.7,
-    images: p.img ? [`${baseURL}${p.img}`] : [],
-  }));
-
-  /* ── Location pages ── */
-  const locationRoutes: MetadataRoute.Sitemap = locations.map((l) => ({
-    url: `${baseURL}/locations/${l.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }));
-
-  return [...staticRoutes, ...serviceRoutes, ...blogRoutes, ...workRoutes, ...locationRoutes];
 }

@@ -5,7 +5,7 @@ import styles from "../privacy-policy/legal.module.scss";
 export async function generateMetadata() {
   return {
     ...Meta.generate({
-      title: "Terms of Service - AlgoCrew",
+      title: "Terms of Service",
       description: "Terms governing use of AlgoCrew's website and services.",
       baseURL,
       path: "/terms",
@@ -16,7 +16,7 @@ export async function generateMetadata() {
 
 export default function TermsPage() {
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
       <div className={styles.inner}>
         <div className={styles.header}>
           <span className={styles.label}>LEGAL</span>
@@ -95,7 +95,7 @@ export default function TermsPage() {
           </Section>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
 

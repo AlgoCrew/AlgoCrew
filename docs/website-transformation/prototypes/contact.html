@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Contact prototype | AlgoCrew</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="proto.css?v=13">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="protobar">Prototype · Contact template, with form states · dashed boxes are placeholders awaiting business verification · <a href="index.html">Home</a> · <a href="service-devsecops.html">Service</a> · <a href="platform-azure.html">Platform</a> · <a href="pillar-cloud-security.html">Pillar</a> · <a href="compliance.html">Hub</a> · <a href="compliance-hipaa.html">Framework</a> · <a href="contact.html">Contact</a> · <a href="concept-3d.html">3D concepts</a></div>
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="AlgoCrew home">AlgoCrew<i></i></a>
+    <nav class="nav" aria-label="Primary">
+      <a class="has-menu" href="service-devsecops.html">Services</a>
+      <a class="has-menu" href="platform-azure.html">Cloud Platforms</a>
+      <a class="has-menu" href="compliance-hipaa.html">Compliance</a>
+      <a href="index.html#insights">Insights</a>
+      <a class="has-menu" href="index.html#approach">Company</a>
+    </nav>
+    <a class="btn primary sm cta-full" href="index.html#contact">Discuss Your Cloud Strategy</a>
+    <a class="btn primary sm cta-short" href="index.html#contact">Talk to us</a>
+    <details class="mnav">
+      <summary>Menu</summary>
+      <nav aria-label="Mobile">
+        <a href="service-devsecops.html">Services</a>
+        <a href="platform-azure.html">Cloud Platforms</a>
+        <a href="compliance-hipaa.html">Compliance</a>
+        <a href="index.html#insights">Insights</a>
+        <a href="index.html#approach">Company</a>
+        <a class="btn primary" href="index.html#contact">Discuss Your Cloud Strategy</a>
+      </nav>
+    </details>
+  </div>
+</header>
+<main id="main">
+<section class="hero page" style="padding-bottom:0">
+  <div class="wrap" style="grid-template-columns:minmax(0,1fr)">
+    <div class="hero-copy" style="max-width:760px">
+      <ol class="crumbs"><li><a href="index.html">Home</a></li><li aria-current="page">Contact</li></ol>
+      <h1 class="h1">Discuss your cloud strategy.</h1>
+      <p class="lead">Tell us what you run and what needs to change. The more specific you are, the more useful our first reply will be.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="wrap split" style="grid-template-columns:minmax(0,7fr) minmax(0,5fr)">
+    <form class="form panel" action="#" method="post" novalidate aria-labelledby="form-h">
+      <h2 class="h3" id="form-h" style="font-size:1.5rem">Send us a message</h2>
+      <p class="small muted">All fields are required unless marked optional.</p>
+      <div class="two">
+        <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+      </div>
+      <div class="two">
+        <div class="field"><label for="company">Company</label><input id="company" name="company" type="text" autocomplete="organization" required></div>
+        <div class="field"><label for="topic">Topic</label><select id="topic" name="topic" required><option value="">Select a topic</option><option>Cloud consulting &amp; migration</option><option>DevOps &amp; DevSecOps</option><option>Cloud security</option><option>Compliance</option><option>Managed services</option><option>Other</option></select></div>
+      </div>
+      <fieldset class="field"><legend>Clouds in use <span class="opt">(optional)</span></legend>
+        <div class="checks-inline"><label class="check"><input type="checkbox" name="cloud" value="azure"> Microsoft Azure</label><label class="check"><input type="checkbox" name="cloud" value="aws"> AWS</label><label class="check"><input type="checkbox" name="cloud" value="gcp"> Google Cloud</label><label class="check"><input type="checkbox" name="cloud" value="other"> Other or on-premises</label></div>
+      </fieldset>
+      <div class="field"><label for="msg">Message</label><textarea id="msg" name="message" required aria-describedby="msg-help"></textarea><span class="help" id="msg-help">Please do not include passwords, keys or regulated data.</span></div>
+      <label class="check"><input type="checkbox" name="consent" required> <span>I agree that AlgoCrew may use these details to reply to me, as described in the <a href="#">privacy policy</a>.</span></label>
+      <div><button class="btn primary" type="submit">Send message <span class="arr" aria-hidden="true">→</span></button></div>
+    </form>
+    <aside style="display:grid;gap:32px;align-content:start">
+      <div><p class="eyebrow">What happens next</p>
+        <ol class="next">
+          <li><strong>We read it.</strong>Your message goes to the practice that matches your topic.</li>
+          <li><strong>We reply by email.</strong>With questions, or a time to talk.</li>
+          <li><strong>We agree a scope.</strong>Before any work starts.</li>
+        </ol>
+        <p class="ph" style="margin-top:20px">A response-time promise appears here only if the business commits to one (V-10).</p>
+      </div>
+      <div><p class="eyebrow">Other ways to reach us</p><p><a class="link" href="#">Book a 30-minute call →</a></p><p class="ph" style="margin-top:12px">Verified email, phone and city (V-10).</p></div>
+      <p class="small muted">Looking for a job? See <a href="#">Careers</a>.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="section soft">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Design reference</p><h2 class="h2">Form states.</h2><p class="lead">These two panels show the error and success states. They are not part of the live page.</p></div>
+    <div class="grid g2" style="align-items:start">
+      <div class="form panel" aria-label="Error state example">
+        <div class="notice bad" role="alert"><strong>Please fix 2 fields to send your message.</strong><ul><li><a href="#e-email">Work email: enter an address like name@company.com</a></li><li><a href="#e-topic">Topic: select a topic</a></li></ul></div>
+        <div class="field bad"><label for="e-email">Work email</label><input id="e-email" type="email" value="sam@" aria-invalid="true" aria-describedby="e-email-err"><span class="err" id="e-email-err">Enter an address like name@company.com</span></div>
+        <div class="field bad"><label for="e-topic">Topic</label><select id="e-topic" aria-invalid="true" aria-describedby="e-topic-err"><option>Select a topic</option></select><span class="err" id="e-topic-err">Select a topic</span></div>
+        <p class="small muted">Errors appear on submit, not while typing. A summary at the top links to each field, focus moves to the summary, and each field names its problem in text as well as color.</p>
+      </div>
+      <div class="form panel" aria-label="Success state example">
+        <div class="notice good" role="status"><strong>Message sent.</strong>We have your message and will reply by email.</div>
+        <p class="small muted">The form is replaced by this confirmation, and focus moves to it. No redirect, so the browser's back button still works as expected.</p>
+        <p class="small muted">If sending fails, the form stays filled in and a message says so, with the direct email address as a fallback.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="cols">
+      <div><a class="logo" href="index.html">AlgoCrew<i></i></a><p class="muted small" style="margin-top:14px;max-width:30ch">Specialist cloud engineering, DevSecOps, security and compliance.</p><p class="ph" style="margin-top:16px">Verified email, phone, city (V-10)</p></div>
+      <div><h4>Services</h4><ul><li><a href="#">Cloud Consulting &amp; Engineering</a></li><li><a href="#">Cloud Migration &amp; Modernization</a></li><li><a href="#">DevOps &amp; DevSecOps</a></li><li><a href="service-devsecops.html">DevSecOps</a></li><li><a href="pillar-cloud-security.html">Cloud Security &amp; Cybersecurity</a></li><li><a href="#">Managed Cloud Services</a></li></ul></div>
+      <div><h4>Cloud Platforms</h4><ul><li data-need="az"><a href="platform-azure.html">Microsoft Azure</a></li><li data-need="aws"><a href="#">Amazon Web Services</a></li><li data-need="gcp"><a href="#">Google Cloud</a></li><li><a href="#">Multi-cloud overview</a></li></ul></div>
+      <div><h4>Compliance</h4><ul><li><a href="compliance.html">Compliance &amp; Governance</a></li><li data-need="hipaa"><a href="compliance-hipaa.html">HIPAA</a></li><li data-need="gdpr"><a href="#">GDPR</a></li><li data-need="pci"><a href="#">PCI DSS</a></li><li data-need="pipeda"><a href="#">PIPEDA</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Our Approach</a></li><li><a href="#">Trust &amp; Security</a></li><li><a href="#">Insights</a></li><li><a href="#">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="bottom"><span>© 2026 AlgoCrew (verified legal entity name, V-06)</span><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie settings</a></div>
+  </div>
+</footer>
+<script src="ui.js?v=13"></script>
+</body>
+</html>

@@ -3,13 +3,13 @@ export const dynamic = "force-static";
 import { Meta } from "@once-ui-system/core";
 import { baseURL } from "@/resources";
 import { BlogListing } from "./BlogClient";
-import { SendUsEmail } from "@/components/home/SendUsEmail";
+import { CtaBlock, Section } from "@/components/ui";
 import styles from "./blog.module.scss";
 
 export async function generateMetadata() {
   return {
     ...Meta.generate({
-      title: "Blog - AlgoCrew",
+      title: "Insights",
       description: "Engineering insights, product thinking, and lessons from shipping software at scale with senior-only teams.",
       baseURL,
       path: "/blog",
@@ -38,7 +38,7 @@ const blogListingSchema = {
 
 export default function BlogPage() {
   return (
-    <main style={{ width: "100%", overflowX: "clip", background: "var(--bg-page)" }}>
+    <div style={{ width: "100%", overflowX: "clip", background: "var(--bg-page)" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListingSchema) }} />
 
       {/* ── Hero ── */}
@@ -61,7 +61,9 @@ export default function BlogPage() {
       <BlogListing />
 
       {/* ── CTA ── */}
-      <SendUsEmail />
-    </main>
+      <Section>
+        <CtaBlock title="Tell us about your environment." text="Share which clouds you run, what you need to secure and which frameworks apply." primary={{ label: "Discuss Your Cloud Strategy", href: "/contact" }} />
+      </Section>
+    </div>
   );
 }
