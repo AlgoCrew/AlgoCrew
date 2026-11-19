@@ -34,7 +34,6 @@ export type Service = {
   /** Route override: pillar 4 lives at /compliance, not under /services. */
   path?: string;
   title: string;
-  menuTitle?: string;
   /** One-line pillar message (07 §3.1). */
   line: string;
   h1: string;
@@ -292,7 +291,6 @@ export const services: Service[] = [
     slug: "cloud-security",
     kind: "pillar",
     title: "Cloud Security & Cybersecurity",
-    menuTitle: "Cloud Security",
     line: "Controls that fit how your cloud actually works.",
     h1: "Cloud security services.",
     lead: "Controls that fit how your cloud actually works: identity first, segmented networks, tuned detection and a way to fix what is found.",

@@ -77,6 +77,14 @@
   --grid-line: rgba(29, 78, 216, 0.05);
 }
 
+/* Phones: small mono labels were 11px and 12px, hard to read on a small screen. */
+@media (max-width: 639px) {
+  :root {
+    --text-label: 0.8125rem;
+    --text-meta: 0.75rem;
+  }
+}
+
 /* Once UI shrinks the root font to 15px below 1024px; the prototypes keep 16px at every width,
    so every rem size (headings, text, spacing) matches them on phones and tablets too. */
 html[data-scaling] {

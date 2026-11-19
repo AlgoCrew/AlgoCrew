@@ -41,6 +41,12 @@ const nextConfig = {
           { key: "X-XSS-Protection",       value: "1; mode=block" },
           { key: "X-DNS-Prefetch-Control", value: "on" },
           {
+            // Upgrades any http:// sub-resource, blocks plugins, framing by other sites, <base> hijacking
+            // and form posts to other origins. Script sources are not restricted yet (roadmap T10.13).
+            key: "Content-Security-Policy",
+            value: "upgrade-insecure-requests; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; form-action 'self'",
+          },
+          {
             key: "Strict-Transport-Security",
             value: "max-age=31536000; includeSubDomains; preload",
           },

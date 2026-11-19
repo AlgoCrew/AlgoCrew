@@ -10,6 +10,8 @@ import s from "./layout.module.scss";
  * Contact details and the legal entity appear only once verified in site.ts; until then
  * the brand name stands alone. No statistics, badges or "accepting projects" claims.
  */
+const SOCIAL_LABELS: Record<string, string> = { linkedin: "LinkedIn", github: "GitHub", x: "X" };
+
 export function Footer({ navOptions }: { navOptions?: NavOptions }) {
   const columns = footerNav(navOptions);
   const socials = Object.entries(site.social);
@@ -43,7 +45,12 @@ export function Footer({ navOptions }: { navOptions?: NavOptions }) {
                 {socials.map(([name, url]) => (
                   <li key={name}>
                     <a className={s.footerLink} href={url} rel="noopener noreferrer">
-                      {name === "x" ? "X" : name[0].toUpperCase() + name.slice(1)}
+                      {name === "linkedin" && (
+                        <svg className={s.socialIcon} viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4z" />
+                        </svg>
+                      )}
+                      {SOCIAL_LABELS[name] ?? name}
                     </a>
                   </li>
                 ))}

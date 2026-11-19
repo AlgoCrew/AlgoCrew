@@ -57,7 +57,7 @@ The inner pages are built from four shared blocks, so the rollout changed the bl
 
 Page-specific changes: About uses the homepage's mixed practices grid; Our Approach uses the two engagement panels; the "Who it's for" cards on service pages are numbered.
 
-**Not restyled:** Insights (`/blog`), posts, Privacy and Terms. They are still built on the old UI library and are scheduled for the cleanup release (16, O3 and O4). Contact is unchanged: it is one form and one side panel.
+**Insights (`/blog`) restyled on 2026-11-20** (see the implementation log). **Not restyled:** article pages, Privacy and Terms. They are still built on the old UI library and are scheduled for the cleanup release (16, O3 and O4). Contact is unchanged: it is one form and one side panel.
 
 ## Left to the builder
 

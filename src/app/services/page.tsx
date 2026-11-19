@@ -55,7 +55,7 @@ export default function ServicesPage() {
               .filter((c) => c.inMenu && c.body)
               .map((c) => {
                 const page = c.page ? services.find((s) => s.slug === c.page && live.includes(s)) : undefined;
-                return { label: c.title, href: page ? servicePath(page) : `${servicePath(pillar)}#${c.id}` };
+                return { label: page?.title ?? c.title, href: page ? servicePath(page) : `${servicePath(pillar)}#${c.id}` };
               });
             return (
               <LedgerRow key={pillar.slug} id={pillar.slug} title={`0${i + 1} ${pillar.title}`}>

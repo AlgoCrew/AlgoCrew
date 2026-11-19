@@ -19,7 +19,7 @@ export const site = {
   /** V-10: one public enquiry address, phone, city, booking link. */
   email: undefined as string | undefined,
   phone: undefined as string | undefined,
-  city: undefined as string | undefined,
+  city: "Brampton, Ontario" as string | undefined, // owner's change request, 2026-11-18
   bookingUrl: undefined as string | undefined,
   /** V-10: only if the business commits to one. */
   responseTime: undefined as string | undefined,

@@ -17,7 +17,11 @@ const pagesOf = (item: NavItem): NavLink[] => {
   const seen = new Set<string>();
   const links =
     columns.length > 2
-      ? columns.flatMap((c) => (c.href ? [{ label: c.heading, href: c.href }] : []))
+      ? columns.flatMap((c) => [
+          ...(c.href ? [{ label: c.heading, href: c.href }] : []),
+          // Standalone service pages inside a practice (e.g. Cloud Migration), not its in-page anchors.
+          ...c.links.filter((l) => !l.href.includes("#")).map(({ label, href }) => ({ label, href })),
+        ])
       : columns.flatMap((c) => c.links.filter((l) => !l.href.includes("#")).map(({ label, href }) => ({ label, href })));
   return [{ label: `All ${item.label.toLowerCase()}`, href: item.href }, ...links].filter(
     (l) => !seen.has(l.href) && seen.add(l.href),

@@ -367,3 +367,47 @@ Verified on a production build: desktop (1440) and phone (375) screenshots of ev
 Details in `17-design-refresh.md` ("Rollout to the other pages"). The shared blocks `Steps`, `Ledger`, `Checklist` and `Card` were restyled and a new `Inset` panel added (`src/components/ui`), so every site-v2 page changed without page-by-page layouts. The homepage's own timeline and panel were removed in favour of the shared ones. About, Our Approach and the service template got one page-specific change each.
 
 Verified on a production build: screenshots of Services, a service page, a pillar page, Compliance, About, Our Approach and Careers at 1440 px, and a service page at 375 px; no horizontal overflow on 21 pages at 320, 768, 1024 and 1440 px (84 checks, including the design-system review pages and one post); 12 tests, links, sitemap, tokens and type check pass. Not re-run: axe and Lighthouse. Insights, posts and the legal pages are not restyled.
+
+## Owner change request "AlgoCrew Website Changes in Plain English" (2026-11-18), first pass (2026-11-19)
+
+Done (no new facts needed):
+- Phone menu lists every service page (Cloud Migration and DevSecOps were missing); one name per service everywhere (menu said "Cloud Security" and "Migration & Modernization").
+- Cookie banner is a slim bottom strip on phones (19% of a 375×812 screen, was about half).
+- Insights: filters built from published posts only (All, DevOps, Engineering, Security); "2025" removed from published titles and one description. Slugs unchanged. "OWASP Top 10 2025" kept: it is the list's edition name.
+- Content-Security-Policy header (upgrade-insecure-requests, frame-ancestors, base-uri, object-src, form-action). Script sources not restricted (T10.13). HSTS was already sent.
+- Organization schema: logo and address. City filled from the owner's request: Brampton, Ontario (shows in footer, About and schema).
+- Reply promise renders beside the homepage's last button once `site.responseTime` is set. LinkedIn link label and icon ready for `site.social.linkedin`.
+- Phones: mono labels 12–13px (were 11–12px); blog labels at least 12px (were 9–11px); breadcrumb and blog back links 24px tall.
+
+Waiting on the owner (data only, already wired in `site.ts`): email, phone, LinkedIn URL, booking link, reply time, founding year. Waiting on content and decisions: team, case studies, proof results, industries, price, certifications and badges, which clouds and standards (gating V-03; SOC 2 and ISO 27001 are new frameworks with no page content), starter offer, blog authors and new posts, cookieless visitor counting (conflicts with "nothing loads before consent"), Search Console recrawl.
+
+## Homepage lifecycle redesign (owner request, 2026-11-19)
+
+The owner found the stage tabs static ("buttons not looks are button… not looks like it is slider") and pointed to three process-diagram references (staggered pills, a loop, a vertical timeline). Rebuilt `diagrams/Lifecycle.tsx` as two views of the same seven stages:
+
+- **Loop, 1024px and wider:** seven icon nodes on a ring around a "Security at every stage" hub, with dashed arrows between them. The arc to the next stage draws over 6 seconds, and its `animationend` advances the loop, so the animation is the timer. The side panel shows the stage's icon, a one-line purpose and its four controls. Play/pause, previous/next and a counter sit above the panel.
+- **Timeline, below 1024px and before the script loads:** icon rings on a vertical line, with every stage's purpose and controls visible. No slider on phones.
+- **Colour:** each stage takes a step from periwinkle to cyan, mixed from existing tokens.
+- **Accessibility:** follows the WAI-ARIA APG tabbed-carousel pattern. Play/pause comes first in the tab order. Hover pauses. Keyboard focus or choosing a stage stops rotation until Play is pressed. Rotation starts stopped with reduced motion. The panel is `aria-live="polite"` only while stopped. Only one view is displayed at a time.
+- **New copy:** a one-line purpose per stage, describing method and making no claims.
+
+Verified on a production build at 1440 (advancing, done arcs and the active glow), at 800 and at 375: the timeline shows with no overflow. On the loop: Next, Previous, a stage click and the Left arrow key each select the right stage, stop rotation and set the panel to polite; Play restarts. No console errors. Hover pausing was checked with the real pointer on the previous version, which used the same handlers. Not re-verified on the loop version: keyboard order with a real Tab key (the pane limitation), and a screen reader.
+
+## Insights page and header button (owner request, 2026-11-20)
+
+- **Header button hover:** the text turned dark on hover because Once UI's `a:not(.button):hover` has the same specificity and loads later. The hover now sets the white text explicitly, with a slight lift and shadow. A simulated run of that Once UI rule over every link on eight pages showed the header button was the only link it affected.
+- **Insights (`/blog`)** rebuilt on the site-v2 system (`sections/InsightsList.tsx`, `sections/insights.module.scss`). Changes:
+  - The standard page hero, with copy in the new positioning (the old hero said "senior-only teams… AI").
+  - The newest article is featured.
+  - Topic filters show counts, plus a title search with an empty state.
+  - A three-column card grid.
+  - Each topic has a drawn cover (DevOps: pipeline with gates; Security: layers around a shield; Engineering: stacked layers), varied per article.
+- **Fixed:** the featured article was repeated as the first grid card, because the post flagged `featured` is hidden, so the fallback article was not excluded from the grid.
+- **Lighter page:** the browser now receives summaries only. The route's own script went from 58.8 kB to 3.1 kB.
+- **Cleanup:** `app/blog/BlogClient.tsx` and the `categories` export were removed, and 41 listing rules were removed from `blog.module.scss` (the article page keeps its styles).
+
+Verified on a production build:
+- **Desktop and phone screenshots.**
+- **Filtering:** Security 6, a search for "terraform" finds 1, a search with no matches shows the empty state, and reset works.
+- **Accuracy:** no duplicate articles. The polite live region announces the count.
+- **Checks:** links, sitemap, tests and tokens pass.

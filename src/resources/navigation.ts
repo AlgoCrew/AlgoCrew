@@ -36,6 +36,9 @@ const pick = ({ all }: NavOptions = {}) => ({
 });
 type Picked = ReturnType<typeof pick>;
 
+/** Compliance services listed in the menu and the footer. */
+const GOVERNANCE_IDS = ["cloud-governance", "policy-controls", "risk-management", "audit-readiness"];
+
 export const PRIMARY_CTA: NavLink = { label: "Discuss Your Cloud Strategy", href: "/contact" };
 export const PRIMARY_CTA_SHORT: NavLink = { label: "Talk to us", href: "/contact" };
 
@@ -66,9 +69,9 @@ const serviceColumns = (p: Picked): NavColumn[] =>
         .filter((c) => c.inMenu)
         .map((c) => {
           const page = c.page ? p.services.find((s) => s.slug === c.page) : undefined;
-          return { label: c.title, href: page ? servicePath(page) : `${path}#${c.id}`, descriptor: c.descriptor };
+          return { label: page?.title ?? c.title, href: page ? servicePath(page) : `${path}#${c.id}`, descriptor: c.descriptor };
         });
-      const column: NavColumn = { heading: pillar.menuTitle ?? pillar.title, href: path, links };
+      const column: NavColumn = { heading: pillar.title, href: path, links };
       if (pillar.slug === "compliance") column.chips = frameworkLinks(p).map(({ label, href }) => ({ label, href }));
       return column;
     });
@@ -125,7 +128,7 @@ export const headerNav = (options?: NavOptions): NavItem[] => {
     const governance: NavColumn = {
       heading: "Governance & Readiness",
       links: compliance.capabilities
-        .filter((c) => ["cloud-governance", "policy-controls", "risk-management", "audit-readiness"].includes(c.id))
+        .filter((c) => GOVERNANCE_IDS.includes(c.id))
         .map((c) => ({ label: c.title, href: `/compliance#${c.id}`, descriptor: c.descriptor })),
     };
     items.push({
@@ -165,18 +168,30 @@ export const footerNav = (options?: NavOptions): NavColumn[] => {
     },
     {
       heading: "Cloud Platforms",
+      // Verified platforms first; the rest are sections that exist whatever is verified.
       links: [
         ...platformLinks(p).map(({ label, href }) => ({ label, href })),
         { label: "Multi-cloud overview", href: "/cloud-platforms" },
+        { label: "One method across clouds", href: "/cloud-platforms#method" },
+        { label: "Landing zones", href: "/cloud-platforms#architecture" },
+        ...(live.some((s) => s.slug === "cloud-consulting")
+          ? [{ label: "Hybrid & Multi-Cloud", href: "/services/cloud-consulting#hybrid-multi-cloud" }]
+          : []),
+        { label: "Platform operations", href: "/cloud-platforms#operations" },
       ],
     },
   ];
   if (compliance) {
     columns.push({
       heading: "Compliance",
+      // Verified frameworks first, then the governance services the menu also lists.
       links: [
         { label: compliance.title, href: "/compliance" },
         ...frameworkLinks(p).map(({ label, href }) => ({ label, href })),
+        ...compliance.capabilities
+          .filter((c) => GOVERNANCE_IDS.includes(c.id))
+          .map((c) => ({ label: c.title, href: `/compliance#${c.id}` })),
+        { label: "Our role", href: "/compliance#boundaries" },
       ],
     });
   }

@@ -252,10 +252,10 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "kubernetes-vs-ecs-2025",
-    title: "Kubernetes vs ECS in 2025: What We Actually Recommend",
+    title: "Kubernetes vs ECS: What We Actually Recommend",
     excerpt:
       "After running both in production across dozens of client projects, here's our honest take on when to use Kubernetes, when ECS wins, and when neither is the right answer.",
-    metaTitle: "Kubernetes vs ECS in 2025: What to Choose",
+    metaTitle: "Kubernetes vs ECS: What to Choose",
     metaDescription: "After running both in production, here is an honest take on when Kubernetes earns its complexity, when ECS wins, and when neither is the right answer.",
     updated: "2026-06-16",
     category: "DevOps",
@@ -462,7 +462,7 @@ export const blogPosts: BlogPost[] = [
     title: "CI/CD Pipeline Best Practices We Use on Every Project",
     excerpt:
       "A broken deployment pipeline is a productivity tax on every engineer, every day. Here's the setup we install on every new project from day one.",
-    metaTitle: "CI/CD Pipeline Best Practices for 2025",
+    metaTitle: "CI/CD Pipeline Best Practices",
     metaDescription: "A broken deployment pipeline taxes every engineer every day. The CI/CD setup we install on every new project from day one, and why each piece matters.",
     updated: "2026-06-16",
     category: "DevOps",
@@ -545,10 +545,10 @@ export const blogPosts: BlogPost[] = [
 const extraPosts: BlogPost[] = [
   {
     slug: "zero-trust-security-architecture-guide",
-    title: "Zero Trust Architecture: The Complete Engineering Guide for 2025",
+    title: "Zero Trust Architecture: The Complete Engineering Guide",
     excerpt:
       "Perimeter-based security is dead. Zero trust assumes breach by default, every request is verified, every connection is authenticated. Here's how to implement it without grinding your team to a halt.",
-    metaTitle: "Zero Trust Architecture: A 2025 Engineering Guide",
+    metaTitle: "Zero Trust Architecture: An Engineering Guide",
     metaDescription: "Perimeter security is dead. Zero trust verifies every request and authenticates every connection. How to implement it without grinding your team to a halt.",
     updated: "2026-06-16",
     category: "Security",
@@ -729,10 +729,10 @@ const extraPosts: BlogPost[] = [
   },
   {
     slug: "api-security-best-practices-2025",
-    title: "API Security in 2025: The Complete Checklist for Production APIs",
+    title: "API Security: The Complete Checklist for Production APIs",
     excerpt:
       "APIs are the attack surface of modern applications. Here's a comprehensive checklist covering authentication, rate limiting, input validation, and everything between that we apply before any API goes live.",
-    metaTitle: "API Security in 2025: A Production Checklist",
+    metaTitle: "API Security: A Production Checklist",
     metaDescription: "APIs are the attack surface of modern apps. A complete production checklist: authentication, authorisation, rate limiting, input validation, and more.",
     updated: "2026-06-16",
     category: "Security",
@@ -1288,11 +1288,11 @@ const extraPosts: BlogPost[] = [
   },
   {
     slug: "serverless-vs-containers-2025",
-    title: "Serverless vs Containers in 2025: A Cost and Complexity Comparison",
+    title: "Serverless vs Containers: A Cost and Complexity Comparison",
     excerpt:
       "The serverless vs containers debate has matured. Both are production-ready, both have legitimate use cases, and the decision tree is clearer than ever. Here's our current recommendation.",
-    metaTitle: "Serverless vs Containers in 2025: How to Decide",
-    metaDescription: "Both serverless and containers are production-ready in 2025. A clear cost and complexity decision tree for choosing the right runtime for your workload.",
+    metaTitle: "Serverless vs Containers: How to Decide",
+    metaDescription: "Both serverless and containers are production-ready. A clear cost and complexity decision tree for choosing the right runtime for your workload.",
     updated: "2026-06-16",
     category: "DevOps",
     tags: ["Serverless", "Lambda", "Containers", "AWS", "Architecture"],
@@ -1410,14 +1410,13 @@ const extraPosts: BlogPost[] = [
 
 blogPosts.push(...extraPosts);
 
-export const categories = ["All", ...Array.from(new Set(blogPosts.map(p => p.category)))];
-
 export function getPost(slug: string) {
   return blogPosts.find(p => p.slug === slug) ?? null;
 }
 
 /** Posts that are listed, indexed and in the sitemap (retired and hidden posts excluded, 05#59–74). */
 export const listedPosts = () => blogPosts.filter((p) => isListedPost(p.slug));
+
 
 export function getRelated(slug: string, limit = 3) {
   const post = getPost(slug);

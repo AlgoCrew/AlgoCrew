@@ -258,7 +258,9 @@ export default function HomePage() {
       <Section id="contact">
         <CtaBlock
           title="Tell us about your environment."
-          text="Share which clouds you run, what you need to secure and which frameworks apply."
+          text={`Share which clouds you run, what you need to secure and which frameworks apply.${
+            site.responseTime ? ` ${site.responseTime}` : ""
+          }`}
           primary={{ label: "Discuss Your Cloud Strategy", href: "/contact" }}
           secondary={site.bookingUrl ? { label: "Book a 30-minute call", href: site.bookingUrl } : undefined}
         />

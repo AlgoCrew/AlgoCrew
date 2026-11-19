@@ -1,69 +1,61 @@
 export const dynamic = "force-static";
 
-import { Meta } from "@once-ui-system/core";
+import type { Metadata } from "next";
+import { canonical } from "@/components/seo/JsonLd";
+import { PageHero } from "@/components/sections";
+import { InsightsList } from "@/components/sections/InsightsList";
+import { CtaBlock, Page, Section } from "@/components/ui";
 import { baseURL } from "@/resources";
-import { BlogListing } from "./BlogClient";
-import { CtaBlock, Section } from "@/components/ui";
-import styles from "./blog.module.scss";
+import { listedPosts } from "@/resources/blog";
 
-export async function generateMetadata() {
-  return {
-    ...Meta.generate({
-      title: "Insights",
-      description: "Engineering insights, product thinking, and lessons from shipping software at scale with senior-only teams.",
-      baseURL,
-      path: "/blog",
-      image: "/images/og/home.jpg",
-    }),
-    alternates: { canonical: "/blog" },
-  };
-}
+/** /blog (Insights). Design refresh, docs/website-transformation/17. */
+const PATH = "/blog";
+const TITLE = "Insights";
+const DESCRIPTION =
+  "Practical articles on cloud architecture, DevOps and DevSecOps, and cloud security, from the engineers who build and run these platforms.";
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: canonical(PATH) },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: canonical(PATH), type: "website", images: ["/images/og/home.jpg"] },
+};
 
 const blogListingSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
   "@id": `${baseURL}/blog`,
   url: `${baseURL}/blog`,
-  name: "AlgoCrew Blog",
-  description: "Engineering insights, product thinking, and lessons from shipping software at scale with senior-only teams.",
-  publisher: { "@type": "Organization", name: "AlgoCrew", url: baseURL },
-  breadcrumb: {
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: baseURL },
-      { "@type": "ListItem", position: 2, name: "Blog", item: `${baseURL}/blog` },
-    ],
-  },
+  name: "AlgoCrew Insights",
+  description: DESCRIPTION,
+  publisher: { "@id": `${baseURL}/#organization` },
 };
 
 export default function BlogPage() {
+  // Newest first; the client gets summaries only, never article bodies.
+  const posts = listedPosts()
+    .slice()
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .map(({ slug, title, excerpt, category, date, readTime }) => ({ slug, title, excerpt, category, date, readTime }));
+
   return (
-    <div style={{ width: "100%", overflowX: "clip", background: "var(--bg-page)" }}>
+    <Page>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListingSchema) }} />
-
-      {/* ── Hero ── */}
-      <section className={styles.hero}>
-        <div className={styles.heroGlow} aria-hidden="true" />
-        <div className={styles.heroInner}>
-          <span className={styles.label}>THE ALGOCREW BLOG</span>
-          <h1 className={styles.heroTitle}>
-            Engineering<br />
-            <span className={styles.accent}>Perspectives.</span>
-          </h1>
-          <p className={styles.heroSub}>
-            Lessons from shipping production software with senior-only teams,
-            architecture, culture, AI, and everything in between.
-          </p>
-        </div>
-      </section>
-
-      {/* ── Listing (client — filters) ── */}
-      <BlogListing />
-
-      {/* ── CTA ── */}
-      <Section>
-        <CtaBlock title="Tell us about your environment." text="Share which clouds you run, what you need to secure and which frameworks apply." primary={{ label: "Discuss Your Cloud Strategy", href: "/contact" }} />
+      <PageHero
+        trail={[{ label: "Insights", href: PATH }]}
+        title="Notes from building secure cloud platforms."
+        lead="Practical guides on cloud architecture, DevOps and DevSecOps, and cloud security: what we recommend, and why."
+      />
+      <Section tight>
+        <InsightsList posts={posts} />
       </Section>
-    </div>
+      <Section>
+        <CtaBlock
+          title="Tell us about your environment."
+          text="Share which clouds you run, what you need to secure and which frameworks apply."
+          primary={{ label: "Discuss Your Cloud Strategy", href: "/contact" }}
+        />
+      </Section>
+    </Page>
   );
 }

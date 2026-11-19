@@ -33,6 +33,8 @@ export const organizationSchema = () =>
     name: site.brand,
     legalName: site.legalName,
     url: baseURL,
+    logo: `${baseURL}/icon-512.png`,
+    address: site.city ? { "@type": "PostalAddress", addressLocality: site.city } : undefined,
     email: site.email,
     telephone: site.phone,
     foundingDate: site.foundingYear ? String(site.foundingYear) : undefined,
